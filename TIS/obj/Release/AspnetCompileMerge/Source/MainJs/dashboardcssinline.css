@@ -1,0 +1,101 @@
+﻿.wrapper {
+                    height: auto !important;
+                }
+
+                .selectbox {
+                    background: #fff;
+                    color: #1d3b4a;
+                    padding: 8px;
+                    line-height: 18px;
+                    border-radius: 4px;
+                    border-width: 0 1px 4px;
+                }
+
+                html {
+                    background-color: white;
+                }
+
+                body {
+                    background-color: white;
+                }
+
+                .card [class*=card-header-] .card-icon, .card [class*=card-header-] .card-text {
+                    padding: 10px !important;
+                }
+
+                .card-stats .card-header.card-header-icon i {
+                    font-size: 24px !important;
+                }
+
+                .card .card-body + .card-footer .stats .material-icons, .card .card-footer .stats .material-icons {
+                    font-weight: bold;
+                    color: #828181;
+                    font-size: 15px;
+                }
+
+                #wait, #waitchart2, #waitchart3, #waitchart4, #waitchart5, #waitchart6, #waitchart7 {
+                    width: 69px;
+                    height: 89px;
+                    /*border: 1px solid black;*/
+                    top: 43%;
+                    left: 51%;
+                    padding: 2px;
+                    position: absolute;
+                   
+                 
+                }
+
+
+                #toolbar {
+                    display: flex;
+                    height: 100%;
+                    padding: 0 1rem;
+                }
+
+                    #toolbar.warning:after {
+                        content: 'Selected data cannot be used to create a chart.';
+                        position: absolute;
+                        top: 50%;
+                        right: 10px;
+                        transform: translateY(-50%);
+                        color: var(--smart-error);
+                    }
+
+                    #toolbar > div {
+                        display: flex;
+                        align-items: flex-end;
+                        justify-content: center;
+                        margin-right: 15px;
+                        width: 35px;
+                        height: 30px;
+                        height: 100%;
+                        font-size: 12px;
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        user-select: none;
+                        cursor: pointer;
+                    }
+
+                        #toolbar > div:hover {
+                            background-color: var(--smart-grid-column-header-background-hover);
+                        }
+
+                        #toolbar > div:active {
+                            background-color: var(--smart-grid-column-header-background-active);
+                        }
+
+                        #toolbar > div.warning {
+                            outline: 2px solid var(--smart-error);
+                        }
+
+                #column {
+                    background-image: url('../../Content/images/backgroundTop.png');
+                }
+
+                #line {
+                    background-image: url('../../Content/images/bg_black.png');
+                }
+
+                #bar {
+                    background-image: url('../../Content/images/bg_blackpressed.png');
+                }

@@ -1,0 +1,87 @@
+﻿.modal
+{
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba( 255, 255, 255, .8 ) 50% 50% no-repeat;
+}
+body.loading
+{
+    overflow: hidden;
+}
+        
+/* Anytime the body has the loading class, our
+modal element will be visible */
+body.loading .modal
+{
+    display: block;
+}
+.plasticBlue thead th
+{
+    cursor: pointer;
+    white-space: nowrap;
+    padding: 7px 6px;
+    border-top: 1px none #2c4182;
+    border: 1px solid #2c4182;
+    background: #415698 repeat-x top;
+    overflow: hidden;
+    font-weight: normal;
+    text-align: Center;
+    color: White;
+}
+.plasticBlue tbody tr td
+{
+    border-top: 1px none #CCCCCC;
+    border: 1px Solid #CCCCCC;
+    font: 13px Tahoma, Geneva, sans-serif;
+    background-color: #F0F0F0;
+    color: #000000;
+    cursor: default;
+    padding: 4px;
+}
+#something
+{
+    border: 1px solid black;
+    background-color: #eee;
+    position: relative;
+    width: 100%;
+    height: 52px;
+    float: none;
+    display: block;
+    margin: 0 auto;
+    z-index:9999;
+}
+.dxbButton_SoftOrange
+{
+    color: #FFFFFF;
+    font: normal 12px Tahoma, Geneva, sans-serif;
+    border: 1px solid #cb4b31;
+    background: #EF643C repeat-x top;
+    padding: 1px;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    padding: 5px;
+    border: 1px dotted transparent;
+    font-size: 14px;
+    margin: 5px;
+}
+        
+.Btnstyle
+{
+    padding:10px;
+    color: #2C4D79;
+    font: normal 12px Tahoma, Geneva, sans-serif;
+    border: 1px solid #A3C0E8;
+    background: #E2F0FF repeat-x top;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+}
+

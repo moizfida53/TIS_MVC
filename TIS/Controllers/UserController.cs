@@ -4,18 +4,19 @@
 // MVID: 16F81D25-AB23-43AD-92C7-05A00A50CBA5
 // Assembly location: F:\ALL PROJECTS\CoffeeShop\TFSProjects\Published\published from client server 27 Jan 2022\TIS_MVC_Published_2022_Jan\TIS_MVC_Published\bin\TIS.dll
 
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
+using System.Security.Cryptography;
 using System.Security.Principal;
 using System.Text.RegularExpressions;
 using System.Web.Mvc;
 using TIS.Helper;
 using TIS.Models;
-using Newtonsoft.Json;
-using System.Diagnostics;
 
 namespace TIS.Controllers
 {
@@ -175,11 +176,17 @@ namespace TIS.Controllers
         {
             try
             {
+                // Validate uid is Int64 and > 0
+                if (!long.TryParse(uid, out long parsedUid) || parsedUid <= 0)
+                {
+                    return this.Json(new { Error = "Invalid UID" }, JsonRequestBehavior.AllowGet);
+                }
+
                 SqlParameter[] paramColl = new SqlParameter[1];
                 SqlParameter sqlParameter = new SqlParameter();
                 sqlParameter.ParameterName = "@Uid";
                 sqlParameter.SqlDbType = SqlDbType.Int;
-                sqlParameter.Value = (object)uid;
+                sqlParameter.Value = parsedUid;
                 paramColl[0] = sqlParameter;
                 DataSet ds = DB.ExecuteStoredProcDataSet("sp_GetLandingPageData", paramColl);
                 if (ds != null && ds.Tables.Count > 0)
