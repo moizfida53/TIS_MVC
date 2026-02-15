@@ -1,0 +1,150 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\KDD_Project\\TIS_KDD_Project\\TIS_General_Ketan_07_Feb_2026\\TIS_General\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|d:\\kdd_project\\tis_kdd_project\\tis_general_ketan_07_feb_2026\\tis_general\\tis\\scripts\\myjs.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\scripts\\myjs.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|d:\\kdd_project\\tis_kdd_project\\tis_general_ketan_07_feb_2026\\tis_general\\tis\\mainjs\\index.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\mainjs\\index.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|d:\\kdd_project\\tis_kdd_project\\tis_general_ketan_07_feb_2026\\tis_general\\tis\\views\\user\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\views\\user\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|d:\\kdd_project\\tis_kdd_project\\tis_general_ketan_07_feb_2026\\tis_general\\tis\\scripts\\index.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\scripts\\index.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|d:\\kdd_project\\tis_kdd_project\\tis_general_ketan_07_feb_2026\\tis_general\\tis\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\KDD_Project\\TIS_KDD_Project\\TIS_General_Ketan_07_Feb_2026\\TIS_General\\tis\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:11:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:14:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:15:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "myJS.js",
+              "DocumentMoniker": "D:\\KDD_Project\\TIS_KDD_Project\\TIS_General_Ketan_07_Feb_2026\\TIS_General\\TIS\\Scripts\\myJS.js",
+              "RelativeDocumentMoniker": "TIS\\Scripts\\myJS.js",
+              "ToolTip": "D:\\KDD_Project\\TIS_KDD_Project\\TIS_General_Ketan_07_Feb_2026\\TIS_General\\TIS\\Scripts\\myJS.js",
+              "RelativeToolTip": "TIS\\Scripts\\myJS.js",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAlwBgAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-02-14T13:55:38.773Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "index.js",
+              "DocumentMoniker": "D:\\KDD_Project\\TIS_KDD_Project\\TIS_General_Ketan_07_Feb_2026\\TIS_General\\TIS\\Scripts\\index.js",
+              "RelativeDocumentMoniker": "TIS\\Scripts\\index.js",
+              "ToolTip": "D:\\KDD_Project\\TIS_KDD_Project\\TIS_General_Ketan_07_Feb_2026\\TIS_General\\TIS\\Scripts\\index.js",
+              "RelativeToolTip": "TIS\\Scripts\\index.js",
+              "ViewState": "AgIAACcDAAAAAAAAAAAIwD4DAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-02-14T13:23:54.276Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.js",
+              "DocumentMoniker": "D:\\KDD_Project\\TIS_KDD_Project\\TIS_General_Ketan_07_Feb_2026\\TIS_General\\TIS\\MainJs\\Index.js",
+              "RelativeDocumentMoniker": "TIS\\MainJs\\Index.js",
+              "ToolTip": "D:\\KDD_Project\\TIS_KDD_Project\\TIS_General_Ketan_07_Feb_2026\\TIS_General\\TIS\\MainJs\\Index.js",
+              "RelativeToolTip": "TIS\\MainJs\\Index.js",
+              "ViewState": "AgIAAHcAAAAAAAAAAAAlwIMAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-02-14T13:16:40.237Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\KDD_Project\\TIS_KDD_Project\\TIS_General_Ketan_07_Feb_2026\\TIS_General\\TIS\\Views\\User\\Index.cshtml",
+              "RelativeDocumentMoniker": "TIS\\Views\\User\\Index.cshtml",
+              "ToolTip": "D:\\KDD_Project\\TIS_KDD_Project\\TIS_General_Ketan_07_Feb_2026\\TIS_General\\TIS\\Views\\User\\Index.cshtml",
+              "RelativeToolTip": "TIS\\Views\\User\\Index.cshtml",
+              "ViewState": "AgIAACECAAAAAAAAAAAAACECAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-14T13:15:11.067Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Global.asax.cs",
+              "DocumentMoniker": "D:\\KDD_Project\\TIS_KDD_Project\\TIS_General_Ketan_07_Feb_2026\\TIS_General\\TIS\\Global.asax.cs",
+              "RelativeDocumentMoniker": "TIS\\Global.asax.cs",
+              "ToolTip": "D:\\KDD_Project\\TIS_KDD_Project\\TIS_General_Ketan_07_Feb_2026\\TIS_General\\TIS\\Global.asax.cs",
+              "RelativeToolTip": "TIS\\Global.asax.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAQwDsAAABXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-14T13:05:09.592Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Web.config",
+              "DocumentMoniker": "D:\\KDD_Project\\TIS_KDD_Project\\TIS_General_Ketan_07_Feb_2026\\TIS_General\\TIS\\Web.config",
+              "RelativeDocumentMoniker": "TIS\\Web.config",
+              "ToolTip": "D:\\KDD_Project\\TIS_KDD_Project\\TIS_General_Ketan_07_Feb_2026\\TIS_General\\TIS\\Web.config",
+              "RelativeToolTip": "TIS\\Web.config",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAmwGEAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2026-02-14T12:23:53.455Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

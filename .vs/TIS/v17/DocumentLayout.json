@@ -1,0 +1,102 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "F:\\Projects\\DAD Projects\\TIS_General\\TIS_General\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|f:\\projects\\dad projects\\tis_general\\tis_general\\tis\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|f:\\projects\\dad projects\\tis_general\\tis_general\\tis\\css\\masterpage.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\css\\masterpage.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|F:\\Projects\\DAD Projects\\TIS_General\\TIS_General\\tis\\views\\shared\\masterpage.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
+      "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\views\\shared\\masterpage.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|F:\\Projects\\DAD Projects\\TIS_General\\TIS_General\\tis\\css\\bootstrap.min.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\css\\bootstrap.min.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|F:\\Projects\\DAD Projects\\TIS_General\\TIS_General\\tis\\views\\admin\\addtelephone.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\views\\admin\\addtelephone.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Web.config",
+              "DocumentMoniker": "F:\\Projects\\DAD Projects\\TIS_General\\TIS_General\\TIS\\Web.config",
+              "RelativeDocumentMoniker": "TIS\\Web.config",
+              "ToolTip": "F:\\Projects\\DAD Projects\\TIS_General\\TIS_General\\TIS\\Web.config",
+              "RelativeToolTip": "TIS\\Web.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-10-30T04:13:55.508Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "bootstrap.min.css",
+              "DocumentMoniker": "F:\\Projects\\DAD Projects\\TIS_General\\TIS_General\\TIS\\css\\bootstrap.min.css",
+              "RelativeDocumentMoniker": "TIS\\css\\bootstrap.min.css",
+              "ToolTip": "F:\\Projects\\DAD Projects\\TIS_General\\TIS_General\\TIS\\css\\bootstrap.min.css",
+              "RelativeToolTip": "TIS\\css\\bootstrap.min.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAV2wAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-10-20T15:13:04.758Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AddTelephone.aspx",
+              "DocumentMoniker": "F:\\Projects\\DAD Projects\\TIS_General\\TIS_General\\TIS\\Views\\Admin\\AddTelephone.aspx",
+              "RelativeDocumentMoniker": "TIS\\Views\\Admin\\AddTelephone.aspx",
+              "ToolTip": "F:\\Projects\\DAD Projects\\TIS_General\\TIS_General\\TIS\\Views\\Admin\\AddTelephone.aspx",
+              "RelativeToolTip": "TIS\\Views\\Admin\\AddTelephone.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-10-20T15:12:20.374Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "masterpage.css",
+              "DocumentMoniker": "F:\\Projects\\DAD Projects\\TIS_General\\TIS_General\\TIS\\css\\masterpage.css",
+              "RelativeDocumentMoniker": "TIS\\css\\masterpage.css",
+              "ToolTip": "F:\\Projects\\DAD Projects\\TIS_General\\TIS_General\\TIS\\css\\masterpage.css",
+              "RelativeToolTip": "TIS\\css\\masterpage.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-10-20T15:11:38.606Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MasterPage.Master",
+              "DocumentMoniker": "F:\\Projects\\DAD Projects\\TIS_General\\TIS_General\\TIS\\Views\\Shared\\MasterPage.Master",
+              "RelativeDocumentMoniker": "TIS\\Views\\Shared\\MasterPage.Master",
+              "ToolTip": "F:\\Projects\\DAD Projects\\TIS_General\\TIS_General\\TIS\\Views\\Shared\\MasterPage.Master",
+              "RelativeToolTip": "TIS\\Views\\Shared\\MasterPage.Master",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-10-20T15:09:15.324Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

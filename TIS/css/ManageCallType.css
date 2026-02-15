@@ -1,0 +1,352 @@
+﻿
+/*#grdEmployee .jqx-checkbox-default {
+    border-radius: 1px !important;
+    padding: 1px 1px !important;
+}
+
+#grdEmployee {
+    width: 550px !important;
+}
+
+.myButton3 {
+    background-color: #17a2b8;
+    color: white;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px 8px 0 0;
+    margin: 1em 0 0 0;
+}
+
+#Panel1 {
+    background-color: #d9edf7;
+    padding: 30px;
+    border-radius: 0 0 8px 8px;
+    margin-bottom: 20px;
+}
+
+#jqxwindow {
+    position: absolute;
+    display: none;
+}
+
+#cmbProvider,
+#cmbTransType,
+#btnDesc,
+#cmbCallType,
+#cmbLineType,
+#btnEmployee {
+    width: 100% !important;
+    display: block !important;
+}
+
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.form-label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.btn {
+    min-width: 100px;
+    font-weight: 600;
+    padding: 8px 20px;
+}
+
+.form-group-spacing {
+    margin-bottom: 20px;
+}
+
+#grdData,*/
+/*#grdEmployee,*/
+/*#grdEmpList {
+    width: 100% !important;
+}
+
+.btn-primary {
+    background-color: #007bff !important;
+    border-color: #007bff !important;
+    color: #fff !important;
+}
+
+.btn-warning {
+    background-color: #ffc107 !important;
+    border-color: #ffc107 !important;
+    color: #000 !important;
+}
+
+.btn-success {
+    background-color: #28a745 !important;
+    border-color: #28a745 !important;
+    color: #fff !important;
+}
+
+.btn-secondary {
+    background-color: #6c757d !important;
+    border-color: #6c757d !important;
+    color: #fff !important;
+}
+
+@media (min-width: 1200px) {
+    .col-xl-3 {
+        flex: 0 0 auto;
+        width: 20%;
+    }
+
+    .col-xl-4 {
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+        display: flex;
+        align-items: end;
+    }
+}*/
+
+/* ============================================
+   MANAGE CALL TYPE / MANAGE POLICY STYLES
+   ============================================ */
+
+/* Description Dropdown Checkboxes - Professional Styling - Force Override JQX */
+/* Main checkbox container */
+#btnDesc .jqx-checkbox-default,
+#cmbDesc .jqx-checkbox-default,
+div[id*="cmbDesc"] .jqx-checkbox-default,
+#btnDesc .jqx-checkbox,
+#cmbDesc .jqx-checkbox,
+div[id*="cmbDesc"] .jqx-checkbox {
+    width: 16px !important;
+    height: 16px !important;
+    min-width: 16px !important;
+    min-height: 16px !important;
+    max-width: 16px !important;
+    max-height: 16px !important;
+    border-radius: 3px !important;
+    padding: 0 !important;
+    margin: 0 8px 0 0 !important;
+}
+
+    /* Critical: Target nested div and span inside checkbox - THIS IS THE KEY */
+    #btnDesc .jqx-checkbox-default > div,
+    #cmbDesc .jqx-checkbox-default > div,
+    div[id*="cmbDesc"] .jqx-checkbox-default > div,
+    #btnDesc .jqx-checkbox-default > div > span,
+    #cmbDesc .jqx-checkbox-default > div > span,
+    div[id*="cmbDesc"] .jqx-checkbox-default > div > span {
+        width: 16px !important;
+        height: 16px !important;
+        min-width: 16px !important;
+        min-height: 16px !important;
+    }
+
+/* Checked state - control background image size */
+#btnDesc .jqx-checkbox-check-checked,
+#cmbDesc .jqx-checkbox-check-checked,
+div[id*="cmbDesc"] .jqx-checkbox-check-checked {
+    width: 16px !important;
+    height: 16px !important;
+    background-size: 16px 16px !important;
+}
+
+/* Hover state */
+#btnDesc .jqx-checkbox-default-hover,
+#cmbDesc .jqx-checkbox-default-hover,
+div[id*="cmbDesc"] .jqx-checkbox-default-hover {
+    border-color: #17a2b8 !important;
+}
+
+/* List item styling */
+#btnDesc .jqx-listitem-state-normal,
+#cmbDesc .jqx-listitem-state-normal,
+div[id*="cmbDesc"] .jqx-listitem-state-normal,
+#btnDesc .jqx-item,
+#cmbDesc .jqx-item,
+div[id*="cmbDesc"] .jqx-item {
+    /*padding: 8px 12px !important;*/
+    font-size: 14px !important;
+/*    line-height: 20px !important;*/
+    display: flex !important;
+    align-items: center !important;
+    margin:auto;
+}
+
+/* Dropdown container */
+/*#btnDesc .jqx-fill-state-normal,
+#cmbDesc .jqx-fill-state-normal,
+div[id*="cmbDesc"] .jqx-fill-state-normal {
+    padding: 6px 10px !important;
+}*/
+
+/* Employee Grid Checkboxes */
+#grdEmployee .jqx-checkbox-default {
+    border-radius: 1px !important;
+    padding: 1px 1px !important;
+}
+
+#grdEmployee {
+    width: 550px !important;
+}
+
+/* Header Button */
+.myButton3 {
+    background-color: #17a2b8;
+    color: white;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px 8px 0 0;
+    margin: 1em 0 0 0;
+}
+
+/* Main Panel */
+#Panel1 {
+    background-color: #d9edf7;
+    padding: 30px;
+    border-radius: 0 0 8px 8px;
+    margin-bottom: 20px;
+}
+
+/* Modal Window */
+#jqxwindow {
+    position: absolute;
+    display: none;
+}
+
+/* Combo Boxes and Buttons */
+#cmbProvider,
+#cmbTransType,
+#btnDesc,
+#cmbCallType,
+#cmbLineType,
+#btnEmployee {
+    width: 100% !important;
+    display: block !important;
+}
+
+/* Checkbox Wrapper */
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+/* Form Labels */
+.form-label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+/* Action Buttons */
+.btn {
+    min-width: 100px;
+    font-weight: 600;
+    padding: 8px 20px;
+    transition: all 0.3s ease;
+}
+
+/* Form Spacing */
+.form-group-spacing {
+    margin-bottom: 20px;
+}
+
+/* Grids */
+#grdData,
+#grdEmpList {
+    width: 100% !important;
+}
+
+/* Primary Button */
+.btn-primary {
+    background-color: #26a8b9 !important;
+    border-color: #26a8b9 !important;
+    color: #fff !important;
+    position: relative;
+    overflow: hidden;
+}
+
+    .btn-primary:hover {
+        background-color: #1e8a98 !important;
+        border-color: #1e8a98 !important;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(38, 168, 185, 0.3);
+    }
+
+    .btn-primary:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 4px rgba(38, 168, 185, 0.3);
+    }
+
+/* Warning Button */
+.btn-warning {
+    background-color: #ffc107 !important;
+    border-color: #ffc107 !important;
+    color: #000 !important;
+}
+
+    .btn-warning:hover {
+        background-color: #e0a800 !important;
+        border-color: #e0a800 !important;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(255, 193, 7, 0.3);
+    }
+
+    .btn-warning:active {
+        transform: translateY(0);
+    }
+
+/* Success Button */
+.btn-success {
+    background-color: #28a745 !important;
+    border-color: #28a745 !important;
+    color: #fff !important;
+}
+
+    .btn-success:hover {
+        background-color: #218838 !important;
+        border-color: #218838 !important;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+    }
+
+    .btn-success:active {
+        transform: translateY(0);
+    }
+
+/* Secondary Button */
+.btn-secondary {
+    background-color: #b5232c !important;
+    border-color: #b5232c !important;
+    color: #fff !important;
+}
+
+    .btn-secondary:hover {
+        background-color: #952028 !important;
+        border-color: #952028 !important;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(181, 35, 44, 0.3);
+    }
+
+    .btn-secondary:active {
+        transform: translateY(0);
+    }
+
+/* Responsive Design */
+@media (min-width: 1200px) {
+    .col-xl-3 {
+        flex: 0 0 auto;
+        width: 20%;
+    }
+
+    .col-xl-4 {
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+        display: flex;
+        align-items: end;
+    }
+}

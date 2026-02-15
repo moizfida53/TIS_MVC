@@ -1,0 +1,1172 @@
+﻿
+@model TIS.Models.Users
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta name="viewport" http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <title>Analyse</title>
+    @*<link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>*@
+    <link href="~/css/css2.css" rel="stylesheet" />
+
+    <script src="../../Scripts/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery.blockUI.js" type="text/javascript"></script>
+    <script src="../../Scripts/jqxcore.js" type="text/javascript"></script>
+    @*<script src="../../jqwidgets/jqxcore.js"></script>
+        <script src="../../jqwidgets/jqxdraw.js"></script>
+        <script src="../../jqwidgets/jqxchart.core.js"></script>
+        <script src="../../Scripts/demos.js"></script>*@
+    <script src="~/Scripts/sweetalert2@11.js"></script>
+    <script src="../../Scripts/jqxbuttons.js" type="text/javascript"></script>
+    <script src="../../Scripts/jqxcalendar.js" type="text/javascript"></script>
+    <script src="../../Scripts/jqxdatetimeinput.js" type="text/javascript"></script>
+    <script src="../../Scripts/jqxdropdownbutton.js" type="text/javascript"></script>
+    <script src="../../Scripts/jqxcheckbox.js" type="text/javascript"></script>
+    <script src="../../Scripts/jqxmenu.js" type="text/javascript"></script>
+    <script src="../../Scripts/jqxlistbox.js" type="text/javascript"></script>
+    <script src="../../Scripts/jqxdropdownlist.js" type="text/javascript"></script>
+    <script src="../../Scripts/jqxtabs.js" type="text/javascript"></script>
+    <script src="../../Scripts/jqxscrollbar.js" type="text/javascript"></script>
+    <script src="../../Scripts/jqxgrid.js" type="text/javascript"></script>
+    <script src="../../Scripts/jqxgrid.selection.js" type="text/javascript"></script>
+    <script src="../../Scripts/jqxgrid.filter.js" type="text/javascript"></script>
+    <script src="../../Scripts/jqxgrid.columnsresize.js" type="text/javascript"></script>
+    <script src="../../Scripts/jqxgrid.pager.js" type="text/javascript"></script>
+    <script src="../../Scripts/jqxdata.js" type="text/javascript"></script>
+    <script src="../../Scripts/jqxgrid.edit.js" type="text/javascript"></script>
+    <script src="../../Scripts/jqxgrid.sort.js" type="text/javascript"></script>
+    <script src="../../Scripts/jsrender.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/jqxtooltip.js"></script>
+
+    <link href="../../Content/jqx.base.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/jqx.ui-redmond.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/jqx.dark-blue.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/jqx.energyblue.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/mycss.css" rel="stylesheet" type="text/css" />
+    <script src="../../Scripts/jqxwindow.js" type="text/javascript"></script>
+    <script src="../../Scripts/sweetalert.min.js" type="text/javascript"></script>
+    <link href="../../css/sweetalert.css" rel="stylesheet" type="text/css" />
+    <script src="../../Scripts/notify.js" type="text/javascript"></script>
+    <script src="../../Scripts/pgwmodal.js" type="text/javascript"></script>
+    <script src="../../Scripts/pgwmodal.min.js" type="text/javascript"></script>
+  
+    <link href="../../css/pgwmodal.css" rel="stylesheet" type="text/css" />
+    <script src="../../Scripts/jqxdata.export.js"></script>
+    <script src="../../Scripts/jqxgrid.export.js"></script>
+    <link href="../../css/alert.css" rel="stylesheet" />
+    <link href="../../css/theme.css" rel="stylesheet" />
+    <script src="../../Scripts/alert.js"></script>
+    @*<link href="../../css/new-style.css" rel="stylesheet" />*@
+    @*<script src="~/Scripts/index.js"></script>*@
+      <link href="~/css/index.css" rel="stylesheet" />
+
+      <script>
+$(document).ready(function () {
+    //showLoader();
+    $("#DataRoamingTab").hide();
+    $("#DataRoamingContent").hide();
+
+    $("#grdBillMaster").jqxTooltip({
+        content: '<b>List of Bills waiting for Identification</b><br /><b>Click on any Bill to view its details</b>',
+        position: 'mouse',
+        name: 'movieTooltip'
+    });
+    $('#window').jqxWindow({ height: 460, width: 1130, maxWidth: 1200, theme: 'summer' });
+    $('#window').jqxWindow('close');
+    if ('@Model.Roleid' == '3' || '@Model.Roleid' == '8' || '@Model.Roleid' == '4') {
+        $("#btnAdmin").show();
+        $("#DataRoaming2").show();
+        $('#chkMyBillsOnly').attr('checked', false);
+        $("#chkMyBillsOnly").show();
+        $("#aa").show();
+        //$("#btnAdmin").jqxButton({ width: '100', template: 'primary' });
+        $("#btnAdmin").on('click', function () {
+            OpenAdmin();
+        });
+    }
+    else {
+        if ('@Model.AdminRoleId' == '3 ' || '@Model.AdminRoleId' == '8' || '@Model.Roleid' == '4') {
+            $("#btnAdmin").show();
+            $("#DataRoaming2").show();
+            //$("#btnAdmin").jqxButton({ width: '100', template: 'primary' });
+            $("#btnAdmin").on('click', function () {
+                OpenAdmin();
+            });
+        }
+        else {
+            $("#btnAdmin").hide();
+            $("#DataRoaming2").hide();
+        }
+        $('#chkMyBillsOnly').attr('checked', false);
+        $("#chkMyBillsOnly").hide();
+        $("#aa").hide();
+    }
+
+    uid = @Model.uid;
+    IndexLoad();
+
+    $('btnUpdate').hide();
+    $('#dropDownButton').on('open', function () { GetDelegate(); });
+
+    if (@Model.Action == 2) {
+        bindApprovalBills();
+        $('#chkMyBillsOnly').attr('checked', false);
+    }
+
+    $("#WindowContact").jqxWindow({ height: '20%', width: '20%', theme: 'dark-blue', isModal: true, autoOpen: false, position: { x: 500, y: 650 } });
+
+    GetDataRoaming();
+    //showMyBills();
+    $("#btnUpdateDataRoaming").hide();
+    $("#btnDeleteDataRoaming").hide();
+    var selTabIndex = window.sessionStorage['SelectedTabIndex'];
+    if (selTabIndex > 0) {
+        window.sessionStorage['SelectedTabIndex'] = 1;
+        displayTabDetails(selTabIndex);
+    }
+    else {
+        if ($('#selectedTabId').val() > 0) {
+            displayTabDetails($('#selectedTabId').val());
+            SelectedtbIndex = $('#selectedTabId').val();
+        }
+        else {
+            SelectedtbIndex = 1;
+        }
+    }
+
+    hideLoader();
+});
+
+function OpenAdmin() {
+    window.location.href = "@Url.Action("Index", "Admin")"
+}
+function GetDelegate() {
+    $.ajax({
+        type: "POST",
+        async: false,
+        url: "../../Ajax/GetDelegate",
+        data: { 'UID': uid },
+        success: function (result) {
+            var SecData = result.dtSec;
+            var deptsource =
+            {
+                localdata: SecData,
+                datafields:
+                    [
+                        { name: 'ID', type: 'number' },
+                        { name: 'secid', type: 'number' },
+                        { name: 'SecName', type: 'string' },
+                        { name: 'managerid', type: 'number' },
+                        { name: 'ManName', type: 'string' },
+                        { name: 'app', type: 'bool' },
+                        { name: 'idt', type: 'bool' },
+                        { name: 'sdate', type: 'date' },
+                        { name: 'edate', type: 'date' }
+                    ],
+                datatype: "json"
+
+            };
+
+            var dataAdapterCategory = new $.jqx.dataAdapter(deptsource);
+            $("#grdDelegate").jqxGrid({
+                width: '100%',
+                source: dataAdapterCategory,
+                columnsresize: true,
+                rowsheight: 40,
+                columnsheight: 42,
+                theme: 'dark-blue',
+                pageSize: 10,
+                sortable: true,
+                filterable: true,
+                showfilterrow: true,
+                pageable: true,
+
+                selectionmode: 'singlerow',
+                columns: [
+                    { dataField: 'ID', text: 'ID', hidden: true },
+                    { dataField: 'secid', text: 'secid', hidden: true },
+                    { dataField: 'SecName', text: 'Delegate To' },
+                    { dataField: 'managerid', text: 'managerid', hidden: true },
+                    { dataField: 'ManName', text: 'ManName', hidden: true },
+                    { dataField: 'idt', text: 'Identify', columntype: 'checkbox' },
+                    { dataField: 'app', text: 'Approve', columntype: 'checkbox' },
+                    { dataField: 'sdate', text: 'Start Date', cellsformat: 'dd-MM-yyyy' },
+                    { dataField: 'edate', text: 'End Date', cellsformat: 'dd-MM-yyyy' },
+                    {
+                        datafield: 'Delete', text: 'Delete', columntype: 'button', width: 75, cellsrenderer: function () {
+                            return "Delete";
+                        }, buttonclick: function (row) {
+                            DeleteDelegate(row);
+                        }
+                    }
+                ]
+            });
+            $("#grdDelegate").on('rowselect', function (event) {
+                idx = event.args.rowindex;
+                var datarow = $("#grdDelegate").jqxGrid('getrowdata', idx);
+                $('#hidDID').val(datarow.ID);
+                $("#hidManager").val(datarow.secid);
+                var SecName = datarow.SecName;
+                var dropDownContent1 = '<div style="position: relative; margin: 3px; ">' + SecName + ' To</div>';
+                $("#btnmanager").jqxDropDownButton('setContent', dropDownContent1);
+                $("#chkIdt").prop('checked', datarow.idt);
+                $("#chkApp").prop('checked', datarow.app);
+                $('#StartInput ').jqxDateTimeInput('setDate', datarow.sdate);
+                $('#EndInput ').jqxDateTimeInput('setDate', datarow.edate);
+                $('#btnAdd').hide();
+                $('#btnUpdate').show();
+            });
+        }
+    });
+}
+function UpdateDelegate() {
+
+    var date1 = $("#StartInput").jqxDateTimeInput('getDate');
+    var date2 = $("#EndInput").jqxDateTimeInput('getDate');
+
+    if ((new Date(date1).getTime() <= new Date(date2).getTime())) { } else {
+        //alert('start date cant be more then end date');
+        $("#StartInput").notify('Start Date cannot be after End Date', { position: "right" });
+        return;
+    }
+
+
+    var formattedDate1 = $.jqx.dataFormat.formatdate(date1, 'yyyy-MM-dd');
+    var formattedDate2 = $.jqx.dataFormat.formatdate(date2, 'yyyy-MM-dd');
+
+
+
+    var DelG = {
+        "ID": $('#hidDID').val(),
+        "secid": $('#hidManager').val(),
+        "managerid": uid,
+        "app": $("#chkApp").is(':checked'),
+        "idt": $("#chkIdt").is(':checked'),
+        "sdate": formattedDate1,
+        "edate": formattedDate2
+    };
+    var obj = JSON.stringify(DelG);
+    $.ajax({
+        type: "GET",
+        cache: false,
+        async: false,
+        url: "../../Ajax/UpdateDelegate",
+        contentType: 'application/json',
+        data: DelG,
+        success: function (result) {
+            //alert(result.Message);
+            if (result.Message == 'Sucessfully Updated') {
+                $.alert.open('info', 'Success', 'Delegation Updated Successfully');
+            }
+            else {
+                $.alert.open('error', 'Error', 'Sorry cannot complete transaction, Please contact Administrator');
+            }
+            ClearDelegate();
+            GetDelegate();
+        }
+    });
+}
+function DeleteDelegate(index) {
+
+    var row = $("#grdDelegate").jqxGrid('getrowdata', index);
+
+    var Delg = {
+        "ID": row.ID
+    };
+    $.ajax({
+        type: "GET",
+        cache: false,
+        async: false,
+        url: "../../Ajax/DeleteDelegate",
+        contentType: 'application/json',
+        data: Delg,
+        success: function (result) {
+            ClearDelegate();
+            //alert(result.Message);
+            if (result.myMessage == 'succ') {
+                $.alert.open('info', 'Success', 'Delegation Successfull');
+            }
+            else {
+                $.alert.open('error', 'Error', 'Sorry cannot complete transaction, Please contact Administrator');
+            }
+            GetDelegate();
+        }
+    })
+}
+function ClearDelegate() {
+
+    $('#hidDID').val('');
+    $("#hidManager").val('');
+    var dropDownContent1 = '<div style="position: relative; margin: 3px; ">Select Employee</div>';
+    $("#btnmanager").jqxDropDownButton('setContent', dropDownContent1);
+    $("#chkIdt").prop('checked', false);
+    $("#chkApp").prop('checked', false);
+    //                        $('#StartInput ').jqxDateTimeInput('setDate', datarow.sdate);
+    //                        $('#EndInput ').jqxDateTimeInput('setDate', datarow.edate);
+    $("#grdDelegate").jqxGrid('clearselection');
+    $('#btnAdd').show();
+    $('#btnUpdate').hide();
+}
+
+function Print() {
+    if ($('#hdnBillID').val() > 0) {
+        getMyArcBill($('#hdnBillID').val());
+    }
+    //var datainformation = $('#grdBillDetails').jqxGrid('getdatainformation');
+    //var rowscount = datainformation.rowscount;
+
+    //for (var i = 0; i < rowscount; i++) {
+
+    //    var data = $('#grdBillDetails').jqxGrid('getrowdata', i);
+
+    //    if (data.CallType == 0) {
+    //        CallType = "To Be Identified";
+    //        data.CallType = CallType;
+    //    }
+
+    //    if (data.CallType == 1) {
+    //        CallType = "Business";
+    //        data.CallType = CallType;
+    //    }
+
+    //    if (data.CallType == 2) {
+    //        CallType = "Personal";
+    //        data.CallType = CallType;
+    //    }
+
+    //    if (data.CallType == 3) {
+    //        CallType = "Allowance";
+    //        data.CallType = CallType;
+    //    }
+
+    //    if (data.CallType == 5) {
+    //        CallType = "Extra Allowance";
+    //        data.CallType = CallType;
+    //    }
+
+    //}
+
+
+    //var gridContent = $("#grdBillDetails").jqxGrid('exportdata', 'html');
+    //var Something = $("#something").html();
+    //var newWindow = window.open('', '', 'width=900, height=950, scrollbars=1, top=1, left=1'),
+    //document = newWindow.document.open(),
+    //pageContent =
+    //'<!DOCTYPE html>\n' +
+    //'<html>\n' +
+    //'<head>\n' +
+    //'<meta charset="utf-8" />\n' +
+    //'<title>Bill Details</title>\n' +
+    //'</head>\n' +
+    //'<body>\n' + Something + '\n</body>\n' +
+    //'<body>\n' + gridContent + '\n</body>\n</html>';
+    //document.write(pageContent);
+    //document.close();
+    //newWindow.print();
+
+}
+
+function SaveContact() {
+    var getselectedrowindexes = $('#grdBillDetails').jqxGrid('getselectedrowindexes');
+    var row = $("#grdBillDetails").jqxGrid('getrowdata', getselectedrowindexes[0]);
+    var ContactName = $("#txtContactName").val();
+
+    if (ExName != null) {
+        var value = {
+            "ExName": ExName,
+            "Name": ContactName,
+            "DialledNo": row.DialledNo,
+            "Uid": row.Auid,
+        };
+    }
+
+    else {
+        var value = {
+            "Name": ContactName,
+            "DialledNo": row.DialledNo,
+            "Uid": row.Auid,
+        };
+    }
+    var obji = { value: value }
+
+    $.ajax({
+        type: "POST",
+        async: false,
+        url: "../../Admin/SaveContact",
+        data: JSON.stringify(obji),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (result) {
+
+            if (result.Message) {
+                $.alert.open('info', result.Message);
+                getUBillDetails(GBillId);
+                $("#WindowContact").jqxWindow('close');
+                $("#txtContactName").val("");
+            }
+
+            if (result.MessageError) {
+                $.alert.open('error', 'Error', result.MessageError);
+                getUBillDetails(GBillId);
+                $("#WindowContact").jqxWindow('close');
+                $("#txtContactName").val("");
+            }
+        }
+    })
+
+}
+
+function GetDataRoaming() {
+    $.ajax({
+        type: "GET",
+        cache: false,
+        async: false,
+        url: "../../Admin/GetDataRoaming",
+        success: function (result) {
+            Country = result.dtCountry;
+            FillDataRoaming(Country);
+        }
+    });
+}
+
+function FillDataRoaming(Country) {
+    var deptsource =
+    {
+        localdata: Country,
+        datafields:
+            [
+                { name: 'ID', type: 'number' },
+                { name: 'Country', type: 'string' },
+                { name: 'Operator', type: 'string' }
+            ],
+        datatype: "json"
+    };
+
+    var dataAdapterCategory = new $.jqx.dataAdapter(deptsource);
+    $("#grdDataRoaming").jqxGrid({
+        width: '80%',
+        source: dataAdapterCategory,
+        columnsresize: true,
+        rowsheight: 40,
+        columnsheight: 42,
+        autoheight: true,
+        rowsheight: 30,
+        sortable: true,
+        filterable: true,
+        showfilterrow: true,
+        theme: 'dark-blue',
+        selectionmode: 'singlerow',
+        columns: [
+            { dataField: 'ID', text: 'ID', hidden: 'true' },
+            { dataField: 'Country', text: 'Country', width: '50%' },
+            { dataField: 'Operator', text: 'Operator', width: '50%' }
+        ]
+    });
+
+    $("#grdDataRoaming").on('rowselect', function (event) {
+        idx = event.args.rowindex;
+        var datarow = $("#grdDataRoaming").jqxGrid('getrowdata', idx);
+        var ID = datarow.ID;
+        var Country = datarow.Country;
+        var Operator = datarow.Operator;
+
+        $("#btnAddDataRoaming").hide();
+        $("#btnUpdateDataRoaming").show();
+        $("#btnDeleteDataRoaming").show();
+
+
+        $('#hidID').val(ID);
+        $("#txtCountryName").val(Country);
+        $("#txtOperator").val(Operator);
+
+        $('#btnAddDataRoaming').hide();
+        $('#btnUpdateDataRoaming').show();
+        $('#btnDeleteDataRoaming').show();
+    });
+}
+
+function AddDataRoaming() {
+
+
+    if ($("#txtCountryName").val() == '') {
+
+        $("#txtCountryName").notify('Please Fill Country', { position: "right" });
+
+        return;
+    }
+
+
+    if ($("#txtOperator").val() == '') {
+
+        $("#txtOperator").notify('Please Fill Operator', { position: "right" });
+
+        return;
+    }
+
+
+    var value = {
+        "Country": $("#txtCountryName").val(),
+        "Operator": $("#txtOperator").val()
+    };
+
+    var obji = { value: value }
+    $.ajax({
+        type: "POST",
+        async: false,
+        url: "../../Admin/AddDataRoaming",
+        data: JSON.stringify(obji),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (result) {
+            ClearDataRoaming();
+
+            GetDataRoaming();
+            if (result.myMessage == 'Success') {
+                $.alert.open('info', 'Success', 'Added Successfully');
+            }
+            else {
+                $.alert.open('error', 'Error', 'Unsuccessfull,Please Try again.');
+            }
+        }
+    });
+
+}
+function UpdateDataRoaming() {
+
+
+    if ($("#txtCountryName").val() == '') {
+
+        $("#txtCountryName").notify('Please Fill Country', { position: "right" });
+
+        return;
+    }
+
+
+    if ($("#txtOperator").val() == '') {
+
+        $("#txtOperator").notify('Please Fill Operator', { position: "right" });
+
+        return;
+    }
+
+    var value = {
+        "ID": $("#hidID").val(),
+        "Country": $("#txtCountryName").val(),
+        "Operator": $("#txtOperator").val()
+    };
+    var obji = { value: value }
+    $.ajax({
+        type: "POST",
+        async: false,
+        url: "../../Admin/UpdateDataRoaming",
+        data: JSON.stringify(obji),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (result) {
+            ClearDataRoaming();
+
+            GetDataRoaming();
+            if (result.myMessage == 'Success') {
+                $.alert.open('info', 'Success', 'Updated Successfully');
+            }
+            else {
+                $.alert.open('error', 'Error', 'Unsuccessfull,Please Try again.');
+            }
+        }
+    });
+
+}
+
+function DeleteDataRoaming() {
+    var value = {
+        "ID": $("#hidID").val()
+    };
+    var obj = JSON.stringify(value);
+    $.ajax({
+        type: "GET",
+        cache: false,
+        async: false,
+        url: "../../Admin/DeleteDataRoaming",
+        contentType: 'application/json',
+        data: value,
+        success: function (result) {
+            ClearDataRoaming();
+            GetDataRoaming();
+            if (result.myMessage == 'Success') {
+                $.alert.open('info', 'Success', 'Deleted Successfully');
+            }
+            else {
+                $.alert.open('error', 'Error', 'Unsuccessfull,Please Try again.');
+            }
+        }
+    });
+}
+function ClearDataRoaming() {
+    $("#hidID").val('');
+    $("#txtCountryName").val('');
+    $("#txtOperator").val('');
+    $("#btnAddDataRoaming").show();
+    $("#btnUpdateDataRoaming").hide();
+    $("#btnDeleteDataRoaming").hide();
+}
+
+//function ProcessBill() {
+//    try {
+//        // Show loading modal
+//        Swal.fire({
+//            title: 'Please Wait',
+//            html: 'Processing your request...',
+//            allowOutsideClick: false,
+//            allowEscapeKey: false,
+//            showConfirmButton: false,
+//            didOpen: () => {
+//                Swal.showLoading();
+//            }
+//        });
+
+//        // Your existing ProcessBill code here
+//        // Put your AJAX call or processing logic here
+
+//    } catch (error) {
+//        console.error('Error in ProcessBill:', error);
+//        Swal.fire({
+//            title: 'Error!',
+//            text: 'An error occurred: ' + error.message,
+//            icon: 'error'
+//        });
+//    }
+//}</script>
+
+</head>
+<body class="new-style">
+
+
+    <div class="container-fluid m-0 p-0">
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="..\..\images\logo.png " alt="Company Logo">
+                </div>
+
+                <div class="nav-container">
+                    <nav class="nav-menu">
+                        <h2><span class="h2-text">Telecom</span> Invoicing System</h2>
+                    </nav>
+                </div>
+
+                <div class="a-header-right">
+                    <p class="a-Welcome-text">
+                        Welcome,
+                        @Model.name
+                    </p>
+                    <button id="btnAdmin" class="admin-button"> <span>Admin</span></button>
+                    @*<input type="button" value="Admin" class="a-admin-btnn" />*@
+                </div>
+
+
+            </div>
+        </header>
+    </div>
+
+    <div class="a-new-container">
+        <div class="a-new-card">
+            <div id='jqxTabs' ">
+                <ul class="a-tab-header">
+                    <li class="clsTabRecordCount">
+                        <div class="clsTabRecordCount">
+                            <label id="lblPendingIdentificationCnt"></label>
+                        </div>
+                        Pending Identification
+                    </li>
+                    <li>
+                        <div class="clsTabRecordCount">
+                            <label id="lblPendingApprovalCnt"></label>
+                        </div>
+                        Pending Approval
+                    </li>
+                    <li>
+
+                        <div class="clsTabRecordCount">
+                            <label id="lblBillsHistoryCnt"></label>
+                        </div>
+                        Bills History
+                    </li>
+                    @if (ViewBag.RoleId == "6")
+                    {
+                        <li>
+                            <div class="clsTabRecordCount">
+                                <label id="lblBillsDepartmentCnt"></label>
+                            </div>
+                            Department Bills
+                        </li>
+                    }
+                    <li id="DataRoamingTab">Data Roaming Partner</li>
+                </ul>
+                <div class="a-CurrentBills" id="CurrentBills" style="margin: 1.5em;">
+                    @*<h1>Pending Identification</h1>*@
+                    <div style='float: left;' id="dropDownButton">
+                        <div>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <input id="hidDID" type="hidden" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Delegate To
+                                    </td>
+                                    <td>
+                                        <div id="btnmanager">
+                                            <div id="grdManager">
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Start Date<input type="hidden" id="hidManager" />
+                                    </td>
+                                    <td>
+                                        <div id='StartInput'>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        End Date
+                                    </td>
+                                    <td>
+                                        <div id='EndInput'>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" id='chkIdt' />Identify Bill
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id='chkApp' />Approve Bill
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan='2'>
+                                        <input type='button' id="btnAdd" value='Add' onclick='delegateBill()' />
+                                    </td>
+                                    <td colspan='2'>
+                                        <input type='button' id="btnUpdate" value='Update' onclick='UpdateDelegate()' />
+                                    </td>
+                                </tr>
+                            </table>
+                            <br />
+                            <div id="grdDelegate">
+                            </div>
+                        </div>
+                    </div>
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="checkbox" id='chkMyBillsOnly' onchange='showMyBills()' />
+                            </td>
+                            <td id='aa'>
+                                My Bills only
+                            </td>
+                        </tr>
+                    </table>
+                    <div id="grdBillMaster">
+                    </div>
+                    <div id='billDetails' style='display: none;'>
+                        <div class="d-flex justify-content-between align-items-center mt-15">
+                            <h1 class="h1-title">Bill Details</h1>
+                            <div class="d-flex">
+                                <div class="d-flex align-items-center">
+                                    <input type="checkbox" id='chkLiveTag' />
+                                    <label class="ml-6"> Live Tag</label>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="a-info-card" id='something' style="z-index:1 !important;">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <ul class="d-flex">
+                                    <li id='a1TD'>
+                                        <label> Allowance Limit</label>
+                                        <div id='alimit'></div>
+                                    </li>
+                                    <li id='a2TD'>
+                                        <label> Allowance Charges </label>
+                                        <div id='alwCharge'></div>
+                                    </li>
+                                    <li id='a3TD'>
+                                        <label> Allowance Deduction</label>
+                                        <div id='atot' class="font-weight-bold"></div>
+                                    </li>
+                                </ul>
+                                <ul class="d-flex">
+                                    <li>
+                                        <label> Business Limit </label>
+                                        <div id='blimit'></div>
+                                    </li>
+                                    <li>
+                                        <label> Business Charges</label>
+                                        <div id='busCharge'></div>
+                                    </li>
+                                    <li>
+                                        <label> Business Deduction</label>
+                                        <div id='btot' class="font-weight-bold"></div>
+                                    </li>
+                                </ul>
+                                <ul class="d-flex">
+                                    <li id='p1TD'>
+                                        <label> Personal Limit </label>
+                                        <div id='plimit'></div>
+                                    </li>
+                                    <li id='p2TD'>
+                                        <label> Personal Charge</label>
+                                        <div id='perCharge'></div>
+                                    </li>
+                                    <li>
+                                        @*  <br id='a' />
+                                            <br id='b' /> *@
+                                        <label> Personal Deduction </label>
+                                        <div>
+                                            <div id='ptot' class="font-weight-bold"></div>
+                                            @*  <br id='c' />
+                                                <br id='d' /> *@
+                                        </div>
+                                    </li>
+
+                                </ul>
+
+                                <div class="d-flex justify-content-end align-items-center">
+                                    <span class="mr-15" style="font-weight: bold; font-size:14pt">
+                                        Net Deductable Amount:
+                                    </span>
+                                    <div id='nettotal' style="font-weight: bold;font-size:16pt; color: #ff0000;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="a-new-grid" id="grdBillDetails">
+                        </div>
+                        <div class="mt-15 radius-12 p-12 d-flex align-items-center justify-content-center bg-light" style="gap:2rem;">
+                            <div class="d-flex align-items-cente mt-15 mb-15">
+                                <div class="d-flex align-items-center">
+                                    <label class="mr-15">Select All Call Type</label>
+                                    <select class="form-select" style="width:210px;" id='cmbChangeOpt'>
+                                        <option value="0">Unindentified</option>
+                                        <option value="1">All</option>
+                                    </select>
+                                </div>
+                                <div class="d-flex align-items-center ml-15">
+                                    <label class="mr-15">As</label>
+                                    <select class="form-select" style="width:210px;" id='myCallType' onchange='ChangeCallType()'>
+                                        <option>Select</option>
+                                        @*<option value="0">&nbsp;</option>*@
+                                        <option value="1">Business</option>
+                                        <option value="2">Personal</option>
+                                    </select>
+                                </div>
+
+                                <div class="ml-15">
+                                    <button class="save-button" id="btnSave" type="button" onclick="SaveChanges()">
+                                        <i class="fa-solid fa-floppy-disk"></i>
+                                        <span>Save</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <input type="hidden" id="hdnBillID" value="0" />
+
+                            <input id="print" type="button" value='Print Bill' class="button" onclick="Print()" />
+                            <span id='txtManagerName' style="display:none;"></span>
+                            @*<div id="commentWrapper" style="display:none;">
+                                    <textarea id="txtProcessComment"
+                                              class="form-control mb-3"
+                                              placeholder="Add comments (if any)..."></textarea>
+                                </div>*@
+
+                            <div id="btnProcess" class="button clsBtnProcessBill" onclick="ProcessBill()">
+                                <div>Process Bill</div>
+
+                            </div>
+
+                        </div>
+
+                        <div id="WindowContact">
+                            <div>
+                                <b>Save Contact</b>
+                            </div>
+                            <div>
+                                <div style="padding-top: 20px; display: table; margin: 0 auto;">
+                                    Enter Name:
+                                    <input id="txtContactName" type="text" />
+                                </div>
+                                <div style="padding-top: 10px; display: table; margin: 0 auto;">
+                                    <input id="btnDone" type="button" value="Done" onclick="SaveContact()" />
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div id="Approve Bills">
+                    @*<h1>Pending Approval</h1>*@
+
+                    <div style="width: 100%" id="window">
+                        <div id="windowHeader">
+                            Call Details
+                        </div>
+                        <div style="width: 100%" id="windowContent">
+                            <div id='grdApprDet'>
+                            </div>
+                        </div>
+                    </div>
+                    <div id='grdApprBills' class="mb-15">
+                    </div>
+
+                    <div class="d-flex justify-content-end align-items-center mb-15">
+                        @* <input  value='Approve Selected Bills' class="a-btn a-btn-primary" type='button' onclick='DoApprove(4)' />
+                        *@
+                        <button class="a-btn a-btn-success d-flex align-items-center" type='button' onclick='DoApprove(4)'>
+                            <img class="icon" src="../../images/approve.svg" alt="">
+                            <span>Approve Selected Bills</span>
+                        </button>
+                        <button type='button' class="a-btn a-btn-danger ml-15 d-flex align-items-center" onclick='DoApprove(1)'>
+                            <img class="icon" src="../../images/close.svg" alt="">
+                            <span>Reject Selected Bills</span>
+                        </button>
+
+                        @* <input type='button' value='Reject Selected Bills' class="a-btn a-btn-secondary ml-15" onclick='DoApprove(1)' /> *@
+                    </div>
+                </div>
+                <div id="ArchivedBills">
+                    @*<h1>Archive Bills</h1>*@
+                    <div id="grdArcBills">
+                    </div>
+                </div>
+                @if (ViewBag.RoleId == "6")
+                {
+                    <div id="DepartmentBills">
+                        @*<h1>Archive Bills</h1>*@
+                        <div id="grdDepartmentBills">
+                        </div>
+                    </div>
+                }
+                <div id="DataRoaming">
+                    <div align="center" id="DataRoamingContent">
+                        <h1>Data Roaming Partners List</h1>
+                    </div>
+                    <div class="myButton1" id="DataRoaming2">
+                        <table align="center">
+                            <tr>
+                                <td>
+                                    <input type="hidden" id="hidID" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: right">
+                                    Country Name:
+                                </td>
+                                <td>
+                                    <input id="txtCountryName" type="text" />
+                                </td>
+                                <td style="width: 40px"></td>
+                                <td style="text-align: right">
+                                    Operator:
+                                </td>
+                                <td>
+                                    <input id="txtOperator" type="text" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height: 10px"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td valign="middle" height="70px" align="right" colspan="4">
+                                    <input id="btnAddDataRoaming" type="button" value="Add" onclick="AddDataRoaming()" class="myButton" />
+                                    <input id="btnUpdateDataRoaming" type="button" value="Update" onclick="UpdateDataRoaming()" class="myButton" />
+                                    <input id="btnDeleteDataRoaming" type="button" value="Delete" onclick="DeleteDataRoaming()" class="myButton" />
+                                    <input id="btnCancelDataRoaming" type="button" value="Cancel" onclick="ClearDataRoaming()" class="myButton" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div align="center">
+                        <div id="grdDataRoaming">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="rptAnalyzeBill" style="display: none">
+        <script id="trr" type="text/x-jsrender">
+            <tr>
+                <td style="width:15%;text-align:center;">{{:TransType}}</td>
+                <td style="width:10%;text-align:center;">{{:CallTime}}</td>
+                <td style="width:10%;text-align:center;">{{:CallDate}}</td>
+                <td style="width:25%;text-align:center;">{{:Description}}</td>
+                <td style="width:10%;text-align:center;">{{:Duration}}</td>
+                <td style="width:15%;text-align:center;">{{:CallType}}</td>
+                <td style="width:10%;text-align:center;">{{:Amount}}</td>
+            </tr>
+        </script>
+        <script id="trrb" type="text/x-jsrender">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td style="width:15%;text-align:center;font-weight:bold;border-bottom:1pt solid black;border-top:1pt solid black">{{:tot}}</td>
+            </tr>
+        </script>
+        <script id="trrg" type="text/x-jsrender">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td style="width:15%;text-align:center;font-weight:bold;border-bottom:1pt solid black;border-top:1pt solid black">{{:GTot}}</td>
+            </tr>
+        </script>
+        <div id="finalHtml">
+            <table id="myBillTable" style="height: auto">
+            </table>
+        </div>
+        <div id="finalHtmlArc">
+            <table id="myBillTableArc" style="height: auto">
+            </table>
+        </div>
+        <script id="thh" type="text/x-jsrender">
+            <tr>
+                <td style="width:15%;font-weight:bold;border-bottom:1pt solid black;text-align:center;">Transaction Type</td>
+                <td style="width:10%;font-weight:bold;border-bottom:1pt solid black;text-align:center;">Subscrb No.</td>
+                <td style="width:10%;font-weight:bold;border-bottom:1pt solid black;text-align:center;">Call Date</td>
+                <td style="width:25%;font-weight:bold;border-bottom:1pt solid black;text-align:center;">Description</td>
+                <td style="width:10%;font-weight:bold;border-bottom:1pt solid black;text-align:center;">Duration</td>
+                <td style="width:15%;font-weight:bold;border-bottom:1pt solid black;text-align:center;">Call Type</td>
+                <td style="width:10%;font-weight:bold;border-bottom:1pt solid black;text-align:center;">Amount</td>
+            </tr>
+        </script>
+    </div>
+    <div id="loading">
+    </div>
+    <div id="loaderDiv">
+        <div class="loader">Loading...</div>
+    </div>
+    @*<script>
+            $(document)
+                .ajaxStart(function () {
+                    debugger;
+                    showLoader();
+                })
+                .ajaxComplete(function () {
+                    debugger;
+                    hideLoader();
+                })
+                .ajaxStop(function () {
+                    debugger;
+                    hideLoader();
+                });
+        </script>*@
+    <script>
+        $(document)
+            .ajaxStart(function () {
+                showLoader();
+            })
+            .ajaxComplete(function () {
+                hideLoader();
+            })
+            .ajaxStop(function () {
+                hideLoader();
+            });
+    </script>
+    <script src="../../Scripts/myJS.js" type="text/javascript"></script>
+    <script id="archead" type="text/x-jsrender">
+        <style>
+            .myRedCell {
+                color: black;
+            }
+        </style>
+        <table border="5" style="width:100%;border-spacing: 1;">
+            <tr>
+                <td class="myRedCell" style="font-weight:normal; text-align: right; padding: 5px">Employee Name</td>
+                <td style="font-weight:bold;">{{:EMPLOYEENAME}}</td>
+                <td class="myRedCell" style="font-weight:normal; text-align: right; padding: 5px">Mobile Number</td>
+                <td style="font-weight:bold;">{{:MOBILENO}}</td>
+
+            </tr>
+
+            <tr>
+
+                <td class="myRedCell" style="font-weight:normal; text-align: right; padding: 5px">Provider</td>
+                <td style="font-weight:bold;">{{:PROVIDER}}</td>
+                <td class="myRedCell" style="font-weight:normal; text-align: right; padding: 5px">Bill Month</td>
+                <td style="font-weight:bold;">{{:BILLDATE}}</td>
+            </tr>
+
+
+            <tr>
+                <td class="myRedCell" style="font-weight:normal; text-align: right; padding: 5px">Last Updated</td>
+                <td style="font-weight:bold;">{{:LASTUPDATEDON}}</td>
+                <td class="myRedCell" style="font-weight:normal; text-align: right; padding: 5px">Comments</td>
+                <td style="font-weight:bold;">{{:COMMENTS}}</td>
+
+            </tr>
+
+            <tr>
+                <td class="myRedCell" style="font-weight:normal; text-align: right; padding: 5px">Bill Status</td>
+                <td style="font-weight:bold;">{{:STATUS}}</td>
+                <td class="myRedCell" style="font-weight:normal; text-align: right; padding: 5px">Bill Amount</td>
+                <td style="font-weight:bold;">{{:TOTALAMOUNT}}</td>
+
+
+            </tr>
+            <tr>
+                <td class="myRedCell" style="font-weight:normal; text-align: right; padding: 5px">Allowance Limit</td>
+                <td style="font-weight:bold;">{{:MONTHLYLIMIT}}</td>
+
+                <td class="myRedCell" style="font-weight:normal; text-align: right; padding: 5px">Business Limit</td>
+                <td style="font-weight:bold;">{{:BUSSINESSLIMIT}}</td>
+            </tr>
+
+            <tr>
+
+                <td class="myRedCell" style="font-weight:normal; text-align: right; padding: 5px">Allowance Charges</td>
+                <td style="font-weight:bold;">{{:PERSONALLIMITCHARGES}}</td>
+                <td class="myRedCell" style="font-weight:normal; text-align: right; padding: 5px">Business Charges</td>
+                <td style="font-weight:bold;">{{:BUSINESSCHARGES}}</td>
+            </tr>
+
+            <tr>
+                <td class="myRedCell" style="font-weight:normal; text-align: right; padding: 5px">Personal Charges</td>
+                <td style="font-weight:bold;">{{:PERSONALCHARGES}}</td>
+
+                <td class="myRedCell" style="font-weight:normal; text-align: right; padding: 5px">Waiver Amount</td>
+                <td style="font-weight:bold;">{{:WAIVERAMOUNT}}</td>
+            </tr>
+            <tr>
+                <td class="myRedCell" style="font-weight:normal; text-align: right; padding: 5px">Deductable Amount</td>
+                <td colspan="3" style="font-weight:bold;">{{:DEDUCTIBLEAMOUNT}}</td>
+            </tr>
+
+
+
+
+        </table>
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,776 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<!-- saved from url=(0025)https://tis.tmm-menu.com/ -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Analyse</title>
+    <script src="~/Scripts/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style type="text/css" id="notify-bootstrap">
+        .notifyjs-bootstrap-base {
+            font-weight: bold;
+            padding: 8px 15px 8px 14px;
+            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+            background-color: #fcf8e3;
+            border: 1px solid #fbeed5;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+            white-space: nowrap;
+            padding-left: 25px;
+            background-repeat: no-repeat;
+            background-position: 3px 7px;
+        }
+
+        .blockUI {
+            display: none !important;
+        }
+
+        .notifyjs-bootstrap-error {
+            color: #B94A48;
+            background-color: #F2DEDE;
+            border-color: #EED3D7;
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAtRJREFUeNqkVc1u00AQHq+dOD+0poIQfkIjalW0SEGqRMuRnHos3DjwAH0ArlyQeANOOSMeAA5VjyBxKBQhgSpVUKKQNGloFdw4cWw2jtfMOna6JOUArDTazXi/b3dm55socPqQhFka++aHBsI8GsopRJERNFlY88FCEk9Yiwf8RhgRyaHFQpPHCDmZG5oX2ui2yilkcTT1AcDsbYC1NMAyOi7zTX2Agx7A9luAl88BauiiQ/cJaZQfIpAlngDcvZZMrl8vFPK5+XktrWlx3/ehZ5r9+t6e+WVnp1pxnNIjgBe4/6dAysQc8dsmHwPcW9C0h3fW1hans1ltwJhy0GxK7XZbUlMp5Ww2eyan6+ft/f2FAqXGK4CvQk5HueFz7D6GOZtIrK+srupdx1GRBBqNBtzc2AiMr7nPplRdKhb1q6q6zjFhrklEFOUutoQ50xcX86ZlqaZpQrfbBdu2R6/G19zX6XSgh6RX5ubyHCM8nqSID6ICrGiZjGYYxojEsiw4PDwMSL5VKsC8Yf4VRYFzMzMaxwjlJSlCyAQ9l0CW44PBADzXhe7xMdi9HtTrdYjFYkDQL0cn4Xdq2/EAE+InCnvADTf2eah4Sx9vExQjkqXT6aAERICMewd/UAp/IeYANM2joxt+q5VI+ieq2i0Wg3l6DNzHwTERPgo1ko7XBXj3vdlsT2F+UuhIhYkp7u7CarkcrFOCtR3H5JiwbAIeImjT/YQKKBtGjRFCU5IUgFRe7fF4cCNVIPMYo3VKqxwjyNAXNepuopyqnld602qVsfRpEkkz+GFL1wPj6ySXBpJtWVa5xlhpcyhBNwpZHmtX8AGgfIExo0ZpzkWVTBGiXCSEaHh62/PoR0p/vHaczxXGnj4bSo+G78lELU80h1uogBwWLf5YlsPmgDEd4M236xjm+8nm4IuE/9u+/PH2JXZfbwz4zw1WbO+SQPpXfwG/BBgAhCNZiSb/pOQAAAAASUVORK5CYII=);
+        }
+
+        .notifyjs-bootstrap-success {
+            color: #468847;
+            background-color: #DFF0D8;
+            border-color: #D6E9C6;
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAutJREFUeNq0lctPE0Ecx38zu/RFS1EryqtgJFA08YCiMZIAQQ4eRG8eDGdPJiYeTIwHTfwPiAcvXIwXLwoXPaDxkWgQ6islKlJLSQWLUraPLTv7Gme32zoF9KSTfLO7v53vZ3d/M7/fIth+IO6INt2jjoA7bjHCJoAlzCRw59YwHYjBnfMPqAKWQYKjGkfCJqAF0xwZjipQtA3MxeSG87VhOOYegVrUCy7UZM9S6TLIdAamySTclZdYhFhRHloGYg7mgZv1Zzztvgud7V1tbQ2twYA34LJmF4p5dXF1KTufnE+SxeJtuCZNsLDCQU0+RyKTF27Unw101l8e6hns3u0PBalORVVVkcaEKBJDgV3+cGM4tKKmI+ohlIGnygKX00rSBfszz/n2uXv81wd6+rt1orsZCHRdr1Imk2F2Kob3hutSxW8thsd8AXNaln9D7CTfA6O+0UgkMuwVvEFFUbbAcrkcTA8+AtOk8E6KiQiDmMFSDqZItAzEVQviRkdDdaFgPp8HSZKAEAL5Qh7Sq2lIJBJwv2scUqkUnKoZgNhcDKhKg5aH+1IkcouCAdFGAQsuWZYhOjwFHQ96oagWgRoUov1T9kRBEODAwxM2QtEUl+Wp+Ln9VRo6BcMw4ErHRYjH4/B26AlQoQQTRdHWwcd9AH57+UAXddvDD37DmrBBV34WfqiXPl61g+vr6xA9zsGeM9gOdsNXkgpEtTwVvwOklXLKm6+/p5ezwk4B+j6droBs2CsGa/gNs6RIxazl4Tc25mpTgw/apPR1LYlNRFAzgsOxkyXYLIM1V8NMwyAkJSctD1eGVKiq5wWjSPdjmeTkiKvVW4f2YPHWl3GAVq6ymcyCTgovM3FzyRiDe2TaKcEKsLpJvNHjZgPNqEtyi6mZIm4SRFyLMUsONSSdkPeFtY1n0mczoY3BHTLhwPRy9/lzcziCw9ACI+yql0VLzcGAZbYSM5CCSZg1/9oc/nn7+i8N9p/8An4JMADxhH+xHfuiKwAAAABJRU5ErkJggg==);
+        }
+
+        .notifyjs-bootstrap-info {
+            color: #3A87AD;
+            background-color: #D9EDF7;
+            border-color: #BCE8F1;
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QYFAhkSsdes/QAAA8dJREFUOMvVlGtMW2UYx//POaWHXg6lLaW0ypAtw1UCgbniNOLcVOLmAjHZolOYlxmTGXVZdAnRfXQm+7SoU4mXaOaiZsEpC9FkiQs6Z6bdCnNYruM6KNBw6YWewzl9z+sHImEWv+vz7XmT95f/+3/+7wP814v+efDOV3/SoX3lHAA+6ODeUFfMfjOWMADgdk+eEKz0pF7aQdMAcOKLLjrcVMVX3xdWN29/GhYP7SvnP0cWfS8caSkfHZsPE9Fgnt02JNutQ0QYHB2dDz9/pKX8QjjuO9xUxd/66HdxTeCHZ3rojQObGQBcuNjfplkD3b19Y/6MrimSaKgSMmpGU5WevmE/swa6Oy73tQHA0Rdr2Mmv/6A1n9w9suQ7097Z9lM4FlTgTDrzZTu4StXVfpiI48rVcUDM5cmEksrFnHxfpTtU/3BFQzCQF/2bYVoNbH7zmItbSoMj40JSzmMyX5qDvriA7QdrIIpA+3cdsMpu0nXI8cV0MtKXCPZev+gCEM1S2NHPvWfP/hL+7FSr3+0p5RBEyhEN5JCKYr8XnASMT0xBNyzQGQeI8fjsGD39RMPk7se2bd5ZtTyoFYXftF6y37gx7NeUtJJOTFlAHDZLDuILU3j3+H5oOrD3yWbIztugaAzgnBKJuBLpGfQrS8wO4FZgV+c1IxaLgWVU0tMLEETCos4xMzEIv9cJXQcyagIwigDGwJgOAtHAwAhisQUjy0ORGERiELgG4iakkzo4MYAxcM5hAMi1WWG1yYCJIcMUaBkVRLdGeSU2995TLWzcUAzONJ7J6FBVBYIggMzmFbvdBV44Corg8vjhzC+EJEl8U1kJtgYrhCzgc/vvTwXKSib1paRFVRVORDAJAsw5FuTaJEhWM2SHB3mOAlhkNxwuLzeJsGwqWzf5TFNdKgtY5qHp6ZFf67Y/sAVadCaVY5YACDDb3Oi4NIjLnWMw2QthCBIsVhsUTU9tvXsjeq9+X1d75/KEs4LNOfcdf/+HthMnvwxOD0wmHaXr7ZItn2wuH2SnBzbZAbPJwpPx+VQuzcm7dgRCB57a1uBzUDRL4bfnI0RE0eaXd9W89mpjqHZnUI5Hh2l2dkZZUhOqpi2qSmpOmZ64Tuu9qlz/SEXo6MEHa3wOip46F1n7633eekV8ds8Wxjn37Wl63VVa+ej5oeEZ/82ZBETJjpJ1Rbij2D3Z/1trXUvLsblCK0XfOx0SX2kMsn9dX+d+7Kf6h8o4AIykuffjT8L20LU+w4AZd5VvEPY+XpWqLV327HR7DzXuDnD8r+ovkBehJ8i+y8YAAAAASUVORK5CYII=);
+        }
+
+        .notifyjs-bootstrap-warn {
+            color: #C09853;
+            background-color: #FCF8E3;
+            border-color: #FBEED5;
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAABJlBMVEXr6eb/2oD/wi7/xjr/0mP/ykf/tQD/vBj/3o7/uQ//vyL/twebhgD/4pzX1K3z8e349vK6tHCilCWbiQymn0jGworr6dXQza3HxcKkn1vWvV/5uRfk4dXZ1bD18+/52YebiAmyr5S9mhCzrWq5t6ufjRH54aLs0oS+qD751XqPhAybhwXsujG3sm+Zk0PTwG6Shg+PhhObhwOPgQL4zV2nlyrf27uLfgCPhRHu7OmLgAafkyiWkD3l49ibiAfTs0C+lgCniwD4sgDJxqOilzDWowWFfAH08uebig6qpFHBvH/aw26FfQTQzsvy8OyEfz20r3jAvaKbhgG9q0nc2LbZxXanoUu/u5WSggCtp1anpJKdmFz/zlX/1nGJiYmuq5Dx7+sAAADoPUZSAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfdBgUBGhh4aah5AAAAlklEQVQY02NgoBIIE8EUcwn1FkIXM1Tj5dDUQhPU502Mi7XXQxGz5uVIjGOJUUUW81HnYEyMi2HVcUOICQZzMMYmxrEyMylJwgUt5BljWRLjmJm4pI1hYp5SQLGYxDgmLnZOVxuooClIDKgXKMbN5ggV1ACLJcaBxNgcoiGCBiZwdWxOETBDrTyEFey0jYJ4eHjMGWgEAIpRFRCUt08qAAAAAElFTkSuQmCC);
+        }
+    </style>
+    <style>
+        .myButton3 {
+            margin: 1em 0 0.5em 0;
+            font-weight: normal;
+            position: relative;
+            text-shadow: 0 -1px rgba(0,0,0,0.6);
+            font-size: 22px;
+            line-height: 30px;
+            background: #355681;
+            background: rgba(53,86,129, 0.8);
+            border: 1px solid #fff;
+            padding: 5px 15px;
+            color: white;
+            border-radius: 0 10px 0 10px;
+            box-shadow: inset 0 0 5px rgba(53,86,129, 0.5);
+            font-family: 'Muli', sans-serif;
+        }
+
+        .gradientBoxesWithOuterShadows {
+            background-color: white; /* outer shadows  (note the rgba is red, green, blue, alpha) */
+            -webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
+            -moz-box-shadow: 0px 1px 6px rgba(23, 69, 88, .5); /* rounded corners */
+            -webkit-border-radius: 12px;
+            -moz-border-radius: 7px;
+            border-radius: 7px; /* gradients */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(15%, white), color-stop(100%, #D7E9F5));
+            background: -moz-linear-gradient(top, white 0%, white 55%, #D5E4F3 130%);
+        }
+
+        .myButton {
+            -moz-box-shadow: inset 0px 1px 0px 0px #54a3f7;
+            -webkit-box-shadow: inset 0px 1px 0px 0px #54a3f7;
+            box-shadow: inset 0px 1px 0px 0px #54a3f7;
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #007dc1), color-stop(1, #0061a7));
+            background: -moz-linear-gradient(top, #007dc1 5%, #0061a7 100%);
+            background: -webkit-linear-gradient(top, #007dc1 5%, #0061a7 100%);
+            background: -o-linear-gradient(top, #007dc1 5%, #0061a7 100%);
+            background: -ms-linear-gradient(top, #007dc1 5%, #0061a7 100%);
+            background: linear-gradient(to bottom, #007dc1 5%, #0061a7 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#007dc1', endColorstr='#0061a7',GradientType=0);
+            background-color: #007dc1;
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            border-radius: 3px;
+            border: 1px solid #124d77;
+            display: inline-block;
+            cursor: pointer;
+            color: #ffffff;
+            font-family: Arial;
+            font-size: 13px;
+            padding: 5px 14px;
+            text-decoration: none;
+            text-shadow: 0px 1px 0px #154682;
+        }
+
+            .myButton:hover {
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #0061a7), color-stop(1, #007dc1));
+                background: -moz-linear-gradient(top, #0061a7 5%, #007dc1 100%);
+                background: -webkit-linear-gradient(top, #0061a7 5%, #007dc1 100%);
+                background: -o-linear-gradient(top, #0061a7 5%, #007dc1 100%);
+                background: -ms-linear-gradient(top, #0061a7 5%, #007dc1 100%);
+                background: linear-gradient(to bottom, #0061a7 5%, #007dc1 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0061a7', endColorstr='#007dc1',GradientType=0);
+                background-color: #0061a7;
+            }
+
+            .myButton:active {
+                position: relative;
+                top: 1px;
+            }
+
+        .myButton1 {
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf));
+            background: -moz-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+            background: -webkit-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+            background: -o-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+            background: -ms-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+            background: linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf',GradientType=0);
+            background-color: #ededed;
+            border: 4px solid #dcdcdc;
+            cursor: select;
+            color: #000;
+            font-family: Verdana;
+            font-size: 13px;
+            padding: 6px 48px;
+            text-decoration: none;
+        }
+
+            .myButton1:hover {
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed));
+                background: -moz-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
+                background: -webkit-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
+                background: -o-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
+                background: -ms-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
+                background: linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed',GradientType=0);
+                background-color: #dfdfdf;
+            }
+
+        .green {
+            color: black;
+            background-color: #b6ff00;
+        }
+
+        .yellow {
+            color: black;
+            background-color: yellow;
+        }
+
+        .redClass {
+            color: black;
+            background-color: #e83636;
+        }
+
+        .green:not(.jqx-grid-cell-hover):not(.jqx-grid-cell-selected), .jqx-widget .green:not(.jqx-grid-cell-hover):not(.jqx-grid-cell-selected) {
+            color: black;
+            background-color: #b6ff00;
+        }
+
+        .yellow:not(.jqx-grid-cell-hover):not(.jqx-grid-cell-selected), .jqx-widget .yellow:not(.jqx-grid-cell-hover):not(.jqx-grid-cell-selected) {
+            color: black;
+            background-color: yellow;
+        }
+
+        .redClass:not(.jqx-grid-cell-hover):not(.jqx-grid-cell-selected), .jqx-widget .redClass:not(.jqx-grid-cell-hover):not(.jqx-grid-cell-selected) {
+            color: black;
+            background-color: #e83636;
+        }
+
+        #something {
+            border: 2px solid black;
+            background-color: #355681;
+            width: 100%;
+            height: 100%;
+            float: none;
+            display: block;
+            margin: 0 auto;
+        }
+        /*Begin 27-05-23 changes for Tab Design*/
+        .jqx-tabs-header {
+            padding-top: 8px !important;
+            padding-bottom: 7px !important;
+            height: 62px !important;
+        }
+
+        .jqx-tabs-title-container {
+            margin-top: 0px !important;
+            margin-bottom: 0px !important;
+            padding: 7px !important;
+        }
+
+        .jqx-reset .jqx-disableselect .jqx-tabs-title .jqx-item .jqx-rc-t .jqx-tabs-title-selected-top .jqx-fill-state-pressed {
+            margin-left: 30px !important;
+            font-size: 16px !important;
+            float: left !important;
+        }
+
+        .jqx-tabs-content {
+            padding-top: 15px !important;
+        }
+
+        #jqxTabs ul li {
+            font-size: 16px;
+        }
+
+        .clsTabRecordCount {
+            float: right;
+            background-color: #2783db;
+            text-align: center;
+            border-radius: 17px;
+            color: white;
+            margin-left: 5px;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+        /*End 27-05-23 changes for Tab Design*/
+        /*Begin 27-05-23 changes for Header Data count Design*/
+        .col-lg-3 {
+            width: 25%;
+        }
+
+        .col-lg-4 {
+            width: 33.33%;
+        }
+
+        .col-md-6 {
+            float: left;
+        }
+
+        .card {
+            border: 0;
+            border-radius: 6px;
+            color: #333;
+            background: #fff;
+            box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+            font-size: .875rem;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            word-wrap: break-word;
+            background-color: #fff;
+            background-clip: border-box;
+            border: 1px solid #eee;
+            border-radius: 0.25rem;
+            margin: 20px;
+            height: 133px;
+        }
+
+        .card-stats .card-header.card-header-icon, .card-stats .card-header.card-header-text {
+            text-align: right;
+        }
+
+        .card [class*=card-header-] {
+            margin: 0 15px;
+            padding: 0;
+            position: relative;
+        }
+
+        .card .card-header {
+            z-index: 3 !important;
+        }
+
+        .card[class*=bg-], .card[class*=bg-] .card-title, .card[class*=bg-] .card-title a, .card[class*=bg-] .icon i, .card [class*=card-header-], .card [class*=card-header-] .card-title, .card [class*=card-header-] .card-title a, .card [class*=card-header-] .icon i {
+            color: #fff;
+        }
+
+        .card .card-header {
+            border-bottom: none;
+            background: transparent;
+        }
+
+        .card [class*=card-header-] .card-icon, .card [class*=card-header-] .card-text {
+            border-radius: 3px;
+            background-color: #999;
+            padding: 15px;
+            margin-top: -20px;
+            margin-right: 15px;
+            float: left;
+        }
+
+        .card .card-header-success .card-icon, .card .card-header-success .card-text, .card .card-header-success:not(.card-header-icon):not(.card-header-text) {
+            box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(76,175,80,.4);
+        }
+
+        .card.bg-success, .card .card-header-success .card-icon, .card .card-header-success1 .card-text, .card .card-header-success:not(.card-header-icon):not(.card-header-text), .card.card-rotate.bg-success .back, .card.card-rotate.bg-success .front {
+            border: 7px solid #66bb6a;
+        }
+
+        .card .card-header-success .card-icon {
+            background: linear-gradient(60deg,#66bb6a,#43a047);
+        }
+
+        .card .card-header-warning .card-icon, .card .card-header-warning .card-text, .card .card-header-warning:not(.card-header-icon):not(.card-header-text) {
+            box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(255,152,0,.4);
+        }
+
+        .card.bg-warning, .card .card-header-warning .card-icon, .card .card-header-warning1 .card-text, .card .card-header-warning:not(.card-header-icon):not(.card-header-text), .card.card-rotate.bg-success .back, .card.card-rotate.bg-success .front {
+            border: 7px solid #ffa726;
+        }
+
+        .card .card-header-warning .card-icon {
+            background: linear-gradient(60deg,#ffa726,#fb8c00);
+        }
+
+        .card .card-header-info .card-icon, .card .card-header-info .card-text, .card .card-header-info:not(.card-header-icon):not(.card-header-text) {
+            box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(0,188,212,.4);
+        }
+
+        .card.bg-info, .card .card-header-info .card-icon, .card .card-header-info1 .card-text, .card .card-header-info:not(.card-header-icon):not(.card-header-text), .card.card-rotate.bg-info .back, .card.card-rotate.bg-info .front {
+            border: 7px solid #26c6da;
+        }
+
+        .card.bg-info, .card .card-header-info .card-icon, .card .card-header-info .card-text, .card .card-header-info:not(.card-header-icon):not(.card-header-text), .card.card-rotate.bg-info .back, .card.card-rotate.bg-info .front {
+            background: linear-gradient(60deg,#26c6da,#00acc1);
+        }
+
+        .card-stats .card-header.card-header-icon i {
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        .card-stats .card-header + .card-footer {
+            border-top: 1px solid #eee;
+            margin-top: 20px;
+        }
+
+        .card-stats .card-header + .card-footer {
+            border-top: 1px solid #eee;
+            margin-top: 20px;
+        }
+
+        .card .card-body + .card-footer, .card .card-footer {
+            padding: 0;
+            padding-top: 10px;
+            margin: 0 15px 10px;
+            border-radius: 0;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+            .card .card-body + .card-footer .stats .material-icons, .card .card-footer .stats .material-icons {
+                font-weight: bold;
+                color: #828181;
+                font-size: 15px;
+            }
+
+            .card .card-body + .card-footer .stats .material-icons, .card .card-footer .stats .material-icons {
+                position: relative;
+                top: 4px;
+                font-size: 16px;
+            }
+
+        .material-icons {
+            font-style: inherit !important;
+            font-family: Verdana,Arial,sans-serif;
+        }
+
+        .clsOnHeaderClick {
+            cursor: default;
+        }
+
+        .clCardCursor {
+            cursor: pointer;
+        }
+        /*End 27-05-23 changes for Header Data count Design*/
+    </style>
+    <style type="text/css" id="core-notify">
+        .notifyjs-corner {
+            position: fixed;
+            margin: 5px;
+            z-index: 1050;
+        }
+
+            .notifyjs-corner .notifyjs-wrapper,
+            .notifyjs-corner .notifyjs-container {
+                position: relative;
+                display: block;
+                height: inherit;
+                width: inherit;
+                margin: 3px;
+            }
+
+        .notifyjs-wrapper {
+            z-index: 1;
+            position: absolute;
+            display: inline-block;
+            height: 0;
+            width: 0;
+        }
+
+        .notifyjs-container {
+            display: none;
+            z-index: 1;
+            position: absolute;
+        }
+
+        .notifyjs-hidable {
+            cursor: pointer;
+        }
+
+        [data-notify-text], [data-notify-html] {
+            position: relative;
+        }
+
+        .notifyjs-arrow {
+            position: absolute;
+            z-index: 2;
+            width: 0;
+            height: 0;
+        }
+    </style>
+    <style type="text/css">
+        @@font-face {
+            font-weight: 400;
+            font-style: normal;
+            font-family: circular;
+            src: url('chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/fonts/CircularXXWeb-Book.woff2') format('woff2');
+        }
+
+        @@font-face {
+            font-weight: 700;
+            font-style: normal;
+            font-family: circular;
+            src: url('chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/fonts/CircularXXWeb-Bold.woff2') format('woff2');
+        }
+
+        #loading {
+            position: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0.7;
+            background-color: #fff;
+            z-index: 1000;
+        }
+
+        #loaderDiv {
+            position: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            /*opacity: 0.7;*/
+            background-color: transparent;
+            z-index: 1000;
+        }
+
+        /* #loading-image {
+            z-index: 100;
+        }*/
+
+        .loader,
+        .loader:after {
+            border-radius: 50%;
+            width: 10em;
+            height: 10em;
+        }
+
+        .loader {
+            margin: 60px auto;
+            font-size: 16px;
+            position: relative;
+            text-indent: -9999em;
+            border-top: 1.1em solid rgba(110,88,223, 0.2);
+            border-right: 1.1em solid rgba(110,88,223, 0.2);
+            border-bottom: 1.1em solid rgba(110,88,223, 0.2);
+            border-left: 1.1em solid #56c0ee;
+            -webkit-transform: translateZ(0);
+            -ms-transform: translateZ(0);
+            transform: translateZ(0);
+            -webkit-animation: load8 1.1s infinite linear;
+            animation: load8 1.1s infinite linear;
+        }
+
+        @@-webkit-keyframes load8 {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        @@keyframes load8 {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        .txtBillDetailsContactName {
+            height: 32px;
+            width: 100%;
+            color: #2E2E2E;
+            font-size: 14px;
+            text-align: center;
+            border: 1px solid black;
+            background-color: #d8d8d8;
+        }
+
+        .imgBillDetailsContactName {
+            height: 30px;
+            width: 30px;
+            margin-top: 9px;
+            background-image: url(../images/addcontact.png);
+            background-repeat: no-repeat;
+            border: none;
+            background-size: 30px;
+        }
+    </style>
+    <link href="~/css/landingPage-style.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="" style="">
+    <input type="hidden" id="hdnUid" value="@Model.uid" />
+    <div class="bg">
+        <div style="border-radius: 6px; background-image: url(../../Content/images/header-image-11.jpg);
+         width: 100%">
+            <div class="row margtp30">
+                <div class="col-md-8">
+                    <div style="text-align: left;">
+                        <img src="images/logo.png" border="0">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div style="text-align: right;color: #000; font-weight: bold; font-size: 14pt;">
+                        Welcome,
+                        @Model.name
+                    </div>
+                </div>
+            </div>
+
+
+            <!--          <table style="height: 62px; width: 100%;">
+                        <tbody>
+                           <tr>
+                              <td width="100px" align="left">
+                                 <img src="images/logo.png" border="0" >
+                              </td>
+                              <td align="left" style="padding-left: 0px; padding-bottom: 3px; color: #FFFFFF; font-weight: bold;
+                                 font-size: 16pt;">
+
+                              </td>
+                              <td align="right" style="color: #000; font-weight: bold; font-size: 14pt;">
+                                 Welcome,
+                                 Employee
+
+                              </td>
+                              <td>
+                                 <input id="btnAdmin" type="button" value="Admin" style="display: none;">
+                              </td>
+                           </tr>
+                           <tr>
+                              <td colspan="3"></td>
+                           </tr>
+                        </tbody>
+                     </table> -->
+        </div>
+        <div class="modal">
+        </div>
+
+
+
+
+    </div>
+    <div class="bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+
+    </div>
+    <div id="divHeaderCountsCards" class="custom-cardbox">
+        <div class="row">
+            <div class="col-xs-11">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-6 clCardCursor col-xs-12" onclick="displayTabDetails(1);">
+                        <div class="card card-stats bg1">
+                            <div class="card-header card-header-success card-header-icon">
+                                <div class="card-icon">
+                                    <i class="material-icons" id="lblPendingIdentificationCount">0</i>
+                                </div>
+                                <div class="icon-counter">
+                                    <img src="~/images/PendingBills1.png" />
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+                                    <i class="material-icons">Pending Bills for Identification</i>
+                                </div>
+                            </div>
+                            <img src="~/images/circle.953c9ca0.svg" class="card-img-absolute" alt="circle" />
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6 clCardCursor col-xs-12" onclick="displayTabDetails(2);">
+                        <div class="card card-stats bg2">
+                            <div class="card-header card-header-warning card-header-icon">
+                                <div class="card-icon">
+                                    <i class="material-icons" id="lblPendingApproval">0</i>
+                                </div>
+                                <div class="icon-counter"><img src="~/images/ApproveBills1.png" /></div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+                                    <i class="material-icons">Pending Bills for Approval</i>
+                                </div>
+                            </div>
+                            <img src="~/images/circle.953c9ca0.svg" class="card-img-absolute" alt="circle" />
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6 clCardCursor col-xs-12" onclick="displayTabDetails(3);">
+                        <div class="card card-stats bg3">
+                            <div class="card-header card-header-info card-header-icon">
+                                <div class="card-icon">
+                                    <i id="lblBillsHistory" class="material-icons">0</i>
+                                </div>
+                                <div class="icon-counter"><img src="~/images/BillHistory1.png" /></div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+                                    <i class="material-icons">Bills History</i>
+                                </div>
+                            </div>
+                            <img src="~/images/circle.953c9ca0.svg" class="card-img-absolute" alt="circle" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="loading">
+    </div>
+    <div id="loaderDiv">
+        <div class="loader">Loading...</div>
+    </div>
+    <script>
+        $(document)
+            .ajaxStart(function () {
+                showLoader();
+            })
+            .ajaxComplete(function () {
+                debugger;
+                hideLoader();
+            })
+            .ajaxStop(function () {
+                hideLoader();
+            });
+    </script>
+    <script type="text/javascript">
+        function showLoader() {
+            debugger;
+            if (!($("#loaderDiv").is(':visible'))) {
+                /* setTimeout(*/
+                //function () {
+                $('#loading').show();
+                $('#loaderDiv').show();
+                /*   }, 900);*/
+            }
+        }
+
+        function hideLoader() {
+            if (($("#loaderDiv").is(':visible'))) {
+                /* setTimeout(*/
+                //function () {
+                $('#loading').hide();
+                $('#loaderDiv').hide();
+                /*   }, 900);*/
+            }
+
+        }
+        $(document).ready(function () {
+            debugger;
+            BindLandingViewData();
+        });
+        function BindLandingViewData() {
+            debugger;
+            $.ajax({
+                type: "GET",
+                cache: false,
+                async: false,
+                url: "/user/GetLandingPageData",
+                data: { uid: $('#hdnUid').val() },
+                success: function (result) {
+                    debugger;
+                    if (result.Message == "Success") {
+                        var objData = JSON.parse(result.Data);
+                        if (objData.length) {
+                            $('#lblPendingIdentificationCount').html(objData[0].PendingIdentificationBillsCnt);
+                            $('#lblPendingApproval').html(objData[0].PendingApprovalBillsCnt);
+                            $('#lblBillsHistory').html(objData[0].HistoryBillsCnt);
+                        }
+                    }
+                }
+            });
+        }
+        //function displayTabDetails(tabId) {
+        //    debugger;
+        //var url = "/user/Index?SelectedTabIndex=" + tabId;
+        //window.location.href = url;
+        //}
+        function displayTabDetails(Tabindex) {
+            debugger;
+            //var NestId = $(this).data('id');
+            window.sessionStorage['SelectedTabIndex'] = Tabindex;
+            @*var url = '@Html.Raw(Url.Action("Index", new { tabindex = "3" }))';*@
+                var url = '@Html.Raw(Url.Action("Index"))';
+            window.location.href = url;
+
+            //var url = "/user/RedirectOnListView?SelectedTabIndex=" + Tabindex;
+            //window.location.href = url;
+            //$.ajax({
+            //    type: "POST",
+            //    cache: false,
+            //    async: false,
+            //    url: "/user/Index",
+            //    data: { tabindex: Tabindex },
+            //    success: function (result) {
+            //        debugger;
+            //        if (result.Message == "Success") {
+            //            //var objData = JSON.parse(result.Data);
+            //            //if (objData.length) {
+            //            //    $('#lblPendingIdentificationCount').html(objData[0].PendingIdentificationBillsCnt);
+            //            //    $('#lblPendingApproval').html(objData[0].PendingApprovalBillsCnt);
+            //            //    $('#lblBillsHistory').html(objData[0].HistoryBillsCnt);
+            //            //}
+            //        }
+            //    }
+            //});
+        }
+    </script>
+</body>
+</html>

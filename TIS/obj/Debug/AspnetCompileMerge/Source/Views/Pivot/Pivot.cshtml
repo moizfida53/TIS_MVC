@@ -1,0 +1,207 @@
+﻿@{
+    ViewBag.Title = "Pivot";
+}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta name="viewport" http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <title>Pivot</title>
+
+    <link href="../../css/alert.css" rel="stylesheet" />
+    <link href="../../css/theme.css" rel="stylesheet" />
+    <script src="../../Scripts/jquery.min.js"></script>
+    <script src="../../Scripts/jquery-ui.min.js"></script>
+    <link href="../../css/Pivot/c3.min.css" rel="stylesheet" />
+    <script src="../../Scripts/Pivot/d3.min.js"></script>
+    <script src="../../Scripts/Pivot/c3.min.js"></script>
+    <script src="../../Scripts/Pivot/pivot.js"></script>
+    <link href="../../css/Pivot/pivot.css" rel="stylesheet" />
+    <script src="../../Scripts/Pivot/c3_renderers.js"></script>
+    <script src="../../Scripts/alert.js"></script>
+    <script src="~/Scripts/Pivot/nrecopivottableext.js"></script>
+    <link href="~/css/Pivot/nrecopivottableext.css" rel="stylesheet" />
+
+    <script type="text/javascript">
+        
+        $(document).ready(function () {
+
+            GetPivot();
+
+        });
+
+        function GetPivot() {
+            $.ajax({
+                type: "GET",
+                cache: false,
+                url: "../../Pivot/GetPivot",
+                success: function (result) {
+                    var Pivot = result.dtPivot;
+                    FillPivot(Pivot);
+                }
+            });
+        }
+
+        var obj;
+        function FillPivot(Pivot) {
+
+
+            var nrecoPivotExt = new NRecoPivotTableExtensions({
+                wrapWith: '<div class="pvtTableRendererHolder"></div>',
+                fixedHeaders: true
+            });
+            var nrecoPivotExt = new NRecoPivotTableExtensions({
+                fixedHeaders: true
+            });
+
+            var stdRendererNames = ["Table", "Table Barchart",
+                "Heatmap", "Row Heatmap", "Col Heatmap"];
+            var wrappedRenderers = $.extend({}, $.pivotUtilities.renderers, $.pivotUtilities.c3_renderers);
+            $.each(stdRendererNames, function () {
+                var rName = this;
+                wrappedRenderers[rName] =
+                    nrecoPivotExt.wrapTableRenderer(wrappedRenderers[rName]);
+            });
+
+            $('#output').pivotUI(Pivot, {
+                renderers: wrappedRenderers,
+                rendererOptions: {},
+                vals: ["AMOUNT"],
+                rows: ["SUB_NO"],
+                cols: ["TRANS_TYPE"],
+                aggregatorName: "Sum",
+                //onRefresh: function (pivotUIOptions) {
+                //    nrecoPivotExt.initFixedHeaders(
+                //        $('#output table.pvtTable'));
+                //}
+            });
+
+            
+
+            $("#save").on("click", function () {
+                var config = $("#output").data("pivotUIOptions");
+                var config_copy = JSON.parse(JSON.stringify(config));
+                //delete some values which will not serialize to JSON
+                delete config_copy["aggregators"];
+                //delete config_copy["renderers"];
+                Obj = config_copy;
+                //var obj=[];
+                //for(i=0;i<5;i++){
+                //    obj[i] = i;
+                //}
+
+                var value = {
+                    "Object": JSON.stringify(Obj),
+                };
+
+                //var string = JSON.stringify(Test);
+
+                //var str = string;
+                //var obj = JSON.parse(str);
+
+                var obji = { value: value }
+
+                //var Data = new Object();
+                //Data.Entrys = new Array();
+                //Data.Entrys[0] = new Object(Test);
+
+                $.ajax({
+                    type: "POST",
+                    url: "../../Pivot/Save",
+                    data: JSON.stringify(obji),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (result) {
+                        
+                    }
+                });
+
+
+
+
+
+                //$.cookie("pivotConfig", JSON.stringify(config_copy));
+            });
+
+           
+            $("#restore").on("click", function () {
+                var Test
+                $.ajax({
+                    type: "GET",
+                    cache: false,
+                    url: "../../Pivot/Restore",
+                    success: function (result) {
+                        Obj = result.dtPivot;
+                        var str = Obj;
+                        obj = JSON.parse(str);
+
+                        var nrecoPivotExt = new NRecoPivotTableExtensions({
+                            wrapWith: '<div class="pvtTableRendererHolder"></div>',
+                            fixedHeaders: true
+                        });
+                        var nrecoPivotExt = new NRecoPivotTableExtensions({
+                            fixedHeaders: true
+                        });
+
+                        var stdRendererNames = ["Table", "Table Barchart",
+                            "Heatmap", "Row Heatmap", "Col Heatmap"];
+                        var wrappedRenderers = $.extend({}, $.pivotUtilities.renderers, $.pivotUtilities.c3_renderers);
+                        $.each(stdRendererNames, function () {
+                            var rName = this;
+                            wrappedRenderers[rName] =
+                                nrecoPivotExt.wrapTableRenderer(wrappedRenderers[rName]);
+                        });
+
+                        obj.renderers = wrappedRenderers;
+
+
+                        $("#output").pivotUI(Pivot, obj, true);
+
+
+
+
+                    }
+                });
+
+            });
+
+
+
+            //$("#output").pivotUI(
+            //     Pivot, {
+            //         rows: ["SUB_NO"],
+            //         cols: ["TRANS_TYPE"],
+            //         rendererName: "Table",
+            //         renderers: $.extend(
+            //          $.pivotUtilities.renderers,
+            //          $.pivotUtilities.c3_renderers
+            //        )
+            //     });
+
+        }
+
+        
+    </script>
+</head>
+<body>
+    <div style="border-radius: 6px; background-image: url(../../Content/images/header-image-11.jpg);
+        width: 100%">
+        <table style="height: 62px; width: 100%;">
+            <tr>
+                <td width="100px" align="left">
+                    <img src="../../Content/images/Header1.png" border="0" style="height: 62px; width: 95px" />
+                </td>
+                <td align="left" style="padding-left: 0px; padding-bottom: 3px; color: #FFFFFF; font-weight: bold;
+                    font-size: 16pt;">Telecom Invoicing System
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    &nbsp
+    <div id="output" align="left"></div>
+    <input type="button" value="Save" id="save" style="font-size: 24px;" />
+    <input type="button" value="Restore" id="restore" style="font-size: 24px;" />
+
+</body>
+</html>
