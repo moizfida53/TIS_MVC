@@ -139,11 +139,17 @@ namespace TIS.Controllers
         {
             try
             {
+                // Validate uid is Int64 and > 0
+                if (!long.TryParse(uid, out long parsedUid) || parsedUid <= 0)
+                {
+                    return this.Json(new { Error = "Invalid UID" }, JsonRequestBehavior.AllowGet);
+                }
+
                 SqlParameter[] paramColl = new SqlParameter[1];
                 SqlParameter sqlParameter = new SqlParameter();
                 sqlParameter.ParameterName = "@Uid";
                 sqlParameter.SqlDbType = SqlDbType.Int;
-                sqlParameter.Value = (object)uid;
+                sqlParameter.Value = parsedUid;
                 paramColl[0] = sqlParameter;
                 DataSet dataSet = DB.ExecuteStoredProcDataSet("sp_GetUserBills", paramColl);
                 List<Bill> billList = new List<Bill>();
@@ -606,11 +612,17 @@ namespace TIS.Controllers
         {
             try
             {
+                // Validate uid is Int64 and > 0
+                if (!long.TryParse(uid, out long parsedUid) || parsedUid <= 0)
+                {
+                    return this.Json(new { Error = "Invalid UID" }, JsonRequestBehavior.AllowGet);
+                }
+
                 SqlParameter[] paramColl = new SqlParameter[1];
                 SqlParameter sqlParameter = new SqlParameter();
                 sqlParameter.ParameterName = "@Uid";
                 sqlParameter.SqlDbType = SqlDbType.Int;
-                sqlParameter.Value = (object)uid;
+                sqlParameter.Value = uid;
                 paramColl[0] = sqlParameter;
                 DataSet dataSet = DB.ExecuteStoredProcDataSet("sp_GetArrovalBills", paramColl);
                 List<ArrovalBills> arrovalBillsList = new List<ArrovalBills>();
@@ -756,11 +768,17 @@ namespace TIS.Controllers
         {
             try
             {
+                // Validate uid is Int64 and > 0
+                if (!long.TryParse(uid, out long parsedUid) || parsedUid <= 0)
+                {
+                    return this.Json(new { Error = "Invalid UID" }, JsonRequestBehavior.AllowGet);
+                }
+
                 SqlParameter[] paramColl = new SqlParameter[1];
                 SqlParameter sqlParameter = new SqlParameter();
                 sqlParameter.ParameterName = "@Uid";
                 sqlParameter.SqlDbType = SqlDbType.Int;
-                sqlParameter.Value = (object)uid;
+                sqlParameter.Value = parsedUid;
                 paramColl[0] = sqlParameter;
                 DataSet dataSet = DB.ExecuteStoredProcDataSet("sp_GetArchived", paramColl);
                 List<ArchiveBills> archiveBillsList = new List<ArchiveBills>();
@@ -797,11 +815,17 @@ namespace TIS.Controllers
         {
             try
             {
+                // Validate uid is Int64 and > 0
+                if (!long.TryParse(uid, out long parsedUid) || parsedUid <= 0)
+                {
+                    return this.Json(new { Error = "Invalid UID" }, JsonRequestBehavior.AllowGet);
+                }
+
                 SqlParameter[] paramColl = new SqlParameter[1];
                 SqlParameter sqlParameter = new SqlParameter();
                 sqlParameter.ParameterName = "@Uid";
                 sqlParameter.SqlDbType = SqlDbType.Int;
-                sqlParameter.Value = (object)uid;
+                sqlParameter.Value = parsedUid;
                 paramColl[0] = sqlParameter;
                 DataSet dataSet = DB.ExecuteStoredProcDataSet("sp_GetDepartmentBills", paramColl);
                 List<ArchiveBills> archiveBillsList = new List<ArchiveBills>();
@@ -906,11 +930,17 @@ namespace TIS.Controllers
         {
             try
             {
+                // Validate uid is Int64 and > 0
+                if (!long.TryParse(UID, out long parsedUid) || parsedUid <= 0)
+                {
+                    return this.Json(new { Error = "Invalid UID" }, JsonRequestBehavior.AllowGet);
+                }
+
                 SqlParameter[] paramColl = new SqlParameter[1];
                 SqlParameter sqlParameter = new SqlParameter();
                 sqlParameter.ParameterName = "@UID";
                 sqlParameter.SqlDbType = SqlDbType.Int;
-                sqlParameter.Value = (object)UID;
+                sqlParameter.Value = parsedUid;
                 paramColl[0] = sqlParameter;
                 DataSet dataSet = DB.ExecuteStoredProcDataSet("sp_GetDel", paramColl);
                 List<Delg> delgList = new List<Delg>();
