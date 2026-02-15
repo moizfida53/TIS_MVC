@@ -303,7 +303,7 @@ function DoApprove(opt) {
         });
     }
     else {
-        // alert("Please select atleast one bill");
+        alert("Please select atleast one bill");
         return;
     }
 }
@@ -344,7 +344,7 @@ function setDataSourceArchived(mybill) {
     };
     var dataAdapterCategory = new $.jqx.dataAdapter(deptsource);
     cellsrenderer = function (row, columnfield, value, defaulthtml, columnproperties, rowData) {
-        return '<input type="button" value="View" class="myButton clsBillHistoryViewBtn" onclick="getMyArcBill(' + rowData.BillId + ')"/>';
+        return '<input type="button" value="View" class="myButton clsBillHistoryViewBtn" data-billid="' + rowData.BillId + '"/>';
     };
     $("#grdArcBills").jqxGrid({
         width: '100%',
@@ -470,10 +470,6 @@ function setDataSourceGridApproval(mybill) {
         else if (rowData.CallType == 3) { return 'Allowance' }
     };
 
-
-
-
-
     $("#grdApprDet").jqxGrid({
         width: '100%',
         source: dataAdapterCategory,
@@ -555,13 +551,14 @@ function setDataSourceApproval(result) {
         datatype: "json"
     };
     var cellsrenderer = function (row, columnfield, value, defaulthtml, columnproperties, rowData) {
-        return '<input type="button" class="myButton" value="View" onclick="openWindow(' + rowData.BillId + ')"/>'
+        return '<input type="button" class="myButton clsOpenWindowBtn" data-billid="' + rowData.BillId + '" value="View"/>';
     }
 
     var dataAdapterCategory = new $.jqx.dataAdapter(deptsourceDetailAB);
     var cellsrenderer1 = function (row, columnfield, value, defaulthtml, columnproperties, rowData) {
         console.log(rowData.AComments);
-        return '<input type="text" id="txtComm' + rowData.BillId + '" value="' + rowData.AComments + '" onblur="saveComment(' + rowData.BillId + ')"/>';
+        // provide id for compatibility but avoid inline onblur; use data-billid for delegated handler
+        return '<input type="text" id="txtComm' + rowData.BillId + '" value="' + (rowData.AComments || '') + '" class="clsAComment" data-billid="' + rowData.BillId + '"/>';
     };
     $("#grdApprBills").jqxGrid({
         width: '100%',
@@ -888,8 +885,6 @@ function ChangeCallType() {
     else {
         $('#ptot').html("0.000");
     }
-  
-
 
 
 
@@ -980,7 +975,8 @@ function setDataSourceGridMaster(result) {
 
     var dataAdapterCategory = new $.jqx.dataAdapter(deptsource);
     var rbt = function (row, columnfield, value, defaulthtml, columnproperties, rowData) {
-        return '<input type="radio" name="rb$("#grdBillMaster").jqxGrid({t" onclick="SelectMyBill(' + rowData.Id + ')" style="margin:5px"/>';
+        // render a radio that uses delegated handler instead of inline onclick
+        return '<input type="radio" class="clsSelectMyBill" data-billid="' + rowData.Id + '" style="margin:5px"/>';
     }
     $("#grdBillMaster").jqxGrid({
         width: '100%',
@@ -1186,7 +1182,7 @@ function setDataSourceGridDetails(bill_details) {
     }
     var cellstext = function (row, columnfield, value, defaulthtml, columnproperties, rowData) {
         console.log(rowData.Comment);
-        return '<input type="text" id="txtComment' + rowData.Id + '" style="width: 92% !important;margin: 5px;height: 30px;" value="' + rowData.Comment + '" onblur="saveComments(' + rowData.Id + ')" />';
+        return '<input type="text" id="txtComment' + rowData.Id + '" style="width: 92% !important;margin: 5px;height: 30px;" value="' + rowData.Comment + '" class="clsComment" data-id="' + rowData.Id + '" />';
     }
 
     var imagerenderer = function (row, datafield, value) {
@@ -1205,8 +1201,6 @@ function setDataSourceGridDetails(bill_details) {
         else {
             return " ";
         }
-
-
     }
 
     var ContactName = function (row, column, value, defaultHtml, columnSettings, rowData) {
@@ -1215,11 +1209,11 @@ function setDataSourceGridDetails(bill_details) {
         if (DialledNo != "") {
             str = '<div style="width:100%;padding:5px;">';
             strTxtBox = '<div style="float:left;width: 66%;">';
-            strTxtBox += '<input id="txtContactName2" class="txtBillDetailsContactName" disabled="true" readonly = "readonly" type="text" value = "' + rowData.Name + '">';
+            strTxtBox += '<input id="txtContactName2_' + DialledNo + '" class="txtBillDetailsContactName" disabled="true" readonly = "readonly" type="text" value = "' + rowData.Name + '">';
             strTxtBox += '</div>';
 
             strImgBtn = '<div style="float:left;width:19%;margin-left: 9px;margin-top: -6px;">';
-            strImgBtn += '<input type="button" class="imgBillDetailsContactName" onClick="ButtonClick()" />';
+            strImgBtn += '<input id="btnContact_' + DialledNo + '" type="button" class="imgBillDetailsContactName" />';
             strImgBtn += '</div>';
 
             str += strTxtBox + strImgBtn;
@@ -1272,7 +1266,6 @@ function setDataSourceGridDetails(bill_details) {
         ]
     });
 
-    
 
 
 }
@@ -1529,7 +1522,6 @@ function LiveTag(myRadio, id) {
         $('#atot').html("0.000");
     }
     $('#nettotal').html((parseFloat($('#ptot').html()) + parseFloat($('#btot').html()) + parseFloat($('#atot').html())).toFixed(3));
-    //$("#grdBillDetails").jqxGrid('databind', itemData, 'sort');
 }
 
 function handleClick(myRadio, id) {
@@ -1770,7 +1762,7 @@ function IndexLoad() {
             bindDepartmentBills();
             //$('#jqxTabs').jqxTabs('select', 2);
         }
-       
+
     });
     $("#dropDownButton").hide();
     var dropDownContent = '<div style="position: relative; margin: 3px;">Delegate Bills to</div>';
@@ -1782,7 +1774,7 @@ function IndexLoad() {
     $("#btnmanager").jqxDropDownButton({ width: 150, height: 25 });
     $("#btnmanager").jqxDropDownButton('setContent', dropDownContent1);
 
-   
+
 
     $('#btnProcess').off('click').on('click', function () {
         showWaive();
@@ -1792,7 +1784,7 @@ function IndexLoad() {
     $("#EndInput").jqxDateTimeInput({ width: '300px', height: '25px' });
 
     $('#btnmanager').on('open', function () { getEmpList(); });
-    
+
 
     $('#jqxTabs').jqxTabs({ width: '100%', position: 'top' });
     $.ajax({
@@ -2011,7 +2003,7 @@ function FillCallType() {
         width: '100%',
         source: dataAdapterCategory,
         columnsresize: true,
-        rowsheight: 40,
+        rowsheight: jqx_rowsheight,
         columnsheight: 42,
         pageSize: 10,
         sortable: true,
@@ -2023,7 +2015,7 @@ function FillCallType() {
         columns: [
 
             { dataField: 'Id', text: 'Id', hidden: 'true' },
-            { dataField: 'CallDate', text: 'Call Date', cellsformat: 'dd-MMM-yyyy', width: '7%' },
+            { dataField: 'CallDate', text: 'Call Date', cellsformat: 'dd-MMM-yyyy', width: '8%' },
             { dataField: 'CallTime', text: 'Call Time', cellsformat: "h:mm tt", width: '7%' },
             { dataField: 'TransType', text: 'Trans Type', width: '12%' },
             { dataField: 'Description', text: 'Description', width: '21%' },
@@ -2061,18 +2053,13 @@ function SaveChanges() {
 }
 
 function ButtonClick() {
-
     var getselectedrowindexes = $('#grdBillDetails').jqxGrid('getselectedrowindexes');
     var row = $("#grdBillDetails").jqxGrid('getrowdata', getselectedrowindexes[0]);
-
     ExName = row.Name;
-
-
     if (row.DialledNo != "") {
 
         $("#WindowContact").jqxWindow('open');
         $("#txtContactName").val(row.Name);
-
     }
 }
 
@@ -2112,5 +2099,56 @@ function hideLoader() {
         $('#loaderDiv').hide();
         /*   }, 900);*/
     }
-   
+
 }
+
+// Delegated handlers for elements that previously used inline handlers
+$(document).on('click', '.imgBillDetailsContactName', function (e) {
+    e.preventDefault();
+    if (typeof ButtonClick === 'function') {
+        ButtonClick();
+    }
+});
+
+$(document).on('click', '.clsBillHistoryViewBtn', function (e) {
+    debugger;
+    var billId = $(this).data('billid');
+    if (billId) {
+        getMyArcBill(billId);
+    }
+});
+
+// Open approval window (replaces inline onclick="openWindow(...)")
+$(document).on('click', '.clsOpenWindowBtn', function (e) {
+    e.preventDefault();
+    var billId = $(this).data('billid');
+    if (billId && typeof openWindow === 'function') {
+        openWindow(billId);
+    }
+});
+
+// Select my bill (replaces inline onclick on radios)
+$(document).on('click', '.clsSelectMyBill', function (e) {
+    var bid = $(this).data('billid');
+    if (bid && typeof SelectMyBill === 'function') {
+        SelectMyBill(parseInt(bid, 10));
+    }
+});
+
+// Delegated blur for approval comments (replaces inline onblur)
+$(document).on('blur', '[id^="txtComm"]', function (e) {
+    var idAttr = $(this).attr('id');
+    var id = idAttr ? idAttr.replace(/^txtComm/, '') : null;
+    if (id && typeof saveComment === 'function') {
+        saveComment(parseInt(id, 10));
+    }
+});
+
+// Delegated blur for detail comments (replaces inline onblur)
+$(document).on('blur', '[id^="txtComment"]', function (e) {
+    var idAttr = $(this).attr('id');
+    var id = idAttr ? idAttr.replace(/^txtComment/, '') : null;
+    if (id && typeof saveComments === 'function') {
+        saveComments(parseInt(id, 10));
+    }
+});

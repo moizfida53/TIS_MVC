@@ -770,6 +770,10 @@ namespace TIS.Controllers
                             DB.ExecuteStoredProcDataSet("sp_MarkAsSent", paramColl);
 
                         }
+                        return this.Json((object)new
+                        {
+                            Message = "Email Sent"
+                        }, JsonRequestBehavior.AllowGet);
                     }
                     catch (Exception ex)
                     {
@@ -778,20 +782,16 @@ namespace TIS.Controllers
                         AuditTrail(str, "SendEmail", Uid);
                     }
                 }
-                return this.Json((object)new
-                {
-                    Message = "Email Sent"
-                }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
                 string str = Convert.ToString((object)ex);
                 int Uid = Convert.ToInt32(this.Session["EmpUID"]);
                 AuditTrail(str, "SendEmail", Uid);
-                return this.Json((object)new { Message = "Email Sent Fail" }, JsonRequestBehavior.AllowGet);
             }
+            return this.Json((object)new { Message = "Email Sent Fail" }, JsonRequestBehavior.AllowGet);
         }
-
+        
         private void AuditTrail(string exMsg, string EventName, int Uid)
         {
             string empty = string.Empty;

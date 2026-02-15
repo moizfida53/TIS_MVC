@@ -99,10 +99,10 @@
 
 
                         <div class="col-md-6 d-flex justify-content-end gap-2 align-items-end">
-                            <button id="btnAdd" type="button" class="btn btn-success h-fit" onclick="AddTelephone()"><i class="fas fa-plus-circle me-2"></i>Add</button>
-                            <button id="btnUpdate" type="button" class="btn btn-warning h-fit" onclick="UpdateTelephone()"><i class="fas fa-edit me-2"></i>Update</button>
+                            <button id="btnAdd" type="button" class="btn btn-success h-fit"><i class="fas fa-plus-circle me-2"></i>Add</button>
+                            <button id="btnUpdate" type="button" class="btn btn-warning h-fit"><i class="fas fa-edit me-2"></i>Update</button>
                             <%--<button id="btnDel" type="button" class="btn btn-danger h-fit" onclick="DelTelephoneClick()"><i class="fas fa-trash-alt me-2"></i>Delete</button>--%>
-                            <button id="btnCancel" type="button" class="btn btn-secondary h-fit" onclick="ClearTelephone()"><i class="fas fa-times me-2"></i>Cancel</button>
+                            <button id="btnCancel" type="button" class="btn btn-secondary h-fit"><i class="fas fa-times me-2"></i>Cancel</button>
                         </div>
 
                     </div>
@@ -113,7 +113,7 @@
                 <div id="grdTelephone" class="mt-4"></div>
 
                 <div class="mt-3 text-end">
-                    <button class="main-button btn-export" onclick="ExportToExcel()">
+                    <button id="btnExportTelephone" class="main-button btn-export">
                         <svg fill="#fff" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 50 50">
                             <path d="M28.8125 .03125L.8125 5.34375C.339844 
 5.433594 0 5.863281 0 6.34375L0 43.65625C0 
@@ -217,10 +217,10 @@
 
 
                         <div class="col-md-4 d-flex justify-content-end gap-4 align-items-end">
-                            <button id="btnAssign" type="button" class="btn btn-success" onclick="Assign()"><i class="fas fa-plus me-2"></i>Assign</button>
-                            <button id="btnUpdateAsg" type="button" class="btn btn-warning" onclick="UpdateAssign()"><i class="fas fa-edit me-2"></i>Update</button>
+                            <button id="btnAssign" type="button" class="btn btn-success"><i class="fas fa-plus me-2"></i>Assign</button>
+                            <button id="btnUpdateAsg" type="button" class="btn btn-warning"><i class="fas fa-edit me-2"></i>Update</button>
                             <%--<button id="btnDelAsg" type="button" class="btn btn-danger" onclick="DelAssignClick()"><i class="fas fa-trash me-2"></i>Delete</button>--%>
-                            <button id="btnCancelAsg" type="button" class="btn btn-secondary" onclick="ClearAssign()"><i class="fas fa-times me-2"></i>Cancel</button>
+                            <button id="btnCancelAsg" type="button" class="btn btn-secondary"><i class="fas fa-times me-2"></i>Cancel</button>
                         </div>
 
                     </div>
@@ -238,7 +238,7 @@
                 <div id="grdAssignNo" class="mt-4"></div>
 
                 <div class="mt-3 text-end">
-                    <button class="main-button btn-export" onclick="Export_ToExcel()">
+                    <button id="btnExportAssign" class="main-button btn-export">
                         <svg fill="#fff" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 50 50">
                             <path d="M28.8125 .03125L.8125 5.34375C.339844 
 5.433594 0 5.863281 0 6.34375L0 43.65625C0 
@@ -268,7 +268,7 @@
 
             </div>
         </div>
-    </div>
+            </div>
 
 
 
@@ -293,16 +293,16 @@
             </div>
 
             <div class="action-buttons mt-4 d-flex flex-wrap gap-2">
-                <button id="btnAddCountry" type="button" onclick="AddCountry()" class="btn btn-success Btnstyle">
+                <button id="btnAddCountry" type="button" class="btn btn-success Btnstyle">
                     <i class="fas fa-plus-circle me-2"></i>Add
                 </button>
-                <button id="btnUpdateCountry" type="button" onclick="UpdateCountry()" class="btn btn-warning Btnstyle">
+                <button id="btnUpdateCountry" type="button" class="btn btn-warning Btnstyle">
                     <i class="fas fa-edit me-2"></i>Update
                 </button>
-                <button id="btnDeleteCountry" type="button" onclick="DeleteCountry()" class="btn btn-danger Btnstyle">
+                <button id="btnDeleteCountry" type="button" class="btn btn-danger Btnstyle">
                     <i class="fas fa-trash-alt me-2"></i>Delete
                 </button>
-                <button id="btnCancleCountry" type="button" onclick="ClearCountry()" class="btn btn-secondary Btnstyle">
+                <button id="btnCancleCountry" type="button" class="btn btn-secondary Btnstyle">
                     <i class="fas fa-times me-2"></i>Cancel
                 </button>
             </div>

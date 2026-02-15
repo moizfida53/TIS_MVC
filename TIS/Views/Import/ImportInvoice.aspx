@@ -106,7 +106,7 @@
                                 <div class="col-md-2">
                                     <label for="btnUpload" class="form-label">&nbsp;</label>
                                     <div class="input-group-icon">
-                                        <button id="btnUpload" class="btn btn-success w-100" onclick="Upload()"><i class="fas fa-upload me-2"></i>Upload File</button>
+                                        <button id="btnUpload" class="btn btn-success w-100"><i class="fas fa-upload me-2"></i>Upload File</button>
                                     </div>
                                 </div>
 
@@ -120,7 +120,7 @@
                                 <div class="col-md-2">
                                     <label for="btnProcess" class="form-label">&nbsp;</label>
                                     <div class="input-group-icon">
-                                        <button id="btnProcess" class="btn btn-primary w-100" onclick="ProcessBill()"><i class="fas fa-cog me-2"></i>Process Bill</button>
+                                        <button id="btnProcess" class="btn btn-primary w-100"><i class="fas fa-cog me-2"></i>Process Bill</button>
                                     </div>
                                 </div>
                             </div>
@@ -128,9 +128,8 @@
                             <div class="row form-row">
                                 <div class="col-md-12 d-flex justify-content-end gap-2 align-items-end">
                                     <div class="action-buttons">
-                                        <button id="btnSave" type="button" class="btn btn-warning" onclick="SaveChanges()">
+                                        <button id="btnSave" type="button" class="btn btn-warning">
                                             <i class="fas fa-save me-2"></i>Save Changes
-                                       
                                         </button>
                                     </div>
                                 </div>
@@ -165,7 +164,6 @@
                                 </path>
                             </svg>
                             Export To Excel
-                       
                         </button>
                     </div>
                 </div>
@@ -198,14 +196,14 @@
                                 <div class="col-md-3">
                                     <label for="btnPrevSetting" class="form-label">&nbsp;</label>
                                     <div class="input-group-icon">
-                                        <button id="btnPrevSetting" class="btn btn-secondary w-100" onclick="GetSetting()"><i class="fas fa-history me-2"></i>Show Prev Setting</button>
+                                        <button id="btnPrevSetting" class="btn btn-secondary w-100"><i class="fas fa-history me-2"></i>Show Prev Setting</button>
                                     </div>
                                 </div>
 
                                 <div class="col-md-3">
                                     <label for="btnReset" class="form-label">&nbsp;</label>
                                     <div class="input-group-icon">
-                                        <button id="btnReset" class="btn btn-danger w-100" onclick="Clear()"><i class="fas fa-redo me-2"></i>Reset</button>
+                                        <button id="btnReset" class="btn btn-danger w-100"><i class="fas fa-redo me-2"></i>Reset</button>
                                     </div>
                                 </div>
                             </div>
@@ -229,7 +227,7 @@
                                 <div class="col-md-3">
                                     <label for="btnUpload2" class="form-label">&nbsp;</label>
                                     <div class="input-group-icon">
-                                        <button id="btnUpload2" class="btn btn-success w-100" onclick="UploadSetting()"><i class="fas fa-upload me-2"></i>Upload New Setting</button>
+                                        <button id="btnUpload2" class="btn btn-success w-100"><i class="fas fa-upload me-2"></i>Upload New Setting</button>
                                     </div>
                                 </div>
                             </div>
@@ -247,7 +245,7 @@
                                 <div class="col-md-3">
                                     <label for="btnTestConn" class="form-label">&nbsp;</label>
                                     <div class="input-group-icon">
-                                        <button id="btnTestConn" class="btn btn-primary" onclick="TestConn()"><i class="fas fa-plug me-2"></i>Test Connection</button>
+                                        <button id="btnTestConn" class="btn btn-primary"><i class="fas fa-plug me-2"></i>Test Connection</button>
                                     </div>
                                 </div>
                                 <div class="col-md-9">
@@ -267,7 +265,7 @@
                                 <div class="col-md-3">
                                     <label for="btnUpload3" class="form-label">&nbsp;</label>
                                     <div class="input-group-icon">
-                                        <button id="btnUpload3" class="btn btn-success" onclick="UploadDataSetting()"><i class="fas fa-upload me-2"></i>Upload New DataBase Setting</button>
+                                        <button id="btnUpload3" class="btn btn-success"><i class="fas fa-upload me-2"></i>Upload New DataBase Setting</button>
                                     </div>
                                 </div>
                             </div>
@@ -287,56 +285,48 @@
                                     <tr>
                                         <td><strong><i class="fas fa-phone me-2"></i>1) Telephone Number</strong></td>
                                         <td>
-                                            <%--<div id="dd1"></div>--%>
                                             <select id="dd1" class="form-control"></select>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><strong><i class="fas fa-calendar me-2"></i>2) Bill Date</strong></td>
                                         <td>
-                                            <%--<div id="dd2"></div>--%>
                                             <select id="dd2" class="form-control"></select>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><strong><i class="fas fa-calendar-check me-2"></i>3) Transaction Date</strong></td>
                                         <td>
-                                            <%--<div id="dd3"></div>--%>
                                             <select id="dd3" class="form-control"></select>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><strong><i class="fas fa-phone-volume me-2"></i>4) Call Type</strong></td>
                                         <td>
-                                            <%--<div id="dd4"></div>--%>
                                             <select id="dd4" class="form-control"></select>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><strong><i class="fas fa-mobile-alt me-2"></i>5) Destination No</strong></td>
                                         <td>
-                                            <%--<div id="dd5"></div>--%>
                                             <select id="dd5" class="form-control"></select>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><strong><i class="fas fa-clock me-2"></i>6) Time of Call</strong></td>
                                         <td>
-                                            <%--<div id="dd6"></div>--%>
                                             <select id="dd6" class="form-control"></select>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><strong><i class="fas fa-hourglass-half me-2"></i>7) Duration (Sec)</strong></td>
                                         <td>
-                                            <%--<div id="dd7"></div>--%>
                                             <select id="dd7" class="form-control"></select>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><strong><i class="fas fa-money-bill-wave me-2"></i>8) Amount (KD)</strong></td>
                                         <td>
-                                            <%--<div id="dd8"></div>--%>
                                             <select id="dd8" class="form-control"></select>
                                         </td>
                                     </tr>
@@ -346,13 +336,11 @@
                             <div class="row form-row">
                                 <div class="col-md-12 d-flex justify-content-start gap-2">
                                     <div class="action-buttons">
-                                        <button id="btnUpdate" type="button" class="btn btn-warning" onclick="UpdateSetting()">
+                                        <button id="btnUpdate" type="button" class="btn btn-warning">
                                             <i class="fas fa-edit me-2"></i>Update
-                                       
                                         </button>
-                                        <button id="Button1" type="button" class="btn btn-warning" onclick="UpdateDBSetting()">
+                                        <button id="Button1" type="button" class="btn btn-warning">
                                             <i class="fas fa-database me-2"></i>Update DB
-                                       
                                         </button>
                                     </div>
                                 </div>

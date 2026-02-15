@@ -1237,6 +1237,7 @@
     <Content Include="Scripts\dataTables.buttons.min.js" />
     <Content Include="Scripts\dataTables.min.js" />
     <Content Include="Scripts\DelegateBills.js" />
+    <Content Include="Scripts\delegatedEvents.js" />
     <Content Include="Scripts\demos.js" />
     <Content Include="Scripts\font-awesome.min.css" />
     <Content Include="Scripts\Force-bill.js" />
@@ -1335,6 +1336,7 @@
     <Content Include="Scripts\sweetalert2%4011.js" />
     <Content Include="Scripts\sweetalert2.all.min.js" />
     <Content Include="Scripts\TemplatesJS.js" />
+    <Content Include="Scripts\UnAssignedInvoice.js" />
     <Content Include="Scripts\vfs_fonts.js" />
     <Content Include="Scripts\waterbubble.js" />
     <Content Include="Scripts\waterbubble.min.js" />

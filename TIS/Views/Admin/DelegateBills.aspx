@@ -1,6 +1,4 @@
-﻿
-
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/MasterPage.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/MasterPage.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     DelegateBills
@@ -64,16 +62,16 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type='button' value='Add' class="myButton" id='btnAdd' onclick='Add()' />
+                        <input type='button' value='Add' class="myButton" id='btnAdd' />
 
-                        <input type='button' value='Update' class="myButton" id='btnUpdate' onclick='Update()' />
+                        <input type='button' value='Update' class="myButton" id='btnUpdate' />
                     </td>
 
                     <td>
-                        <input type='button' value='Cancel' class="myButton" onclick='Clear()' />
+                        <input type='button' value='Cancel' class="myButton" id="btnCancel" />
                     </td>
                     <td>
-                        <input type='button' value='Delete' class="myButton" id='btnDel' onclick='Del()' />
+                        <input type='button' value='Delete' class="myButton" id='btnDel' />
                     </td>
                 </tr>
             </table>
@@ -94,4 +92,3 @@
 
 
 </asp:Content>
-

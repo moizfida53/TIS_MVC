@@ -1,5 +1,4 @@
-﻿
-var Telephone
+﻿var Telephone
 var AssignNo
 var Providers
 var Employees
@@ -904,6 +903,7 @@ function Assign() {
 
 }
 function UpdateAssign() {
+    debugger;
     if ($("#hidEmployee").val() == '') {
 
 
@@ -1112,3 +1112,102 @@ function formatDateForInput(dateValue) {
     var day = ('0' + d.getDate()).slice(-2);
     return d.getFullYear() + '-' + month + '-' + day;
 }
+
+// Delegated click handlers moved here so page markup contains no inline onclick attributes.
+// Ensure this file is loaded after DOM and after functions like AddTelephone, UpdateTelephone, etc. are defined.
+$(document).ready(function () {
+    // Add / Update / Cancel for AddTelephone tab
+    $(document).on('click', '#btnAdd', function (e) {
+        e.preventDefault();
+        if (typeof AddTelephone === 'function') {
+            AddTelephone();
+        }
+    });
+
+    $(document).on('click', '#btnUpdate', function (e) {
+        e.preventDefault();
+        if (typeof UpdateTelephone === 'function') {
+            UpdateTelephone();
+        }
+    });
+
+    $(document).on('click', '#btnCancel', function (e) {
+        e.preventDefault();
+        if (typeof ClearTelephone === 'function') {
+            ClearTelephone();
+        }
+    });
+
+    // Export buttons
+    $(document).on('click', '#btnExportTelephone', function (e) {
+        e.preventDefault();
+        if (typeof ExportToExcel === 'function') {
+            ExportToExcel();
+        }
+    });
+
+    $(document).on('click', '#btnExportAssign', function (e) {
+        e.preventDefault();
+        if (typeof Export_ToExcel === 'function') {
+            Export_ToExcel();
+        }
+    });
+
+    // Assign tab: Assign / Update / Cancel
+    $(document).on('click', '#btnAssign', function (e) {
+        e.preventDefault();
+        if (typeof Assign === 'function') {
+            Assign();
+        }
+    });
+
+    $(document).on('click', '#btnUpdateAsg', function (e) {
+        e.preventDefault();
+        if (typeof UpdateAssign === 'function') {
+            UpdateAssign();
+        }
+    });
+
+    $(document).on('click', '#btnCancelAsg', function (e) {
+        e.preventDefault();
+        if (typeof ClearAssign === 'function') {
+            ClearAssign();
+        }
+    });
+
+    // Provider window actions (Provider CRUD)
+    $(document).on('click', '#btnAddCountry', function (e) {
+        e.preventDefault();
+        if (typeof AddCountry === 'function') {
+            AddCountry();
+        }
+    });
+    $(document).on('click', '#btnUpdateCountry', function (e) {
+        e.preventDefault();
+        if (typeof UpdateCountry === 'function') {
+            UpdateCountry();
+        }
+    });
+    $(document).on('click', '#btnDeleteCountry', function (e) {
+        e.preventDefault();
+        if (typeof DeleteCountry === 'function') {
+            DeleteCountry();
+        }
+    });
+    $(document).on('click', '#btnCancleCountry', function (e) {
+        e.preventDefault();
+        if (typeof ClearCountry === 'function') {
+            ClearCountry();
+        }
+    });
+
+    // Any grid-rendered "View / Open" buttons should render with a class and data-billid attribute,
+    // e.g. <input class="clsBillView" data-billid="123"> — handle those here if AddTelephone.js renders grids.
+    $(document).on('click', '.clsBillView', function (e) {
+        e.preventDefault();
+        var id = $(this).data('billid');
+        if (id && typeof getMyArcBill === 'function') {
+            getMyArcBill(id);
+        }
+    });
+});

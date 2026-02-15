@@ -216,15 +216,30 @@
 
             //$.alert.open('info', 'Success', 'Saved Successfully');
         }
+       
+        //On Send mail click
+        $(document).on('click', '#btnSend', function (e) {
+            e.preventDefault();
+            if (typeof SendEmail === 'function') {
+                SendEmail();
+            }
+        });
 
+        //On Delete email click
+        $(document).on('click', '#btnDeleteEmail', function (e) {
+            e.preventDefault();
+            if (typeof DeleteEmail === 'function') {
+                DeleteEmail();
+            }
+        });
 
     </script>
     &nbsp
     <div id="grdSendEmail"></div>
     &nbsp
     <div>
-        <input id="btnSend" type="button" class="myButton" style="position:relative; left:45%" value="Send Email" onclick="SendEmail()" />
-        <input id="btnDeleteEmail" type="button" class="myButton" style="position:relative; left:45%" value="Delete" onclick="DeleteEmail()" />
+        <input id="btnSend" type="button" class="myButton" style="position:relative; left:45%" value="Send Email"" />
+        <input id="btnDeleteEmail" type="button" class="myButton" style="position:relative; left:45%" value="Delete"" />
     </div>
 
 </asp:Content>

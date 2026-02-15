@@ -6,102 +6,16 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <link href="../../css/ForceBill.css" rel="stylesheet" />
-
+    <script src="../../Scripts/UnAssignedInvoice.js"></script>
     <style>
-        .button-container{
+        .button-container {
             margin: 1rem 0 0 1rem;
-    gap: 3rem !important;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+            gap: 3rem !important;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
         }
     </style>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-           /* $("#btnAssign").jqxButton({ width: '50' });*/
-            $("#btnAssign").on('click', function () {
-                AssignInvoice();
-            });
-            //$("#btnExportToExcel").jqxButton({ width: '200' });
-            //$("#btnExportToExcel").on('click', function () {
-            //    ExportToExcel();
-            //});
-
-            $("#excelExport").click(function () {
-                saveMyFile($('#SubmitForm'), "My Excel File" + ".xls", $("#grdData").jqxGrid('exportdata', 'xls'));
-            });
-
-            FillGrid();
-        })
-
-        function FillGrid() {
-
-            $.ajax({
-                type: "GET",
-                cache: false,
-                url: "../../Import/GetUnAssignedBill",
-                success: function (result) {
-                    var Bills = result.Bills;
-                    var deptsource =
-                    {
-                        localdata: Bills,
-                        datafields:
-                            [
-                                { name: 'BillDate', type: 'date' },
-                                { name: 'Mobile', type: 'string' },
-                                { name: 'ProviderName', type: 'string' },
-                                { name: 'TotalAmount', type: 'number' }
-                            ],
-                        datatype: "json"
-                    };
-
-                    var dataAdapterCategory = new $.jqx.dataAdapter(deptsource);
-                    $("#grdData").jqxGrid({
-                        width: '100%',
-                        source: dataAdapterCategory,
-                        columnsresize: true,
-                        pageSize: 10,
-                        sortable: true,
-                        filterable: true,
-                        showfilterrow: true,
-                        pageable: true,
-                        theme: 'dark-blue',
-                        selectionmode: 'none',
-                        columns: [
-                            { dataField: 'BillDate', text: 'BillDate', cellsformat: 'MMMM-yyyy', cellsalign: 'center', width: '130px' },
-                            { dataField: 'Mobile', text: 'Mobile' },
-                            { dataField: 'ProviderName', text: 'ProviderName' },
-                            { dataField: 'TotalAmount', text: 'TotalAmount' }
-
-                        ]
-                    });
-                }
-            });
-        }
-
-        function AssignInvoice() {
-            $.ajax({
-                type: "GET",
-
-                url: "../../Import/AssignInvoice",
-                success: function (result) {
-                    alert(result.Message);
-                    FillGrid();
-                }
-            });
-        }
-
-        function saveMyFile(ref, fname, text, mime) {
-            var blob = new Blob([text], { type: mime });
-            saveAs(blob, fname);
-            return false;
-        }
-
-        //function ExportToExcel() {
-        //    $("#grdData").jqxGrid('exportdata', 'xls', 'UnAssignedBills');
-        //}
-    </script>
     <div style="width: 100%">
         <table style="width: 100%">
             <tr>
@@ -112,31 +26,13 @@
     </div>
     <div>
         <br />
-        <%--<div>
-            <table>
-                <tr>
-                    <td>
-                        <input id="btnAssign" type="button" value="Assign Records" />
-                    </td>
-                </tr>
-            </table>
-        </div>--%>
         <br />
         <div>
             <div id="grdData">
             </div>
         </div>
-        <%--<div>
-            <table>
-                <tr>
-                    <td>
-                        <input id="excelExport" type="button" value="Export To Excel" />
-                    </td>
-                </tr>
-            </table>
-        </div>--%>
-                <div class="button-container" style="margin:1rem 0 0 1rem;">
-            <button id="excelExport" style="background:linear-gradient(135deg, #10b981 0%, #059669 100%);" class="main-button btn-export">
+        <div class="button-container" style="margin: 1rem 0 0 1rem;">
+            <button id="excelExport" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);" class="main-button btn-export">
                 <svg fill="#fff" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 50 50">
                     <path d="M28.8125 .03125L.8125 5.34375C.339844 
 5.433594 0 5.863281 0 6.34375L0 43.65625C0 
@@ -160,7 +56,7 @@
                 </svg>
                 Export To Excel
             </button>
-            <input id="btnAssign"  style="background:#26a8b9;" type="button" value="Assign Records" class="main-button btn-force" />
+            <input id="btnAssign" style="background: #26a8b9;" type="button" value="Assign Records" class="main-button btn-force" />
         </div>
     </div>
 </asp:Content>

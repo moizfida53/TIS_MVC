@@ -1,160 +1,160 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\",
+  "WorkspaceRootPath": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\tis\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|d:\\all projects\\coffeeshop\\gitprojects\\tis fida 15-feb-2026\\tis_general_mvc_6\\tis_general\\tis\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|d:\\all projects\\coffeeshop\\gitprojects\\tis fida 07-feb-2026\\tis_general_latest_v1_ketan\\tis_general\\tis\\mainjs\\dashboard.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\tis\\mainjs\\dashboard.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\mainjs\\dashboard.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|d:\\all projects\\coffeeshop\\gitprojects\\tis fida 07-feb-2026\\tis_general_latest_v1_ketan\\tis_general\\tis\\views\\dashboard\\indexnew.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\tis\\views\\dashboard\\indexnew.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\views\\dashboard\\indexnew.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|d:\\all projects\\coffeeshop\\gitprojects\\tis fida 07-feb-2026\\tis_general_latest_v1_ketan\\tis_general\\tis\\scripts\\templatesjs.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\tis\\scripts\\templatesjs.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\scripts\\templatesjs.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|d:\\all projects\\coffeeshop\\gitprojects\\tis fida 07-feb-2026\\tis_general_latest_v1_ketan\\tis_general\\tis\\views\\email\\templates.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\tis\\views\\email\\templates.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\views\\email\\templates.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|d:\\all projects\\coffeeshop\\gitprojects\\tis fida 07-feb-2026\\tis_general_latest_v1_ketan\\tis_general\\tis\\views\\bill\\changestatus.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\tis\\views\\bill\\changestatus.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\views\\bill\\changestatus.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\tis\\scripts\\changestatus.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\tis\\scripts\\changestatus.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\scripts\\changestatus.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\tis\\controllers\\billcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\tis\\controllers\\billcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\controllers\\billcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\tis\\controllers\\settingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\tis\\controllers\\settingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\controllers\\settingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|d:\\all projects\\coffeeshop\\gitprojects\\tis fida 07-feb-2026\\tis_general_latest_v1_ketan\\tis_general\\tis\\controllers\\importcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\tis\\controllers\\importcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\controllers\\importcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\tis\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\tis\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\tis\\controllers\\sap_pendingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\tis\\controllers\\sap_pendingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\controllers\\sap_pendingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\tis\\scripts\\addtelephone.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\tis\\scripts\\addtelephone.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\scripts\\addtelephone.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\tis\\views\\admin\\addtelephone.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\tis\\views\\admin\\addtelephone.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\views\\admin\\addtelephone.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\tis\\views\\admin\\manageemployee.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\tis\\views\\admin\\manageemployee.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\views\\admin\\manageemployee.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\tis\\scripts\\manageemployee.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\tis\\scripts\\manageemployee.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\scripts\\manageemployee.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\tis\\views\\import\\importinvoice.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\tis\\views\\import\\importinvoice.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\views\\import\\importinvoice.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\tis\\controllers\\billreportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\tis\\controllers\\billreportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\controllers\\billreportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\tis\\views\\report\\reportchart.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\tis\\views\\report\\reportchart.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\views\\report\\reportchart.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\tis\\controllers\\reportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\tis\\controllers\\reportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\controllers\\reportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\tis\\views\\admin\\package.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\tis\\views\\admin\\package.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\views\\admin\\package.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\tis\\css\\manageemployee.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\tis\\css\\manageemployee.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\css\\manageemployee.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\tis\\views\\import\\unassignedinvoice.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\tis\\views\\import\\unassignedinvoice.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\views\\import\\unassignedinvoice.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\tis\\views\\bill\\forcebill.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\tis\\views\\bill\\forcebill.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\views\\bill\\forcebill.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\tis\\scripts\\force-bill.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\tis\\scripts\\force-bill.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\scripts\\force-bill.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\tis\\scripts\\reassign-bill.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\tis\\scripts\\reassign-bill.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\scripts\\reassign-bill.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\tis\\views\\bill\\reassignbill.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\tis\\views\\bill\\reassignbill.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\views\\bill\\reassignbill.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\tis\\scripts\\myjs.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\tis\\scripts\\myjs.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\scripts\\myjs.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\TIS_Babtain_Deployment\\12_Dec_2023\\BabtainPublished_12_dec_23_Main\\EquatePublished_12_dec_23\\Views\\BillReport\\BillReport.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\tis\\css\\force-bill.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\tis\\css\\force-bill.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\css\\force-bill.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\tis\\css\\billreport.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\tis\\css\\billreport.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\css\\billreport.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\tis\\scripts\\re-imburse-bill.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\tis\\scripts\\re-imburse-bill.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\scripts\\re-imburse-bill.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\tis\\views\\user\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\tis\\views\\user\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\views\\user\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\tis\\app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\tis\\app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\tis\\css\\index.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\tis\\css\\index.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\css\\index.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\tis\\css\\masterpage.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\tis\\css\\masterpage.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\css\\masterpage.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\tis\\views\\report\\report.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\tis\\views\\report\\report.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\views\\report\\report.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\tis\\views\\shared\\masterpage.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\tis\\views\\shared\\masterpage.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\views\\shared\\masterpage.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\tis\\scripts\\masterpage.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\tis\\scripts\\masterpage.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{CFD559F9-4DD3-433D-BBEB-C8BFD6BD7C13}|TIS\\TIS.csproj|solutionrelative:tis\\scripts\\masterpage.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     }
   ],
@@ -171,25 +171,24 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "IndexNew.aspx",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Views\\Dashboard\\IndexNew.aspx",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Views\\Dashboard\\IndexNew.aspx",
               "RelativeDocumentMoniker": "TIS\\Views\\Dashboard\\IndexNew.aspx",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Views\\Dashboard\\IndexNew.aspx",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Views\\Dashboard\\IndexNew.aspx",
               "RelativeToolTip": "TIS\\Views\\Dashboard\\IndexNew.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
               "WhenOpened": "2026-02-07T13:16:12.758Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "DashboardController.cs",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Controllers\\DashboardController.cs",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Controllers\\DashboardController.cs",
               "RelativeDocumentMoniker": "TIS\\Controllers\\DashboardController.cs",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Controllers\\DashboardController.cs",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Controllers\\DashboardController.cs",
               "RelativeToolTip": "TIS\\Controllers\\DashboardController.cs",
-              "ViewState": "AgIAAI4BAAAAAAAAAAAzwJkBAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAI4BAAAAAAAAAIBAwJkBAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-24T05:55:45.628Z",
               "IsPinned": true,
@@ -199,43 +198,40 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Dashboard.js",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\MainJs\\Dashboard.js",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\MainJs\\Dashboard.js",
               "RelativeDocumentMoniker": "TIS\\MainJs\\Dashboard.js",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\MainJs\\Dashboard.js",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\MainJs\\Dashboard.js",
               "RelativeToolTip": "TIS\\MainJs\\Dashboard.js",
               "ViewState": "AgIAAIEFAAAAAAAAAAA3wIYFAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2026-02-07T13:16:34.543Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "ChangeStatus.aspx",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Views\\Bill\\ChangeStatus.aspx",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Views\\Bill\\ChangeStatus.aspx",
               "RelativeDocumentMoniker": "TIS\\Views\\Bill\\ChangeStatus.aspx",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Views\\Bill\\ChangeStatus.aspx",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Views\\Bill\\ChangeStatus.aspx",
               "RelativeToolTip": "TIS\\Views\\Bill\\ChangeStatus.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
               "WhenOpened": "2026-02-07T11:25:48.271Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
               "Title": "ChangeStatus.js",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Scripts\\ChangeStatus.js",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Scripts\\ChangeStatus.js",
               "RelativeDocumentMoniker": "TIS\\Scripts\\ChangeStatus.js",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Scripts\\ChangeStatus.js",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Scripts\\ChangeStatus.js",
               "RelativeToolTip": "TIS\\Scripts\\ChangeStatus.js",
               "ViewState": "AgIAAFEAAAAAAAAAAIAywGEAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2025-11-23T18:56:26.301Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -257,48 +253,45 @@
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "TemplatesJS.js",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Scripts\\TemplatesJS.js",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Scripts\\TemplatesJS.js",
               "RelativeDocumentMoniker": "TIS\\Scripts\\TemplatesJS.js",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Scripts\\TemplatesJS.js",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Scripts\\TemplatesJS.js",
               "RelativeToolTip": "TIS\\Scripts\\TemplatesJS.js",
               "ViewState": "AgIAADsAAAAAAAAAAAAkwEgAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2026-02-07T14:36:35.841Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-07T14:36:35.841Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "Templates.aspx",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Views\\Email\\Templates.aspx",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Views\\Email\\Templates.aspx",
               "RelativeDocumentMoniker": "TIS\\Views\\Email\\Templates.aspx",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Views\\Email\\Templates.aspx",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Views\\Email\\Templates.aspx",
               "RelativeToolTip": "TIS\\Views\\Email\\Templates.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2026-02-07T14:36:30.514Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-07T14:36:30.514Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
               "Title": "BillController.cs",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Controllers\\BillController.cs",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Controllers\\BillController.cs",
               "RelativeDocumentMoniker": "TIS\\Controllers\\BillController.cs",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Controllers\\BillController.cs",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Controllers\\BillController.cs",
               "RelativeToolTip": "TIS\\Controllers\\BillController.cs",
               "ViewState": "AgIAABEBAAAAAAAAAAAUwBYBAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-11T13:13:05.998Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-11T13:13:05.998Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 15,
               "Title": "ManageEmployee.js",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Scripts\\ManageEmployee.js",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Scripts\\ManageEmployee.js",
               "RelativeDocumentMoniker": "TIS\\Scripts\\ManageEmployee.js",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Scripts\\ManageEmployee.js",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Scripts\\ManageEmployee.js",
               "RelativeToolTip": "TIS\\Scripts\\ManageEmployee.js",
               "ViewState": "AgIAACMAAAAAAAAAAAAhwDAAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
@@ -308,22 +301,21 @@
               "$type": "Document",
               "DocumentIndex": 8,
               "Title": "SettingController.cs",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Controllers\\SettingController.cs",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Controllers\\SettingController.cs",
               "RelativeDocumentMoniker": "TIS\\Controllers\\SettingController.cs",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Controllers\\SettingController.cs",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Controllers\\SettingController.cs",
               "RelativeToolTip": "TIS\\Controllers\\SettingController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAACeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-06T04:46:17.112Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-06T04:46:17.112Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 22,
               "Title": "UnAssignedInvoice.aspx",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Views\\Import\\UnAssignedInvoice.aspx",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Views\\Import\\UnAssignedInvoice.aspx",
               "RelativeDocumentMoniker": "TIS\\Views\\Import\\UnAssignedInvoice.aspx",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Views\\Import\\UnAssignedInvoice.aspx",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Views\\Import\\UnAssignedInvoice.aspx",
               "RelativeToolTip": "TIS\\Views\\Import\\UnAssignedInvoice.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
@@ -333,9 +325,9 @@
               "$type": "Document",
               "DocumentIndex": 23,
               "Title": "ForceBill.aspx",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Views\\Bill\\ForceBill.aspx",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Views\\Bill\\ForceBill.aspx",
               "RelativeDocumentMoniker": "TIS\\Views\\Bill\\ForceBill.aspx",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Views\\Bill\\ForceBill.aspx",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Views\\Bill\\ForceBill.aspx",
               "RelativeToolTip": "TIS\\Views\\Bill\\ForceBill.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
@@ -345,9 +337,9 @@
               "$type": "Document",
               "DocumentIndex": 29,
               "Title": "Force-bill.css",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\css\\Force-bill.css",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\css\\Force-bill.css",
               "RelativeDocumentMoniker": "TIS\\css\\Force-bill.css",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\css\\Force-bill.css",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\css\\Force-bill.css",
               "RelativeToolTip": "TIS\\css\\Force-bill.css",
               "ViewState": "AgIAAPgBAAAAAAAAAAAAwBECAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
@@ -357,9 +349,9 @@
               "$type": "Document",
               "DocumentIndex": 14,
               "Title": "ManageEmployee.aspx",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Views\\Admin\\ManageEmployee.aspx",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Views\\Admin\\ManageEmployee.aspx",
               "RelativeDocumentMoniker": "TIS\\Views\\Admin\\ManageEmployee.aspx",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Views\\Admin\\ManageEmployee.aspx",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Views\\Admin\\ManageEmployee.aspx",
               "RelativeToolTip": "TIS\\Views\\Admin\\ManageEmployee.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
@@ -369,35 +361,33 @@
               "$type": "Document",
               "DocumentIndex": 9,
               "Title": "ImportController.cs",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Controllers\\ImportController.cs",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Controllers\\ImportController.cs",
               "RelativeDocumentMoniker": "TIS\\Controllers\\ImportController.cs",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Controllers\\ImportController.cs",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Controllers\\ImportController.cs",
               "RelativeToolTip": "TIS\\Controllers\\ImportController.cs",
               "ViewState": "AgIAAMwBAAAAAAAAAADwv9IBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-12T07:12:06.288Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-12T07:12:06.288Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
               "Title": "AdminController.cs",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Controllers\\AdminController.cs",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Controllers\\AdminController.cs",
               "RelativeDocumentMoniker": "TIS\\Controllers\\AdminController.cs",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Controllers\\AdminController.cs",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Controllers\\AdminController.cs",
               "RelativeToolTip": "TIS\\Controllers\\AdminController.cs",
               "ViewState": "AgIAALICAAAAAAAAAAAuwMcCAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-19T22:14:03.713Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-19T22:14:03.713Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 11,
               "Title": "SAP_PendingController.cs",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Controllers\\SAP_PendingController.cs",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Controllers\\SAP_PendingController.cs",
               "RelativeDocumentMoniker": "TIS\\Controllers\\SAP_PendingController.cs",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Controllers\\SAP_PendingController.cs",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Controllers\\SAP_PendingController.cs",
               "RelativeToolTip": "TIS\\Controllers\\SAP_PendingController.cs",
               "ViewState": "AgIAADUAAAAAAAAAAAAzwEkAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -407,9 +397,9 @@
               "$type": "Document",
               "DocumentIndex": 12,
               "Title": "AddTelephone.js",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Scripts\\AddTelephone.js",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Scripts\\AddTelephone.js",
               "RelativeDocumentMoniker": "TIS\\Scripts\\AddTelephone.js",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Scripts\\AddTelephone.js",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Scripts\\AddTelephone.js",
               "RelativeToolTip": "TIS\\Scripts\\AddTelephone.js",
               "ViewState": "AgIAAEABAAAAAAAAAAAUwFUBAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
@@ -419,9 +409,9 @@
               "$type": "Document",
               "DocumentIndex": 16,
               "Title": "ImportInvoice.aspx",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Views\\Import\\ImportInvoice.aspx",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Views\\Import\\ImportInvoice.aspx",
               "RelativeDocumentMoniker": "TIS\\Views\\Import\\ImportInvoice.aspx",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Views\\Import\\ImportInvoice.aspx",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Views\\Import\\ImportInvoice.aspx",
               "RelativeToolTip": "TIS\\Views\\Import\\ImportInvoice.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
@@ -431,9 +421,9 @@
               "$type": "Document",
               "DocumentIndex": 17,
               "Title": "BillReportController.cs",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Controllers\\BillReportController.cs",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Controllers\\BillReportController.cs",
               "RelativeDocumentMoniker": "TIS\\Controllers\\BillReportController.cs",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Controllers\\BillReportController.cs",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Controllers\\BillReportController.cs",
               "RelativeToolTip": "TIS\\Controllers\\BillReportController.cs",
               "ViewState": "AgIAAFUAAAAAAAAAAAAlwGEAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -443,9 +433,9 @@
               "$type": "Document",
               "DocumentIndex": 13,
               "Title": "AddTelephone.aspx",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Views\\Admin\\AddTelephone.aspx",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Views\\Admin\\AddTelephone.aspx",
               "RelativeDocumentMoniker": "TIS\\Views\\Admin\\AddTelephone.aspx",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Views\\Admin\\AddTelephone.aspx",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Views\\Admin\\AddTelephone.aspx",
               "RelativeToolTip": "TIS\\Views\\Admin\\AddTelephone.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
@@ -455,9 +445,9 @@
               "$type": "Document",
               "DocumentIndex": 19,
               "Title": "ReportController.cs",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Controllers\\ReportController.cs",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Controllers\\ReportController.cs",
               "RelativeDocumentMoniker": "TIS\\Controllers\\ReportController.cs",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Controllers\\ReportController.cs",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Controllers\\ReportController.cs",
               "RelativeToolTip": "TIS\\Controllers\\ReportController.cs",
               "ViewState": "AgIAAFMAAAAAAAAAAAAQwEkAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -467,9 +457,9 @@
               "$type": "Document",
               "DocumentIndex": 18,
               "Title": "ReportChart.aspx",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Views\\Report\\ReportChart.aspx",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Views\\Report\\ReportChart.aspx",
               "RelativeDocumentMoniker": "TIS\\Views\\Report\\ReportChart.aspx",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Views\\Report\\ReportChart.aspx",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Views\\Report\\ReportChart.aspx",
               "RelativeToolTip": "TIS\\Views\\Report\\ReportChart.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
@@ -479,9 +469,9 @@
               "$type": "Document",
               "DocumentIndex": 20,
               "Title": "Package.aspx",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Views\\Admin\\Package.aspx",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Views\\Admin\\Package.aspx",
               "RelativeDocumentMoniker": "TIS\\Views\\Admin\\Package.aspx",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Views\\Admin\\Package.aspx",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Views\\Admin\\Package.aspx",
               "RelativeToolTip": "TIS\\Views\\Admin\\Package.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
@@ -491,9 +481,9 @@
               "$type": "Document",
               "DocumentIndex": 26,
               "Title": "ReAssignBill.aspx",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Views\\Bill\\ReAssignBill.aspx",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Views\\Bill\\ReAssignBill.aspx",
               "RelativeDocumentMoniker": "TIS\\Views\\Bill\\ReAssignBill.aspx",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Views\\Bill\\ReAssignBill.aspx",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Views\\Bill\\ReAssignBill.aspx",
               "RelativeToolTip": "TIS\\Views\\Bill\\ReAssignBill.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
@@ -503,9 +493,9 @@
               "$type": "Document",
               "DocumentIndex": 21,
               "Title": "ManageEmployee.css",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\css\\ManageEmployee.css",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\css\\ManageEmployee.css",
               "RelativeDocumentMoniker": "TIS\\css\\ManageEmployee.css",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\css\\ManageEmployee.css",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\css\\ManageEmployee.css",
               "RelativeToolTip": "TIS\\css\\ManageEmployee.css",
               "ViewState": "AgIAAA8AAAAAAAAAAIBJwCMAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
@@ -515,9 +505,9 @@
               "$type": "Document",
               "DocumentIndex": 24,
               "Title": "Force-bill.js",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Scripts\\Force-bill.js",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Scripts\\Force-bill.js",
               "RelativeDocumentMoniker": "TIS\\Scripts\\Force-bill.js",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Scripts\\Force-bill.js",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Scripts\\Force-bill.js",
               "RelativeToolTip": "TIS\\Scripts\\Force-bill.js",
               "ViewState": "AgIAALwAAAAAAAAAAIBJwNgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
@@ -527,9 +517,9 @@
               "$type": "Document",
               "DocumentIndex": 25,
               "Title": "ReAssign-bill.js",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Scripts\\ReAssign-bill.js",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Scripts\\ReAssign-bill.js",
               "RelativeDocumentMoniker": "TIS\\Scripts\\ReAssign-bill.js",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Scripts\\ReAssign-bill.js",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Scripts\\ReAssign-bill.js",
               "RelativeToolTip": "TIS\\Scripts\\ReAssign-bill.js",
               "ViewState": "AgIAAFsBAAAAAAAAAIBJwGsBAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
@@ -539,9 +529,9 @@
               "$type": "Document",
               "DocumentIndex": 27,
               "Title": "myJS.js",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Scripts\\myJS.js",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Scripts\\myJS.js",
               "RelativeDocumentMoniker": "TIS\\Scripts\\myJS.js",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Scripts\\myJS.js",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Scripts\\myJS.js",
               "RelativeToolTip": "TIS\\Scripts\\myJS.js",
               "ViewState": "AgIAADQIAAAAAAAAAAApwDEIAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
@@ -563,9 +553,9 @@
               "$type": "Document",
               "DocumentIndex": 30,
               "Title": "BillReport.css",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\css\\BillReport.css",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\css\\BillReport.css",
               "RelativeDocumentMoniker": "TIS\\css\\BillReport.css",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\css\\BillReport.css",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\css\\BillReport.css",
               "RelativeToolTip": "TIS\\css\\BillReport.css",
               "ViewState": "AgIAAIoBAAAAAAAAAAAIwJ0BAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
@@ -575,9 +565,9 @@
               "$type": "Document",
               "DocumentIndex": 31,
               "Title": "Re-Imburse-BIll.js",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Scripts\\Re-Imburse-BIll.js",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Scripts\\Re-Imburse-BIll.js",
               "RelativeDocumentMoniker": "TIS\\Scripts\\Re-Imburse-BIll.js",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Scripts\\Re-Imburse-BIll.js",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Scripts\\Re-Imburse-BIll.js",
               "RelativeToolTip": "TIS\\Scripts\\Re-Imburse-BIll.js",
               "ViewState": "AgIAAAwAAAAAAAAAAAAjwBYAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
@@ -587,9 +577,9 @@
               "$type": "Document",
               "DocumentIndex": 32,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Views\\User\\Index.cshtml",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Views\\User\\Index.cshtml",
               "RelativeDocumentMoniker": "TIS\\Views\\User\\Index.cshtml",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Views\\User\\Index.cshtml",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Views\\User\\Index.cshtml",
               "RelativeToolTip": "TIS\\Views\\User\\Index.cshtml",
               "ViewState": "AgIAAKECAAAAAAAAAAAAwKwCAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -599,9 +589,9 @@
               "$type": "Document",
               "DocumentIndex": 36,
               "Title": "Report.aspx",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Views\\Report\\Report.aspx",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Views\\Report\\Report.aspx",
               "RelativeDocumentMoniker": "TIS\\Views\\Report\\Report.aspx",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Views\\Report\\Report.aspx",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Views\\Report\\Report.aspx",
               "RelativeToolTip": "TIS\\Views\\Report\\Report.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
@@ -611,9 +601,9 @@
               "$type": "Document",
               "DocumentIndex": 34,
               "Title": "index.css",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\css\\index.css",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\css\\index.css",
               "RelativeDocumentMoniker": "TIS\\css\\index.css",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\css\\index.css",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\css\\index.css",
               "RelativeToolTip": "TIS\\css\\index.css",
               "ViewState": "AgIAAE0EAAAAAAAAAAAswFYEAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
@@ -623,9 +613,9 @@
               "$type": "Document",
               "DocumentIndex": 35,
               "Title": "MasterPage.css",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\css\\MasterPage.css",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\css\\MasterPage.css",
               "RelativeDocumentMoniker": "TIS\\css\\MasterPage.css",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\css\\MasterPage.css",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\css\\MasterPage.css",
               "RelativeToolTip": "TIS\\css\\MasterPage.css",
               "ViewState": "AgIAADsDAAAAAAAAAAAswEoDAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
@@ -635,9 +625,9 @@
               "$type": "Document",
               "DocumentIndex": 33,
               "Title": "RouteConfig.cs",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\App_Start\\RouteConfig.cs",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\App_Start\\RouteConfig.cs",
               "RelativeDocumentMoniker": "TIS\\App_Start\\RouteConfig.cs",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\App_Start\\RouteConfig.cs",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\App_Start\\RouteConfig.cs",
               "RelativeToolTip": "TIS\\App_Start\\RouteConfig.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -647,22 +637,21 @@
               "$type": "Document",
               "DocumentIndex": 37,
               "Title": "MasterPage.Master",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Views\\Shared\\MasterPage.Master",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Views\\Shared\\MasterPage.Master",
               "RelativeDocumentMoniker": "TIS\\Views\\Shared\\MasterPage.Master",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Views\\Shared\\MasterPage.Master",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Views\\Shared\\MasterPage.Master",
               "RelativeToolTip": "TIS\\Views\\Shared\\MasterPage.Master",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-03T05:32:12.002Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-03T05:32:12.002Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 38,
               "Title": "MasterPage.js",
-              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Scripts\\MasterPage.js",
+              "DocumentMoniker": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Scripts\\MasterPage.js",
               "RelativeDocumentMoniker": "TIS\\Scripts\\MasterPage.js",
-              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 07-Feb-2026\\TIS_General_latest_v1_Ketan\\TIS_General\\TIS\\Scripts\\MasterPage.js",
+              "ToolTip": "D:\\ALL PROJECTS\\CoffeeShop\\GitProjects\\TIS FIda 15-Feb-2026\\TIS_General_MVC_6\\TIS_General\\TIS\\Scripts\\MasterPage.js",
               "RelativeToolTip": "TIS\\Scripts\\MasterPage.js",
               "ViewState": "AgIAAGcAAAAAAAAAAAAUwHQAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
