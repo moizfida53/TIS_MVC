@@ -1233,12 +1233,14 @@
     <Content Include="Scripts\buttons.html5.min.js" />
     <Content Include="Scripts\buttons.print.min.js" />
     <Content Include="Scripts\ChangeStatus.js" />
+    <Content Include="Scripts\Config.js" />
     <Content Include="Scripts\custombox.js" />
     <Content Include="Scripts\dataTables.buttons.min.js" />
     <Content Include="Scripts\dataTables.min.js" />
     <Content Include="Scripts\DelegateBills.js" />
     <Content Include="Scripts\delegatedEvents.js" />
     <Content Include="Scripts\demos.js" />
+    <Content Include="Scripts\EmailTemplate.js" />
     <Content Include="Scripts\font-awesome.min.css" />
     <Content Include="Scripts\Force-bill.js" />
     <Content Include="Scripts\fun_with_svg_arcs.js" />
@@ -1332,6 +1334,7 @@
     <Content Include="Scripts\ReAssign-bill.js" />
     <Content Include="Scripts\SAP-Pending.js" />
     <Content Include="Scripts\select2.min.js" />
+    <Content Include="Scripts\SendEmail.js" />
     <Content Include="Scripts\sweetalert.min.js" />
     <Content Include="Scripts\sweetalert2%4011.js" />
     <Content Include="Scripts\sweetalert2.all.min.js" />

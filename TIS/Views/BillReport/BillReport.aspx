@@ -13,8 +13,6 @@
     <script src="../../Scripts/alert.js"></script>
 
     <div class="container-fluid mt-4">
-
-
         <div class="container">
             <div style="width: 100%">
                 <table style="width: 100%">
@@ -115,7 +113,7 @@
                     </tbody>
 
                 </table>
-                <input type="button" value="Export To Excel" class="btn btn-primary me-2" onclick="ExportToExcel()" />
+                <input id="btnBillReportExport" type="button" value="Export To Excel" class="btn btn-primary me-2"/>
             </div>
         </div>
     </div>

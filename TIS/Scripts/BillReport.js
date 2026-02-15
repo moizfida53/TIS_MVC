@@ -6,27 +6,32 @@ var selectedMonth = 0;
 var selectedstatus = 0;
 var selectedCompany = 0;
 $(document).ready(function () {
-// Set default selected month if needed
-$('#cmbMonth').val('0'); // 0 = "Select Month"
+    // Set default selected month if needed
+    $('#cmbMonth').val('0'); // 0 = "Select Month"
 
-// Log all month options (optional)
-console.log("Month items:", $('#cmbMonth option').map(function() {
-    return { value: this.value, text: this.text };
-}).get());
+    // Log all month options (optional)
+    console.log("Month items:", $('#cmbMonth option').map(function () {
+        return { value: this.value, text: this.text };
+    }).get());
 
-// Handle month selection
-$('#cmbMonth').on('change', function () {
-    var selectedValue = $(this).val();
-    selectedMonth = selectedValue; // store selected month
-    console.log("Selected month:", selectedMonth);
-});
+    // Handle month selection
+    $('#cmbMonth').on('change', function () {
+        var selectedValue = $(this).val();
+        selectedMonth = selectedValue; // store selected month
+        console.log("Selected month:", selectedMonth);
+    });
 
     // Handle Status selection
     $('#cmbStatus').on('change', function () {
         selectedStatus = $(this).val(); // get selected value
         console.log("Selected Status:", selectedStatus);
     });
-
+    $(document).on('click', '#btnBillReportExport', function (e) {
+        e.preventDefault();
+        if (typeof ExportToExcel === 'function') {
+            ExportToExcel();
+        }
+    });
 
 
     $("#Select").hide();
@@ -91,7 +96,7 @@ function Search() {
     Status = selectedstatus;
     companyId = selectedCompany;
 
-    var Year = $("#cmbYear").val() || 0; 
+    var Year = $("#cmbYear").val() || 0;
 
 
     var Search = {

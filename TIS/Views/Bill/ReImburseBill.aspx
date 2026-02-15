@@ -35,7 +35,7 @@
                         <div class="col-md-3" style="margin-bottom: 15px;">
                             <label for="cmbMonth" class="form-label"><i class="fas fa-calendar-alt me-2"></i><strong>Month</strong></label>
                             <select id="cmbMonth" class="form-select">
-                                <option value="">Select Month</option>
+                                <option value="0">Select Month</option>
                                 <option value="1">January</option>
 
                             </select>

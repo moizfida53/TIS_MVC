@@ -1,7 +1,13 @@
-﻿$(document).ready(function () {
+﻿
+$(document).ready(function () {
     LoadTemplates();
 });
-
+$(document).on('click', '#btnSaveEmailTemplate', function (e) {
+    e.preventDefault();
+    if (typeof TemplateSave === 'function') {
+        TemplateSave();
+    }
+});
 function setDataSource(result) {
     console.log(result);
 
@@ -116,10 +122,6 @@ function LoadTemplates()
 function TemplateSave()
 {
     debugger;
-    //alert($('#lblId').val());
-    //var tId = $("#cmbTemplate").jqxDropDownList('val', 'c');
-    //var cId = $("#cmbCountry").jqxDropDownList('val', 'c');
-
     var tId = $("#cmbTemplate").val();
     var cId = $("#cmbCountry").val();
 

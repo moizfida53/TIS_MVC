@@ -7,89 +7,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <script src="../../Scripts/TemplatesJS.js"></script>
-    <script>
-
-        $(document).ready(function () {
-            //$(document).ajaxStart($.blockUI({
-            //    css: {
-            //        border: 'none',
-            //        padding: '10px',
-            //        backgroundColor: '#000',
-            //        '-webkit-border-radius': '10px',
-            //        '-moz-border-radius': '10px',
-            //        opacity: .3,
-            //        color: '#fff'
-            //    }
-            //})).ajaxStop($.unblockUI);
-
-            $("#jqxMenu").jqxMenu({ width: '100%', height: '30px' });
-            LoadTemplates();
-        });
-    </script>
-
-    <%--<div style="border-radius: 6px; background-image: url(../../Content/images/header-image-11.jpg);
-        width: 100%">
-            <table style="height: 62px; width: 100%;">
-                <tr>
-                    <td width="100px" align="left">
-                        <img src="../../Content/images/Header1.png" border="0" style="height: 62px; width: 95px" />
-                    </td>
-                    <td align="left" style="padding-left: 0px; padding-bottom: 3px; color: #FFFFFF; font-weight: bold;
-                    font-size: 16pt;">
-                        Telecom Invoicing System
-                    </td>
-
-                    <td>
-                        <div id="btnLoginAs">
-                            <div id="grdLoginAs">
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="3">
-
-                        <div id='jqxMenu'>
-                            <ul>
-                                <li><a href="../../User/Analyse">Personal Task</a></li>
-
-                                <li>
-                                    Admin
-                                    <ul style='width: 250px;'>
-                                        <li><a href="../../Admin/Index">Manage Employee</a></li>
-                                        <li><a href="../../Admin/Telephone">Manage Telephone</a></li>
-                                        <li><a href="../../Admin/Delegate">Delegate Bills</a></li>
-                                    </ul>
-                                </li>
-
-                                <li>
-                                    Bill Management
-                                    <ul>
-                                        <li><a href="../../Import/Index">Import Mobile Bills</a></li>
-                                        <li><a href="../../Import/UnAssigned">UnAssigned Bills</a></li>
-                                        <li><a href="../../Bill/Index">Force Bill</a></li>
-                                        <li><a href="../../Bill/ChangeStatus">Change Bill Status</a></li>
-                                        <li><a href="../../Bill/ReImburseBill">Re-Imburse Bill</a></li>
-                                        <li><a href="../../Bill/ReAssignBill">Re-Assign Bill</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    Settings
-                                    <ul>
-                                        <li><a href="../../Setting/Index">Configuration</a></li>
-                                        <li><a href="../../Email/Templates">Email Template</a></li>
-                                        <li><a href="../../Setting/Policy">Manage Policy</a></li>
-                                        <li><a href="../../Setting/Provider">Manage Provider</a></li>
-                                    </ul>
-                                </li>
-                                <li>Reports </li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>--%>
-
     <div style="width: 100%">
         <table style="width: 100%">
             <tr>
@@ -160,7 +77,8 @@
     <table>
         <tr>
             <td>
-                <button id="btnSave" onclick="TemplateSave()">Save</button>
+                <%--<button id="btnSave" onclick="TemplateSave()">Save</button>--%>
+                <button id="btnSaveEmailTemplate" type="button" class="btn btn-success h-fit"><i class="fas fa-plus-circle me-2"></i>Save</button>
             </td>
         </tr>
     </table>

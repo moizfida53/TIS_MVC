@@ -3,12 +3,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     ManageCallType
-
-
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
     <link href="../../css/all.min.css" rel="stylesheet" />
     <link href="../../css/BillReport.css" rel="stylesheet">
     <link href="../../css/select2.min.css" rel="stylesheet" />
@@ -21,8 +18,6 @@
 
     <div class="container-fluid mt-3">
         <!-- Header -->
-
-
         <div class="row">
             <div class="col-12">
                 <div class="myButton3">Manage Policy</div>
@@ -32,11 +27,9 @@
         <!-- Main Form Panel -->
         <div id="Panel1">
             <input id="hidID" type="hidden" />
-
             <!-- First Row: 4 columns -->
             <!-- First Row -->
             <div class="row g-4 form-group-spacing" style="gap: 4rem;">
-
                 <!-- Provider -->
                 <div class="col-xl-2 col-lg-4 col-md-6">
                     <label class="form-label">Provider</label>
@@ -54,8 +47,8 @@
                 <!-- Description -->
                 <div class="col-xl-2 col-lg-4 col-md-6">
                     <label class="form-label">Description</label>
-                    <select id="cmbDesc" class="form-select" >
-                    
+                    <select id="cmbDesc" class="form-select">
+
                         <!-- options will be added dynamically -->
                     </select>
                 </div>
@@ -73,14 +66,7 @@
 
             </div>
 
-
             <!-- Second Row: Line Type & Employee -->
-
-
-
-
-
-
             <div class="row g-4 form-group-spacing" style="gap: 4rem;">
                 <!-- Line Type -->
                 <div class="col-xl-2 col-lg-3 col-md-4">
@@ -151,4 +137,5 @@
             <br />
             <div id="grdEmpList"></div>
         </div>
+    </div>
 </asp:Content>

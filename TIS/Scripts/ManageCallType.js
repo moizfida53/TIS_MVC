@@ -248,8 +248,11 @@ function FillEmployee() {
             });
 
             $("#grdEmployee").on('rowselect', function (event) {
+                debugger;
                 var args = event.args;
-                var row = $("#grdEmployee").jqxGrid('getrowdata', args.rowindex);
+                //var row = $("#grdEmployee").jqxGrid('getrowdata', args.rowindex);
+                //BindEmployeesDetails(row);
+                Edit(args.rowindex);
             });
         }
     });
@@ -288,10 +291,17 @@ function FillGrid() {
                     return '<input type="button" disabled="true" value="All Employee"/>';
                 }
                 else {
-                    return '<input id="button' + row + '" onClick="FillEmpList(' + row.ID + ')"  type="button" value="View List"/>';
+                    //return '<input id="button' + row + '" onClick="FillEmpList(' + row.ID + ')"  type="button" value="View List"/>';
+                    return '<input id="button' + row.ID + '" data-policyid="' + row.ID + '" class="clPolicyBtn" type="button" value="View List"/>';
                 }
             }
-
+            $(document).on('click', '.clPolicyBtn', function () {
+                debugger;
+                var policyId = $(this).data('policyid');
+                if (policyId !== undefined) {
+                    FillEmpList(policyId);
+                }
+            });
             var dataAdapter = new $.jqx.dataAdapter(source);
             $("#grdData").jqxGrid({
                 width: '100%',
@@ -308,6 +318,7 @@ function FillGrid() {
                         datafield: 'Edit', text: 'Edit', hidden: true, columntype: 'button', width: 75, cellsrenderer: function () {
                             return "Edit";
                         }, buttonclick: function (row) {
+                            debugger;
                             Edit(row);
                         }
                     },
@@ -379,6 +390,7 @@ function FillGrid() {
 //    }
 //}
 function Edit(index) {
+    debugger;
     $('#grdEmployee').jqxGrid('clearselection');
     var row = $("#grdData").jqxGrid('getrowdata', index);
     $("#hidID").val(row.ID);
@@ -617,7 +629,7 @@ function Clear() {
     debugger;
     $("#hidID").val('');
     // Clear select2 values and options for #cmbDesc
-    
+
 
     $("#cmbCallType").jqxDropDownList('clearSelection');
     $("#cmbLineType").jqxDropDownList('clearSelection');
@@ -682,6 +694,7 @@ function Clear() {
 }
 
 function FillEmpList(PolicyID) {
+    debugger;
     var ID = {
         "ID": PolicyID
     };

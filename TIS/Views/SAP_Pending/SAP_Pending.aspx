@@ -1,5 +1,4 @@
-﻿
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/MasterPage.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/MasterPage.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     SAP_Pending
@@ -16,34 +15,28 @@
     <link href="../../css/SAP-Pending.css" rel="stylesheet" />
     <script src="../../Scripts/SAP-Pending.js"></script>
 
-  
-
     <table style="width: 100%">
         <tr class="header-1">
             <td class="myButton3" style="margin: 1em 0 0 0;">SAP Report
             </td>
         </tr>
     </table>
-
-   
-
     <div id="mainDiv">
         <h3 style="margin-bottom: 1rem;">Total Closed Bills pending for Post to SAP
             <label id="PendingBills" style="color: orangered"></label>
         </h3>
-
         <table>
             <tr>
                 <td>
-                    <input type="button" value="Post Bills to SAP" class="button" onclick="PostSAP()" />
+                    <input id="btnPostSAP" type="button" value="Post Bills to SAP" class="button" />
                 </td>
                 <td>
-                    <button type="button" class="button" onclick="UpdateSAP()" >
-                       <i class="fa-regular fa-file"></i> Mark as Posted
+                    <button id="btnUpdateSAP" type="button" class="button">
+                        <i class="fa-regular fa-file"></i>Mark as Posted
                     </button>
                 </td>
                 <td>
-                    <button type="button" class="button" onclick="ExportToExcel()">
+                    <button id="btnExportToExcelSAP" type="button" class="button"">
                         <svg fill="#fff" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 50 50">
                             <path d="M28.8125 .03125L.8125 5.34375C.339844 
     5.433594 0 5.863281 0 6.34375L0 43.65625C0 
@@ -65,16 +58,11 @@
     20L44 20L44 22L36 22ZM36 27L44 27L44 29L36 29ZM36 35L44 35L44 37L36 37Z">
                             </path>
                         </svg>
-                        Export To Excel
-                    </button>
+                    Export To Excel
+                </button>
                 </td>
             </tr>
         </table>
-
         <div id="grdReport"></div>
-
     </div>
-
-    </div>
-
 </asp:Content>

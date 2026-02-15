@@ -130,6 +130,7 @@
                                     <div class="action-buttons">
                                         <button id="btnSave" type="button" class="btn btn-warning">
                                             <i class="fas fa-save me-2"></i>Save Changes
+                                       
                                         </button>
                                     </div>
                                 </div>
@@ -164,6 +165,7 @@
                                 </path>
                             </svg>
                             Export To Excel
+                       
                         </button>
                     </div>
                 </div>
@@ -338,9 +340,11 @@
                                     <div class="action-buttons">
                                         <button id="btnUpdate" type="button" class="btn btn-warning">
                                             <i class="fas fa-edit me-2"></i>Update
+                                       
                                         </button>
                                         <button id="Button1" type="button" class="btn btn-warning">
                                             <i class="fas fa-database me-2"></i>Update DB
+                                       
                                         </button>
                                     </div>
                                 </div>

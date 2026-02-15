@@ -126,6 +126,7 @@
                             <%--<div id="cmbMonth">
                             </div>--%>
                             <select id="cmbMonth" class="form-select">
+                                <option value="0">Select Month</option>
                                 <option value="1" label="January"></option>
                                 <option value="2" label="February"></option>
                                 <option value="3" label="March"></option>
