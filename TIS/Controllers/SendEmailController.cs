@@ -88,32 +88,44 @@ namespace TIS.Controllers
                         try
                         {
                             MailMessage message = new MailMessage();
+                            bool flgCheckEmail = false;
                             if (row["CC"].ToString() == "" || row["CC"].ToString() == null)
                             {
-                                message.To.Add(row["EmailTo"].ToString());
+                                if(IsValidEmail(row["EmailTo"].ToString()))
+                                {
+                                    flgCheckEmail = true;
+                                    message.To.Add(row["EmailTo"].ToString());
+                                }
                             }
                             else
                             {
-                                message.To.Add(row["EmailTo"].ToString());
-                                message.CC.Add(row["CC"].ToString());
+                                if (IsValidEmail(row["EmailTo"].ToString()) && IsValidEmail(row["CC"].ToString()))
+                                {
+                                    flgCheckEmail = true;
+                                    message.To.Add(row["EmailTo"].ToString());
+                                    message.CC.Add(row["CC"].ToString());
+                                }
                             }
-                            message.From = new MailAddress(row["EmailFrom"].ToString());
-                            message.Sender = new MailAddress(row["EmailFrom"].ToString());
-                            message.Subject = row["Subject"].ToString();
-                            string str = row["EmailText"].ToString();
-                            message.Body = str;
-                            message.IsBodyHtml = true;
-                            new SmtpClient(host)
+                            if(flgCheckEmail)
                             {
-                                UseDefaultCredentials = true
-                            }.Send(message);
-                            SqlParameter[] paramColl2 = new SqlParameter[1];
-                            SqlParameter sqlParameter2 = new SqlParameter();
-                            sqlParameter2.ParameterName = "@id";
-                            sqlParameter2.SqlDbType = SqlDbType.Int;
-                            sqlParameter2.Value = (object)row["Id"].ToString();
-                            paramColl2[0] = sqlParameter2;
-                            DB.ExecuteStoredProcDataSet("sp_MarkAsSent", paramColl2);
+                                message.From = new MailAddress(row["EmailFrom"].ToString());
+                                message.Sender = new MailAddress(row["EmailFrom"].ToString());
+                                message.Subject = row["Subject"].ToString();
+                                string str = row["EmailText"].ToString();
+                                message.Body = str;
+                                message.IsBodyHtml = true;
+                                new SmtpClient(host)
+                                {
+                                    UseDefaultCredentials = true
+                                }.Send(message);
+                                SqlParameter[] paramColl2 = new SqlParameter[1];
+                                SqlParameter sqlParameter2 = new SqlParameter();
+                                sqlParameter2.ParameterName = "@id";
+                                sqlParameter2.SqlDbType = SqlDbType.Int;
+                                sqlParameter2.Value = (object)row["Id"].ToString();
+                                paramColl2[0] = sqlParameter2;
+                                DB.ExecuteStoredProcDataSet("sp_MarkAsSent", paramColl2);
+                            }
                         }
                         catch (Exception ex)
                         {
@@ -279,6 +291,16 @@ namespace TIS.Controllers
             {
                 return Json("'Fail':'true'");
             }
+        }
+
+        // Helper method to check if an email is valid (contains '@' and at least one '.')
+        private bool IsValidEmail(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+                return false;
+            int atIndex = email.IndexOf('@');
+            int dotIndex = email.LastIndexOf('.');
+            return atIndex > 0 && dotIndex > atIndex + 1 && dotIndex < email.Length - 1;
         }
     }
 }
