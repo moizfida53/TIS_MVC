@@ -156,7 +156,7 @@ namespace TIS.Controllers
             {
                 for (int index = 0; index < Cnt.SelectedValues.Length; ++index)
                 {
-                    SqlParameter[] paramColl = new SqlParameter[16];
+                    SqlParameter[] paramColl = new SqlParameter[17];
                     SqlParameter sqlParameter1 = new SqlParameter();
                     sqlParameter1.ParameterName = "@NAME";
                     sqlParameter1.SqlDbType = SqlDbType.VarChar;

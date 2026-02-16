@@ -6,30 +6,19 @@ var ImportData;
 var DbBased;
 
 $(document).ready(function () {
-
-
     $("#btnProcess").hide();
     $("#btnSave").hide();
-    FillSheet();
+    //FillSheet();
     FillSheet2();
 
     $("#Select").hide();
-
-    // removed direct excelExport click — use delegated handler below
-    // removed direct excelExport click — use delegated handler below
 
     $("#excelExport").click(function () {
         saveMyFile($('#SubmitForm'), "My Excel File" + ".xls", $("#grdData").jqxGrid('exportdata', 'xls'));
     });
 
-
-
-
     FillYear();
     $('#cmbProvider').on('change', function () {
-
-        console.log('Change event fired');
-
         var Provider = $(this).val();
         var ProviderText = $(this).find('option:selected').text();
 
@@ -53,20 +42,6 @@ $(document).ready(function () {
     FillProvider();
     FillGrid();
 
-
-    //$("#dd1").jqxDropDownList({ width: '170px', height: '25px' });
-    //$("#dd2").jqxDropDownList({ width: '170px', height: '25px' });
-    //$("#dd3").jqxDropDownList({ width: '170px', height: '25px' });
-    //$("#dd4").jqxDropDownList({ width: '170px', height: '25px' });
-    //$("#dd5").jqxDropDownList({ width: '170px', height: '25px' });
-    //$("#dd6").jqxDropDownList({ width: '170px', height: '25px' });
-    //$("#dd7").jqxDropDownList({ width: '170px', height: '25px' });
-    //$("#dd8").jqxDropDownList({ width: '170px', height: '25px' });
-
-
-    //$("#cmbType").jqxDropDownList({ width: '170px', height: '25px' });
-    //$("#cmbType").jqxDropDownList('loadFromSelect', 'SelectType');
-    //$("#cmbType").jqxDropDownList('selectIndex', 0);
     $("#cmbType").val("");
     $("#SelectType").hide();
 
@@ -100,10 +75,84 @@ $(document).ready(function () {
 
 // ---------- Delegated handlers for ImportInvoice page ----------
 // Use delegation so handlers work if DOM is updated dynamically.
+$(document).on('change', '#jqxFileUpload', function (e) {
+    debugger;
+    var files = this.files;
+    if (!files || files.length === 0) {
+        Swal.fire('Warning!', 'Please select a file to upload.', 'warning');
+        $('#btnUpload').hide();
+        return;
+    } else {
+        $('#btnUpload').show();
+    }
 
+});
+//$(document).on('change', '#jqxFileUpload', function (e) {
+//    debugger;
+//    var files = this.files;
+//    if (!files || files.length === 0) {
+//        Swal.fire('Warning!', 'Please select a file to upload.', 'warning');
+//        return;
+//    }
+
+//    var formData = new FormData();
+//    var file = null;
+//    for (var i = 0; i < files.length; i++) {
+//        file = files[i];
+//        formData.append('fileToUpload', files[i]);
+//    }
+
+//    $.ajax({
+//        url: '../../Import/Upload',
+//        type: 'POST',
+//        data: formData,
+//        processData: false,
+//        contentType: false,
+//        success: function (result) {
+//            //Swal.fire('Success!', 'File uploaded successfully.', 'success');
+//            //$('#btnUpload').hide();
+//            FillSheet(file);
+//        },
+//        error: function () {
+//            Swal.fire('Error!', 'File upload failed.', 'error');
+//        }
+//    });
+//});
+// Add this delegated handler for #btnUpload to call ImportController.Upload with selected file from jqxFileUpload
 $(document).on('click', '#btnUpload', function (e) {
+    debugger;
     e.preventDefault();
-    if (typeof Upload === 'function') Upload();
+
+    var files = $('#jqxFileUpload')[0].files;
+    if (!files || files.length === 0) {
+        Swal.fire('Warning!', 'Please select a file to upload.', 'warning');
+        return;
+    }
+
+    // Prepare FormData for AJAX file upload
+    var formData = new FormData();
+    var file = null;
+    for (var i = 0; i < files.length; i++) {
+        file = files[i];
+        formData.append('fileToUpload', files[i]);
+    }
+
+    // AJAX POST to Import/Upload
+    $.ajax({
+        url: '../../Import/Upload',
+        type: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (result) {
+            //Swal.fire('Success!', 'File uploaded successfully.', 'success');
+            $('#btnUpload').hide();
+            FillSheet(file);
+        },
+        error: function () {
+            Swal.fire('Error!', 'File upload failed.', 'error');
+        }
+    });
 });
 
 $(document).on('click', '#btnProcess', function (e) {
@@ -137,6 +186,10 @@ $(document).on('click', '#bdClose', function (e) {
 $(document).on('click', '#bdSendEmailGoto', function (e) {
     e.preventDefault();
     window.location.href = '../../Import/UnAssigned';
+});
+$(document).on('click', '#btnSubmit', function (e) {
+    e.preventDefault();
+    if (typeof SubmitData === 'function') SubmitData();
 });
 
 function FillGrid() {
@@ -246,49 +299,49 @@ function FillGrid() {
 
 }
 
-function FillSheet() {
+function FillSheet(fileInput) {
+    debugger;
+    //$('#jqxFileUpload').on('uploadEnd', function () {
+    //var fileInput = this.files[0];
+    if (!fileInput) return;
 
-    $('#jqxFileUpload').on('change', function () {
-        var fileInput = this.files[0];
-        if (!fileInput) return;
+    var fileName = fileInput.name;
+    $("#lblFileName").html(fileName);
 
-        var fileName = fileInput.name;
-        $("#lblFileName").html(fileName);
+    var File = { "FileName": fileName };
 
-        var File = { "FileName": fileName };
+    $.ajax({
+        type: "GET",
+        url: "../../Import/FillSheet",
+        contentType: 'application/json',
+        cache: false,
+        data: File,
+        success: function (result) {
+            $("#btnUpload").show();
 
-        $.ajax({
-            type: "GET",
-            url: "../../Import/FillSheet",
-            contentType: 'application/json',
-            cache: false,
-            data: File,
-            success: function (result) {
-                $("#btnUpload").show();
+            var Sheets = result.dtSheet;
 
-                var Sheets = result.dtSheet;
+            // Populate dropdown
+            var $cmbSheet = $('#cmbSheet');
+            $cmbSheet.empty();
+            $cmbSheet.append('<option value="">Select Sheet</option>');
 
-                // Populate dropdown
-                var $cmbSheet = $('#cmbSheet');
-                $cmbSheet.empty();
-                $cmbSheet.append('<option value="">Select Sheet</option>');
-
-                $.each(Sheets, function (i, sheet) {
-                    $cmbSheet.append('<option value="' + sheet.SheetName + '">' + sheet.SheetName + '</option>');
-                });
-            },
-            error: function () {
-                Swal.fire('Error!', 'Failed to load sheets', 'error');
-            }
-        });
+            $.each(Sheets, function (i, sheet) {
+                $cmbSheet.append('<option value="' + sheet.SheetName + '">' + sheet.SheetName + '</option>');
+            });
+        },
+        error: function () {
+            Swal.fire('Error!', 'Failed to load sheets', 'error');
+        }
     });
+    //});
 }
 
 
 
 
 function FillSheet2() {
-    $('#jqxFileUpload2').on('change', function () {
+    $('#jqxFileUpload2').on('uploadEnd', function () {
         var fileInput = this.files[0];
         if (!fileInput) return;
 
@@ -369,8 +422,8 @@ function FillProvider() {
     });
 }
 
-function Upload() {
-
+function SubmitData() {
+    debugger;
     // Get selected values from standard <select> elements
     var month = $('#cmbMonth').val();
     var year = $('#cmbYear').val();
@@ -691,6 +744,9 @@ function ClearImport() {
 
     $("#lblFileName").html('');
     $("#lblBillAmount").html('');
+        
+    // Clear jqxFileUpload selected file
+    $("#jqxFileUpload").val("");
 }
 function UploadSetting() {
 
@@ -1406,7 +1462,7 @@ function showBillDetailsModal(details) {
                 Swal.fire('Error!', 'Failed to send email', 'error');
             }
         });
-    }); 
+    });
 
 }
 function closeBillDetailsModal() {
