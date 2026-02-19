@@ -1387,8 +1387,6 @@
   <ItemGroup>
     <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
-    <Folder Include="bin\" />
-    <Folder Include="obj\Debug\AspnetCompileMerge\Source\Scripts\" />
     <Folder Include="Views\Index\" />
   </ItemGroup>
   <ItemGroup>
