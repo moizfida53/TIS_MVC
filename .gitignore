@@ -1,0 +1,15 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/TIS_General/v17
+/.vs/TIS_General/CopilotIndices/17.14.1091.29919/CodeChunks.db
+/.vs/TIS_General/CopilotIndices/17.14.1091.29919/CodeChunks.db-shm
+/.vs/TIS_General/CopilotIndices/17.14.1091.29919/CodeChunks.db-wal
+/.vs/TIS_General/CopilotIndices/17.14.1091.29919/SemanticSymbols.db
+/.vs/TIS_General/CopilotIndices/17.14.1091.29919/SemanticSymbols.db-shm
+/.vs/TIS_General/CopilotIndices/17.14.1091.29919/SemanticSymbols.db-wal
+/.vs/TIS_General/FileContentIndex/4c268f59-ddd7-4f9b-9edc-b7affab15326.vsidx
+/.vs/TIS_General/FileContentIndex/535d9150-5106-4316-bdba-c9c1f76fb753.vsidx
+/TIS/bin/TIS.dll
+/TIS/bin/TIS.pdb
