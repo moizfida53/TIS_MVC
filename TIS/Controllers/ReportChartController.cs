@@ -8,42 +8,44 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Web.Mvc;
+using TIS.Filters;
 using TIS.Helper;
 
 namespace TIS.Controllers
 {
-  public class ReportChartController : Controller
-  {
-    public ActionResult Index() => (ActionResult) this.View();
-
-    public ActionResult ReportChart() => (ActionResult) this.View();
-
-    public JsonResult GetReportChart()
+    [RoleAuthorize(Roles.Administrator, Roles.SuperAdmin, Roles.Employee)]
+    public class ReportChartController : Controller
     {
-      try
-      {
-        DataSet dataSet = DB.ExecuteStoredProcDataSet("sp_ReportChart");
-        List<TIS.Models.ReportChart> reportChartList = new List<TIS.Models.ReportChart>();
-        DataTable table = dataSet.Tables[0];
-        if (table.Rows.Count > 0)
+        public ActionResult Index() => (ActionResult)this.View();
+
+        public ActionResult ReportChart() => (ActionResult)this.View();
+
+        public JsonResult GetReportChart()
         {
-          foreach (DataRow row in (InternalDataCollectionBase) table.Rows)
-            reportChartList.Add(new TIS.Models.ReportChart()
+            try
             {
-              TRANS_TYPE = row["TRANS_TYPE"].ToString(),
-              Amount = row["Amount"].ToString(),
-              ORG = row["ORG"].ToString()
-            });
+                DataSet dataSet = DB.ExecuteStoredProcDataSet("sp_ReportChart");
+                List<TIS.Models.ReportChart> reportChartList = new List<TIS.Models.ReportChart>();
+                DataTable table = dataSet.Tables[0];
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in (InternalDataCollectionBase)table.Rows)
+                        reportChartList.Add(new TIS.Models.ReportChart()
+                        {
+                            TRANS_TYPE = row["TRANS_TYPE"].ToString(),
+                            Amount = row["Amount"].ToString(),
+                            ORG = row["ORG"].ToString()
+                        });
+                }
+                return this.Json((object)new
+                {
+                    dtReportChart = reportChartList
+                }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return this.Json((object)"'Fail':'true'");
+            }
         }
-        return this.Json((object) new
-        {
-          dtReportChart = reportChartList
-        }, JsonRequestBehavior.AllowGet);
-      }
-      catch (Exception ex)
-      {
-        return this.Json((object) "'Fail':'true'");
-      }
     }
-  }
 }

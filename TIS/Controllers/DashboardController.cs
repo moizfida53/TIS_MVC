@@ -1,16 +1,18 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using TIS.Models;
-using System.Data;
+using TIS.Filters;
 using TIS.Helper;
-using System.Data.SqlClient;
-using Newtonsoft.Json;
+using TIS.Models;
 
 namespace TIS.Controllers
 {
+    [RoleAuthorize(Roles.Administrator, Roles.SuperAdmin, Roles.Employee)]
     public class DashboardController : Controller
     {
         // GET: Home

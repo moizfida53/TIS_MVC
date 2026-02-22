@@ -6,10 +6,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using TIS.Filters;
 using TIS.Helper;
 
 namespace TIS.Controllers
 {
+    [RoleAuthorize(Roles.Administrator, Roles.SuperAdmin, Roles.Employee)]
     public class MarsaAPIController : Controller
     {
         //

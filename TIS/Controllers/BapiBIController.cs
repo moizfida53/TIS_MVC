@@ -10,12 +10,14 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Threading;
 using System.Web.Mvc;
+using TIS.Filters;
 using TIS.Helper;
 using TIS.Models;
 
 namespace TIS.Controllers
 {
-  public class BapiBIController : Controller
+    [RoleAuthorize(Roles.Administrator, Roles.SuperAdmin, Roles.Employee)]
+    public class BapiBIController : Controller
   {
     public ActionResult Index() => (ActionResult) this.View();
 

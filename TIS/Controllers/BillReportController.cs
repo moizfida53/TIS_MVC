@@ -9,11 +9,13 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.Mvc;
+using TIS.Filters;
 using TIS.Helper;
 using TIS.Models;
 
 namespace TIS.Controllers
 {
+    [RoleAuthorize(Roles.Administrator, Roles.SuperAdmin, Roles.Employee)]
     public class BillReportController : Controller
     {
         public ActionResult Index() => (ActionResult)this.View();

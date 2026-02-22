@@ -10,10 +10,12 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Net.Mail;
 using System.Web.Mvc;
+using TIS.Filters;
 using TIS.Helper;
 
 namespace TIS.Controllers
 {
+    [RoleAuthorize(Roles.Administrator, Roles.SuperAdmin, Roles.Employee)]
     public class SendEmailController : Controller
     {
         public ActionResult Index() => (ActionResult)this.View();

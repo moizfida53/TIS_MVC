@@ -11,13 +11,17 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web.Mvc;
+using TIS.Filters;
 using TIS.Helper;
 using TIS.Models;
 
 namespace TIS.Controllers
 {
+    [RoleAuthorize(Roles.Administrator, Roles.SuperAdmin)] 
     public class AdminController : Controller
     {
+        // Or on a single action:
+        [RoleAuthorize(Roles.Administrator, Roles.SuperAdmin)]
         public ActionResult Index()
         {
             if (this.Session["EmpRoleID"] == null)

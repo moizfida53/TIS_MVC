@@ -12,11 +12,13 @@ using System.Linq;
 using System.Net.Mail;
 using System.Web.Mvc;
 using System.Xml.Linq;
+using TIS.Filters;
 using TIS.Helper;
 using TIS.Models;
 
 namespace TIS.Controllers
 {
+    [RoleAuthorize(Roles.Administrator, Roles.SuperAdmin, Roles.Employee)]
     public class AjaxController : Controller
     {
         public ActionResult Index() => this.Session["EmpLoginName"] == null ? (ActionResult)this.View("AccessDenied") : (ActionResult)this.View();

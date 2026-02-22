@@ -9,77 +9,79 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Web.Mvc;
+using TIS.Filters;
 using TIS.Helper;
 using TIS.Models;
 
 namespace TIS.Controllers
 {
-  public class PivotController : Controller
-  {
-    public ActionResult Index() => (ActionResult) this.View();
-
-    public ActionResult Pivot() => (ActionResult) this.View();
-
-    public JsonResult GetPivot()
+    [RoleAuthorize(Roles.Administrator, Roles.SuperAdmin, Roles.Employee)]
+    public class PivotController : Controller
     {
-      try
-      {
-        DataSet dataSet = DB.ExecuteStoredProcDataSet("sp_vwSub1Pivot");
-        List<TIS.Models.Pivot> pivotList = new List<TIS.Models.Pivot>();
-        DataTable table = dataSet.Tables[1];
-        if (table.Rows.Count > 0)
+        public ActionResult Index() => (ActionResult)this.View();
+
+        public ActionResult Pivot() => (ActionResult)this.View();
+
+        public JsonResult GetPivot()
         {
-          foreach (DataRow row in (InternalDataCollectionBase) table.Rows)
-            pivotList.Add(new TIS.Models.Pivot()
+            try
             {
-              SUB_NO = Convert.ToInt32(row["SUB_NO"].ToString()),
-              TRANS_TYPE = row["TRANS_TYPE"].ToString(),
-              AMOUNT = Convert.ToDecimal(row["AMOUNT"].ToString()),
-              BILLDATE = row["BILLDATE"].ToString()
-            });
+                DataSet dataSet = DB.ExecuteStoredProcDataSet("sp_vwSub1Pivot");
+                List<TIS.Models.Pivot> pivotList = new List<TIS.Models.Pivot>();
+                DataTable table = dataSet.Tables[1];
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in (InternalDataCollectionBase)table.Rows)
+                        pivotList.Add(new TIS.Models.Pivot()
+                        {
+                            SUB_NO = Convert.ToInt32(row["SUB_NO"].ToString()),
+                            TRANS_TYPE = row["TRANS_TYPE"].ToString(),
+                            AMOUNT = Convert.ToDecimal(row["AMOUNT"].ToString()),
+                            BILLDATE = row["BILLDATE"].ToString()
+                        });
+                }
+                JsonResult pivot = this.Json((object)new
+                {
+                    dtPivot = pivotList
+                }, JsonRequestBehavior.AllowGet);
+                pivot.MaxJsonLength = new int?(int.MaxValue);
+                return pivot;
+            }
+            catch (Exception ex)
+            {
+                return this.Json((object)"'Fail':'true'");
+            }
         }
-        JsonResult pivot = this.Json((object) new
-        {
-          dtPivot = pivotList
-        }, JsonRequestBehavior.AllowGet);
-        pivot.MaxJsonLength = new int?(int.MaxValue);
-        return pivot;
-      }
-      catch (Exception ex)
-      {
-        return this.Json((object) "'Fail':'true'");
-      }
-    }
 
-    public JsonResult Save(PivotData value)
-    {
-      try
-      {
-        DB.ExecuteNonQuery("insert into tblPivot (Object,Date) values ('" + value.Object + "',GetDate())");
-        return this.Json((object) "Success");
-      }
-      catch (Exception ex)
-      {
-        return this.Json((object) "'Fail':'true'");
-      }
-    }
-
-    public JsonResult Restore()
-    {
-      try
-      {
-        JsonConvert.DeserializeObject<List<string>>("['0','1','2','3','4']");
-        JsonResult jsonResult = this.Json((object) new
+        public JsonResult Save(PivotData value)
         {
-          dtPivot = DB.GetData("select Top 1 Object from tblPivot").Tables[0].Rows[0]["Object"].ToString()
-        }, JsonRequestBehavior.AllowGet);
-        jsonResult.MaxJsonLength = new int?(int.MaxValue);
-        return jsonResult;
-      }
-      catch (Exception ex)
-      {
-        return this.Json((object) "'Fail':'true'");
-      }
+            try
+            {
+                DB.ExecuteNonQuery("insert into tblPivot (Object,Date) values ('" + value.Object + "',GetDate())");
+                return this.Json((object)"Success");
+            }
+            catch (Exception ex)
+            {
+                return this.Json((object)"'Fail':'true'");
+            }
+        }
+
+        public JsonResult Restore()
+        {
+            try
+            {
+                JsonConvert.DeserializeObject<List<string>>("['0','1','2','3','4']");
+                JsonResult jsonResult = this.Json((object)new
+                {
+                    dtPivot = DB.GetData("select Top 1 Object from tblPivot").Tables[0].Rows[0]["Object"].ToString()
+                }, JsonRequestBehavior.AllowGet);
+                jsonResult.MaxJsonLength = new int?(int.MaxValue);
+                return jsonResult;
+            }
+            catch (Exception ex)
+            {
+                return this.Json((object)"'Fail':'true'");
+            }
+        }
     }
-  }
 }
