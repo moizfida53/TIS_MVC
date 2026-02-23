@@ -148,7 +148,7 @@
                                     <div id="grdCC"></div>
                                 </div>
                                 <div>
-                                    <input id="btnOpenCC" type="button" value="+" onclick="OpenCC()" />
+                                    <input id="btnOpenCC" type="button" value="+" />
                                 </div>
 
                             </div>
@@ -228,7 +228,7 @@
         </div>
 
         <div class="mt-3 text-end">
-            <button class="main-button btn-export" onclick="ExportToExcel()">
+            <button id="btnManageEmployeeExportExcel" class="main-button btn-export">
                 <svg fill="#fff" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 50 50">
                     <path d="M28.8125 .03125L.8125 5.34375C.339844 
 5.433594 0 5.863281 0 6.34375L0 43.65625C0 
@@ -287,16 +287,16 @@
             <table>
                 <tr>
                     <td valign="middle" height="80px">
-                        <input id="btnAddCC" type="button" value="Add" onclick="AddCC()" class="Btnstyle" />
+                        <input id="btnAddCC" type="button" value="Add" class="Btnstyle" />
                     </td>
                     <td valign="middle" height="80px">
-                        <input id="btnUpdateCC" type="button" value="Update" onclick="UpdateCC()" class="Btnstyle" />
+                        <input id="btnUpdateCC" type="button" value="Update" class="Btnstyle" />
                     </td>
                     <td valign="middle" height="80px">
-                        <input id="btnDelCC" type="button" value="Delete" onclick="DelCC()" class="Btnstyle" />
+                        <input id="btnDelCC" type="button" value="Delete" class="Btnstyle" />
                     </td>
                     <td valign="middle" height="80px">
-                        <input id="btnCanCC" type="button" value="Cancel" onclick="ClearCC()" class="Btnstyle" />
+                        <input id="btnCanCC" type="button" value="Cancel" class="Btnstyle" />
                     </td>
                 </tr>
             </table>
@@ -361,19 +361,16 @@
             <table>
                 <tr>
                     <td valign="middle" height="80px">
-                        <input id="btnAddCountry" type="button" value="Add" onclick="AddCountry()" class="Btnstyle" />
+                        <input id="btnAddCountry" type="button" value="Add" class="Btnstyle" />
                     </td>
                     <td valign="middle" height="80px">
-                        <input id="btnUpdateCountry" type="button" value="Update" onclick="UpdateCountry()"
-                            class="Btnstyle" />
+                        <input id="btnUpdateCountry" type="button" value="Update" class="Btnstyle" />
                     </td>
                     <td valign="middle" height="80px">
-                        <input id="btnDeleteCountry" type="button" value="Delete" onclick="DeleteCountry()"
-                            class="Btnstyle" />
+                        <input id="btnDeleteCountry" type="button" value="Delete" class="Btnstyle" />
                     </td>
                     <td valign="middle" height="80px">
-                        <input id="btnCancleCountry" type="button" value="Cancel" onclick="ClearCountry()"
-                            class="Btnstyle" />
+                        <input id="btnCancleCountry" type="button" value="Cancel" class="Btnstyle" />
                     </td>
                 </tr>
             </table>
@@ -414,19 +411,16 @@
             <table>
                 <tr>
                     <td valign="middle" height="80px">
-                        <input id="btnAddManager" type="button" value="Add" onclick="AddManager()" class="Btnstyle" />
+                        <input id="btnAddManager" type="button" value="Add" class="Btnstyle" />
                     </td>
                     <td valign="middle" height="80px">
-                        <input id="btnUpdateManager" type="button" value="Update" onclick="UpdateManager()"
-                            class="Btnstyle" />
+                        <input id="btnUpdateManager" type="button" value="Update" class="Btnstyle" />
                     </td>
                     <td valign="middle" height="80px">
-                        <input id="btnDeleteManager" type="button" value="Delete" onclick="DeleteManager()"
-                            class="Btnstyle" />
+                        <input id="btnDeleteManager" type="button" value="Delete" class="Btnstyle" />
                     </td>
                     <td valign="middle" height="80px">
-                        <input id="btnCancleManager" type="button" value="Cancel" onclick="ClearManager()"
-                            class="Btnstyle" />
+                        <input id="btnCancleManager" type="button" value="Cancel" class="Btnstyle" />
                     </td>
                 </tr>
             </table>

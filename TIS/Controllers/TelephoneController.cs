@@ -1,11 +1,13 @@
-﻿using System.Data;
+﻿using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web.Mvc;
-using System.Configuration;
+using TIS.Filters;
 
 namespace TIS.Controllers.Controllers
 {
+    [RoleAuthorize(Roles.Administrator, Roles.SuperAdmin, Roles.Employee)]
     public class TelephoneController : Controller
     {
         // Loads the Manage Telephone page

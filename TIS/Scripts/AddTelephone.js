@@ -1078,12 +1078,16 @@ function ClearAssign() {
     $("#txtBusLimit").val('');
     $("#cmbLineStatus").val('0');
     $("#cmbLineStatus").jqxDropDownList('selectIndex', 1);
+    $("#grdCostCenter").jqxGrid('clearselection');
     $("#grdAssignNo").jqxGrid('clearselection');
     $("#cmbStartDate").val('');
     $("#cmbEndDate").val('');
     $('#btnUpdateAsg').hide();
     $('#btnDelAsg').hide();
     $('#btnAssign').show();
+    $("#cmbCostCenter").jqxDropDownButton('setContent',
+        '<div style="margin:3px;">Select Cost Center</div>'
+    );
 }
 
 

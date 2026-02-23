@@ -15,11 +15,13 @@ using System.IO;
 using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
+using TIS.Filters;
 using TIS.Helper;
 using TIS.Models;
 
 namespace TIS.Controllers
 {
+    [RoleAuthorize(Roles.Administrator, Roles.SuperAdmin, Roles.Employee)]
     public class ImportController : Controller
     {
         private DataSet m_Bill_Data;

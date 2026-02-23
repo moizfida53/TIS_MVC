@@ -12,11 +12,13 @@ using System.Linq;
 using System.Net.Mail;
 using System.Web.Mvc;
 using System.Xml.Linq;
+using TIS.Filters;
 using TIS.Helper;
 using TIS.Models;
 
 namespace TIS.Controllers
 {
+    [RoleAuthorize(Roles.Administrator, Roles.SuperAdmin, Roles.Employee)]
     public class AjaxController : Controller
     {
         public ActionResult Index() => this.Session["EmpLoginName"] == null ? (ActionResult)this.View("AccessDenied") : (ActionResult)this.View();
@@ -71,68 +73,79 @@ namespace TIS.Controllers
         [HttpPost]
         public JsonResult UpdateTemplates(Template t)
         {
-            SqlParameter[] paramColl = new SqlParameter[6];
-            SqlParameter sqlParameter1 = new SqlParameter();
-            sqlParameter1.ParameterName = "@Id";
-            sqlParameter1.SqlDbType = SqlDbType.Int;
-            sqlParameter1.Value = (object)t.Id;
-            paramColl[0] = sqlParameter1;
-            SqlParameter sqlParameter2 = new SqlParameter();
-            sqlParameter2.ParameterName = "@CId";
-            sqlParameter2.SqlDbType = SqlDbType.Int;
-            sqlParameter2.Value = (object)t.CountryId;
-            paramColl[1] = sqlParameter2;
-            SqlParameter sqlParameter3 = new SqlParameter();
-            sqlParameter3.ParameterName = "@TId";
-            sqlParameter3.SqlDbType = SqlDbType.Int;
-            sqlParameter3.Value = (object)t.TemplateId;
-            paramColl[2] = sqlParameter3;
-            SqlParameter sqlParameter4 = new SqlParameter();
-            sqlParameter4.ParameterName = "@Text";
-            sqlParameter4.SqlDbType = SqlDbType.NVarChar;
-            sqlParameter4.Value = (object)t.TemplateText;
-            paramColl[3] = sqlParameter4;
-            SqlParameter sqlParameter5 = new SqlParameter();
-            sqlParameter5.ParameterName = "@EmailFrom";
-            sqlParameter5.SqlDbType = SqlDbType.VarChar;
-            sqlParameter5.Value = (object)t.EmailFrom;
-            paramColl[4] = sqlParameter5;
-
-            //SqlParameter sqlParameter6 = new SqlParameter();
-            //sqlParameter6.ParameterName = "@EmailBCC";
-            //sqlParameter6.SqlDbType = SqlDbType.NVarChar;
-            //sqlParameter6.Value = (object)t.EmailBCC;
-            //paramColl[5] = sqlParameter6;
-
-
-            SqlParameter sqlParameter6 = new SqlParameter();
-            sqlParameter6.ParameterName = "@EmailBCC";
-            sqlParameter6.SqlDbType = SqlDbType.NVarChar;
-            sqlParameter6.Value = string.IsNullOrEmpty(t.EmailBCC)
-                ? DBNull.Value
-                : (object)t.EmailBCC;
-            paramColl[5] = sqlParameter6;
-
-
-
-            DataSet dataSet = DB.ExecuteStoredProcDataSet("sp_SaveTemplates", paramColl);
-            List<Template> templateList = new List<Template>();
-            foreach (DataRow row in (InternalDataCollectionBase)dataSet.Tables[0].Rows)
-                templateList.Add(new Template()
-                {
-                    TemplateId = Convert.ToInt32(row["TemplateId"].ToString()),
-                    TemplateText = row["TText"].ToString(),
-                    EmailBCC = row["EmailBCC"].ToString(),
-                    EmailFrom = row["EmailFrom"].ToString(),
-                    CountryId = Convert.ToInt32(row["CountryId"].ToString()),
-                    CountryName = row["COUNTRYNAME"].ToString(),
-                    Id = Convert.ToInt32(row["Id"].ToString()),
-                    TemplateName = row["Template"].ToString()
-                });
-            return this.Json((object)new
+            try
             {
-                Templates = templateList
-            }, JsonRequestBehavior.AllowGet);
+                SqlParameter[] paramColl = new SqlParameter[6];
+                SqlParameter sqlParameter1 = new SqlParameter();
+                sqlParameter1.ParameterName = "@Id";
+                sqlParameter1.SqlDbType = SqlDbType.Int;
+                sqlParameter1.Value = Convert.ToInt32(t.Id);
+                paramColl[0] = sqlParameter1;
+                SqlParameter sqlParameter2 = new SqlParameter();
+                sqlParameter2.ParameterName = "@CId";
+                sqlParameter2.SqlDbType = SqlDbType.Int;
+                sqlParameter2.Value = Convert.ToInt32(t.CountryId);
+                paramColl[1] = sqlParameter2;
+                SqlParameter sqlParameter3 = new SqlParameter();
+                sqlParameter3.ParameterName = "@TId";
+                sqlParameter3.SqlDbType = SqlDbType.Int;
+                sqlParameter3.Value = Convert.ToInt32(t.TemplateId);
+                paramColl[2] = sqlParameter3;
+                SqlParameter sqlParameter4 = new SqlParameter();
+                sqlParameter4.ParameterName = "@Text";
+                sqlParameter4.SqlDbType = SqlDbType.NVarChar;
+                sqlParameter4.Value = t.TemplateText.ToString().Trim();
+                paramColl[3] = sqlParameter4;
+                SqlParameter sqlParameter5 = new SqlParameter();
+                sqlParameter5.ParameterName = "@EmailFrom";
+                sqlParameter5.SqlDbType = SqlDbType.VarChar;
+                sqlParameter5.Value = (object)t.EmailFrom;
+                paramColl[4] = sqlParameter5;
+
+                //SqlParameter sqlParameter6 = new SqlParameter();
+                //sqlParameter6.ParameterName = "@EmailBCC";
+                //sqlParameter6.SqlDbType = SqlDbType.NVarChar;
+                //sqlParameter6.Value = (object)t.EmailBCC;
+                //paramColl[5] = sqlParameter6;
+
+
+                SqlParameter sqlParameter6 = new SqlParameter();
+                sqlParameter6.ParameterName = "@EmailBCC";
+                sqlParameter6.SqlDbType = SqlDbType.NVarChar;
+                sqlParameter6.Value = string.IsNullOrEmpty(t.EmailBCC)
+                    ? DBNull.Value
+                    : (object)t.EmailBCC;
+                paramColl[5] = sqlParameter6;
+
+
+
+                DataSet dataSet = DB.ExecuteStoredProcDataSet("sp_SaveTemplates", paramColl);
+                List<Template> templateList = new List<Template>();
+                foreach (DataRow row in (InternalDataCollectionBase)dataSet.Tables[0].Rows)
+                    templateList.Add(new Template()
+                    {
+                        TemplateId = Convert.ToInt32(row["TemplateId"].ToString()),
+                        TemplateText = row["TText"].ToString(),
+                        EmailBCC = row["EmailBCC"].ToString(),
+                        EmailFrom = row["EmailFrom"].ToString(),
+                        CountryId = Convert.ToInt32(row["CountryId"].ToString()),
+                        CountryName = row["COUNTRYNAME"].ToString(),
+                        Id = Convert.ToInt32(row["Id"].ToString()),
+                        TemplateName = row["Template"].ToString()
+                    });
+                return this.Json((object)new
+                {
+                    Templates = templateList
+                }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                string str2 = Convert.ToString((object)ex).Replace("'", " ");
+                DB.ExecuteNonQuery("insert into vwTblUser_tblMaster (FORM_ID,ACTION_NAME,RESULT,USERID) values (1, 'UPDATE EMPLOYEE', 'Fail','" + this.Session["EmpUID"] + "')");
+                DB.ExecuteNonQuery("Insert into [vwTBLDetails_TBLMaster]([SNO],[AT_ID],[OLD_VALUE],[NEW_VALUE],[FIELD_NAME]) values (1, (select ID from TBL_AT_MASTER where date1 = (select max(date1) from TBL_AT_MASTER) ),'', '" + str2 + "' ,'Update Employee')");
+                return this.Json((object)new { myMessage = "Error: " + ex.Message }, JsonRequestBehavior.AllowGet);
+
+            }
         }
 
         public JsonResult getBills(string uid)
@@ -352,260 +365,335 @@ namespace TIS.Controllers
         [HttpPost]
         public JsonResult SaveCallLogs(List<BillDetails> callLogs, Closing close)
         {
-            string str = new XElement((XName)"newCallLog", (object)callLogs.Select<BillDetails, XElement>((Func<BillDetails, XElement>)(p => new XElement((XName)"CallLogRecords", new object[3]
+            try
+            {
+                string str = new XElement((XName)"newCallLog", (object)callLogs.Select<BillDetails, XElement>((Func<BillDetails, XElement>)(p => new XElement((XName)"CallLogRecords", new object[3]
          {
         (object) new XAttribute((XName) "ID", (object) p.Id),
         (object) new XAttribute((XName) "CALL_TYPE", (object) p.CallType),
         (object) new XAttribute((XName) "Comment", p.Comment == null ? (object) string.Empty : (object) p.Comment)
          })))).ToString();
-            SqlParameter[] paramColl = new SqlParameter[10];
-            SqlParameter sqlParameter1 = new SqlParameter();
-            sqlParameter1.ParameterName = "@xml";
-            sqlParameter1.SqlDbType = SqlDbType.Xml;
-            sqlParameter1.Value = (object)str;
-            paramColl[0] = sqlParameter1;
-            SqlParameter sqlParameter2 = new SqlParameter();
-            sqlParameter2.ParameterName = "@BusinessCharges";
-            sqlParameter2.SqlDbType = SqlDbType.Float;
-            sqlParameter2.Value = (object)close.BusinessCharges;
-            paramColl[1] = sqlParameter2;
-            SqlParameter sqlParameter3 = new SqlParameter();
-            sqlParameter3.ParameterName = "@PersonalCharges";
-            sqlParameter3.SqlDbType = SqlDbType.Float;
-            sqlParameter3.Value = (object)close.PersonalCharges;
-            paramColl[2] = sqlParameter3;
-            SqlParameter sqlParameter4 = new SqlParameter();
-            sqlParameter4.ParameterName = "@PersonalLimitCharges";
-            sqlParameter4.SqlDbType = SqlDbType.Float;
-            sqlParameter4.Value = (object)close.PersonalLimitCharges;
-            paramColl[3] = sqlParameter4;
-            SqlParameter sqlParameter5 = new SqlParameter();
-            sqlParameter5.ParameterName = "@DeductibleAmount";
-            sqlParameter5.SqlDbType = SqlDbType.Float;
-            sqlParameter5.Value = (object)close.DeductibleAmount;
-            paramColl[4] = sqlParameter5;
-            SqlParameter sqlParameter6 = new SqlParameter();
-            sqlParameter6.ParameterName = "@TOTALAMOUNT";
-            sqlParameter6.SqlDbType = SqlDbType.Float;
-            sqlParameter6.Value = (object)close.TOTALAMOUNT;
-            paramColl[5] = sqlParameter6;
-            SqlParameter sqlParameter7 = new SqlParameter();
-            sqlParameter7.ParameterName = "@BID";
-            sqlParameter7.SqlDbType = SqlDbType.Int;
-            sqlParameter7.Value = (object)close.BID;
-            paramColl[6] = sqlParameter7;
-            SqlParameter sqlParameter8 = new SqlParameter();
-            sqlParameter8.ParameterName = "@comment";
-            sqlParameter8.SqlDbType = SqlDbType.VarChar;
-            sqlParameter8.Value = (object)close.comments;
-            paramColl[7] = sqlParameter8;
-            SqlParameter sqlParameter9 = new SqlParameter();
-            sqlParameter9.ParameterName = "@Uid";
-            sqlParameter9.SqlDbType = SqlDbType.Int;
-            sqlParameter9.Value = (object)close.uid;
-            paramColl[8] = sqlParameter9;
-            SqlParameter sqlParameter10 = new SqlParameter();
-            sqlParameter10.ParameterName = "@Waiver";
-            sqlParameter10.SqlDbType = SqlDbType.Float;
-            sqlParameter10.Value = (object)close.WaiverAmt;
-            paramColl[9] = sqlParameter10;
-            DataSet dataSet = DB.ExecuteStoredProcDataSet("sp_CloseBill", paramColl);
-            List<Bill> billList = new List<Bill>();
-            DataTable table = dataSet.Tables[0];
-            if (table.Rows.Count > 0)
-            {
-                foreach (DataRow row in (InternalDataCollectionBase)table.Rows)
-                    billList.Add(new Bill()
-                    {
-                        Id = Convert.ToInt32(row["BILL_ID"].ToString()),
-                        BillDate = Convert.ToDateTime(row["BILLDATE"].ToString()),
-                        Uid = Convert.ToInt32(row["UID"].ToString()),
-                        EmpName = row["NAME"].ToString(),
-                        BillNumber = row["BILLNUMBER"].ToString(),
-                        Mobile = row["SUB_NO"].ToString(),
-                        TotalAmount = Convert.ToDouble(row["TOTALAMOUNT"].ToString()),
-                        LastUpdatedOn = row["LASTUPDATEDON"].ToString(),
-                        Comments = " ",
-                        SubsId = row["SUB_NO_ID"].ToString(),
-                        ManagerName = row["ManagerName"].ToString()
-                    });
+                SqlParameter[] paramColl = new SqlParameter[10];
+                SqlParameter sqlParameter1 = new SqlParameter();
+                sqlParameter1.ParameterName = "@xml";
+                sqlParameter1.SqlDbType = SqlDbType.Xml;
+                sqlParameter1.Value = (object)str;
+                paramColl[0] = sqlParameter1;
+                SqlParameter sqlParameter2 = new SqlParameter();
+                sqlParameter2.ParameterName = "@BusinessCharges";
+                sqlParameter2.SqlDbType = SqlDbType.Float;
+                sqlParameter2.Value = (object)close.BusinessCharges;
+                paramColl[1] = sqlParameter2;
+                SqlParameter sqlParameter3 = new SqlParameter();
+                sqlParameter3.ParameterName = "@PersonalCharges";
+                sqlParameter3.SqlDbType = SqlDbType.Float;
+                sqlParameter3.Value = (object)close.PersonalCharges;
+                paramColl[2] = sqlParameter3;
+                SqlParameter sqlParameter4 = new SqlParameter();
+                sqlParameter4.ParameterName = "@PersonalLimitCharges";
+                sqlParameter4.SqlDbType = SqlDbType.Float;
+                sqlParameter4.Value = (object)close.PersonalLimitCharges;
+                paramColl[3] = sqlParameter4;
+                SqlParameter sqlParameter5 = new SqlParameter();
+                sqlParameter5.ParameterName = "@DeductibleAmount";
+                sqlParameter5.SqlDbType = SqlDbType.Float;
+                sqlParameter5.Value = (object)close.DeductibleAmount;
+                paramColl[4] = sqlParameter5;
+                SqlParameter sqlParameter6 = new SqlParameter();
+                sqlParameter6.ParameterName = "@TOTALAMOUNT";
+                sqlParameter6.SqlDbType = SqlDbType.Float;
+                sqlParameter6.Value = (object)close.TOTALAMOUNT;
+                paramColl[5] = sqlParameter6;
+                SqlParameter sqlParameter7 = new SqlParameter();
+                sqlParameter7.ParameterName = "@BID";
+                sqlParameter7.SqlDbType = SqlDbType.Int;
+                sqlParameter7.Value = (object)close.BID;
+                paramColl[6] = sqlParameter7;
+                SqlParameter sqlParameter8 = new SqlParameter();
+                sqlParameter8.ParameterName = "@comment";
+                sqlParameter8.SqlDbType = SqlDbType.VarChar;
+                sqlParameter8.Value = (object)close.comments;
+                paramColl[7] = sqlParameter8;
+                SqlParameter sqlParameter9 = new SqlParameter();
+                sqlParameter9.ParameterName = "@Uid";
+                sqlParameter9.SqlDbType = SqlDbType.Int;
+                sqlParameter9.Value = (object)close.uid;
+                paramColl[8] = sqlParameter9;
+                SqlParameter sqlParameter10 = new SqlParameter();
+                sqlParameter10.ParameterName = "@Waiver";
+                sqlParameter10.SqlDbType = SqlDbType.Float;
+                sqlParameter10.Value = (object)close.WaiverAmt;
+                paramColl[9] = sqlParameter10;
+                DataSet dataSet = DB.ExecuteStoredProcDataSet("sp_CloseBill", paramColl);
+                List<Bill> billList = new List<Bill>();
+                DataTable table = dataSet.Tables[0];
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in (InternalDataCollectionBase)table.Rows)
+                        billList.Add(new Bill()
+                        {
+                            Id = Convert.ToInt32(row["BILL_ID"].ToString()),
+                            BillDate = Convert.ToDateTime(row["BILLDATE"].ToString()),
+                            Uid = Convert.ToInt32(row["UID"].ToString()),
+                            EmpName = row["NAME"].ToString(),
+                            BillNumber = row["BILLNUMBER"].ToString(),
+                            Mobile = row["SUB_NO"].ToString(),
+                            TotalAmount = Convert.ToDouble(row["TOTALAMOUNT"].ToString()),
+                            LastUpdatedOn = row["LASTUPDATEDON"].ToString(),
+                            Comments = " ",
+                            SubsId = row["SUB_NO_ID"].ToString(),
+                            ManagerName = row["ManagerName"].ToString()
+                        });
+                }
+                this.SendEmail(close.BID.ToString());
+                return this.Json((object)new { dtBills = billList }, JsonRequestBehavior.AllowGet);
             }
-            this.SendEmail(close.BID.ToString());
-            return this.Json((object)new { dtBills = billList }, JsonRequestBehavior.AllowGet);
+            catch (Exception ex)
+            {
+                string str2 = Convert.ToString((object)ex).Replace("'", " ");
+                DB.ExecuteNonQuery("insert into vwTblUser_tblMaster (FORM_ID,ACTION_NAME,RESULT,USERID) values (1, 'UPDATE EMPLOYEE', 'Fail','" + this.Session["EmpUID"] + "')");
+                DB.ExecuteNonQuery("Insert into [vwTBLDetails_TBLMaster]([SNO],[AT_ID],[OLD_VALUE],[NEW_VALUE],[FIELD_NAME]) values (1, (select ID from TBL_AT_MASTER where date1 = (select max(date1) from TBL_AT_MASTER) ),'', '" + str2 + "' ,'Update Employee')");
+                return this.Json((object)new { myMessage = "Error: " + ex.Message }, JsonRequestBehavior.AllowGet);
+
+            }
         }
 
         public JsonResult SendEmail(string BID)
         {
-            SqlParameter[] paramColl1 = new SqlParameter[1];
-            SqlParameter sqlParameter1 = new SqlParameter();
-            sqlParameter1.ParameterName = "@bid";
-            sqlParameter1.SqlDbType = SqlDbType.Int;
-            sqlParameter1.Value = (object)Convert.ToInt32(BID);
-            paramColl1[0] = sqlParameter1;
-            DataSet dataSet = DB.ExecuteStoredProcDataSet("sp_GetEmail", paramColl1);
-            string host = dataSet.Tables[2].Rows[0]["smtpsettings"].ToString();
-            if (dataSet != null && dataSet.Tables[0].Rows.Count > 0)
+            try
             {
-                foreach (DataRow row in (InternalDataCollectionBase)dataSet.Tables[0].Rows)
+                SqlParameter[] paramColl1 = new SqlParameter[1];
+                SqlParameter sqlParameter1 = new SqlParameter();
+                sqlParameter1.ParameterName = "@bid";
+                sqlParameter1.SqlDbType = SqlDbType.Int;
+                sqlParameter1.Value = (object)Convert.ToInt32(BID);
+                paramColl1[0] = sqlParameter1;
+                DataSet dataSet = DB.ExecuteStoredProcDataSet("sp_GetEmail", paramColl1);
+                string host = dataSet.Tables[2].Rows[0]["smtpsettings"].ToString();
+                if (dataSet != null && dataSet.Tables[0].Rows.Count > 0)
                 {
-                    try
+                    foreach (DataRow row in (InternalDataCollectionBase)dataSet.Tables[0].Rows)
                     {
-                        MailMessage message = new MailMessage();
-                        if (row["CC"].ToString() == "" || row["CC"].ToString() == null)
+                        try
                         {
-                            message.To.Add(row["EmailTo"].ToString());
+                            MailMessage message = new MailMessage();
+                            if (row["CC"].ToString() == "" || row["CC"].ToString() == null)
+                            {
+                                message.To.Add(row["EmailTo"].ToString());
+                            }
+                            else
+                            {
+                                message.To.Add(row["EmailTo"].ToString());
+                                message.CC.Add(row["CC"].ToString());
+                            }
+                            message.From = new MailAddress(row["EmailFrom"].ToString());
+                            message.Sender = new MailAddress(row["EmailFrom"].ToString());
+                            message.Subject = row["Subject"].ToString();
+                            string str = row["EmailText"].ToString();
+                            message.Body = str;
+                            message.IsBodyHtml = true;
+                            new SmtpClient(host)
+                            {
+                                UseDefaultCredentials = true
+                            }.Send(message);
+                            SqlParameter[] paramColl2 = new SqlParameter[1];
+                            SqlParameter sqlParameter2 = new SqlParameter();
+                            sqlParameter2.ParameterName = "@id";
+                            sqlParameter2.SqlDbType = SqlDbType.Int;
+                            sqlParameter2.Value = (object)row["Id"].ToString();
+                            paramColl2[0] = sqlParameter2;
+                            DB.ExecuteStoredProcDataSet("sp_MarkAsSent", paramColl2);
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            message.To.Add(row["EmailTo"].ToString());
-                            message.CC.Add(row["CC"].ToString());
+                            string empty = string.Empty;
+                            string str = Convert.ToString((object)ex);
+                            DB.ExecuteNonQuery("insert into vwTblUser_tblMaster (FORM_ID,ACTION_NAME,RESULT,USERID) values (4, 'Send Email', 'Fail','" + this.Session["EmpUID"] + "')");
+                            DB.ExecuteNonQuery("Insert into [vwTBLDetails_TBLMaster]([SNO],[AT_ID],[OLD_VALUE],[NEW_VALUE],[FIELD_NAME]) values (4, (select ID from TBL_AT_MASTER where date1 = (select max(date1) from TBL_AT_MASTER) ),'', '" + str + "' ,'Sent Single Email')");
                         }
-                        message.From = new MailAddress(row["EmailFrom"].ToString());
-                        message.Sender = new MailAddress(row["EmailFrom"].ToString());
-                        message.Subject = row["Subject"].ToString();
-                        string str = row["EmailText"].ToString();
-                        message.Body = str;
-                        message.IsBodyHtml = true;
-                        new SmtpClient(host)
-                        {
-                            UseDefaultCredentials = true
-                        }.Send(message);
-                        SqlParameter[] paramColl2 = new SqlParameter[1];
-                        SqlParameter sqlParameter2 = new SqlParameter();
-                        sqlParameter2.ParameterName = "@id";
-                        sqlParameter2.SqlDbType = SqlDbType.Int;
-                        sqlParameter2.Value = (object)row["Id"].ToString();
-                        paramColl2[0] = sqlParameter2;
-                        DB.ExecuteStoredProcDataSet("sp_MarkAsSent", paramColl2);
-                    }
-                    catch (Exception ex)
-                    {
-                        string empty = string.Empty;
-                        string str = Convert.ToString((object)ex);
-                        DB.ExecuteNonQuery("insert into vwTblUser_tblMaster (FORM_ID,ACTION_NAME,RESULT,USERID) values (4, 'Send Email', 'Fail','" + this.Session["EmpUID"] + "')");
-                        DB.ExecuteNonQuery("Insert into [vwTBLDetails_TBLMaster]([SNO],[AT_ID],[OLD_VALUE],[NEW_VALUE],[FIELD_NAME]) values (4, (select ID from TBL_AT_MASTER where date1 = (select max(date1) from TBL_AT_MASTER) ),'', '" + str + "' ,'Sent Single Email')");
                     }
                 }
+                return this.Json((object)new
+                {
+                    Message = "Email Sent"
+                }, JsonRequestBehavior.AllowGet);
             }
-            return this.Json((object)new
+            catch (Exception ex)
             {
-                Message = "Email Sent"
-            }, JsonRequestBehavior.AllowGet);
+                string str2 = Convert.ToString((object)ex).Replace("'", " ");
+                DB.ExecuteNonQuery("insert into vwTblUser_tblMaster (FORM_ID,ACTION_NAME,RESULT,USERID) values (1, 'UPDATE EMPLOYEE', 'Fail','" + this.Session["EmpUID"] + "')");
+                DB.ExecuteNonQuery("Insert into [vwTBLDetails_TBLMaster]([SNO],[AT_ID],[OLD_VALUE],[NEW_VALUE],[FIELD_NAME]) values (1, (select ID from TBL_AT_MASTER where date1 = (select max(date1) from TBL_AT_MASTER) ),'', '" + str2 + "' ,'Update Employee')");
+                return this.Json((object)new { myMessage = "Error: " + ex.Message }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         public JsonResult SaveDelegate(Delg dlg)
         {
-            SqlParameter[] paramColl = new SqlParameter[7];
-            SqlParameter sqlParameter1 = new SqlParameter();
-            sqlParameter1.ParameterName = "@Command";
-            sqlParameter1.SqlDbType = SqlDbType.Int;
-            sqlParameter1.Value = (object)1;
-            paramColl[0] = sqlParameter1;
-            SqlParameter sqlParameter2 = new SqlParameter();
-            sqlParameter2.ParameterName = "@secid";
-            sqlParameter2.SqlDbType = SqlDbType.Int;
-            sqlParameter2.Value = (object)dlg.secid;
-            paramColl[1] = sqlParameter2;
-            SqlParameter sqlParameter3 = new SqlParameter();
-            sqlParameter3.ParameterName = "@managerid";
-            sqlParameter3.SqlDbType = SqlDbType.Int;
-            sqlParameter3.Value = (object)dlg.managerid;
-            paramColl[2] = sqlParameter3;
-            SqlParameter sqlParameter4 = new SqlParameter();
-            sqlParameter4.ParameterName = "@app";
-            sqlParameter4.SqlDbType = SqlDbType.Bit;
-            sqlParameter4.Value = (object)dlg.app;
-            paramColl[3] = sqlParameter4;
-            SqlParameter sqlParameter5 = new SqlParameter();
-            sqlParameter5.ParameterName = "@idt";
-            sqlParameter5.SqlDbType = SqlDbType.Bit;
-            sqlParameter5.Value = (object)dlg.idt;
-            paramColl[4] = sqlParameter5;
-            SqlParameter sqlParameter6 = new SqlParameter();
-            sqlParameter6.ParameterName = "@sdate";
-            sqlParameter6.SqlDbType = SqlDbType.Date;
-            sqlParameter6.Value = (object)dlg.sdate;
-            paramColl[5] = sqlParameter6;
-            SqlParameter sqlParameter7 = new SqlParameter();
-            sqlParameter7.ParameterName = "@edate";
-            sqlParameter7.SqlDbType = SqlDbType.Date;
-            sqlParameter7.Value = (object)dlg.edate;
-            paramColl[6] = sqlParameter7;
-            DB.ExecuteStoredProc("sp_delegate", paramColl);
-            return this.Json((object)new
+            try
             {
-                Message = "Sucessfully Added"
-            }, JsonRequestBehavior.AllowGet);
+                if (dlg == null)
+                    return Json(new { Error = "Invalid data" }, JsonRequestBehavior.AllowGet);
+
+                if (dlg.secid <= 0 || dlg.managerid <= 0)
+                    return Json(new { Error = "Invalid IDs" }, JsonRequestBehavior.AllowGet);
+
+                if (dlg.sdate > dlg.edate)
+                    return Json(new { Error = "Start date must be before end date" }, JsonRequestBehavior.AllowGet);
+
+                // Optionally, check for reasonable date ranges, and other business rules
+                SqlParameter[] paramColl = new SqlParameter[7];
+                SqlParameter sqlParameter1 = new SqlParameter();
+                sqlParameter1.ParameterName = "@Command";
+                sqlParameter1.SqlDbType = SqlDbType.Int;
+                sqlParameter1.Value = (object)1;
+                paramColl[0] = sqlParameter1;
+                SqlParameter sqlParameter2 = new SqlParameter();
+                sqlParameter2.ParameterName = "@secid";
+                sqlParameter2.SqlDbType = SqlDbType.Int;
+                sqlParameter2.Value = (object)dlg.secid;
+                paramColl[1] = sqlParameter2;
+                SqlParameter sqlParameter3 = new SqlParameter();
+                sqlParameter3.ParameterName = "@managerid";
+                sqlParameter3.SqlDbType = SqlDbType.Int;
+                sqlParameter3.Value = (object)dlg.managerid;
+                paramColl[2] = sqlParameter3;
+                SqlParameter sqlParameter4 = new SqlParameter();
+                sqlParameter4.ParameterName = "@app";
+                sqlParameter4.SqlDbType = SqlDbType.Bit;
+                sqlParameter4.Value = (object)dlg.app;
+                paramColl[3] = sqlParameter4;
+                SqlParameter sqlParameter5 = new SqlParameter();
+                sqlParameter5.ParameterName = "@idt";
+                sqlParameter5.SqlDbType = SqlDbType.Bit;
+                sqlParameter5.Value = (object)dlg.idt;
+                paramColl[4] = sqlParameter5;
+                SqlParameter sqlParameter6 = new SqlParameter();
+                sqlParameter6.ParameterName = "@sdate";
+                sqlParameter6.SqlDbType = SqlDbType.Date;
+                sqlParameter6.Value = (object)dlg.sdate;
+                paramColl[5] = sqlParameter6;
+                SqlParameter sqlParameter7 = new SqlParameter();
+                sqlParameter7.ParameterName = "@edate";
+                sqlParameter7.SqlDbType = SqlDbType.Date;
+                sqlParameter7.Value = (object)dlg.edate;
+                paramColl[6] = sqlParameter7;
+                DB.ExecuteStoredProc("sp_delegate", paramColl);
+                return this.Json((object)new
+                {
+                    Message = "Sucessfully Added"
+                }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                string str2 = Convert.ToString((object)ex).Replace("'", " ");
+                DB.ExecuteNonQuery("insert into vwTblUser_tblMaster (FORM_ID,ACTION_NAME,RESULT,USERID) values (1, 'UPDATE EMPLOYEE', 'Fail','" + this.Session["EmpUID"] + "')");
+                DB.ExecuteNonQuery("Insert into [vwTBLDetails_TBLMaster]([SNO],[AT_ID],[OLD_VALUE],[NEW_VALUE],[FIELD_NAME]) values (1, (select ID from TBL_AT_MASTER where date1 = (select max(date1) from TBL_AT_MASTER) ),'', '" + str2 + "' ,'Update Employee')");
+                return this.Json((object)new { myMessage = "Error: " + ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+
         }
 
         public JsonResult UpdateDelegate(Delg dlg)
         {
-            SqlParameter[] paramColl = new SqlParameter[8];
-            SqlParameter sqlParameter1 = new SqlParameter();
-            sqlParameter1.ParameterName = "@Command";
-            sqlParameter1.SqlDbType = SqlDbType.Int;
-            sqlParameter1.Value = (object)2;
-            paramColl[0] = sqlParameter1;
-            SqlParameter sqlParameter2 = new SqlParameter();
-            sqlParameter2.ParameterName = "@id";
-            sqlParameter2.SqlDbType = SqlDbType.Int;
-            sqlParameter2.Value = (object)dlg.ID;
-            paramColl[1] = sqlParameter2;
-            SqlParameter sqlParameter3 = new SqlParameter();
-            sqlParameter3.ParameterName = "@secid";
-            sqlParameter3.SqlDbType = SqlDbType.Int;
-            sqlParameter3.Value = (object)dlg.secid;
-            paramColl[2] = sqlParameter3;
-            SqlParameter sqlParameter4 = new SqlParameter();
-            sqlParameter4.ParameterName = "@managerid";
-            sqlParameter4.SqlDbType = SqlDbType.Int;
-            sqlParameter4.Value = (object)dlg.managerid;
-            paramColl[3] = sqlParameter4;
-            SqlParameter sqlParameter5 = new SqlParameter();
-            sqlParameter5.ParameterName = "@app";
-            sqlParameter5.SqlDbType = SqlDbType.Bit;
-            sqlParameter5.Value = (object)dlg.app;
-            paramColl[4] = sqlParameter5;
-            SqlParameter sqlParameter6 = new SqlParameter();
-            sqlParameter6.ParameterName = "@idt";
-            sqlParameter6.SqlDbType = SqlDbType.Bit;
-            sqlParameter6.Value = (object)dlg.idt;
-            paramColl[5] = sqlParameter6;
-            SqlParameter sqlParameter7 = new SqlParameter();
-            sqlParameter7.ParameterName = "@sdate";
-            sqlParameter7.SqlDbType = SqlDbType.Date;
-            sqlParameter7.Value = (object)dlg.sdate;
-            paramColl[6] = sqlParameter7;
-            SqlParameter sqlParameter8 = new SqlParameter();
-            sqlParameter8.ParameterName = "@edate";
-            sqlParameter8.SqlDbType = SqlDbType.Date;
-            sqlParameter8.Value = (object)dlg.edate;
-            paramColl[7] = sqlParameter8;
-            DB.ExecuteStoredProc("sp_delegate", paramColl);
-            return this.Json((object)new
+            try
             {
-                Message = "Sucessfully Updated"
-            }, JsonRequestBehavior.AllowGet);
+
+                if (dlg == null)
+                    return Json(new { Error = "Invalid data" }, JsonRequestBehavior.AllowGet);
+
+                if (dlg.secid <= 0 || dlg.managerid <= 0)
+                    return Json(new { Error = "Invalid IDs" }, JsonRequestBehavior.AllowGet);
+
+                if (dlg.sdate > dlg.edate)
+                    return Json(new { Error = "Start date must be before end date" }, JsonRequestBehavior.AllowGet);
+
+                // Optionally, check for reasonable date ranges, and other business rules
+                SqlParameter[] paramColl = new SqlParameter[8];
+                SqlParameter sqlParameter1 = new SqlParameter();
+                sqlParameter1.ParameterName = "@Command";
+                sqlParameter1.SqlDbType = SqlDbType.Int;
+                sqlParameter1.Value = (object)2;
+                paramColl[0] = sqlParameter1;
+                SqlParameter sqlParameter2 = new SqlParameter();
+                sqlParameter2.ParameterName = "@id";
+                sqlParameter2.SqlDbType = SqlDbType.Int;
+                sqlParameter2.Value = (object)dlg.ID;
+                paramColl[1] = sqlParameter2;
+                SqlParameter sqlParameter3 = new SqlParameter();
+                sqlParameter3.ParameterName = "@secid";
+                sqlParameter3.SqlDbType = SqlDbType.Int;
+                sqlParameter3.Value = (object)dlg.secid;
+                paramColl[2] = sqlParameter3;
+                SqlParameter sqlParameter4 = new SqlParameter();
+                sqlParameter4.ParameterName = "@managerid";
+                sqlParameter4.SqlDbType = SqlDbType.Int;
+                sqlParameter4.Value = (object)dlg.managerid;
+                paramColl[3] = sqlParameter4;
+                SqlParameter sqlParameter5 = new SqlParameter();
+                sqlParameter5.ParameterName = "@app";
+                sqlParameter5.SqlDbType = SqlDbType.Bit;
+                sqlParameter5.Value = (object)dlg.app;
+                paramColl[4] = sqlParameter5;
+                SqlParameter sqlParameter6 = new SqlParameter();
+                sqlParameter6.ParameterName = "@idt";
+                sqlParameter6.SqlDbType = SqlDbType.Bit;
+                sqlParameter6.Value = (object)dlg.idt;
+                paramColl[5] = sqlParameter6;
+                SqlParameter sqlParameter7 = new SqlParameter();
+                sqlParameter7.ParameterName = "@sdate";
+                sqlParameter7.SqlDbType = SqlDbType.Date;
+                sqlParameter7.Value = Convert.ToDateTime(dlg.sdate);
+                paramColl[6] = sqlParameter7;
+                SqlParameter sqlParameter8 = new SqlParameter();
+                sqlParameter8.ParameterName = "@edate";
+                sqlParameter8.SqlDbType = SqlDbType.Date;
+                sqlParameter8.Value = Convert.ToDateTime(dlg.edate);
+                paramColl[7] = sqlParameter8;
+                DB.ExecuteStoredProc("sp_delegate", paramColl);
+                return this.Json((object)new
+                {
+                    Message = "Sucessfully Updated"
+                }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception)
+            {
+                return this.Json((object)new
+                {
+                    Message = "Sucessfully not Updated. Please insert valid data."
+                }, JsonRequestBehavior.AllowGet);
+            }
+
         }
 
         public JsonResult DeleteDelegate(Delg dlg)
         {
-            SqlParameter[] paramColl = new SqlParameter[2];
-            SqlParameter sqlParameter1 = new SqlParameter();
-            sqlParameter1.ParameterName = "@Command";
-            sqlParameter1.SqlDbType = SqlDbType.Int;
-            sqlParameter1.Value = (object)3;
-            paramColl[0] = sqlParameter1;
-            SqlParameter sqlParameter2 = new SqlParameter();
-            sqlParameter2.ParameterName = "@id";
-            sqlParameter2.SqlDbType = SqlDbType.Int;
-            sqlParameter2.Value = (object)dlg.ID;
-            paramColl[1] = sqlParameter2;
-            DB.ExecuteStoredProc("sp_delegate", paramColl);
-            return this.Json((object)new
+            try
             {
-                Message = "Sucessfully Deleted"
-            }, JsonRequestBehavior.AllowGet);
+                SqlParameter[] paramColl = new SqlParameter[2];
+                SqlParameter sqlParameter1 = new SqlParameter();
+                sqlParameter1.ParameterName = "@Command";
+                sqlParameter1.SqlDbType = SqlDbType.Int;
+                sqlParameter1.Value = (object)3;
+                paramColl[0] = sqlParameter1;
+                SqlParameter sqlParameter2 = new SqlParameter();
+                sqlParameter2.ParameterName = "@id";
+                sqlParameter2.SqlDbType = SqlDbType.Int;
+                sqlParameter2.Value = (object)dlg.ID;
+                paramColl[1] = sqlParameter2;
+                DB.ExecuteStoredProc("sp_delegate", paramColl);
+                return this.Json((object)new
+                {
+                    Message = "Sucessfully Deleted"
+                }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                string str2 = Convert.ToString((object)ex).Replace("'", " ");
+                DB.ExecuteNonQuery("insert into vwTblUser_tblMaster (FORM_ID,ACTION_NAME,RESULT,USERID) values (1, 'UPDATE EMPLOYEE', 'Fail','" + this.Session["EmpUID"] + "')");
+                DB.ExecuteNonQuery("Insert into [vwTBLDetails_TBLMaster]([SNO],[AT_ID],[OLD_VALUE],[NEW_VALUE],[FIELD_NAME]) values (1, (select ID from TBL_AT_MASTER where date1 = (select max(date1) from TBL_AT_MASTER) ),'', '" + str2 + "' ,'Update Employee')");
+                return this.Json((object)new { myMessage = "Error: " + ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+
         }
 
         public JsonResult getApprovalBills(string uid)
@@ -660,108 +748,130 @@ namespace TIS.Controllers
 
         public JsonResult ApproveBills(List<AppBills> callLogs, int OPT, int UID)
         {
-            string str = new XElement((XName)"newCallLog", (object)callLogs.Select<AppBills, XElement>((Func<AppBills, XElement>)(p => new XElement((XName)"CallLogRecords", new object[2]
+            try
+            {
+                string str = new XElement((XName)"newCallLog", (object)callLogs.Select<AppBills, XElement>((Func<AppBills, XElement>)(p => new XElement((XName)"CallLogRecords", new object[2]
          {
         (object) new XAttribute((XName) "ID", (object) p.Id),
         (object) new XAttribute((XName) "Comm", (object) p.Comm)
          })))).ToString();
-            SqlParameter[] paramColl = new SqlParameter[3];
-            SqlParameter sqlParameter1 = new SqlParameter();
-            sqlParameter1.ParameterName = "@xml";
-            sqlParameter1.SqlDbType = SqlDbType.Xml;
-            sqlParameter1.Value = (object)str;
-            paramColl[0] = sqlParameter1;
-            SqlParameter sqlParameter2 = new SqlParameter();
-            sqlParameter2.ParameterName = "@opt";
-            sqlParameter2.SqlDbType = SqlDbType.Int;
-            sqlParameter2.Value = (object)OPT;
-            paramColl[1] = sqlParameter2;
-            SqlParameter sqlParameter3 = new SqlParameter();
-            sqlParameter3.ParameterName = "@Uid";
-            sqlParameter3.SqlDbType = SqlDbType.Int;
-            sqlParameter3.Value = (object)UID;
-            paramColl[2] = sqlParameter3;
-            DataSet dataSet = DB.ExecuteStoredProcDataSet("sp_Approve", paramColl);
-            List<ArrovalBills> arrovalBillsList = new List<ArrovalBills>();
-            DataTable table = dataSet.Tables[0];
-            if (table.Rows.Count > 0)
-            {
-                foreach (DataRow row in (InternalDataCollectionBase)table.Rows)
-                    arrovalBillsList.Add(new ArrovalBills()
-                    {
-                        BillId = Convert.ToInt32(row["BILL_ID"].ToString()),
-                        BillDate = row["BILLDATE"].ToString(),
-                        SubNo = row["SUB_NO"].ToString(),
-                        Name = row["NAME"].ToString(),
-                        Org = row["ORG"].ToString(),
-                        Total = row["TOTALAMOUNT"].ToString(),
-                        BusinessLimit = row["BUSSINESSLIMIT"].ToString(),
-                        BusinessCharges = row["BUSINESSCHARGES"].ToString(),
-                        DeductableAmount = row["DEDUCTIBLEAMOUNT"].ToString(),
-                        WaiverAmount = row["WAIVERAMOUNT"].ToString(),
-                        Comments = row["COMMENTS"].ToString(),
-                        AComments = " ",
-                        IsSelected = false
-                    });
+                SqlParameter[] paramColl = new SqlParameter[3];
+                SqlParameter sqlParameter1 = new SqlParameter();
+                sqlParameter1.ParameterName = "@xml";
+                sqlParameter1.SqlDbType = SqlDbType.Xml;
+                sqlParameter1.Value = (object)str;
+                paramColl[0] = sqlParameter1;
+                SqlParameter sqlParameter2 = new SqlParameter();
+                sqlParameter2.ParameterName = "@opt";
+                sqlParameter2.SqlDbType = SqlDbType.Int;
+                sqlParameter2.Value = (object)OPT;
+                paramColl[1] = sqlParameter2;
+                SqlParameter sqlParameter3 = new SqlParameter();
+                sqlParameter3.ParameterName = "@Uid";
+                sqlParameter3.SqlDbType = SqlDbType.Int;
+                sqlParameter3.Value = (object)UID;
+                paramColl[2] = sqlParameter3;
+                DataSet dataSet = DB.ExecuteStoredProcDataSet("sp_Approve", paramColl);
+                List<ArrovalBills> arrovalBillsList = new List<ArrovalBills>();
+                DataTable table = dataSet.Tables[0];
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in (InternalDataCollectionBase)table.Rows)
+                        arrovalBillsList.Add(new ArrovalBills()
+                        {
+                            BillId = Convert.ToInt32(row["BILL_ID"].ToString()),
+                            BillDate = row["BILLDATE"].ToString(),
+                            SubNo = row["SUB_NO"].ToString(),
+                            Name = row["NAME"].ToString(),
+                            Org = row["ORG"].ToString(),
+                            Total = row["TOTALAMOUNT"].ToString(),
+                            BusinessLimit = row["BUSSINESSLIMIT"].ToString(),
+                            BusinessCharges = row["BUSINESSCHARGES"].ToString(),
+                            DeductableAmount = row["DEDUCTIBLEAMOUNT"].ToString(),
+                            WaiverAmount = row["WAIVERAMOUNT"].ToString(),
+                            Comments = row["COMMENTS"].ToString(),
+                            AComments = " ",
+                            IsSelected = false
+                        });
+                }
+                this.SendEmailApprove();
+                return this.Json((object)new
+                {
+                    dtBills = arrovalBillsList
+                }, JsonRequestBehavior.AllowGet);
             }
-            this.SendEmailApprove();
-            return this.Json((object)new
+            catch (Exception ex)
             {
-                dtBills = arrovalBillsList
-            }, JsonRequestBehavior.AllowGet);
+                string str2 = Convert.ToString((object)ex).Replace("'", " ");
+                DB.ExecuteNonQuery("insert into vwTblUser_tblMaster (FORM_ID,ACTION_NAME,RESULT,USERID) values (1, 'UPDATE EMPLOYEE', 'Fail','" + this.Session["EmpUID"] + "')");
+                DB.ExecuteNonQuery("Insert into [vwTBLDetails_TBLMaster]([SNO],[AT_ID],[OLD_VALUE],[NEW_VALUE],[FIELD_NAME]) values (1, (select ID from TBL_AT_MASTER where date1 = (select max(date1) from TBL_AT_MASTER) ),'', '" + str2 + "' ,'Update Employee')");
+                return this.Json((object)new { myMessage = "Error: " + ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+
         }
 
         public JsonResult SendEmailApprove()
         {
-            DataSet dataSet = DB.ExecuteStoredProcDataSet("sp_GetEmailApprove");
-            string host = dataSet.Tables[2].Rows[0]["smtpsettings"].ToString();
-            if (dataSet != null && dataSet.Tables[0].Rows.Count > 0)
+            try
             {
-                foreach (DataRow row in (InternalDataCollectionBase)dataSet.Tables[0].Rows)
+                DataSet dataSet = DB.ExecuteStoredProcDataSet("sp_GetEmailApprove");
+                string host = dataSet.Tables[2].Rows[0]["smtpsettings"].ToString();
+                if (dataSet != null && dataSet.Tables[0].Rows.Count > 0)
                 {
-                    try
+                    foreach (DataRow row in (InternalDataCollectionBase)dataSet.Tables[0].Rows)
                     {
-                        MailMessage message = new MailMessage();
-                        if (row["CC"].ToString() == "" || row["CC"].ToString() == null)
+                        try
                         {
-                            message.To.Add(row["EmailTo"].ToString());
+                            MailMessage message = new MailMessage();
+                            if (row["CC"].ToString() == "" || row["CC"].ToString() == null)
+                            {
+                                message.To.Add(row["EmailTo"].ToString());
+                            }
+                            else
+                            {
+                                message.To.Add(row["EmailTo"].ToString());
+                                message.CC.Add(row["CC"].ToString());
+                            }
+                            message.From = new MailAddress(row["EmailFrom"].ToString());
+                            message.Sender = new MailAddress(row["EmailFrom"].ToString());
+                            message.Subject = row["Subject"].ToString();
+                            string str = row["EmailText"].ToString();
+                            message.Body = str;
+                            message.IsBodyHtml = true;
+                            new SmtpClient(host)
+                            {
+                                UseDefaultCredentials = true
+                            }.Send(message);
+                            SqlParameter[] paramColl = new SqlParameter[1];
+                            SqlParameter sqlParameter = new SqlParameter();
+                            sqlParameter.ParameterName = "@id";
+                            sqlParameter.SqlDbType = SqlDbType.Int;
+                            sqlParameter.Value = (object)row["Id"].ToString();
+                            paramColl[0] = sqlParameter;
+                            DB.ExecuteStoredProcDataSet("sp_MarkAsSent", paramColl);
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            message.To.Add(row["EmailTo"].ToString());
-                            message.CC.Add(row["CC"].ToString());
+                            string empty = string.Empty;
+                            string str = Convert.ToString((object)ex);
+                            DB.ExecuteNonQuery("insert into vwTblUser_tblMaster (FORM_ID,ACTION_NAME,RESULT,USERID) values (4, 'Send Email', 'Fail','" + this.Session["EmpUID"] + "')");
+                            DB.ExecuteNonQuery("Insert into [vwTBLDetails_TBLMaster]([SNO],[AT_ID],[OLD_VALUE],[NEW_VALUE],[FIELD_NAME]) values (4, (select ID from TBL_AT_MASTER where date1 = (select max(date1) from TBL_AT_MASTER) ),'', '" + str + "' ,'Approve Email Failed')");
                         }
-                        message.From = new MailAddress(row["EmailFrom"].ToString());
-                        message.Sender = new MailAddress(row["EmailFrom"].ToString());
-                        message.Subject = row["Subject"].ToString();
-                        string str = row["EmailText"].ToString();
-                        message.Body = str;
-                        message.IsBodyHtml = true;
-                        new SmtpClient(host)
-                        {
-                            UseDefaultCredentials = true
-                        }.Send(message);
-                        SqlParameter[] paramColl = new SqlParameter[1];
-                        SqlParameter sqlParameter = new SqlParameter();
-                        sqlParameter.ParameterName = "@id";
-                        sqlParameter.SqlDbType = SqlDbType.Int;
-                        sqlParameter.Value = (object)row["Id"].ToString();
-                        paramColl[0] = sqlParameter;
-                        DB.ExecuteStoredProcDataSet("sp_MarkAsSent", paramColl);
-                    }
-                    catch (Exception ex)
-                    {
-                        string empty = string.Empty;
-                        string str = Convert.ToString((object)ex);
-                        DB.ExecuteNonQuery("insert into vwTblUser_tblMaster (FORM_ID,ACTION_NAME,RESULT,USERID) values (4, 'Send Email', 'Fail','" + this.Session["EmpUID"] + "')");
-                        DB.ExecuteNonQuery("Insert into [vwTBLDetails_TBLMaster]([SNO],[AT_ID],[OLD_VALUE],[NEW_VALUE],[FIELD_NAME]) values (4, (select ID from TBL_AT_MASTER where date1 = (select max(date1) from TBL_AT_MASTER) ),'', '" + str + "' ,'Approve Email Failed')");
                     }
                 }
+                return this.Json((object)new
+                {
+                    Message = "Email Sent"
+                }, JsonRequestBehavior.AllowGet);
             }
-            return this.Json((object)new
+            catch (Exception ex)
             {
-                Message = "Email Sent"
-            }, JsonRequestBehavior.AllowGet);
+                string str2 = Convert.ToString((object)ex).Replace("'", " ");
+                DB.ExecuteNonQuery("insert into vwTblUser_tblMaster (FORM_ID,ACTION_NAME,RESULT,USERID) values (1, 'UPDATE EMPLOYEE', 'Fail','" + this.Session["EmpUID"] + "')");
+                DB.ExecuteNonQuery("Insert into [vwTBLDetails_TBLMaster]([SNO],[AT_ID],[OLD_VALUE],[NEW_VALUE],[FIELD_NAME]) values (1, (select ID from TBL_AT_MASTER where date1 = (select max(date1) from TBL_AT_MASTER) ),'', '" + str2 + "' ,'Update Employee')");
+                return this.Json((object)new { myMessage = "Error: " + ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+
         }
 
         public JsonResult getArchivedBills(string uid)
@@ -1053,23 +1163,33 @@ namespace TIS.Controllers
 
         public JsonResult UpdateRecord(List<BillDetails> BillDetails)
         {
-            string str = new XElement((XName)"newCallLog", (object)BillDetails.Select<BillDetails, XElement>((Func<BillDetails, XElement>)(p => new XElement((XName)"CallLogRecords", new object[3]
-         {
-        (object) new XAttribute((XName) "ID", (object) p.Id),
-        (object) new XAttribute((XName) "CALL_TYPE", (object) p.CallType),
-        (object) new XAttribute((XName) "Comment", p.Comment == null ? (object) string.Empty : (object) p.Comment)
-         })))).ToString();
-            SqlParameter[] paramColl = new SqlParameter[1];
-            SqlParameter sqlParameter = new SqlParameter();
-            sqlParameter.ParameterName = "@xml";
-            sqlParameter.SqlDbType = SqlDbType.Xml;
-            sqlParameter.Value = (object)str;
-            paramColl[0] = sqlParameter;
-            DB.ExecuteStoredProcDataSet("sp_SaveCloseBill", paramColl);
-            return this.Json((object)new
+            try
             {
-                Message = "Updated Sucessfully"
-            }, JsonRequestBehavior.AllowGet);
+                string str = new XElement((XName)"newCallLog", (object)BillDetails.Select<BillDetails, XElement>((Func<BillDetails, XElement>)(p => new XElement((XName)"CallLogRecords", new object[3]
+                 {
+                (object) new XAttribute((XName) "ID", (object) p.Id),
+                (object) new XAttribute((XName) "CALL_TYPE", (object) p.CallType),
+                (object) new XAttribute((XName) "Comment", p.Comment == null ? (object) string.Empty : (object) p.Comment)
+                 })))).ToString();
+                SqlParameter[] paramColl = new SqlParameter[1];
+                SqlParameter sqlParameter = new SqlParameter();
+                sqlParameter.ParameterName = "@xml";
+                sqlParameter.SqlDbType = SqlDbType.Xml;
+                sqlParameter.Value = (object)str;
+                paramColl[0] = sqlParameter;
+                DB.ExecuteStoredProcDataSet("sp_SaveCloseBill", paramColl);
+                return this.Json((object)new
+                {
+                    Message = "Updated Sucessfully"
+                }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                string str2 = Convert.ToString((object)ex).Replace("'", " ");
+                DB.ExecuteNonQuery("insert into vwTblUser_tblMaster (FORM_ID,ACTION_NAME,RESULT,USERID) values (1, 'UPDATE EMPLOYEE', 'Fail','" + this.Session["EmpUID"] + "')");
+                DB.ExecuteNonQuery("Insert into [vwTBLDetails_TBLMaster]([SNO],[AT_ID],[OLD_VALUE],[NEW_VALUE],[FIELD_NAME]) values (1, (select ID from TBL_AT_MASTER where date1 = (select max(date1) from TBL_AT_MASTER) ),'', '" + str2 + "' ,'Update Employee')");
+                return this.Json((object)new { myMessage = "Error: " + ex.Message }, JsonRequestBehavior.AllowGet);
+            }
         }
     }
 }

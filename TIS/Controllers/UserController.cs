@@ -15,6 +15,7 @@ using System.Security.Cryptography;
 using System.Security.Principal;
 using System.Text.RegularExpressions;
 using System.Web.Mvc;
+using TIS.Filters;
 using TIS.Helper;
 using TIS.Models;
 
@@ -41,9 +42,7 @@ namespace TIS.Controllers
                 this.loginName = strArray[strArray.Length - 1];
             }
         }
-
         public ActionResult NewPage() => (ActionResult)this.View();
-
         public ActionResult Index(int SelectedTabIndex =1)
         {
             ViewBag.selectedTabId = SelectedTabIndex;
@@ -164,6 +163,7 @@ namespace TIS.Controllers
             }
             //return (ActionResult)this.View();
         }
+        [RoleAuthorize(Roles.Administrator, Roles.SuperAdmin, Roles.Employee)]
         //[HttpPost]
         public ActionResult RedirectOnListView(int tabindex)
         {
@@ -172,6 +172,7 @@ namespace TIS.Controllers
                 SelectedTabIndex = tabindex
             });
         }
+        [RoleAuthorize(Roles.Administrator, Roles.SuperAdmin, Roles.Employee)]
         public JsonResult GetLandingPageData(string uid)
         {
             try
@@ -241,9 +242,28 @@ namespace TIS.Controllers
         public JsonResult SetSession(string Username)
         {
             this.Session["EmpLoginAs"] = (object)Username;
+            SqlParameter[] paramColl = new SqlParameter[1];
+            SqlParameter sqlParameter = new SqlParameter();
+            sqlParameter.ParameterName = "@username";
+            sqlParameter.SqlDbType = SqlDbType.VarChar;
+            sqlParameter.Value = (object)Username;
+            paramColl[0] = sqlParameter;
+            DataSet dataSet = DB.ExecuteStoredProcDataSet("sp_Login", paramColl);
+            if (dataSet.Tables[0].Rows.Count > 0)
+            {
+                string str1 = dataSet.Tables[0].Rows[0][0].ToString();
+                string str2 = dataSet.Tables[0].Rows[0][1].ToString();
+                string str3 = dataSet.Tables[0].Rows[0][2].ToString();
+                this.Session["EmpLoginName"] = (object)str1;
+                this.Session["EmpLoginAs"] = (object)str1;
+                this.Session["EmpDisplayName"] = (object)str2;
+                this.Session["EmpRoleID"] = (object)str3;
+                this.Session["EmpUsername"] = (object)str1;
+            }
+
             return this.Json((object)new { Message = "Success" }, JsonRequestBehavior.AllowGet);
         }
-
+        [RoleAuthorize(Roles.Administrator, Roles.SuperAdmin, Roles.Employee)]
         public ActionResult Analyse()
         {
             object sessionValue = this.Session["EmpLoginAs"];
@@ -299,7 +319,7 @@ namespace TIS.Controllers
             }
             return (ActionResult)this.View();
         }
-
+        [RoleAuthorize(Roles.Administrator, Roles.SuperAdmin, Roles.Employee)]
         public ActionResult HomePage()
         {
             object sessionValue = this.Session["EmpLoginAs"];

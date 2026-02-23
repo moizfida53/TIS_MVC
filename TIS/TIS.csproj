@@ -185,6 +185,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AdminRoleAuthorizeAttribute.cs" />
     <Compile Include="Controllers\AjaxController.cs" />
     <Compile Include="Controllers\AuditReportController.cs" />
     <Compile Include="Controllers\BapiBIController.cs" />
@@ -206,6 +207,8 @@
     <Compile Include="Controllers\SyncBapiController.cs" />
     <Compile Include="Controllers\TelephoneController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Filters\RoleAuthorizeAttribute.cs" />
+    <Compile Include="Filters\Roles.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1387,8 +1390,6 @@
   <ItemGroup>
     <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
-    <Folder Include="bin\" />
-    <Folder Include="obj\Debug\AspnetCompileMerge\Source\Scripts\" />
     <Folder Include="Views\Index\" />
   </ItemGroup>
   <ItemGroup>
