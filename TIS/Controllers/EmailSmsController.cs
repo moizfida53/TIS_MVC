@@ -19,7 +19,7 @@ using TIS.Models;
 
 namespace TIS.Controllers
 {
-    [RoleAuthorize(Roles.Administrator, Roles.SuperAdmin, Roles.Employee)]
+    [RoleAuthorize(Roles.Administrator, Roles.SuperAdmin)]
     public class EmailSmsController : Controller
     {
         public ActionResult EmailSms() => (ActionResult)this.View();

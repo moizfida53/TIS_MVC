@@ -175,10 +175,10 @@
                         <li><a href="../../Admin/Index">Manage Employee</a></li>
                         <li><a href="../../Admin/Telephone">Manage Telephone</a></li>
                         <li><a href="../../Admin/Delegate">Delegate Bills</a></li>
-                        <li><a href="../../Auditreport/auditreport">Audit Report</a></li>
+                       <%-- <li><a href="../../Auditreport/auditreport">Audit Report</a></li>--%>
                         <li><a href="../../SendEmail/SendEmail">Send Email</a></li>
-                        <li><a href="../../EmailSMS/EmailSMS">Email/SMS</a></li>
-                        <li><a href="../../EmailSMSReport/EmailSMSReport">Email/SMS Report</a></li>
+                       <%-- <li><a href="../../EmailSMS/EmailSMS">Email/SMS</a></li>--%>
+                        <%--<li><a href="../../EmailSMSReport/EmailSMSReport">Email/SMS Report</a></li>--%>
                     </ul>
                 </li>
                 <li>
@@ -188,7 +188,7 @@
                         <li><a href="../../Import/UnAssigned">UnAssigned Bills</a></li>
                         <li><a href="../../Bill/Index">Force Bill</a></li>
                         <li><a href="../../Bill/ChangeStatus">Change Bill Status</a></li>
-                        <li><a href="../../Bill/ReImburseBill">Re-Imburse Bill</a></li>
+                        <%--<li><a href="../../Bill/ReImburseBill">Re-Imburse Bill</a></li>--%>
                         <li><a href="../../Bill/ReAssignBill">Re-Assign Bill</a></li>
                     </ul>
                 </li>
@@ -198,7 +198,7 @@
                         <li><a href="../../Setting/Index">Configuration</a></li>
                         <li><a href="../../Email/Templates">Email Template</a></li>
                         <li><a href="../../Setting/Policy">Manage Policy</a></li>
-                        <li><a href="../../Setting/Provider">Manage Provider</a></li>
+                       <%-- <li><a href="../../Setting/Provider">Manage Provider</a></li>--%>
                     </ul>
                 </li>
                 <li>

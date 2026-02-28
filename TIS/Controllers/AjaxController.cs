@@ -23,6 +23,7 @@ namespace TIS.Controllers
     {
         public ActionResult Index() => this.Session["EmpLoginName"] == null ? (ActionResult)this.View("AccessDenied") : (ActionResult)this.View();
 
+     
         public JsonResult LoadTemplates()
         {
             TemplateViewModel templateViewModel = new TemplateViewModel();

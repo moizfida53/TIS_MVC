@@ -238,7 +238,7 @@ namespace TIS.Controllers
             }
             return this.Json((object)new { Message = "Success" }, JsonRequestBehavior.AllowGet);
         }
-
+        [RoleAuthorize(Roles.Administrator, Roles.SuperAdmin)]
         public JsonResult SetSession(string Username)
         {
             this.Session["EmpLoginAs"] = (object)Username;

@@ -15,13 +15,15 @@ using TIS.Helper;
 
 namespace TIS.Controllers
 {
-    [RoleAuthorize(Roles.Administrator, Roles.SuperAdmin, Roles.Employee)]
+    //[RoleAuthorize(Roles.Administrator, Roles.SuperAdmin, Roles.Employee)]
     public class SendEmailController : Controller
     {
-        public ActionResult Index() => (ActionResult)this.View();
+        //public ActionResult Index() => (ActionResult)this.View();
 
+        [RoleAuthorize(Roles.Administrator, Roles.SuperAdmin)]
         public ActionResult SendEmail() => (ActionResult)this.View();
 
+        [RoleAuthorize(Roles.Administrator, Roles.SuperAdmin)]
         public JsonResult GetEmail()
         {
             try
@@ -71,6 +73,7 @@ namespace TIS.Controllers
             this.GetEmail();
         }
 
+        [RoleAuthorize(Roles.Administrator, Roles.SuperAdmin)]
         public JsonResult Send(TIS.Models.SendEmail value)
         {
             for (int index = 0; index < value.BID.Length; ++index)
@@ -149,6 +152,7 @@ namespace TIS.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
+        [RoleAuthorize(Roles.Administrator, Roles.SuperAdmin)]
         public JsonResult Save(TIS.Models.SendEmail value)
         {
             SqlParameter[] sqlParameterArray = new SqlParameter[4];
@@ -184,6 +188,7 @@ namespace TIS.Controllers
             }
         }
 
+        [RoleAuthorize(Roles.Administrator, Roles.SuperAdmin)]
         public JsonResult DeleteEmail(TIS.Models.SendEmail value)
         {
             for (int index = 0; index < value.EmailID.Length; ++index)
@@ -207,7 +212,6 @@ namespace TIS.Controllers
             }
             return this.Json((object)new { Message = "Deleted" }, JsonRequestBehavior.AllowGet);
         }
-
 
         public void SetForceBillReminderNew()
         {
