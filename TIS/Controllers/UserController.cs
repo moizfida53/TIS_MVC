@@ -37,9 +37,27 @@ namespace TIS.Controllers
             else
             {
                 string[] strArray = WindowsIdentity.GetCurrent().Name.Split('\\');
+
                 if (strArray.Length == 0)
                     return;
                 this.loginName = strArray[strArray.Length - 1];
+
+                //--- the below code is what AI has suggested but will ignore for the time being ---
+                //--- Code Start---
+
+                //var context = System.Web.HttpContext.Current;
+
+                //if (context == null || context.User == null || !context.User.Identity.IsAuthenticated)
+                //    return;
+
+                //string identityName = context.User.Identity.Name; // DOMAIN\User
+
+                //string[] strArray = identityName.Split('\\');
+                //this.loginName = strArray[strArray.Length - 1];
+
+                //--- Code End---
+
+
             }
         }
         public ActionResult NewPage() => (ActionResult)this.View();
