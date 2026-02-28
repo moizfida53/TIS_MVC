@@ -542,6 +542,17 @@ function AddEmployee() {
         return;
     }
 
+    // ADD THIS BLOCK:
+    var nameVal = $("#txtName").val().trim();
+    if (!/^[a-zA-Z0-9]+([- ][a-zA-Z0-9]+)*$/.test(nameVal)) {
+        $("#txtName").notify('Invalid name. Only letters, numbers, spaces, and a single hyphen between characters are allowed.', { position: "right" });
+        return;
+    }
+
+    if ($("#txtDesc").val().trim() == '') {
+        $("#txtDesc").notify('Please Fill Description', { position: "left" });
+        return;
+    }
 
     // Check For Dublicate EmployeeNo
 
@@ -663,6 +674,17 @@ function UpdateEmployee() {
         return;
     }
 
+    // ADD THIS BLOCK:
+    var nameVal = $("#txtName").val().trim();
+    if (!/^[a-zA-Z0-9]+([- ][a-zA-Z0-9]+)*$/.test(nameVal)) {
+        $("#txtName").notify('Invalid name. Only letters, numbers, spaces, and a single hyphen between characters are allowed.', { position: "right" });
+        return;
+    }
+
+    if ($("#txtDesc").val().trim() == '') {
+        $("#txtDesc").notify('Please Fill Description', { position: "left" });
+        return;
+    }
     // Check For Dublicate EmployeeNo
 
     var filtergroup = new $.jqx.filter();

@@ -17,5 +17,15 @@ namespace TIS.Models
     public Decimal AMOUNT { get; set; }
 
     public string BILLDATE { get; set; }
-  }
+
+    public string PROVIDER_TEXT { get; set; }
+
+    public string LineStatus { get; set; }       // ← add
+    public string LineType { get; set; }         // ← add
+    public string CostCenter_Name { get; set; } // ← add
+    public string Department { get; set; }       // ← add
+
+    public string Country { get; set; }       // ← add
+
+    }
 }

@@ -821,8 +821,12 @@ function Assign() {
     var Count = Information.rowscount;
     if (Count > 0) {
         $("#grdAssignNo").jqxGrid('clearfilters');
-        alert('');
-        $.alert.open('error', 'Assign Cannot be done', 'Number Already Assigned to Someone Wthin this Date');
+        Swal.fire({
+            icon: 'error',
+            title: 'Assign cannot be done',
+            text: 'Number Already Assigned to Someone Within this Date',
+            confirmButtonText: 'OK'
+        });
         return;
     }
 
@@ -951,9 +955,17 @@ function UpdateAssign() {
     $("#grdAssignNo").jqxGrid('applyfilters');
     var Information = $("#grdAssignNo").jqxGrid('getdatainformation');
     var Count = Information.rowscount;
+
     if (Count > 0) {
         $("#grdAssignNo").jqxGrid('clearfilters');
-        $.alert.open('error', 'Assign Cannot be done', 'Number Already Assigned to Someone Wthin this Date');
+        //$.alert.open('error', 'Assign Cannot be done', 'Number Already Assigned to Someone Wthin this Date');
+        //alert('Number Already Assigned to Someone Within this Date');
+        Swal.fire({
+            icon: 'error',
+            title: 'Assign cannot be done',
+            text: 'Number Already Assigned to Someone Within this Date',
+            confirmButtonText: 'OK'
+        });
         return;
     }
 

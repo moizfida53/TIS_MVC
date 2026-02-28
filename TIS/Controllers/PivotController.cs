@@ -23,6 +23,8 @@ namespace TIS.Controllers
         public ActionResult Pivot() => (ActionResult)this.View();
 
         public JsonResult GetPivot()
+        
+        
         {
             try
             {
@@ -37,7 +39,13 @@ namespace TIS.Controllers
                             SUB_NO = Convert.ToInt32(row["SUB_NO"].ToString()),
                             TRANS_TYPE = row["TRANS_TYPE"].ToString(),
                             AMOUNT = Convert.ToDecimal(row["AMOUNT"].ToString()),
-                            BILLDATE = row["BILLDATE"].ToString()
+                            BILLDATE = row["BILLDATE"].ToString(),
+                            PROVIDER_TEXT = row["PROVIDER_TEXT"].ToString(),
+                            LineStatus = row["LineStatus"].ToString(),       // ← add
+                            LineType = row["LineType"].ToString(),           // ← add
+                            CostCenter_Name = row["CostCenter_Name"].ToString(), // ← add
+                            Department = row["Department"].ToString(),        // ← add
+                            Country = row["Country"].ToString() // ← add
                         });
                 }
                 JsonResult pivot = this.Json((object)new

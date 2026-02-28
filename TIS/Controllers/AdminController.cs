@@ -17,7 +17,7 @@ using TIS.Models;
 
 namespace TIS.Controllers
 {
-    [RoleAuthorize(Roles.Administrator, Roles.SuperAdmin)] 
+    [RoleAuthorize(Roles.Administrator, Roles.SuperAdmin)]
     public class AdminController : Controller
     {
         // Or on a single action:
@@ -276,10 +276,15 @@ namespace TIS.Controllers
             {
                 string str1 = string.Empty;
                 // Validate Emp.NAME: must be a string and not contain any symbolic character
-                if (string.IsNullOrWhiteSpace(Emp.NAME) || System.Text.RegularExpressions.Regex.IsMatch(Emp.NAME, @"[^\w\s]"))
+                if (string.IsNullOrWhiteSpace(Emp.NAME) ||    !System.Text.RegularExpressions.Regex.IsMatch(Emp.NAME, @"^[a-zA-Z0-9]+([- ][a-zA-Z0-9]+)*$"))
                 {
-                    return this.Json(new { myMessage = "Invalid employee name. Only letters, numbers, and spaces are allowed." }, JsonRequestBehavior.AllowGet);
+                    return this.Json(new { myMessage = "Invalid employee name. Only letters, numbers, spaces, and a single hyphen between characters are allowed." }, JsonRequestBehavior.AllowGet);
                 }
+
+                //if (string.IsNullOrWhiteSpace(Emp.NAME) || System.Text.RegularExpressions.Regex.IsMatch(Emp.NAME, @"[^\w\s]"))
+                //{
+                //    return this.Json(new { myMessage = "Invalid employee name. Only letters, numbers, and spaces are allowed." }, JsonRequestBehavior.AllowGet);
+                //}
 
                 for (int index = 0; index < Cnt.SelectedValues.Length; ++index)
                 {
@@ -302,8 +307,14 @@ namespace TIS.Controllers
                     SqlParameter sqlParameter4 = new SqlParameter();
                     sqlParameter4.ParameterName = "@CCNO";
                     sqlParameter4.SqlDbType = SqlDbType.VarChar;
-                    sqlParameter4.Value = Emp.CCNO.ToString().Trim();
+                    //sqlParameter4.Value = Emp.CCNO.ToString().Trim();
+                    sqlParameter4.Value = Emp.CCNO != null
+                    ? Emp.CCNO.ToString().Trim()
+                    : (object)DBNull.Value;
                     paramColl[3] = sqlParameter4;
+
+
+
                     SqlParameter sqlParameter5 = new SqlParameter();
                     sqlParameter5.ParameterName = "@EMAIL";
                     sqlParameter5.SqlDbType = SqlDbType.VarChar;
@@ -322,8 +333,12 @@ namespace TIS.Controllers
                     SqlParameter sqlParameter8 = new SqlParameter();
                     sqlParameter8.ParameterName = "@DESCRIPTION";
                     sqlParameter8.SqlDbType = SqlDbType.VarChar;
-                    sqlParameter8.Value = Emp.DESCRIPTION.ToString().Trim();
+                    //sqlParameter8.Value = Emp.DESCRIPTION.ToString().Trim();
+                    sqlParameter8.Value = Emp.DESCRIPTION != null
+                    ? Emp.DESCRIPTION.ToString().Trim()
+                    : (object)DBNull.Value;
                     paramColl[7] = sqlParameter8;
+
                     SqlParameter sqlParameter9 = new SqlParameter();
                     sqlParameter9.ParameterName = "@MANAGERID";
                     sqlParameter9.SqlDbType = SqlDbType.Int;
@@ -332,17 +347,31 @@ namespace TIS.Controllers
                     SqlParameter sqlParameter10 = new SqlParameter();
                     sqlParameter10.ParameterName = "@GRADE";
                     sqlParameter10.SqlDbType = SqlDbType.VarChar;
-                    sqlParameter10.Value = Emp.GRADE.ToString().Trim();
+                    //sqlParameter10.Value = Emp.GRADE.ToString().Trim();
+                    sqlParameter10.Value = Emp.GRADE != null
+                    ? Emp.GRADE.ToString().Trim()
+                    : (object)DBNull.Value;
+
+
                     paramColl[9] = sqlParameter10;
                     SqlParameter sqlParameter11 = new SqlParameter();
                     sqlParameter11.ParameterName = "@EXTENSION";
                     sqlParameter11.SqlDbType = SqlDbType.VarChar;
-                    sqlParameter11.Value = Emp.EXTENSION.ToString().Trim();
+                    //sqlParameter11.Value = Emp.EXTENSION.ToString().Trim();
+
+                    sqlParameter11.Value = Emp.EXTENSION != null
+                    ? Emp.EXTENSION.Trim()
+                    : (object)DBNull.Value;
+
                     paramColl[10] = sqlParameter11;
                     SqlParameter sqlParameter12 = new SqlParameter();
                     sqlParameter12.ParameterName = "@PAYROLL";
                     sqlParameter12.SqlDbType = SqlDbType.VarChar;
-                    sqlParameter12.Value = Emp.PAYROLL.ToString().Trim();
+                    //sqlParameter12.Value = Emp.PAYROLL.ToString().Trim();
+                    sqlParameter12.Value = Emp.PAYROLL != null
+                    ? Emp.PAYROLL.ToString().Trim()
+                    : (object)DBNull.Value;
+
                     paramColl[11] = sqlParameter12;
                     SqlParameter sqlParameter13 = new SqlParameter();
                     sqlParameter13.ParameterName = "@ROLEID";
