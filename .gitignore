@@ -1,7 +1,7 @@
 ﻿################################################################################
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
-
+/.vs/
 /.vs/TIS_General/v17
 /.vs/TIS_General/CopilotIndices/17.14.1091.29919/CodeChunks.db
 /.vs/TIS_General/CopilotIndices/17.14.1091.29919/CodeChunks.db-shm
@@ -14,8 +14,8 @@
 /TIS/bin/TIS.dll
 /TIS/bin/TIS.pdb
 /.vs/TIS_General/copilot-chat/27e7756f/sessions/a2ef8988-3817-49f6-a9c8-ec02bc17fb30
-/TIS/bin
-/TIS/obj
+/TIS/bin/
+/TIS/obj/
 /TIS/Properties/PublishProfiles/FolderProfile.pubxml.user
 /TIS/TIS.csproj.user
 *.vsidx
