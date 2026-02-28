@@ -36,3 +36,5 @@
 /TIS/bin/TIS.dll
 /TIS/bin/TIS.dll.config
 /TIS/bin/TIS.pdb
+/TIS/obj/Release/AspnetCompileMerge/Source/bin/TIS.dll
+/TIS/obj/Release/AspnetCompileMerge/Source/bin/TIS.pdb
