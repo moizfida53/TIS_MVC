@@ -100,7 +100,7 @@ namespace TIS.Controllers
             {
                 if(!string.IsNullOrEmpty(this.Session["EmpUID"].ToString()))
                 {
-                    string sql = "select * from vwPendingBills where 1=1";
+                    string sql = "select * from vw_BillReport where 1=1";
                     if (Search.Month != 0)
                         sql = sql + " and month(billdate)=" + (object)Search.Month;
                     if (Search.Year != 0)
@@ -135,14 +135,16 @@ namespace TIS.Controllers
                                     TOTALAMOUNT = row["TOTALAMOUNT"].ToString(),
                                     ManagerName = row["ManagerName"].ToString(),
                                     BillStatus = row["BillStatus"].ToString(),
-                                    DateIdentified = row["DateIdentified"].ToString(),
+                                    //DateIdentified = row["DateIdentified"].ToString(),
                                     LASTUPDATEDON = row["LASTUPDATEDON"].ToString(),
-                                    ApprovedDate = row["ApprovedDate"].ToString(),
+                                    //ApprovedDate = row["ApprovedDate"].ToString(),
                                     DEDUCTIBLEAMOUNT = row["DEDUCTIBLEAMOUNT"].ToString(),
                                     BUSINESSCHARGES = row["BUSINESSCHARGES"].ToString(),
                                     SUB_DESC = row["SUB_DESC"].ToString(),
                                     Company = row["CompanyName"].ToString(),
                                     PAYROLLCATEGORY = row["PAYROLLCATEGORY"].ToString(),
+                                    Forced_by_UID = row["Forced_by_UID"].ToString(),
+                                    Forced_Date = row["Forced_Date"].ToString(),
                                 });
                         }
                     }

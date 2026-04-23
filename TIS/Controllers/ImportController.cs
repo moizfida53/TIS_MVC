@@ -21,7 +21,8 @@ using TIS.Models;
 
 namespace TIS.Controllers
 {
-    [RoleAuthorize(Roles.Administrator, Roles.SuperAdmin)]
+    [RoleAuthorize( Roles.SuperAdmin)]
+    
     public class ImportController : Controller
     {
         private DataSet m_Bill_Data;

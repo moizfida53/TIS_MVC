@@ -17,7 +17,7 @@ using TIS.Models;
 namespace TIS.Controllers
 {
     //[RoleAuthorize(Roles.Administrator, Roles.SuperAdmin, Roles.Employee)]
-    [RoleAuthorize(Roles.Administrator, Roles.SuperAdmin)]
+    [RoleAuthorize(Roles.SuperAdmin)]
     public class BillController : Controller
     {
         public ActionResult Index() => this.Session["EmpLoginName"] == null ? (ActionResult)this.View("AccessDenied") : (ActionResult)this.View("ForceBill");

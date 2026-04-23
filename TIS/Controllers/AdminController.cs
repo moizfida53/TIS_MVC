@@ -17,7 +17,7 @@ using TIS.Models;
 
 namespace TIS.Controllers
 {
-    [RoleAuthorize(Roles.Administrator, Roles.SuperAdmin)]
+    [RoleAuthorize(Roles.SuperAdmin)]
     public class AdminController : Controller
     {
         // Or on a single action:
@@ -27,6 +27,11 @@ namespace TIS.Controllers
             if (this.Session["EmpRoleID"] == null)
                 return (ActionResult)this.View("AccessDenied");
             Convert.ToInt32(this.Session["EmpRoleID"].ToString());
+
+            //return (ActionResult)this.View("ManageEmployee");
+            if (this.Session["EmpRoleID"].ToString() == "3")
+                return this.Redirect("~/billreport/billreport");
+
             return (ActionResult)this.View("ManageEmployee");
         }
 

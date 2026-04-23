@@ -7,7 +7,8 @@ using TIS.Filters;
 
 namespace TIS.Controllers.Controllers
 {
-    [RoleAuthorize(Roles.Administrator, Roles.SuperAdmin)]
+    [RoleAuthorize(Roles.SuperAdmin)]
+    
     public class TelephoneController : Controller
     {
         // Loads the Manage Telephone page

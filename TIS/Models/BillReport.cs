@@ -25,5 +25,7 @@ namespace TIS.Models
         public string SUB_DESC { get; set; }
         public string Company { get; set; }
         public string PAYROLLCATEGORY { get; set; }
+        public string Forced_by_UID { get; set; }
+        public string Forced_Date { get; set; }
     }
 }
