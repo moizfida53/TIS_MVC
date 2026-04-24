@@ -54,7 +54,7 @@
 
                         <div class="col-md-3">
                             <label for="txtSubDesc" class="form-label"><i class="fas fa-align-left me-2"></i>Description</label>
-                            <input id="txtSubDesc" type="text" class="form-control" />
+                            <input id="txtSubDesc" type="text" class="form-control"/>
                         </div>
 
                         <div class="col-md-3">

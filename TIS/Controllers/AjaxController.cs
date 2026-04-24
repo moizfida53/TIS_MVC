@@ -413,7 +413,9 @@ namespace TIS.Controllers
                 SqlParameter sqlParameter8 = new SqlParameter();
                 sqlParameter8.ParameterName = "@comment";
                 sqlParameter8.SqlDbType = SqlDbType.VarChar;
-                sqlParameter8.Value = (object)close.comments;
+                sqlParameter8.Value = string.IsNullOrEmpty(close.comments)
+                    ? (object)DBNull.Value
+                    : close.comments;
                 paramColl[7] = sqlParameter8;
                 SqlParameter sqlParameter9 = new SqlParameter();
                 sqlParameter9.ParameterName = "@Uid";

@@ -93,20 +93,22 @@
                                     <div class="input-group-icon">
                                         <input type="file" class="form-control" id="jqxFileUpload" />
                                     </div>
+                                    <input id="btnUpload" type="button" value="Upload File" class="myButton" style="display:none;"/>
                                     <div id="lblFileName" class="form-text"></div>
                                 </div>
 
                                 <div class="col-md-2">
                                     <label for="cmbSheet" class="form-label"><i class="fas fa-file-excel me-2"></i>Select Sheet</label>
-                                    <div class="input-group-icon">
-                                        <select id="cmbSheet" class="form-control"></select>
-                                    </div>
+                                                                     <div class="input-group-icon">
+                                     <select id="cmbSheet" class="form-control"></select>
+                                 </div>
                                 </div>
 
                                 <div class="col-md-2">
-                                    <label for="btnUpload" class="form-label">&nbsp;</label>
+                                    
+                                    <label for="btnSubmit" class="form-label">&nbsp;</label>
                                     <div class="input-group-icon">
-                                        <button id="btnUpload" class="btn btn-success w-100"><i class="fas fa-upload me-2"></i>Upload File</button>
+                                        <button id="btnSubmit" class="btn btn-success w-100"><i class="fas fa-upload me-2"></i>Submit</button>
                                     </div>
                                 </div>
 
@@ -355,5 +357,4 @@
             </div>
         </div>
     </div>
-
 </asp:Content>

@@ -483,6 +483,7 @@ function setDataSourceGridApproval(mybill) {
         showfilterrow: true,
         pageable: true,
         theme: 'dark-blue',
+        editable: true,
         showsortcolumnbackground: true,
         columns: [
             { dataField: 'Id', text: 'Telphone No.', width: '100px', hidden: 'true' },
@@ -493,7 +494,13 @@ function setDataSourceGridApproval(mybill) {
             { dataField: 'Duration', text: 'Duration', width: '100px' },
             { dataField: 'Amount', text: 'Amount', cellsformat: 'F3', cellsalign: 'center', width: '80px' },
             { dataField: 'CallType', text: 'Call Type', cellsrenderer: cellsrenderer, cellsalign: 'center', width: '100px' },
-            { dataField: 'Comment', text: 'Comment', cellsalign: 'left', width: '100px' }
+            /*{ dataField: 'Comment', text: 'Comment', cellsalign: 'left', width: '100px' }*/
+            {
+                text: 'Comment',
+                datafield: 'Comment',
+                width: '20%',
+                columntype: 'textbox'
+            }
         ]
     });
 
@@ -615,6 +622,18 @@ function setDataSourceApproval(result) {
 }
 
 function ProcessBill() {
+
+    // Capture any comment that hasn't been blurred yet
+    for (var i = 0; i < itemData.length; i++) {
+        var $input = $('#txtComment' + itemData[i].Id);
+        if ($input.length) {
+            itemData[i].Comment = $input.val();
+        }
+    }
+    myABB = itemData;
+
+
+
     // 🟩 STEP 1: Validate records
     const curData = itemData.filter(el => el.CallType == 0);
     if (curData.length > 0) {
@@ -640,18 +659,18 @@ function ProcessBill() {
     if ($("#chkW2").is(':checked')) wamt += parseFloat($('#atot').html());
 
     // 🟩 STEP 3: Collect selected rows
-    const selectedIndexes = $('#grdBillDetails').jqxGrid('getselectedrowindexes');
-    const myids = [];
+    //const selectedIndexes = $('#grdBillDetails').jqxGrid('getselectedrowindexes');
+    //const myids = [];
 
-    if (selectedIndexes.length > 0) {
-        for (let i = 0; i < selectedIndexes.length; i++) {
-            const selectedRow = $('#grdBillDetails').jqxGrid('getrowdata', selectedIndexes[i]);
-            for (let y = 0; y < myABB.length; y++) {
-                myids.push({ ID: selectedRow.Id, Comm: myABB[y].Comment });
-                break;
-            }
-        }
-    }
+    //if (selectedIndexes.length > 0) {
+    //    for (let i = 0; i < selectedIndexes.length; i++) {
+    //        const selectedRow = $('#grdBillDetails').jqxGrid('getrowdata', selectedIndexes[i]);
+    //        for (let y = 0; y < myABB.length; y++) {
+    //            myids.push({ ID: selectedRow.Id, Comm: myABB[y].Comment });
+    //            break;
+    //        }
+    //    }
+    //}
 
     // 🟩 STEP 4: Manager name
     const managerName = $("#txtManagerName").text() || "Not Assigned";
@@ -1044,28 +1063,36 @@ $("#grdBillMaster").on('rowselect', function (event) {
 
 function saveComments(commentId) {
     if (commentId != 0) {
-        var newItemDataAB = [];
-
-        for (var i = 0; i < myABB.length; i++) {
-
-            var curItem = myABB[i];
-            if (myABB[i].Id === commentId) {
-
-                try { curItem.Comment = $('#txtComment' + commentId).val(); } catch (e) { }
-
-            }
-            newItemDataAB.push(curItem);
+        var normalizedId = parseInt(commentId, 10);
+        var newComment = $('#txtComment' + commentId).val();
+        if (newComment === undefined) {
+            newComment = $('#txtComment' + normalizedId).val();
         }
-        myABB = newItemDataAB;
-        deptsourceDetail.localdata = myABB;
-        $("#grdBillDetails").jqxGrid('databind', deptsourceDetail, 'sort');
+        for (var i = 0; i < itemData.length; i++) {
+            if (parseInt(itemData[i].Id, 10) === normalizedId) {
+                itemData[i].Comment = newComment;
+                break;
+            }
+        }
+        if (Array.isArray(myBillDet)) {
+            for (var j = 0; j < myBillDet.length; j++) {
+                if (parseInt(myBillDet[j].Id, 10) === normalizedId) {
+                    myBillDet[j].Comment = newComment;
+                    break;
+                }
+            }
+        }
+        if ($("#grdBillDetails").length) {
+            var rowIndex = $("#grdBillDetails").jqxGrid('getrowboundindexbyid', normalizedId);
+            if (rowIndex === undefined || rowIndex < 0) {
+                rowIndex = $("#grdBillDetails").jqxGrid('getrowindexbyid', normalizedId);
+            }
+            if (rowIndex !== undefined && rowIndex >= 0) {
+                $("#grdBillDetails").jqxGrid('setcellvalue', rowIndex, 'Comment', newComment);
+            }
+        }
+        myABB = itemData;
     }
-    for (var ii = 0; ii < myABB.length; ii++) {
-        try {
-            $('#txtComment' + myABB[ii].Id).val(myABB[ii].Comment);
-        } catch (e) { }
-    }
-
 }
 
 var myABB;
@@ -1120,7 +1147,7 @@ function setDataSourceGridDetails(bill_details) {
     deptsourceDetail =
     {
         localdata: myBillDet,
-
+        id: 'Id',
 
         datafields:
             [{ name: 'Id', type: 'number' },
@@ -1191,10 +1218,29 @@ function setDataSourceGridDetails(bill_details) {
         }
         return "<div style='padding: 10px;'>" + myString + "</div>";
     }
+    //var cellstext = function (row, columnfield, value, defaulthtml, columnproperties, rowData) {
+    //    console.log(rowData.Comment);
+    //    //return '<input type="text" id="txtComment' + rowData.Id + '" style="width: 92% !important;margin: 5px;height: 30px;" value="' + rowData.Comment + '" class="clsComment" data-id="' + rowData.Id + '" />';
+    //    return '<input type="text" id="txtComment' + rowData.Id + '" style="width: 92% !important;margin: 5px;height: 30px;" value="' + (rowData.Comment || '') + '" class="clsComment" data-id="' + rowData.Id + '" onblur="saveComments(' + rowData.Id + ')" />';
+
+    //}
+    //var cellstext = function (row, columnfield, value, defaulthtml, columnproperties, rowData) {
+    //    return '<input type="text" id="txtComment' + rowData.Id + '" style="width: 92% !important;margin: 5px;height: 30px;" value="' + (rowData.Comment || '') + '" onblur="saveComments(' + rowData.Id + ')" />';
+    //}
+
     var cellstext = function (row, columnfield, value, defaulthtml, columnproperties, rowData) {
-        console.log(rowData.Comment);
-        return '<input type="text" id="txtComment' + rowData.Id + '" style="width: 92% !important;margin: 5px;height: 30px;" value="' + rowData.Comment + '" class="clsComment" data-id="' + rowData.Id + '" />';
+        var latestComment = rowData.Comment || '';
+        if (Array.isArray(itemData)) {
+            for (var i = 0; i < itemData.length; i++) {
+                if (parseInt(itemData[i].Id, 10) === parseInt(rowData.Id, 10)) {
+                    latestComment = itemData[i].Comment || '';
+                    break;
+                }
+            }
+        }
+        return '<input type="text" id="txtComment' + rowData.Id + '" class="comment-input" data-id="' + rowData.Id + '" style="width: 92% !important;margin: 5px;height: 30px;" value="' + latestComment + '" onblur="saveComments(' + rowData.Id + ')" />';
     }
+
 
     var imagerenderer = function (row, datafield, value) {
         return 'Save Contact';
@@ -1277,7 +1323,9 @@ function setDataSourceGridDetails(bill_details) {
         ]
     });
 
-
+    $("#grdBillDetails").on('scroll', function () {
+        persistComments();
+    });
 
 }
 
@@ -1534,8 +1582,53 @@ function LiveTag(myRadio, id) {
     }
     $('#nettotal').html((parseFloat($('#ptot').html()) + parseFloat($('#btot').html()) + parseFloat($('#atot').html())).toFixed(3));
 }
+function persistComments() {
+    $('.comment-input, [id^="txtComment"]').each(function () {
+        var id = $(this).data('id');
+        if (!id) {
+            var idAttr = $(this).attr('id') || '';
+            id = idAttr.replace(/^txtComment/, '');
+        }
+        id = parseInt(id, 10);
+        var value = $(this).val();
 
+        for (var i = 0; i < itemData.length; i++) {
+            if (parseInt(itemData[i].Id, 10) === id) {
+                itemData[i].Comment = value;
+                break;
+            }
+        }
+        if (Array.isArray(myBillDet)) {
+            for (var j = 0; j < myBillDet.length; j++) {
+                if (parseInt(myBillDet[j].Id, 10) === id) {
+                    myBillDet[j].Comment = value;
+                    break;
+                }
+            }
+        }
+        if ($("#grdBillDetails").length) {
+            var rowIndex = $("#grdBillDetails").jqxGrid('getrowboundindexbyid', id);
+            if (rowIndex === undefined || rowIndex < 0) {
+                rowIndex = $("#grdBillDetails").jqxGrid('getrowindexbyid', id);
+            }
+            if (rowIndex !== undefined && rowIndex >= 0) {
+                $("#grdBillDetails").jqxGrid('setcellvalue', rowIndex, 'Comment', value);
+            }
+        }
+    });
+}
 function handleClick(myRadio, id) {
+    persistComments();
+    var rdv;
+    var oldVal;
+    var newItemData = [];
+    // ✅ STEP 1: Save all comments BEFORE grid refresh
+    for (var i = 0; i < itemData.length; i++) {
+        var $input = $('#txtComment' + itemData[i].Id);
+        if ($input.length) {
+            itemData[i].Comment = $input.val();
+        }
+    }
     if ($("#chkLiveTag").is(':checked')) {
         LiveTag(myRadio, id);
         return;
@@ -1557,7 +1650,13 @@ function handleClick(myRadio, id) {
     deptsourceDetail.localdata = itemData;
     $("#grdBillDetails").jqxGrid('databind', deptsourceDetail, 'sort');
 
-
+    //setTimeout(function () {
+    //    for (var i = 0; i < itemData.length; i++) {
+    //        try {
+    //            $('#txtComment' + itemData[i].Id).val(itemData[i].Comment || '');
+    //        } catch (e) { }
+    //    }
+    //}, 300);
 
 
     for (var i = 0; i < itemData.length; i++) {
@@ -1998,11 +2097,30 @@ function FillCallType() {
         }
         return "<div style='padding: 10px;'>" + myString + "</div>";
     }
+    //var cellstext = function (row, columnfield, value, defaulthtml, columnproperties, rowData) {
+    //    console.log(rowData.Comment);
+    //    return '<input type="text" id="txtComment' + rowData.Id + '" style="width: 92% !important;margin: 5px;height: 30px;" value="' + rowData.Comment + '" onblur="saveComments(' + rowData.Id + ')" />';
+    //}
     var cellstext = function (row, columnfield, value, defaulthtml, columnproperties, rowData) {
-        console.log(rowData.Comment);
-        return '<input type="text" id="txtComment' + rowData.Id + '" style="width: 92% !important;margin: 5px;height: 30px;" value="' + rowData.Comment + '" onblur="saveComments(' + rowData.Id + ')" />';
+        var latestComment = rowData.Comment || '';
+        if (Array.isArray(itemData)) {
+            for (var i = 0; i < itemData.length; i++) {
+                if (parseInt(itemData[i].Id, 10) === parseInt(rowData.Id, 10)) {
+                    latestComment = itemData[i].Comment || '';
+                    break;
+                }
+            }
+        }
+        return `
+        <input type="text"
+               id="txtComment${rowData.Id}"
+               value="${latestComment}"
+               style="width:92%; margin:5px; height:30px;"
+               class="comment-input"
+               data-id="${rowData.Id}"
+               onblur="saveComments(${rowData.Id})" />
+    `;
     }
-
     var cellclassname = function (row, column, value, data) {
         if (value == 0) {
             return "redClass";
@@ -2040,7 +2158,7 @@ function FillCallType() {
             { dataField: 'Duration', text: 'Duration', width: '6%' },
             { dataField: 'Amount', text: 'Amount', cellsformat: 'F3', cellsalign: 'right', width: '5%' },
             { dataField: 'CallType', text: 'Identify Calls', cellsrenderer: cellsrenderer, cellclassname: cellclassname, width: '18%' },
-            { dataField: 'Comment', text: 'Comment', cellsrenderer: cellstext }]
+            { dataField: 'Comment', text: 'Comment' }]
 
     });
 
@@ -2159,14 +2277,56 @@ $(document).on('click', '.clsSelectMyBill', function (e) {
 // Delegated blur for approval comments (replaces inline onblur)
 $(document).on('blur', '[id^="txtComm"]', function (e) {
     var idAttr = $(this).attr('id');
+    // Guard: skip txtComment inputs (detail grid), only handle txtComm (approval grid)
+    if (idAttr && idAttr.indexOf('txtComment') === 0) return;
     var id = idAttr ? idAttr.replace(/^txtComm/, '') : null;
     if (id && typeof saveComment === 'function') {
         saveComment(parseInt(id, 10));
     }
 });
 
-// Delegated blur for detail comments (replaces inline onblur)
-$(document).on('blur', '[id^="txtComment"]', function (e) {
+$(document).on('input keyup change', '.comment-input, [id^="txtComment"]', function () {
+    var id = $(this).data('id');
+    if (!id) {
+        var idAttr = $(this).attr('id') || '';
+        id = idAttr.replace(/^txtComment/, '');
+    }
+    id = parseInt(id, 10);
+    var value = $(this).val();
+
+    for (var i = 0; i < itemData.length; i++) {
+        if (parseInt(itemData[i].Id, 10) === id) {
+            itemData[i].Comment = value;
+            break;
+        }
+    }
+    if (Array.isArray(myBillDet)) {
+        for (var j = 0; j < myBillDet.length; j++) {
+            if (parseInt(myBillDet[j].Id, 10) === id) {
+                myBillDet[j].Comment = value;
+                break;
+            }
+        }
+    }
+});
+
+// Save detail comments when user clicks/selects rows in jqxGrid
+// Mirrors radio-click flow where persistComments() is called before rebinding.
+$(document).on('mousedown', '#grdBillDetails .jqx-grid-cell, #grdBillDetails .jqx-fill-state-normal', function (e) {
+    if ($(e.target).closest('.comment-input, [id^="txtComment"]').length) return;
+    if (typeof persistComments === 'function') {
+        persistComments();
+    }
+});
+
+$(document).on('rowclick rowselect', '#grdBillDetails', function () {
+    if (typeof persistComments === 'function') {
+        persistComments();
+    }
+});
+
+// Delegated blur for detail comments
+$(document).on('blur', '[id^="txtComment"]', function () {
     var idAttr = $(this).attr('id');
     var id = idAttr ? idAttr.replace(/^txtComment/, '') : null;
     if (id && typeof saveComments === 'function') {

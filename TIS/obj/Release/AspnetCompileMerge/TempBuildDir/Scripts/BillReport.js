@@ -93,8 +93,9 @@ function Search() {
     var Month = 0, Year = 0, Status = 0, companyId = 0;
 
     Month = selectedMonth;
-    Status = selectedstatus;
+    Status = selectedStatus;
     companyId = selectedCompany;
+    console.log("Selected Status:", Status);
 
     var Year = $("#cmbYear").val() || 0;
 

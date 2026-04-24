@@ -15,80 +15,80 @@ var currentYear = 2026;
 $(document).ready(function () {
     debugger;
     //if ($('#MainContent_hdnAccessValid').val() == "1") {
-        $(document).ajaxStart($.blockUI({
-            css: {
-                border: 'none',
-                padding: '10px',
-                backgroundColor: '#000',
-                '-webkit-border-radius': '10px',
-                '-moz-border-radius': '10px',
-                opacity: .3,
-                color: '#fff'
-            }
-        })).ajaxStop($.unblockUI);
-
-        //GetData(FromDate, ToDate);
-        // $('#ddrYears').val("2019");
-        // GetData();
-
-        Getcalltypedatainarray(currentYear)
-
-        GetINTCNTinarray(currentYear, displayALLcalltype)
-        gettransactiontype();
-        // ddbranch();
-        yeardropdown();
-        getcountryingrid(currentYear);
-        function getExportServer() {
-            return './export_server/export.php';
+    $(document).ajaxStart($.blockUI({
+        css: {
+            border: 'none',
+            padding: '10px',
+            backgroundColor: '#000',
+            '-webkit-border-radius': '10px',
+            '-moz-border-radius': '10px',
+            opacity: .3,
+            color: '#fff'
         }
-        $("#pdfButtonTopBranchSalesChart").click(function () {
-            // call the export server to create a PNG image
-            $('#TopBranchSalesChart').jqxChart('saveAsPDF', 'monthwiseforselectedyearchrt.pdf', getExportServer());
-        });
+    })).ajaxStop($.unblockUI);
+
+    //GetData(FromDate, ToDate);
+    // $('#ddrYears').val("2019");
+    // GetData();
+
+    Getcalltypedatainarray(currentYear)
+
+    GetINTCNTinarray(currentYear, displayALLcalltype)
+    gettransactiontype();
+    // ddbranch();
+    yeardropdown();
+    getcountryingrid(currentYear);
+    function getExportServer() {
+        return './export_server/export.php';
+    }
+    $("#pdfButtonTopBranchSalesChart").click(function () {
+        // call the export server to create a PNG image
+        $('#TopBranchSalesChart').jqxChart('saveAsPDF', 'monthwiseforselectedyearchrt.pdf', getExportServer());
+    });
 
 
-        $("#pdfButtonMonthwisetypebill").click(function () {
-            // call the export server to create a PNG image
-            $('#Monthwisetypebill').jqxChart('saveAsPDF', 'selectedmonthtranstype.pdf', getExportServer());
-        });
+    $("#pdfButtonMonthwisetypebill").click(function () {
+        // call the export server to create a PNG image
+        $('#Monthwisetypebill').jqxChart('saveAsPDF', 'selectedmonthtranstype.pdf', getExportServer());
+    });
 
 
-        $("#pdfButtonTopBranchSalesChart2").click(function () {
-            // call the export server to create a PNG image
-            $('#TopBranchSalesChart2').jqxChart('saveAsPDF', 'selectedtranstypechart.pdf', getExportServer());
-        });
+    $("#pdfButtonTopBranchSalesChart2").click(function () {
+        // call the export server to create a PNG image
+        $('#TopBranchSalesChart2').jqxChart('saveAsPDF', 'selectedtranstypechart.pdf', getExportServer());
+    });
 
-        $("#pdfButtonCallTypeamountchart").click(function () {
-            // call the export server to create a PNG image
-            $('#CallTypeamountchart').jqxChart('saveAsPDF', 'calltypeamountchart.pdf', getExportServer());
-        });
+    $("#pdfButtonCallTypeamountchart").click(function () {
+        // call the export server to create a PNG image
+        $('#CallTypeamountchart').jqxChart('saveAsPDF', 'calltypeamountchart.pdf', getExportServer());
+    });
 
-        $("#pdfButtonmonthwisecalltypeamount").click(function () {
-            // call the export server to create a PNG image
-            $('#monthwisecalltypeamount').jqxChart('saveAsPDF', 'monthwisecalltypeamount.pdf', getExportServer());
-        });
-
-
-
-        $("#pdfButtonINTCOUNTchart").click(function () {
-            // call the export server to create a PNG image
-            $('#INTCOUNTchart').jqxChart('saveAsPDF', 'INTCNTRYchart.pdf', getExportServer());
-        });
-
-        $("#pdfButtonmonthwisecountrybill").click(function () {
-            // call the export server to create a PNG image
-            $('#monthwisecountrybill').jqxChart('saveAsPDF', 'Countrymonthwisebillchart.pdf', getExportServer());
-        });
+    $("#pdfButtonmonthwisecalltypeamount").click(function () {
+        // call the export server to create a PNG image
+        $('#monthwisecalltypeamount').jqxChart('saveAsPDF', 'monthwisecalltypeamount.pdf', getExportServer());
+    });
 
 
-        $("#pdfButtonjqxgridtest").click(function () {
-            $("#jqxgridtest").jqxGrid('exportdata', 'xls', 'jqxGrid');
-        });
+
+    $("#pdfButtonINTCOUNTchart").click(function () {
+        // call the export server to create a PNG image
+        $('#INTCOUNTchart').jqxChart('saveAsPDF', 'INTCNTRYchart.pdf', getExportServer());
+    });
+
+    $("#pdfButtonmonthwisecountrybill").click(function () {
+        // call the export server to create a PNG image
+        $('#monthwisecountrybill').jqxChart('saveAsPDF', 'Countrymonthwisebillchart.pdf', getExportServer());
+    });
+
+
+    $("#pdfButtonjqxgridtest").click(function () {
+        $("#jqxgridtest").jqxGrid('exportdata', 'xls', 'jqxGrid');
+    });
     //}
     //else {
     //    //Access Denied
     //}
-    
+
 });
 //function GetData(FromDate, ToDate) {
 function GetData() {
@@ -108,9 +108,11 @@ function GetData() {
             if (result.Message == "Success") {
                 //$('#divAllBranchTotalSales').html(result.noOfUnIdentifiedBills + " <small>KD</small>")
                 $('#divAllBranchTotalSales').html(result.noOfUnIdentifiedBills)
-                $('#divAllBranchTotalWaste').html(result.totalAmountofUnAssignedBills + " <small>KD</small>")
+                //$('#divAllBranchTotalWaste').html(result.totalAmountofUnAssignedBills + " <small>KD</small>")
+                $('#divAllBranchTotalWaste')
+                    .html(Number(result.totalAmountofUnAssignedBills).toFixed(3) + " <small>KD</small>");
                 $('#divAllBranchTotalCancellation').html(result.totalBillsinApprovalStage)
-                $('#divAllBranchTotalDiscount').html(result.totalBillAmountforPOSTTOSAP + " <small>KD</small>")
+                $('#divAllBranchTotalDiscount').html(Number(result.totalBillAmountforPOSTTOSAP).toFixed(3) + " <small>KD</small>")
 
                 BindCharts(result);
             }
@@ -1358,7 +1360,7 @@ function Getyearswiseselecttedtransaction(transactiontype, year) {
 
 function gettransactiontype() {
     debugger;
-    
+
     $.ajax({
         type: "GET",
         url: "/Dashboard/Gettranstypedata",

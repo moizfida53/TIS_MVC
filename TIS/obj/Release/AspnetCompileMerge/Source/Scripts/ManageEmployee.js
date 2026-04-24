@@ -43,6 +43,60 @@ $(document).ready(function () {
     
 });
 
+$(document).on('click', '#btnManageEmployeeExportExcel', function (e) {
+    e.preventDefault();
+    if (typeof ExportToExcel === 'function') ExportToExcel();
+})
+
+// Cost Center modal buttons
+$(document).on('click', '#btnOpenCC', function () {
+    OpenCC();
+});
+$(document).on('click', '#btnAddCC', function () {
+    AddCC();
+});
+$(document).on('click', '#btnUpdateCC', function () {
+    UpdateCC();
+});
+$(document).on('click', '#btnDelCC', function () {
+    DelCC();
+});
+$(document).on('click', '#btnCanCC', function () {
+    ClearCC();
+});
+
+// Country modal buttons
+$(document).on('click', '#btnAddCountry', function () {
+    AddCountry();
+});
+$(document).on('click', '#btnUpdateCountry', function () {
+    UpdateCountry();
+});
+$(document).on('click', '#btnDeleteCountry', function () {
+    DeleteCountry();
+});
+$(document).on('click', '#btnCancleCountry', function () {
+    ClearCountry();
+});
+
+// Manager modal buttons
+$(document).on('click', '#btnAddManager', function () {
+    AddManager();
+});
+$(document).on('click', '#btnUpdateManager', function () {
+    UpdateManager();
+});
+$(document).on('click', '#btnDeleteManager', function () {
+    DeleteManager();
+});
+$(document).on('click', '#btnCancleManager', function () {
+    ClearManager();
+});
+
+// If you want to open the Country or Manager modals from somewhere, add handlers for those triggers as well.
+// Example (if you add a button for opening Country modal):
+// $(document).on('click', '#btnOpenCountry', function () { OpenCountry(); });
+// $(document).on('click', '#btnOpenManager', function () { OpenManager(); });
 function GetData() {
     $.ajax({
         type: "GET",
@@ -488,6 +542,17 @@ function AddEmployee() {
         return;
     }
 
+    // ADD THIS BLOCK:
+    var nameVal = $("#txtName").val().trim();
+    if (!/^[a-zA-Z0-9]+([- ][a-zA-Z0-9]+)*$/.test(nameVal)) {
+        $("#txtName").notify('Invalid name. Only letters, numbers, spaces, and a single hyphen between characters are allowed.', { position: "right" });
+        return;
+    }
+
+    if ($("#txtDesc").val().trim() == '') {
+        $("#txtDesc").notify('Please Fill Description', { position: "left" });
+        return;
+    }
 
     // Check For Dublicate EmployeeNo
 
@@ -555,9 +620,11 @@ function performAddEmployee() {
     debugger;
     var Ar = [];
     var items = $("#lbCountry").jqxListBox('getCheckedItems');
-    for (var i = 0; i < items.length; i++) {
-        Ar.push(items[i].value);
-    }
+    //static pass countryid is 1
+    Ar.push(1);
+    //for (var i = 0; i < items.length; i++) {
+    //    Ar.push(items[i].value);
+    //}
 
     var Contr = { "SelectedValues": Ar };
     var Employ = {
@@ -607,6 +674,17 @@ function UpdateEmployee() {
         return;
     }
 
+    // ADD THIS BLOCK:
+    var nameVal = $("#txtName").val().trim();
+    if (!/^[a-zA-Z0-9]+([- ][a-zA-Z0-9]+)*$/.test(nameVal)) {
+        $("#txtName").notify('Invalid name. Only letters, numbers, spaces, and a single hyphen between characters are allowed.', { position: "right" });
+        return;
+    }
+
+    if ($("#txtDesc").val().trim() == '') {
+        $("#txtDesc").notify('Please Fill Description', { position: "left" });
+        return;
+    }
     // Check For Dublicate EmployeeNo
 
     var filtergroup = new $.jqx.filter();

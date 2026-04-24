@@ -219,7 +219,7 @@
                                         <div class="col-sm-7" style="float: right; margin-top: 5px; margin-left: -35px;">
                                             <label style="float: right">Select Year:</label>
                                         </div>
-                                        <div class="col-sm-5" style="margin-left: 30px;">
+                                        <div class="col-sm-5">
                                             <%--<div style="float:right" id="jqxyeardd"></div>--%>
                                             <select id="jqxyeardd" class="form-select">
                                             </select>
@@ -308,7 +308,7 @@
                                         <div class="col-sm-7" style="float: right; margin-top: 5px; margin-left: -94px;">
                                             <label style="float: right">Select Year:</label>
                                         </div>
-                                        <div class="col-sm-5" style="margin-left: 91px;">
+                                        <div class="col-sm-5">
                                             <%--<div style="float: right" id="jqxyeartransactiondd"></div>--%>
                                             <select id="jqxyeartransactiondd" class="form-select">
                                             </select>
@@ -318,7 +318,7 @@
                                         <div class="col-sm-9" style="float: right; margin-top: 4px; margin-left: -44px;">
                                             <label style="float: right;">Transaction type</label>
                                         </div>
-                                        <div class="col-sm-3" style="margin-left: 26px;">
+                                        <div class="col-sm-3">
                                             <%--<div style="float: right" id="ddtransaction"></div>--%>
                                             <select id="ddtransaction" class="form-select">
                                             </select>
@@ -437,9 +437,10 @@
 
                                     <div class="row" style="margin-top: 19px;">
                                         <div class="col-sm-7" style="float: right; margin-top: 5px; margin-left: 16px;">
-                                            <label style="float: right">Select Year:</label>
+                                            <label style="float: right; margin-right: 6.2rem; text-wrap-mode: nowrap; margin-top: 0.5rem;">
+                                                Select Year:</label>
                                         </div>
-                                        <div class="col-sm-5" style="margin-left: -34px;">
+                                        <div class="col-sm-5" style="margin-left: -70px;">
                                             <%--<div style="float: right" id="jqxyearINTcountdd"></div>--%>
                                             <select id="jqxyearINTcountdd" class="form-select">
                                             </select>
@@ -529,21 +530,21 @@
                                         <h4 class="card-title">Country wise amount Table</h4>
                                     </div>
 
-                                    <div class="row" style="margin-top: 0px;">
-                                        <div class="col-sm-7" style="float: right; margin-top: 5px; margin-left: -53px;">
+                                    <div class="row" style="margin-top: 28px;">
+                                        <div class="col-sm-7" style="float: right; margin-top: 5px; margin-left: -122px;">
                                             <label style="float: right">Select Year:</label>
                                         </div>
-                                        <div class="col-sm-5" style="margin-left: 52px;">
+                                        <div class="col-sm-5" style="margin-left: -13px;">
                                             <%--<div style="float: right" id="jqxyearselectioningriddd"></div>--%>
                                             <select id="jqxyearselectioningriddd" class="form-select">
                                             </select>
                                         </div>
                                     </div>
                                     <div class="row" style="margin-top: 0px;">
-                                        <div class="col-sm-7" style="float: right; margin-top: 5px; margin-left: 43px;">
+                                        <div class="col-sm-7" style="float: right; margin-top: 5px; margin-left: -1px;">
                                             <label style="float: right">Select Month:</label>
                                         </div>
-                                        <div class="col-sm-5" style="margin-left: -59px;">
+                                        <div class="col-sm-5" style="margin-left: -15px;">
                                             <%--<div style="float: right" id="jqxmonthselectioningriddd"></div>--%>
                                             <select id="jqxmonthselectioningriddd" class="form-select">
                                             </select>

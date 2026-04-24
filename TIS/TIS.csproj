@@ -185,7 +185,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\AdminRoleAuthorizeAttribute.cs" />
     <Compile Include="Controllers\AjaxController.cs" />
     <Compile Include="Controllers\AuditReportController.cs" />
     <Compile Include="Controllers\BapiBIController.cs" />
@@ -657,6 +656,8 @@
     <Content Include="css\pgwmodal1.css" />
     <Content Include="css\pivot.css" />
     <Content Include="css\Pivot\c3.min.css" />
+    <Content Include="css\Pivot\jquery-ui.min.css" />
+    <Content Include="css\Pivot\jquery-ui.min.js" />
     <Content Include="css\Pivot\nrecopivottableext.css" />
     <Content Include="css\Pivot\pivot.css" />
     <Content Include="css\SAP-Pending.css" />
@@ -1331,6 +1332,7 @@
     <Content Include="Scripts\Pivot\gchart_renderers.js" />
     <Content Include="Scripts\Pivot\gchart_renderers.min.js" />
     <Content Include="Scripts\Pivot\nrecopivottableext.js" />
+    <Content Include="Scripts\Pivot\Pivot-init.js" />
     <Content Include="Scripts\Pivot\pivot.js" />
     <Content Include="Scripts\Pivot\pivot.min.js" />
     <Content Include="Scripts\Re-Imburse-BIll.js" />
@@ -1363,6 +1365,7 @@
     <Content Include="Views\Email\Templates.aspx" />
     <Content Include="Views\Import\ImportInvoice.aspx" />
     <Content Include="Views\Import\UnAssignedInvoice.aspx" />
+    <Content Include="Views\Pivot\Pivot.aspx" />
     <Content Include="Views\ReportChart\ReportChart.aspx" />
     <Content Include="Views\Report\Report.aspx" />
     <Content Include="Views\Report\ReportChart.aspx" />
@@ -1391,6 +1394,8 @@
     <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
     <Folder Include="Views\Index\" />
+    <Folder Include="Views\RestrictRoleAttribute\" />
+    <Folder Include="Views\Role3AccessFilter\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\AccessDenied.cshtml" />
@@ -1415,9 +1420,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Pivot\Pivot.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="libman.json" />

@@ -5,7 +5,7 @@
     ForceBill
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
+    <input type="hidden" id="hidUID" value="<%=Session["EmpUID"]%>" />
     <link href="../../css/alert.css" rel="stylesheet" />
     <link href="../../css/theme.css" rel="stylesheet" />
     <script src="../../Scripts/alert.js"></script>

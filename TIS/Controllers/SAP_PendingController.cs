@@ -44,7 +44,10 @@ namespace TIS.Controllers
                             TotalAmount = row["TOTALAMOUNT"].ToString(),
                             BusinessCharges = row["BussCharged"].ToString(),
                             PersonalCharges = row["PERSONALCHARGES"].ToString(),
-                            DeductibleAmount = row["DEDUCTIBLEAMOUNT"].ToString()
+                            DeductibleAmount = row["DEDUCTIBLEAMOUNT"].ToString(),
+                            CostCenterName = row["CostCenterName"].ToString(),    // ✅ Added
+                            CostCenterCode = row["CostCenterCode"].ToString(),    // ✅ Added
+                            Department = row["Department"].ToString(),        // ✅ Added
                         });
                 }
                 return this.Json((object)new

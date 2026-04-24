@@ -140,9 +140,9 @@ function DeleteEmail() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (result) {
-
             GetEmail();
             if (result.Message == 'Deleted') {
+                $('#grdSendEmail').jqxGrid('clearselection');
                 $.alert.open('info', 'Success', 'Email Deleted Successfully');
             }
             else {
@@ -157,7 +157,6 @@ function DeleteEmail() {
 
 
 function Save(rowIndex, columnDataField, cellValue) {
-
     var RowData = $('#grdSendEmail').jqxGrid('getrowdata', rowIndex);
 
     if (columnDataField == "Bill_Id") {

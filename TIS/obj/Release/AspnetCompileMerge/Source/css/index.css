@@ -1327,4 +1327,11 @@ body {
     width: 15px;
 }
 
+/* Unidentified call rows highlight */
+.jqx-grid-row.redClass td,
+.jqx-grid-row.redClass {
+    background-color: #ffcccc !important;
+    color: red !important;
+}
+
 </style >

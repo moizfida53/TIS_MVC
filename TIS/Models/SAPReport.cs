@@ -31,5 +31,8 @@ namespace TIS.Models
     public string EMPLOYEENO { get; set; }
 
     public string Bill_ID { get; set; }
-  }
+    public string CostCenterName { get; set; }   // ✅ Added
+    public string CostCenterCode { get; set; }   // ✅ Added
+    public string Department { get; set; }   // ✅ Added
+    }
 }

@@ -619,7 +619,18 @@ function ProcessBill() {
     const curData = itemData.filter(el => el.CallType == 0);
     if (curData.length > 0) {
         $.alert.open('error', 'Info Needed', 'Please Identify All Records');
-        FillCallType();
+
+        // Highlight only the unidentified rows without reinitializing the grid
+        const rowCount = $('#grdBillDetails').jqxGrid('getdatainformation').rowscount;
+        for (let i = 0; i < rowCount; i++) {
+            const rowData = $('#grdBillDetails').jqxGrid('getrowdata', i);
+            if (rowData && rowData.CallType == 0) {
+                $('#grdBillDetails').jqxGrid('setrowstyle', i, 'background-color: #e83636 !important; color: #000 !important;');
+            } else {
+                $('#grdBillDetails').jqxGrid('setrowstyle', i, ''); // clear style for identified rows
+            }
+        }
+
         return;
     }
 
@@ -657,8 +668,8 @@ function ProcessBill() {
             font-size: 15px;
             line-height: 1.5;
         ">
-            <div><strong>Line Manager:</strong> <span style="color:#2c3e50;">${managerName}</span></div>
-            <div>Are you sure you want to send the bill for approval?</div>
+            <div><strong style="display: none">Line Manager:</strong> <span style="display: none;color:#2c3e50;">${managerName}</span></div>
+            <div>Are you sure you want to Process the Bill?</div>
 
             <hr style="width:100%; margin:10px 0; border-color:#eee;">
 
@@ -679,7 +690,7 @@ function ProcessBill() {
         </div>
         `,
         showCancelButton: true,
-        confirmButtonText: "Yes, Send it",
+        confirmButtonText: "Yes, Process it",
         cancelButtonText: "Cancel",
         reverseButtons: true,
         width: 480,
@@ -2012,6 +2023,13 @@ function FillCallType() {
         theme: 'dark-blue',
         showsortcolumnbackground: true,
         selectionmode: 'singlerow',
+        rowclassname: function (row) {          // 👈 Add this
+            const rowData = $('#grdBillDetails').jqxGrid('getrowdata', row);
+            if (rowData && rowData.CallType == 0) {
+                return 'redClass';
+            }
+            return '';
+        },
         columns: [
 
             { dataField: 'Id', text: 'Id', hidden: 'true' },
@@ -2029,6 +2047,9 @@ function FillCallType() {
 
 
 }
+
+
+
 
 function SaveChanges() {
 
