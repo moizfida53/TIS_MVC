@@ -8,6 +8,30 @@ $(document).ready(function () {
     $('#btnUpdate').hide();
     $('#btnDel').hide();
 
+    $('#btnSyncAD').on('click', function () {
+        var $btn = $(this);
+        $btn.prop('disabled', true).html('<i class="fas fa-spinner fa-spin me-2"></i>Syncing...');
+
+        $.ajax({
+            url: '/SyncBapi/SyncBapiProd',
+            type: 'GET',
+            success: function (response) {
+                if (response && response.Message) {
+                    alert('AD Sync Complete: ' + response.Message);
+                } else {
+                    alert('AD Sync completed successfully.');
+                }
+            },
+            error: function (xhr) {
+                alert('AD Sync failed: ' + (xhr.responseText || 'Unknown error'));
+            },
+            complete: function () {
+                $btn.prop('disabled', false).html('<i class="fas fa-sync-alt me-2"></i>Sync AD');
+            }
+        });
+    });
+
+
     var dropDownContent1 = '<div style="position: relative; margin: 3px; ">Select Manager</div>';
     $body = $("body");
     $("#btnmanager").jqxDropDownButton({ width: "100%", height: 25 });

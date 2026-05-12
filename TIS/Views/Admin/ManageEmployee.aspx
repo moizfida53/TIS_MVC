@@ -217,6 +217,37 @@
                                 <button id="btnSyncBapi" type="button" class="btn btn-primary d-none">
                                     <i class="fas fa-sync-alt me-2"></i>Sync Bapi
                                 </button>
+
+                                <button id="btnSyncAD" type="button" class="btn btn-primary">
+                                    <i class="fas fa-sync-alt me-2"></i>Sync AD
+                                </button>
+
+                                <!-- AD Sync Loader Overlay -->
+                                <div id="adSyncLoader" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.55); z-index: 9999; align-items: center; justify-content: center;">
+                                    <div style="background: #fff; border-radius: 12px; padding: 40px 50px; text-align: center; box-shadow: 0 8px 32px rgba(0,0,0,0.25); min-width: 280px;">
+                                        <div style="margin-bottom: 20px;">
+                                            <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                                <circle cx="30" cy="30" r="26" fill="none" stroke="#e9ecef" stroke-width="6" />
+                                                <circle cx="30" cy="30" r="26" fill="none" stroke="#0dcaf0" stroke-width="6"
+                                                    stroke-linecap="round" stroke-dasharray="60 100">
+                                                    <animateTransform attributeName="transform" type="rotate"
+                                                        from="0 30 30" to="360 30 30" dur="0.9s" repeatCount="indefinite" />
+                                                </circle>
+                                            </svg>
+                                        </div>
+                                        <div style="font-size: 17px; font-weight: 600; color: #333; margin-bottom: 6px;">
+                                            Syncing with Active Directory
+       
+                                        </div>
+                                        <div style="font-size: 13px; color: #6c757d;">
+                                            Please wait, this may take a moment...
+       
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
                             </div>
                         </div>
                     </div>

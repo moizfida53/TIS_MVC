@@ -154,7 +154,7 @@
                                 <ul>
                                     <li><a href="../../SAP_Pending/SAP_Pending">Post Report</a></li>
                                     <li><a href="../../billreport/billreport">Status Report</a></li>
-                                    <%--<li><a href="../../Pivot/Pivot">Pivot Chart</a></li>--%>
+                                    <li><a href="../../Pivot/Pivot">Pivot Chart</a></li>
                                 </ul>
                             </li>
                             <li><a href="../../dashboard/IndexNew"><i class="fas fa-tachometer-alt"></i>Dashboard Report</a></li>

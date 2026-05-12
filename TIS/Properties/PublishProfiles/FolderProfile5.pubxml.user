@@ -3,7 +3,7 @@
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>D:\KNPC_Demo\Publish</_PublishTargetUrl>
-    <History>True|2026-04-13T21:35:56.7122469Z||;</History>
+    <History>True|2026-05-05T21:17:50.8732118Z||;True|2026-04-14T00:35:56.7122469+03:00||;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -17,10 +17,10 @@
       <publishTime>02/15/2026 19:03:27</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>04/14/2026 00:35:52</publishTime>
+      <publishTime>05/11/2026 16:11:36</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>04/14/2026 00:35:52</publishTime>
+      <publishTime>05/11/2026 16:11:36</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>02/15/2026 19:03:27</publishTime>
@@ -28,11 +28,26 @@
     <File Include="bin/EntityFramework.SqlServer.dll">
       <publishTime>02/15/2026 19:03:27</publishTime>
     </File>
+    <File Include="bin/EPPlus.Interfaces.dll">
+      <publishTime>12/12/2025 14:41:08</publishTime>
+    </File>
     <File Include="bin/ExcelDataReader.DataSet.dll">
-      <publishTime>02/23/2026 08:24:59</publishTime>
+      <publishTime>09/21/2025 21:52:12</publishTime>
+    </File>
+    <File Include="bin/ExcelDataReader.DataSet.pdb">
+      <publishTime>09/21/2025 21:52:12</publishTime>
     </File>
     <File Include="bin/ExcelDataReader.dll">
-      <publishTime>02/23/2026 08:24:59</publishTime>
+      <publishTime>09/21/2025 21:51:54</publishTime>
+    </File>
+    <File Include="bin/ExcelDataReader.pdb">
+      <publishTime>09/21/2025 21:51:52</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Bcl.Cryptography.dll">
+      <publishTime>04/17/2026 21:49:30</publishTime>
+    </File>
+    <File Include="bin/Microsoft.IO.RecyclableMemoryStream.dll">
+      <publishTime>06/11/2024 23:23:46</publishTime>
     </File>
     <File Include="bin/Microsoft.ReportViewer.WebForms.dll">
       <publishTime>02/23/2026 08:24:59</publishTime>
@@ -61,11 +76,23 @@
     <File Include="bin/SAPMobile.dll">
       <publishTime>02/23/2026 08:24:21</publishTime>
     </File>
+    <File Include="bin/Scripts/adtest.js">
+      <publishTime>05/10/2026 13:41:51</publishTime>
+    </File>
     <File Include="bin/System.Buffers.dll">
-      <publishTime>02/15/2026 19:03:28</publishTime>
+      <publishTime>03/19/2025 23:55:38</publishTime>
+    </File>
+    <File Include="bin/System.ComponentModel.Annotations.dll">
+      <publishTime>05/15/2018 16:29:36</publishTime>
+    </File>
+    <File Include="bin/System.Formats.Asn1.dll">
+      <publishTime>04/17/2026 21:48:18</publishTime>
+    </File>
+    <File Include="bin/System.IO.FileSystem.AccessControl.dll">
+      <publishTime>10/19/2020 21:39:30</publishTime>
     </File>
     <File Include="bin/System.Memory.dll">
-      <publishTime>02/15/2026 19:03:28</publishTime>
+      <publishTime>04/04/2025 02:00:54</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Extensions.dll">
       <publishTime>02/15/2026 19:03:28</publishTime>
@@ -77,10 +104,22 @@
       <publishTime>02/15/2026 19:03:28</publishTime>
     </File>
     <File Include="bin/System.Numerics.Vectors.dll">
-      <publishTime>02/15/2026 19:03:28</publishTime>
+      <publishTime>03/19/2025 23:55:42</publishTime>
     </File>
     <File Include="bin/System.Runtime.CompilerServices.Unsafe.dll">
-      <publishTime>02/15/2026 19:03:28</publishTime>
+      <publishTime>04/04/2025 02:00:52</publishTime>
+    </File>
+    <File Include="bin/System.Security.AccessControl.dll">
+      <publishTime>10/23/2021 02:45:08</publishTime>
+    </File>
+    <File Include="bin/System.Security.Cryptography.Xml.dll">
+      <publishTime>03/20/2026 00:18:18</publishTime>
+    </File>
+    <File Include="bin/System.Security.Principal.Windows.dll">
+      <publishTime>10/19/2020 21:46:28</publishTime>
+    </File>
+    <File Include="bin/System.Text.Encoding.CodePages.dll">
+      <publishTime>04/17/2026 21:48:18</publishTime>
     </File>
     <File Include="bin/System.Threading.Tasks.Extensions.dll">
       <publishTime>02/15/2026 19:03:28</publishTime>
@@ -116,10 +155,13 @@
       <publishTime>02/15/2026 19:03:28</publishTime>
     </File>
     <File Include="bin/TIS.dll">
-      <publishTime>04/14/2026 00:35:48</publishTime>
+      <publishTime>05/11/2026 16:11:26</publishTime>
     </File>
     <File Include="bin/TIS.pdb">
-      <publishTime>04/14/2026 00:35:48</publishTime>
+      <publishTime>05/11/2026 16:11:26</publishTime>
+    </File>
+    <File Include="bin/Views/ADTest/Index.cshtml">
+      <publishTime>05/10/2026 13:45:43</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>02/15/2026 19:03:28</publishTime>
@@ -1096,6 +1138,9 @@
     <File Include="Content/themes/base/tooltip.css">
       <publishTime>02/15/2026 19:03:21</publishTime>
     </File>
+    <File Include="Controllers/ADTestController.cs">
+      <publishTime>05/09/2026 14:48:51</publishTime>
+    </File>
     <File Include="css/alert.css">
       <publishTime>02/15/2026 19:03:22</publishTime>
     </File>
@@ -1292,7 +1337,7 @@
       <publishTime>02/15/2026 19:03:22</publishTime>
     </File>
     <File Include="css/Pivot/pivot.css">
-      <publishTime>02/15/2026 19:03:22</publishTime>
+      <publishTime>04/14/2026 07:31:14</publishTime>
     </File>
     <File Include="css/SAP-Pending.css">
       <publishTime>02/15/2026 19:03:22</publishTime>
@@ -1304,7 +1349,7 @@
       <publishTime>02/15/2026 19:03:22</publishTime>
     </File>
     <File Include="css/style.css">
-      <publishTime>02/15/2026 19:03:22</publishTime>
+      <publishTime>04/23/2026 13:00:57</publishTime>
     </File>
     <File Include="css/StyleSheet.css">
       <publishTime>02/15/2026 19:03:22</publishTime>
@@ -3014,16 +3059,19 @@
       <publishTime>02/15/2026 19:03:21</publishTime>
     </File>
     <File Include="MainJs/Index.js">
-      <publishTime>02/15/2026 19:03:21</publishTime>
+      <publishTime>04/23/2026 08:17:19</publishTime>
     </File>
     <File Include="MainJs/Landing.js">
       <publishTime>02/15/2026 19:03:21</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>04/14/2026 00:35:51</publishTime>
+      <publishTime>05/11/2026 16:11:30</publishTime>
     </File>
     <File Include="Scripts/AddTelephone.js">
       <publishTime>03/31/2026 23:58:59</publishTime>
+    </File>
+    <File Include="Scripts/adtest.js">
+      <publishTime>05/10/2026 13:41:51</publishTime>
     </File>
     <File Include="Scripts/alert.js">
       <publishTime>02/15/2026 19:03:21</publishTime>
@@ -3038,7 +3086,7 @@
       <publishTime>02/15/2026 19:03:21</publishTime>
     </File>
     <File Include="Scripts/BillReport.js">
-      <publishTime>04/01/2026 07:37:38</publishTime>
+      <publishTime>04/23/2026 14:55:05</publishTime>
     </File>
     <File Include="Scripts/bootstrap.bundle.min.js">
       <publishTime>02/15/2026 19:03:21</publishTime>
@@ -3053,7 +3101,7 @@
       <publishTime>02/15/2026 19:03:21</publishTime>
     </File>
     <File Include="Scripts/ChangeStatus.js">
-      <publishTime>02/15/2026 19:03:21</publishTime>
+      <publishTime>04/23/2026 14:53:54</publishTime>
     </File>
     <File Include="Scripts/Config.js">
       <publishTime>02/15/2026 19:03:21</publishTime>
@@ -3083,13 +3131,13 @@
       <publishTime>02/15/2026 19:03:21</publishTime>
     </File>
     <File Include="Scripts/Force-bill.js">
-      <publishTime>02/15/2026 19:03:21</publishTime>
+      <publishTime>04/23/2026 14:00:33</publishTime>
     </File>
     <File Include="Scripts/fun_with_svg_arcs.js">
       <publishTime>02/15/2026 19:03:21</publishTime>
     </File>
     <File Include="Scripts/ImportInvoice.js">
-      <publishTime>02/23/2026 08:13:48</publishTime>
+      <publishTime>05/11/2026 16:01:52</publishTime>
     </File>
     <File Include="Scripts/index.js">
       <publishTime>02/15/2026 19:03:21</publishTime>
@@ -3260,10 +3308,10 @@
       <publishTime>02/15/2026 19:03:22</publishTime>
     </File>
     <File Include="Scripts/ManageCallType.js">
-      <publishTime>04/08/2026 00:00:31</publishTime>
+      <publishTime>05/05/2026 19:31:41</publishTime>
     </File>
     <File Include="Scripts/ManageEmployee.js">
-      <publishTime>04/13/2026 13:10:55</publishTime>
+      <publishTime>05/07/2026 17:34:34</publishTime>
     </File>
     <File Include="Scripts/MasterPage.js">
       <publishTime>02/15/2026 19:03:21</publishTime>
@@ -3272,7 +3320,7 @@
       <publishTime>02/15/2026 19:03:22</publishTime>
     </File>
     <File Include="Scripts/myJS.js">
-      <publishTime>04/12/2026 16:58:50</publishTime>
+      <publishTime>04/24/2026 14:56:10</publishTime>
     </File>
     <File Include="Scripts/notify.js">
       <publishTime>02/15/2026 19:03:22</publishTime>
@@ -3341,7 +3389,7 @@
       <publishTime>02/15/2026 19:03:21</publishTime>
     </File>
     <File Include="Scripts/SAP-Pending.js">
-      <publishTime>02/15/2026 19:03:21</publishTime>
+      <publishTime>04/23/2026 14:38:02</publishTime>
     </File>
     <File Include="Scripts/select2.min.js">
       <publishTime>02/15/2026 19:03:22</publishTime>
@@ -3383,10 +3431,13 @@
       <publishTime>02/15/2026 19:03:22</publishTime>
     </File>
     <File Include="Views/Admin/ManageEmployee.aspx">
-      <publishTime>02/23/2026 08:13:48</publishTime>
+      <publishTime>05/10/2026 10:07:58</publishTime>
     </File>
     <File Include="Views/Admin/Package.aspx">
       <publishTime>02/15/2026 19:03:22</publishTime>
+    </File>
+    <File Include="Views/ADTest/Index.cshtml">
+      <publishTime>05/10/2026 13:45:43</publishTime>
     </File>
     <File Include="Views/AuditReport/AuditReport.aspx">
       <publishTime>02/15/2026 19:03:22</publishTime>
@@ -3395,7 +3446,7 @@
       <publishTime>02/15/2026 19:03:22</publishTime>
     </File>
     <File Include="Views/Bill/ForceBill.aspx">
-      <publishTime>02/15/2026 19:03:22</publishTime>
+      <publishTime>04/23/2026 13:56:22</publishTime>
     </File>
     <File Include="Views/Bill/ReAssignBill.aspx">
       <publishTime>02/15/2026 19:03:22</publishTime>
@@ -3404,7 +3455,7 @@
       <publishTime>02/15/2026 19:03:22</publishTime>
     </File>
     <File Include="Views/BillReport/BillReport.aspx">
-      <publishTime>02/15/2026 19:03:22</publishTime>
+      <publishTime>04/21/2026 16:25:17</publishTime>
     </File>
     <File Include="Views/Dashboard/Index.cshtml">
       <publishTime>02/15/2026 19:03:22</publishTime>
@@ -3452,19 +3503,19 @@
       <publishTime>03/01/2026 14:55:53</publishTime>
     </File>
     <File Include="Views/Setting/ManageCallType.aspx">
-      <publishTime>04/08/2026 00:00:40</publishTime>
+      <publishTime>05/05/2026 19:18:22</publishTime>
     </File>
     <File Include="Views/Setting/Provider.aspx">
       <publishTime>02/15/2026 19:03:22</publishTime>
     </File>
     <File Include="Views/Shared/AccessDenied.cshtml">
-      <publishTime>02/23/2026 08:13:48</publishTime>
+      <publishTime>05/06/2026 20:40:28</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>02/15/2026 19:03:22</publishTime>
     </File>
     <File Include="Views/Shared/MasterPage.Master">
-      <publishTime>04/13/2026 17:38:06</publishTime>
+      <publishTime>05/06/2026 00:11:34</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
       <publishTime>02/15/2026 19:03:22</publishTime>
@@ -3473,7 +3524,7 @@
       <publishTime>02/15/2026 19:03:22</publishTime>
     </File>
     <File Include="Views/User/Index.cshtml">
-      <publishTime>04/01/2026 10:01:33</publishTime>
+      <publishTime>05/09/2026 14:32:32</publishTime>
     </File>
     <File Include="Views/User/Landing.cshtml">
       <publishTime>02/15/2026 19:03:22</publishTime>
@@ -3491,7 +3542,7 @@
       <publishTime>02/15/2026 19:03:22</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/14/2026 00:35:49</publishTime>
+      <publishTime>05/11/2026 16:11:29</publishTime>
     </File>
   </ItemGroup>
 </Project>

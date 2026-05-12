@@ -10,6 +10,7 @@ using TIS.Filters;
 namespace TIS.Controllers
 {
     [RoleAuthorize(Roles.Administrator, Roles.SuperAdmin, Roles.Employee)]
+
     public class IndexController : Controller
     {
         public ActionResult Index() => (ActionResult)this.View();
