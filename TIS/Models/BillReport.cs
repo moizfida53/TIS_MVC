@@ -36,6 +36,8 @@ namespace TIS.Models
         public string SUB_DESC { get; set; }
         public string TOTALAMOUNT { get; set; }
         public string BUSINESSCHARGES { get; set; }
+
+        public string PERSONALLIMITCHARGES { get; set; }
         public string PERSONALCHARGES { get; set; }
         public string DEDUCTIBLEAMOUNT { get; set; }
         public string COSTCENTER { get; set; }

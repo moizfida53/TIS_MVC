@@ -39,6 +39,7 @@ namespace TIS.Controllers
                             Id = Convert.ToInt32(row["Id"].ToString()),
                             TemplateId = Convert.ToInt32(row["TemplateId"].ToString()),
                             Bill_Id = Convert.ToInt32(row["Bill_Id"].ToString()),
+                            BillDate = Convert.ToDateTime(row["BillDate"].ToString()).ToString("MMM-yyyy"), // ← ADD THIS
                             Subject = row["Subject"].ToString(),
                             EmailText = row["EmailText"].ToString(),
                             EmailFrom = row["EmailFrom"].ToString(),

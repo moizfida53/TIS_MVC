@@ -21,7 +21,7 @@ using TIS.Models;
 
 namespace TIS.Controllers
 {
-    [PocExpiryFilter]
+    //[PocExpiryFilter]
     public class UserController : Controller
     {
         private string loginName;

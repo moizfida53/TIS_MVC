@@ -6,34 +6,35 @@
 
 namespace TIS.Models
 {
-  public class SendEmail
-  {
-    public int Id { get; set; }
+    public class SendEmail
+    {
+        public int Id { get; set; }
 
-    public int TemplateId { get; set; }
+        public int TemplateId { get; set; }
 
-    public int Bill_Id { get; set; }
+        public int Bill_Id { get; set; }
+        public string BillDate { get; set; }
 
-    public int[] BID { get; set; }
+        public int[] BID { get; set; }
 
-    public string Subject { get; set; }
+        public string Subject { get; set; }
 
-    public string EmailText { get; set; }
+        public string EmailText { get; set; }
 
-    public string EmailFrom { get; set; }
+        public string EmailFrom { get; set; }
 
-    public string EmailTo { get; set; }
+        public string EmailTo { get; set; }
 
-    public string CC { get; set; }
+        public string CC { get; set; }
 
-    public bool sent { get; set; }
+        public bool sent { get; set; }
 
-    public string senton { get; set; }
+        public string senton { get; set; }
 
-    public int[] EmailID { get; set; }
+        public int[] EmailID { get; set; }
 
-    public string TemplateName { get; set; }
+        public string TemplateName { get; set; }
 
-    public int IsSent { get; set; }
-  }
+        public int IsSent { get; set; }
+    }
 }

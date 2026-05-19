@@ -253,6 +253,7 @@ namespace TIS.Controllers
                                     TOTALAMOUNT = SafeGetColumn(row, "TOTALAMOUNT"),
                                     BUSINESSCHARGES = SafeGetColumn(row, "BUSINESSCHARGES"),
                                     PERSONALCHARGES = SafeGetColumn(row, "PERSONALCHARGES"),
+                                    PERSONALLIMITCHARGES = SafeGetColumn(row, "PERSONALLIMITCHARGES"),
                                     DEDUCTIBLEAMOUNT = SafeGetColumn(row, "DEDUCTIBLEAMOUNT"),
                                     COSTCENTER = SafeGetColumn(row, "COSTCENTER"),
                                     COSTCENTERCODE = SafeGetColumn(row, "Code", "CostCenterCode", "CODE"),  // ← tries multiple names

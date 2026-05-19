@@ -37,7 +37,7 @@ $(document).on('change', "input[data-handle='calltype']", function (e) {
     }
 });
 
-function getMyArcBill(arcbid) {
+function getMyArcBill1(arcbid) {
 
     $.ajax({
         type: "GET",
@@ -101,6 +101,365 @@ function getMyArcBill(arcbid) {
     });
 
 }
+
+
+
+//updated getMyArcBill layout
+
+
+function getMyArcBill(arcbid) {
+    $.ajax({
+        type: "GET",
+        cache: false,
+        async: false,
+        url: "../../Ajax/getReportBillArchive",
+        data: { billId: arcbid },
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (result) {
+            var bill = result.ArchiveBill;
+            var tAmt = 0, GAmt = 0;
+
+            // ── Build transaction rows grouped by Trans type ──
+            var txnHtml = '';
+            for (var i = 0; i < result.Trans.length; i++) {
+                var grp = result.Trans[i];
+                tAmt = 0;
+                var rowsHtml = '';
+                for (var j = 0; j < result.RptBill.length; j++) {
+                    var r = result.RptBill[j];
+                    if (r.TransType !== grp.StrTrans) continue;
+                    tAmt += r.Amount;
+                    GAmt += r.Amount;
+                    var ctLower = (r.CallType || '').toLowerCase();
+                    var badgeClass = ctLower === 'personal' ? 'personal'
+                        : ctLower === 'business' ? 'business' : 'allowance';
+                    rowsHtml +=
+                        '<tr>' +
+                        '<td>' + (r.TransType || '') + '</td>' +
+                        '<td>' + (r.CallTime || '') + '</td>' +
+                        '<td>' + (r.CallDate || '') + '</td>' +
+                        '<td>' + (r.Description || '') + '</td>' +
+                        '<td style="text-align:center">' + (r.Duration || '0') + '</td>' +
+                        '<td><span class="call-type-badge ' + badgeClass + '">' + (r.CallType || '') + '</span></td>' +
+                        '<td>' + (r.Amount ? r.Amount.toFixed(3) : '0.000') + '</td>' +
+                        '</tr>';
+                }
+                txnHtml +=
+                    '<div class="txn-section">' +
+                    '<div class="txn-group-header">' + grp.StrTrans + '</div>' +
+                    '<table class="txn-table">' +
+                    '<thead><tr>' +
+                    '<th>Transaction Type</th><th>Time</th><th>Call Date</th>' +
+                    '<th>Description</th><th style="text-align:center">Duration</th>' +
+                    '<th>Call Type</th><th style="text-align:right">Amount</th>' +
+                    '</tr></thead>' +
+                    '<tbody>' + rowsHtml +
+                    '<tr class="subtotal"><td colspan="6">Subtotal</td><td>' + tAmt.toFixed(3) + '</td></tr>' +
+                    '</tbody></table></div>';
+            }
+
+            // Grand total row appended after last group
+            txnHtml +=
+                '<table class="txn-table" style="margin-top:-1px">' +
+                '<tbody><tr class="grandtotal" style="color: #3b79b7 !important">' +
+                '<td colspan="6">Grand Total</td>' +
+                '<td>' + GAmt.toFixed(3) + '</td>' +
+                '</tr></tbody></table>';
+
+            
+            // ── Helper to safely read bill field ──
+            function f(key) { return bill[key] != null ? bill[key] : ''; }
+
+            // ── Helper to format numeric fields to 3 decimal places ──
+            function amt(key) { return parseFloat(f(key) || 0).toFixed(3); }
+
+            // ── Format Bill Month — strip time portion ──
+            var rawDate = f('BILLDATE');
+            var billMonthStr = rawDate;
+            var dp = rawDate.split(' ')[0].split('/');
+            if (dp.length === 3) {
+                var bd = new Date(dp[2], dp[1] - 1, dp[0]);
+                billMonthStr = bd.toLocaleString('en-US', { month: 'short', year: 'numeric' });
+            }
+
+            // ── Status badge class ──
+            var statusClass = (f('STATUS') || '').toLowerCase() === 'closed' ? 'closed' : 'pending';
+
+            // ── Comments block (only if not empty) ──
+            var commentsBlock = '';
+            if (f('COMMENTS')) {
+                commentsBlock =
+                    '<div class="comments-block">' +
+                    '<div class="cb-label">Comments</div>' +
+                    '<div>' + f('COMMENTS') + '</div>' +
+                    '</div>';
+            }
+
+            // ── Metrics bar HTML ──
+            var metricsBar =
+                '<div class="metrics-bar">' +
+
+                // Total Bill Amount — left dark anchor
+                '<div class="metric-total">' +
+                '<div class="m-label">Total Bill Amount</div>' +
+                '<div class="m-value">' + amt('TOTALAMOUNT') + '</div>' +
+                '</div>' +
+                '<div class="metrics-divider"></div>' +
+
+                '<div class="metrics-items">' +
+
+                // ALLOWANCE grouped box: title bar + two sub-cells
+                '<div class="m-group">' +
+                '<div class="m-group-title">Allowance</div>' +
+                '<div class="m-group-cells">' +
+                '<div class="m-cell">' +
+                '<div class="m-label">Limit</div>' +
+                '<div class="m-value">' + amt('MONTHLYLIMIT') + '</div>' +
+                '</div>' +
+                '<div class="m-cell">' +
+                '<div class="m-label">Charges</div>' +
+                '<div class="m-value">' + amt('PERSONALLIMITCHARGES') + '</div>' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+
+                // BUSINESS grouped box: title bar + two sub-cells
+                '<div class="m-group">' +
+                '<div class="m-group-title">Business</div>' +
+                '<div class="m-group-cells">' +
+                '<div class="m-cell">' +
+                '<div class="m-label">Limit</div>' +
+                '<div class="m-value">' + amt('BUSSINESSLIMIT') + '</div>' +
+                '</div>' +
+                '<div class="m-cell">' +
+                '<div class="m-label">Charges</div>' +
+                '<div class="m-value">' + amt('BUSINESSCHARGES') + '</div>' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+
+                // Waiver + Personal Charges — stacked in one column
+                '<div class="m-stack">' +
+                '<div class="m-stack-row">' +
+                '<div class="m-label">Waiver Amount</div>' +
+                '<div class="m-value">' + amt('WAIVERAMOUNT') + '</div>' +
+                '</div>' +
+                '<div class="m-stack-row m-stack-row-bottom">' +
+                '<div class="m-label">Personal Charges</div>' +
+                '<div class="m-value">' + amt('PERSONALCHARGES') + '</div>' +
+                '</div>' +
+                '</div>' +
+
+                // Net Deductible — right highlighted anchor
+                '<div class="m-item net-ded">' +
+                '<div class="m-label">Net Deductible</div>' +
+                '<div class="m-value">' + amt('DEDUCTIBLEAMOUNT') + '</div>' +
+                '</div>' +
+
+                '</div>' +
+                '</div>';
+
+            // ── Assemble full page ──
+            var pageContent =
+                '<!DOCTYPE html><html><head>' +
+                '<meta charset="utf-8"/>' +
+                '<title>Bill Statement \u2013 ' + f('EMPLOYEENAME') + '</title>' +
+                //'<link rel="preconnect" href="https://fonts.googleapis.com">' +
+                //'<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">' +
+                '<style>' + getPreviewStyles() + '</style>' +
+                '</head><body>' +
+
+                '<div class="page">' +
+
+                // ── Header band ──
+                '<div class="page-header">' +
+                '<div class="title-block"><h1>Mobile Bill Statement</h1><p>Official Telecom Expense Report</p></div>' +
+                '<span class="status-badge ' + statusClass + '">' + f('STATUS') + '</span>' +
+                '</div>' +
+
+                // ── Employee strip ──
+                '<div class="emp-strip">' +
+                '<div class="emp-name">' + f('EMPLOYEENAME') + '</div>' +
+                '<div class="emp-meta">' +
+                '<div><span>Mobile Number</span><strong>' + f('MOBILENO') + '</strong></div>' +
+                '<div><span>Provider</span><strong>' + f('PROVIDER') + '</strong></div>' +
+                '<div><span>Bill Month</span><strong>' + billMonthStr + '</strong></div>' +
+                '<div><span>Last Updated</span><strong>' + f('LASTUPDATEDON') + '</strong></div>' +
+                '</div>' +
+                '</div>' +
+
+                // ── Body ──
+                '<div class="page-body">' +
+                metricsBar +
+                commentsBlock +
+                '<div class="section-heading">Transaction Details</div>' +
+                txnHtml +
+                '</div>' +
+
+                // ── Footer ──
+                '<div class="page-footer">' +
+                '<span>Generated on <strong>' +
+                new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) +
+                '</strong></span>' +
+                //'<button class="print-btn" onclick="window.print()">Print / Save PDF</button>' +
+                //'<button class="print-btn"  onclick="window.focus();window.print();">Print / Save PDF</button>' +
+                '</div>' +
+
+                '</div>' + // .page
+                '</body></html>';
+
+            //var newWindow = window.open('', '', 'width=960,height=980,scrollbars=1,top=20,left=20');
+            //var doc = newWindow.document.open();
+            //doc.write(pageContent);
+            //doc.close();
+            var newWindow = window.open('', '', 'width=960,height=980,scrollbars=1,top=20,left=20');
+            var doc = newWindow.document.open();
+            doc.write(pageContent);
+            doc.close();
+            newWindow.focus();
+            newWindow.onload = function () {
+                newWindow.print();
+            };
+            // Fallback: some browsers fire onload before doc.close(), so defer as well
+            setTimeout(function () {
+                if (newWindow && !newWindow.closed) {
+                    newWindow.focus();
+                }
+            }, 500);
+        }
+    });
+}
+
+function getPreviewStyles() {
+    return "" +
+        // ── Reset ──
+        "*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}" +
+
+        // ── Variables ──
+        // No external fonts — all system fonts available on every Windows intranet machine
+        ":root{" +
+        "--font-body:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;" +
+        "--font-heading:Georgia,'Times New Roman',Times,serif;" +
+        "--ink:#0f1923;--ink-light:#4a5568;--rule:#d1d9e0;" +
+        "--accent:#1a3a5c;--accent-mid:#2d6a9f;--accent-pale:#e8f0f8;" +
+        "--green:#0e6e4f;--green-pale:#e6f4f0;" +
+        "--amber:#92500a;--amber-pale:#fdf3e3;" +
+        "--white:#ffffff;--paper:#f7f9fc" +
+        "}" +
+
+        // ── Base ──
+        "html,body{background:#cdd5de;font-family:var(--font-body);color:var(--ink);min-height:100vh;padding:32px 16px 48px}" +
+
+        // ── Page wrapper ──
+        ".page{max-width:820px;margin:0 auto;background:var(--white);border-radius:4px;box-shadow:0 4px 32px rgba(0,0,0,.18),0 1px 4px rgba(0,0,0,.10);overflow:hidden}" +
+
+        // ── Header band ──
+        ".page-header{background:var(--accent);padding:28px 36px 22px;display:flex;align-items:flex-end;justify-content:space-between;gap:16px}" +
+        ".page-header .title-block h1{font-family:var(--font-heading);font-size:26px;color:var(--white);letter-spacing:.4px;line-height:1.1}" +
+        ".page-header .title-block p{font-size:12px;color:rgba(255,255,255,.6);margin-top:4px;letter-spacing:.8px;text-transform:uppercase}" +
+
+        // ── Status badge ──
+        ".status-badge{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:20px;background:rgba(255,255,255,.15);color:var(--white);border:1px solid rgba(255,255,255,.3);white-space:nowrap}" +
+        ".status-badge.closed{background:var(--green-pale);color:var(--green);border-color:#a8d5c7}" +
+        ".status-badge.pending{background:var(--amber-pale);color:var(--amber);border-color:#f0cc96}" +
+
+        // ── Employee strip ──
+        ".emp-strip{background:var(--accent-pale);border-bottom:1px solid var(--rule);padding:14px 36px;display:flex;align-items:center;gap:32px;flex-wrap:wrap}" +
+        ".emp-strip .emp-name{font-family:var(--font-heading);font-size:20px;color:var(--accent);flex:1;min-width:200px}" +
+        ".emp-strip .emp-meta{display:flex;gap:28px;flex-wrap:wrap}" +
+        ".emp-strip .emp-meta span{font-size:12px;color:var(--ink-light)}" +
+        ".emp-strip .emp-meta strong{display:block;font-size:14px;color:var(--ink);font-weight:600;margin-top:1px}" +
+
+        // ── Body ──
+        ".page-body{padding:28px 36px 36px}" +
+
+        // ── Metrics bar ──
+        ".metrics-bar{display:flex;align-items:stretch;margin-bottom:24px;border:1px solid var(--rule);border-radius:7px;overflow:hidden}" +
+        ".metric-total{background:var(--accent);padding:14px 20px;display:flex;flex-direction:column;justify-content:center;min-width:130px;flex-shrink:0}" +
+        ".metric-total .m-label{font-size:9.5px;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.65);margin-bottom:4px;white-space:nowrap}" +
+        ".metric-total .m-value{font-size:22px;font-weight:700;color:var(--white);line-height:1}" +
+        ".metrics-divider{width:3px;background:var(--accent-mid);flex-shrink:0}" +
+        ".metrics-items{display:flex;flex:1;background:var(--paper)}" +
+
+        // ── Single metric item ──
+        ".m-item{flex:1;display:flex;flex-direction:column;justify-content:center;padding:12px 14px;border-right:1px solid var(--rule)}" +
+        ".m-item:last-child{border-right:none}" +
+        ".m-item .m-label{font-size:9.5px;text-transform:uppercase;letter-spacing:.6px;color:var(--ink-light);margin-bottom:4px;white-space:nowrap}" +
+        ".m-item .m-value{font-size:15px;font-weight:600;color:var(--ink);line-height:1.1}" +
+
+        // ── Grouped metric box (Allowance / Business) ──
+        ".m-group{flex:1;display:flex;flex-direction:column;border-right:1px solid var(--rule);min-width:0}" +
+        ".m-group-title{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--white);background:var(--accent-mid);padding:3px 8px;text-align:center}" +
+        ".m-group-cells{display:flex;flex:1}" +
+        ".m-cell{flex:1;padding:7px 10px;border-right:1px solid var(--rule)}" +
+        ".m-cell:last-child{border-right:none}" +
+        ".m-cell .m-label{font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--ink-light);margin-bottom:3px;white-space:nowrap}" +
+        ".m-cell .m-value{font-size:13.5px;font-weight:600;color:var(--ink)}" +
+
+        // ── Stacked metric (Waiver + Personal Charges in one column) ──
+        ".m-stack{flex:1;display:flex;flex-direction:column;border-right:1px solid var(--rule);min-width:0}" +
+        ".m-stack-row{flex:1;display:flex;flex-direction:column;justify-content:center;padding:6px 12px}" +
+        ".m-stack-row-bottom{border-top:1px solid var(--rule)}" +
+        ".m-stack-row .m-label{font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--ink-light);margin-bottom:2px;white-space:nowrap}" +
+        ".m-stack-row .m-value{font-size:13.5px;font-weight:600;color:var(--ink)}" +
+
+        // ── Net Deductible (highlighted anchor) ──
+        ".m-item.net-ded{background:var(--accent-pale);border-left:3px solid var(--accent-mid);min-width:120px;flex-shrink:0;border-right:none}" +
+        ".m-item.net-ded .m-label{color:var(--accent-mid)}" +
+        ".m-item.net-ded .m-value{font-size:17px;color:var(--accent);font-weight:700}" +
+
+        // ── Section heading ──
+        ".section-heading{font-size:11px;text-transform:uppercase;letter-spacing:1.2px;color:var(--ink-light);font-weight:600;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--rule)}" +
+
+        // ── Transaction section ──
+        ".txn-section{margin-bottom:24px}" +
+        ".txn-group-header{font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--accent-mid);background:var(--accent-pale);padding:7px 12px;border-radius:4px 4px 0 0;border:1px solid #c5d9ee;border-bottom:none}" +
+
+        // ── Transaction table ──
+        "table.txn-table{width:100%;border-collapse:collapse;font-size:12.5px}" +
+        "table.txn-table thead th{background:var(--ink);color:var(--white);padding:8px 10px;text-align:left;font-weight:600;font-size:11px;letter-spacing:.4px;text-transform:uppercase;white-space:nowrap}" +
+        "table.txn-table thead th:last-child{text-align:right}" +
+        "table.txn-table tbody tr:nth-child(even) td{background:var(--paper)}" +
+        "table.txn-table tbody td{padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--ink);vertical-align:middle}" +
+        "table.txn-table tbody td:last-child{text-align:right;font-weight:500}" +
+
+        // ── Call type badges ──
+        ".call-type-badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10.5px;font-weight:600;letter-spacing:.3px}" +
+        ".call-type-badge.personal{background:#fff0e0;color:#a0440a}" +
+        ".call-type-badge.business{background:#e0f0ff;color:#0a4a80}" +
+        ".call-type-badge.allowance{background:var(--green-pale);color:var(--green)}" +
+
+        // ── Subtotal / grand total rows ──
+        "tr.subtotal td{border-top:2px solid var(--ink);padding:6px 10px;font-weight:700;font-size:12.5px}" +
+        "tr.subtotal td:last-child{text-align:right}" +
+        "tr.subtotal td:not(:last-child){border-top:none;border-bottom:1px solid var(--rule)}" +
+        "tr.grandtotal td{background:var(--ink)!important;color:#3b79b7 !important;padding:9px 10px;font-weight:700;font-size:13.5px}" +
+        "tr.grandtotal td:last-child{text-align:right}" +
+
+        // ── Comments block ──
+        ".comments-block{background:var(--amber-pale);border:1px solid #e8c882;border-radius:6px;padding:12px 16px;margin-bottom:24px;font-size:13px;color:var(--amber)}" +
+        ".comments-block .cb-label{font-weight:700;margin-bottom:3px;font-size:11px;letter-spacing:.6px;text-transform:uppercase}" +
+
+        // ── Footer ──
+        ".page-footer{border-top:1px solid var(--rule);padding:14px 36px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--ink-light)}" +
+        ".print-btn{background:var(--accent);color:var(--white);border:none;border-radius:5px;padding:8px 22px;font-family:var(--font-body);font-size:12px;font-weight:600;cursor:pointer;letter-spacing:.4px}" +
+        ".print-btn:hover{background:var(--accent-mid)}" +
+        ".print-btn:active{transform:scale(.97);opacity:.9}" +
+
+        // ── Print media ──
+        "@media print{" +
+        "html,body{background:white;padding:0}" +
+        ".page{box-shadow:none;border-radius:0;max-width:100%}" +
+        ".print-btn{display:none}" +
+        "table.txn-table tbody tr:nth-child(even) td{background:white}" +
+        "}";
+}
+
+
+//End of updated getMyArcBill layout
+
+
 
 function getDepartmentBill(departmentBillid) {
 
@@ -331,7 +690,7 @@ function setDataSourceArchived(mybill) {
 
         datafields:
             [{ name: 'BillId', type: 'number' },
-            { name: 'BillDate', type: 'date' },
+            { name: 'BillDate', type: 'string' },
             { name: 'Status', type: 'string' },
             { name: 'TotalAmount', type: 'number' },
             { name: 'Currency', type: 'string' },
@@ -346,6 +705,12 @@ function setDataSourceArchived(mybill) {
     cellsrenderer = function (row, columnfield, value, defaulthtml, columnproperties, rowData) {
         return '<input type="button" value="View" class="myButton clsBillHistoryViewBtn" data-billid="' + rowData.BillId + '"/>';
     };
+
+    if ($('#grdArcBills').jqxGrid('instanceOf', 'jqxGrid')) {
+        $('#grdArcBills').jqxGrid('destroy');
+    }
+
+
     $("#grdArcBills").jqxGrid({
         width: '100%',
         source: dataAdapterCategory,
@@ -362,16 +727,30 @@ function setDataSourceArchived(mybill) {
         showsortcolumnbackground: true,
         columns: [
             { dataField: 'BillId', text: 'Id', hidden: 'true' },
-            { dataField: 'BillDate', text: 'Bill Date', cellsformat: 'MMMM, yyyy', filterable: false, width: '15%' },
-            { dataField: 'Status', text: 'Status', width: '8%' },
-            { dataField: 'TotalAmount', text: 'Bill Amount', cellsformat: 'F3', width: '8%' },
-            { dataField: 'Currency', text: 'Currency', cellsalign: 'center', width: '6%' },
-            { dataField: 'Provider', text: 'Provider', width: '10%' },
-            { dataField: 'EmployeeName', text: 'Employee Name', width: '15%' },
-            { dataField: 'Deductable', text: 'Deduction', cellsformat: 'F3', cellsalign: 'right', width: '8%' },
-            { dataField: 'Mobile', text: 'Mobile', width: '10%' },
-            { dataField: 'LastUpdate', text: 'Last Update', width: '15%' },
-            { text: 'View', cellsrenderer: cellsrenderer, cellsalign: 'center', width: '100px' }
+            //{ dataField: 'BillDate', text: 'Bill Date', cellsformat: 'MMMM, yyyy', filterable: false, width: '15%' },
+            {
+                dataField: 'BillDate', text: 'Bill Date', filterable: false, width: '7%',
+                cellsrenderer: function (row, col, value) {
+                    if (!value) return '';
+                    var parts = value.split(' ')[0].split('/');   // handles "30/04/2026 00:00:00"
+                    var d = new Date(parts[2], parts[1] - 1, parts[0]);
+                    //return '<div>'
+                    //    + d.toLocaleString('en-US', { month: 'short', year: 'numeric' })
+                    //    + '</div>';
+                    return '<div style="height:100%; display:flex; align-items:center; justify-content:center;">'
+                        + d.toLocaleString('en-US', { month: 'short', year: 'numeric' }) +
+                        '</div>';
+                }
+            },
+            { dataField: 'EmployeeName', text: 'Employee Name', width: '20%', cellsalign: 'left', align: 'left' },
+            { dataField: 'Provider', text: 'Provider', width: '7%', cellsalign: 'center', align: 'center' },
+            { dataField: 'Mobile', text: 'Mobile', width: '8%', cellsalign: 'center', align: 'center' },
+            { dataField: 'TotalAmount', text: 'Bill Amount (KD)', cellsformat: 'F3', width: '8%', cellsalign: 'center', align: 'center' },
+            { dataField: 'Currency', text: 'Currency', cellsalign: 'center', width: '6%', hidden:'true' },
+            { dataField: 'Deductable', text: 'Deduction', cellsformat: 'F3', cellsalign: 'right', width: '7%', cellsalign: 'center', align: 'center' },
+            { dataField: 'LastUpdate', text: 'Last Update', width: '15%', cellsalign: 'center', align: 'center' },
+            { dataField: 'Status', text: 'Status', width: '20%', cellsalign: 'center', align: 'center' },
+            { text: 'View', cellsrenderer: cellsrenderer, cellsalign: 'center', width: '8%' }
         ]
     });
 
@@ -732,7 +1111,7 @@ function ProcessBill() {
             const objNew = {
                 BusinessCharges: $('#busCharge').html(),
                 PersonalCharges: $('#perCharge').html(),
-                PersonalLimitCharges: $('#atot').html(),
+                PersonalLimitCharges: $('#alwCharge').html(),
                 DeductibleAmount: $('#nettotal').html(),
                 TOTALAMOUNT: 0,
                 comments: comment,
@@ -1478,7 +1857,12 @@ function getUBillDetails(billid) {
             else {
                 $('#ptot').html("0.000");
             }
+            if (HidePer == true) {
+                $('#plimit').html("0.000");
+                $('#ptot').html((PC).toFixed(3));
+            }
 
+            
             // alert(AL);
             AL = parseFloat($('#alimit').html());
             AC = parseFloat($('#alwCharge').html());
