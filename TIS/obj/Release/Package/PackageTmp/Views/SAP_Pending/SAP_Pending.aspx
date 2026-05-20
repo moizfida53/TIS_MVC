@@ -17,18 +17,18 @@
 
     <table style="width: 100%">
         <tr class="header-1">
-            <td class="myButton3" style="margin: 1em 0 0 0;">SAP Report
+            <td class="myButton3" style="margin: 1em 0 0 0;">Finance Report
             </td>
         </tr>
     </table>
     <div id="mainDiv">
-        <h3 style="margin-bottom: 1rem;">Total Closed Bills pending for Post to SAP
+        <h3 style="margin-bottom: 1rem;">Total Closed Bills pending for Post to Finance
             <label id="PendingBills" style="color: orangered"></label>
         </h3>
         <table>
             <tr>
                 <td>
-                    <input id="btnPostSAP" type="button" value="Post Bills to SAP" class="button" />
+                    <input id="btnPostSAP" type="button" value="Post Bills to Finance" class="button" />
                 </td>
                 <td>
                     <button id="btnUpdateSAP" type="button" class="button">

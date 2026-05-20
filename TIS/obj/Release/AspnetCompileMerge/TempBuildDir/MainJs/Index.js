@@ -195,8 +195,12 @@ $(document).ready(function () {
 });
 
 function OpenAdmin() {
-    //window.location.href = '@Url.Action("Index", "Admin")';
-    window.location.href = '/Admin/Index';
+    var roleId = $('#hdnRoleId').val();
+    if (roleId == '3') {
+        window.location.href = '/billreport/billreport';
+    } else {
+        window.location.href = '/Admin/Index';
+    }
 }
 function GetDelegate() {
     debugger;

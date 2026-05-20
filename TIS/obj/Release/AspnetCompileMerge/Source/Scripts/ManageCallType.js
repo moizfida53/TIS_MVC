@@ -1,5 +1,6 @@
 ﻿
 $(document).ready(function () {
+
     FillProvider();
     $("#cmbProvider").on("change", function () {
         var providerId = $(this).val();
@@ -36,6 +37,7 @@ $(document).ready(function () {
             }
         });
     });
+    FillLineType();
     FillCallType();
     FillEmployee();
     FillGrid();
@@ -66,6 +68,8 @@ $(document).ready(function () {
             });
 
         });
+
+
         function FillDesc(descData) {
             var $container = $("#cmbDesc");
             $container.empty();
@@ -108,6 +112,27 @@ $(document).ready(function () {
     $("#jqxwindow").jqxWindow({ height: 500, width: 420, theme: 'summer', isModal: true, autoOpen: false });
 })
 
+
+function FillLineType() {
+    $.ajax({
+        url: '/Telephone/GetLineTypes',
+        type: 'GET',
+        success: function (data) {
+            var $ddl = $('#cmbLineType');
+            $ddl.empty();
+            $ddl.append('<option value="">-- Select Line Type --</option>');
+
+            $.each(data, function (i, item) {
+                $ddl.append(
+                    $('<option></option>').val(item.Id).text(item.Name)
+                );
+            });
+        },
+        error: function (xhr, status, error) {
+            console.error('AJAX error:', error);
+        }
+    });
+}
 function FillProvider() {
     $.ajax({
         type: "GET",

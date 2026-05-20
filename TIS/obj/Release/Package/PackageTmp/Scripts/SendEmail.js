@@ -1,14 +1,6 @@
-﻿
-$(document).ready(function () {
+﻿$(document).ready(function () {
     GetEmail();
 });
-//("#grdSendEmail").on('cellendedit', function (event) {
-//    var args = event.args;
-//    var columnDataField = args.datafield;
-//    var rowIndex = args.rowindex;
-//    var cellValue = args.value;
-//    Save(rowIndex, columnDataField, cellValue)
-//});
 
 $(document).on('cellendedit', '#grdSendEmail', function (e) {
     debugger;
@@ -39,6 +31,7 @@ function FillEmail(Email) {
             { name: 'Id', type: 'number' },
             { name: 'TemplateId', type: 'number' },
             { name: 'Bill_Id', type: 'number' },
+            { name: 'BillDate', type: 'string' },   // ← NEW
             { name: 'Subject', type: 'string' },
             { name: 'EmailText', type: 'string' },
             { name: 'EmailFrom', type: 'string' },
@@ -64,19 +57,19 @@ function FillEmail(Email) {
         editable: true,
         selectionmode: 'checkbox',
         columns: [
-            { dataField: 'Id', text: 'Id', hidden: 'true' },
-            { dataField: 'TemplateId', text: 'Temp. Id', width: '80px', editable: false },
-            { dataField: 'Bill_Id', text: 'Bill Id', editable: false },
+            { dataField: 'Id', text: 'Id', hidden: true },
+            { dataField: 'TemplateId', text: 'Temp. Id', hidden: true },          // ← HIDDEN
+            { dataField: 'Bill_Id', text: 'Bill Id', hidden: true },          // ← HIDDEN
+            { dataField: 'BillDate', text: 'Bill Date', width: '110px', editable: false }, // ← NEW VISIBLE COLUMN
             { dataField: 'Subject', text: 'Subject', editable: false },
             { dataField: 'EmailText', text: 'Email Text' },
             { dataField: 'EmailFrom', text: 'Email From', editable: false },
             { dataField: 'EmailTo', text: 'Email To' },
             { dataField: 'CC', text: 'CC' },
             { dataField: 'sent', text: 'Sent', editable: false },
-            { dataField: 'senton', text: 'Sent On', editable: false, hidden: 'true' }
+            { dataField: 'senton', text: 'Sent On', editable: false, hidden: true }
         ]
     });
-
 }
 
 function SendEmail() {
@@ -100,7 +93,6 @@ function SendEmail() {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (result) {
-
                 GetEmail();
                 if (result.Message == 'Email Sent') {
                     $.alert.open('info', 'Success', 'Email Sent Successfully');
@@ -109,7 +101,6 @@ function SendEmail() {
                 else {
                     $.alert.open('error', 'Error', 'Email Sending Fail...');
                 }
-
             }
         });
     }
@@ -118,9 +109,7 @@ function SendEmail() {
     }
 }
 
-
 function DeleteEmail() {
-
     var EmailID = [];
     var Indexes = $('#grdSendEmail').jqxGrid('getselectedrowindexes');
     for (var i = 0; i < Indexes.length; i++) {
@@ -148,44 +137,17 @@ function DeleteEmail() {
             else {
                 $.alert.open('error', 'Error', 'Cannot Delete, Please Try Again.');
             }
-
         }
     });
-
-
 }
-
 
 function Save(rowIndex, columnDataField, cellValue) {
     var RowData = $('#grdSendEmail').jqxGrid('getrowdata', rowIndex);
 
-    if (columnDataField == "Bill_Id") {
-        var Bill_Id = cellValue;
-    }
-    else {
-        var Bill_Id = RowData.Bill_Id;
-    }
-
-    if (columnDataField == "EmailText") {
-        var EmailText = cellValue;
-    }
-    else {
-        var EmailText = RowData.EmailText;
-    }
-
-    if (columnDataField == "EmailTo") {
-        var EmailTo = cellValue;
-    }
-    else {
-        var EmailTo = RowData.EmailTo;
-    }
-
-    if (columnDataField == "CC") {
-        var CC = cellValue;
-    }
-    else {
-        var CC = RowData.CC;
-    }
+    var Bill_Id = (columnDataField == "Bill_Id") ? cellValue : RowData.Bill_Id;
+    var EmailText = (columnDataField == "EmailText") ? cellValue : RowData.EmailText;
+    var EmailTo = (columnDataField == "EmailTo") ? cellValue : RowData.EmailTo;
+    var CC = (columnDataField == "CC") ? cellValue : RowData.CC;
 
     var value = {
         "Bill_Id": Bill_Id,
@@ -201,15 +163,11 @@ function Save(rowIndex, columnDataField, cellValue) {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (result) {
-
             GetEmail();
         }
     });
-
-    //$.alert.open('info', 'Success', 'Saved Successfully');
 }
 
-//On Send mail click
 $(document).on('click', '#btnSend', function (e) {
     e.preventDefault();
     if (typeof SendEmail === 'function') {
@@ -217,7 +175,6 @@ $(document).on('click', '#btnSend', function (e) {
     }
 });
 
-//On Delete email click
 $(document).on('click', '#btnDeleteEmail', function (e) {
     e.preventDefault();
     if (typeof DeleteEmail === 'function') {

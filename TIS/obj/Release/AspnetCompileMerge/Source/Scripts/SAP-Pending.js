@@ -37,11 +37,13 @@ function GetReport() {
                     { name: 'TelephoneNumber', type: 'string' },
                     { name: 'EmployeeName', type: 'string' },
                     { name: 'ManagerName', type: 'string' },
-                    { name: 'TotalAmount', type: 'string' },
-                    { name: 'BusinessCharges', type: 'string' },
-                    { name: 'PersonalCharges', type: 'string' },
-                    { name: 'DeductibleAmount', type: 'string' },
-                    { name: 'ReimbursementAmount', type: 'string' }
+                    { name: 'TotalAmount', type: 'number' },   // ✅ number for 3 decimal export
+                    { name: 'BusinessCharges', type: 'number' },   // ✅ number for 3 decimal export
+                    { name: 'PersonalCharges', type: 'number' },   // ✅ number for 3 decimal export
+                    { name: 'DeductibleAmount', type: 'number' },   // ✅ number for 3 decimal export
+                    { name: 'CostCenterName', type: 'string' },   // ✅ Added
+                    { name: 'CostCenterCode', type: 'string' },   // ✅ Added
+                    { name: 'Department', type: 'string' },   // ✅ Added
                 ],
                 id: 'Bill_ID',
                 localdata: Report
@@ -67,10 +69,13 @@ function GetReport() {
                     { text: 'EmployeeID', datafield: 'EMPLOYEENO', width: 100 },
                     { text: 'Employee Name', datafield: 'EmployeeName', width: 250 },
                     { text: 'Line Manager Name', datafield: 'ManagerName' },
-                    { text: 'Total Amount', datafield: 'TotalAmount' },
-                    { text: 'Business Charges', datafield: 'BusinessCharges' },
-                    { text: 'Personal Charges', datafield: 'PersonalCharges' },
-                    { text: 'Deductible Amount', datafield: 'DeductibleAmount' },
+                    { dataField: 'TotalAmount', text: 'Total Amount', width: '7%', cellsformat: 'd3' },  // ✅ 3 decimals
+                    { dataField: 'BusinessCharges', text: 'Business Charges', width: '8%', cellsformat: 'd3' },  // ✅ 3 decimals
+                    { dataField: 'PersonalCharges', text: 'Personal Charges', width: '8%', cellsformat: 'd3' },  // ✅ 3 decimals
+                    { dataField: 'DeductibleAmount', text: 'Deductible Amount', width: '8%', cellsformat: 'd3' },  // ✅ 3 decimals
+                    { dataField: 'CostCenterName', text: 'Cost Center', width: '8%' },  // ✅ Added
+                    { dataField: 'CostCenterCode', text: 'Cost Center Code', width: '7%' },  // ✅ Added
+                    { dataField: 'Department', text: 'Department', width: '10%' },  // ✅ Added
                 ]
             });
 

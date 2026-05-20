@@ -52,7 +52,7 @@
                         <div class="col-md-3">
                             <label for="cmbStatus" class="form-label"><i class="fas fa-flag me-2"></i><strong>Status</strong></label>
                             <select id="cmbStatus" class="form-select">
-                                <option value="">Select Status</option>
+                                <option value="0">Select Status</option>
                                 <option value="1">Open</option>
                                 <option value="4">Close</option>
                             </select>

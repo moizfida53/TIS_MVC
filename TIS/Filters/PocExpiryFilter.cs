@@ -8,7 +8,7 @@ namespace TIS.Filters
 {
     public class PocExpiryFilter : ActionFilterAttribute
     {
-        private static readonly DateTime PocExpiryDate = new DateTime(2026, 5, 15);
+        private static readonly DateTime PocExpiryDate = new DateTime(2026, 5, 30);
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {

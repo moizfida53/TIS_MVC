@@ -99,6 +99,21 @@
 
                 <div class="nav-container">
                     <nav class="nav-menu">
+                        <% if (Session["EmpRoleID"] != null && Session["EmpRoleID"].ToString() == "3") { %>
+                        <%-- Restricted nav for Role ID 4 --%>
+                        <ul>
+                            <li><a href="../../User/Index"><i class="fas fa-tasks"></i>Personal Task</a></li>
+                            <li>
+                                <p class="list-item"><i class="fas fa-chart-bar"></i>Reports</p>
+                                <ul>
+                                    <li><a href="../../SAP_Pending/SAP_Pending">Post Report</a></li>
+                                    <li><a href="../../billreport/billreport">Status Report</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="../../dashboard/IndexNew"><i class="fas fa-tachometer-alt"></i>Dashboard Report</a></li>
+                        </ul>
+                        <% } else { %>
+                        <%-- Full nav for all other roles --%>
                         <ul>
                             <li><a href="../../User/Index"><i class="fas fa-tasks"></i>Personal Task</a></li>
                             <li>
@@ -139,11 +154,12 @@
                                 <ul>
                                     <li><a href="../../SAP_Pending/SAP_Pending">Post Report</a></li>
                                     <li><a href="../../billreport/billreport">Status Report</a></li>
-                                    <li><a href="../../Pivot/Pivot">Pivot Chart</a></li>
+                                   <%-- <li><a href="../../Pivot/Pivot">Pivot Chart</a></li>--%>
                                 </ul>
                             </li>
                             <li><a href="../../dashboard/IndexNew"><i class="fas fa-tachometer-alt"></i>Dashboard Report</a></li>
                         </ul>
+                        <% } %>
                     </nav>
                 </div>
 
@@ -173,6 +189,21 @@
             <button class="mobile-nav-close" id="mobileNavClose">×</button>
         </div>
         <div class="mobile-nav-content">
+            <% if (Session["EmpRoleID"] != null && Session["EmpRoleID"].ToString() == "3") { %>
+            <%-- Restricted mobile nav for Role ID 4 --%>
+            <ul class="mobile-nav-menu">
+                <li><a href="../../User/Index">Personal Task</a></li>
+                <li>
+                    <p class="mobile-submenu-toggle">Reports</p>
+                    <ul class="mobile-submenu">
+                        <li><a href="../../SAP_Pending/SAP_Pending">Post Report</a></li>
+                        <li><a href="../../billreport/billreport">Status Report</a></li>
+                    </ul>
+                </li>
+                <li><a href="../../dashboard/IndexNew">Dashboard Report</a></li>
+            </ul>
+            <% } else { %>
+            <%-- Full mobile nav for all other roles --%>
             <ul class="mobile-nav-menu">
                 <li><a href="../../User/Index">Personal Task</a></li>
                 <li>
@@ -216,6 +247,7 @@
                 </li>
                 <li><a href="../../dashboard/IndexNew">Dashboard Report</a></li>
             </ul>
+            <% } %>
             <div class="mobile-login-section">
                 <button id="mobileLoginBtn" class="mobile-login-btn">
                     <span>👤</span>

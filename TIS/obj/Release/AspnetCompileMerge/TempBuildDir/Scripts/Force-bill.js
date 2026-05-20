@@ -161,16 +161,31 @@
                 }
             });
 
-    var BillID = [];
-    var Indexes = $('#grdData').jqxGrid('getselectedrowindexes');
-    for (var i = 0; i < Indexes.length; i++) {
-                var RowData = $('#grdData').jqxGrid('getrowdata', Indexes[i]);
-    var ID = RowData.Id;
-    BillID.push(ID);
-            }
+    //var BillID = [];
+    //var Indexes = $('#grdData').jqxGrid('getselectedrowindexes');
+    //for (var i = 0; i < Indexes.length; i++) {
+    //            var RowData = $('#grdData').jqxGrid('getrowdata', Indexes[i]);
+    //var ID = RowData.Id;
+    //BillID.push(ID);
+    //        }
 
-    var uid = sessionStorage.getItem('UID');
+    //var uid = sessionStorage.getItem('UID');
+        var BillID = [];
+        var Indexes = $('#grdData').jqxGrid('getselectedrowindexes');
+        for (var i = 0; i < Indexes.length; i++) {
+            var RowData = $('#grdData').jqxGrid('getrowdata', Indexes[i]);
+            BillID.push(RowData.Id);
+        }
 
+        // ✅ Read UID from hidden field set by server session
+        var uid = $('#hidUID').val();
+
+        // ✅ Validate UID before proceeding
+        if (!uid || uid === '' || uid === '0') {
+            $.unblockUI();
+            showCustomAlert('warning', 'Session Expired', 'Unable to retrieve user session. Please refresh the page and try again.');
+            return;
+        }
     var Force = {
         "BillID": BillID,
     "Status": $("#cmbStatus").val(),

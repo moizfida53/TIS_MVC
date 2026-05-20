@@ -596,3 +596,69 @@ body {
 	-webkit-border-top-left-radius:20px;
 	-webkit-border-top-right-radius:20px; 
 	}
+
+
+	/*Claude based Scroller design css changes*/
+/* ===== jqxGrid Scrollbar Styling ===== */
+
+/* Track background */
+.jqx-widget-content ::-webkit-scrollbar,
+#grdData ::-webkit-scrollbar {
+	height: 12px;
+	width: 12px;
+	background-color: #e0e0e0;
+}
+
+/* Scrollbar thumb */
+.jqx-widget-content ::-webkit-scrollbar-thumb,
+#grdData ::-webkit-scrollbar-thumb {
+	background-color: #008080; /* teal — matches your header colour */
+	border-radius: 6px;
+	border: 2px solid #e0e0e0;
+}
+
+	/* Thumb on hover */
+	.jqx-widget-content ::-webkit-scrollbar-thumb:hover,
+	#grdData ::-webkit-scrollbar-thumb:hover {
+		background-color: #005f5f;
+	}
+
+/* Track */
+.jqx-widget-content ::-webkit-scrollbar-track,
+#grdData ::-webkit-scrollbar-track {
+	background-color: #e0e0e0;
+	border-radius: 6px;
+}
+
+/* Firefox */
+#grdData * {
+	scrollbar-width: thin;
+	scrollbar-color: #008080 #e0e0e0;
+}
+
+/* Force the jqxGrid horizontal scroll container to be visible */
+.jqx-grid-content,
+.jqx-grid-scrollarea,
+.jqx-scrollbar,
+.jqx-scrollbar-state-normal {
+	background-color: #e0e0e0 !important;
+}
+
+.jqx-scrollbar-thumb-state-normal,
+.jqx-scrollbar-thumb-state-normal-horizontal {
+	background-color: #008080 !important;
+	border-radius: 6px !important;
+	border: 2px solid #c0c0c0 !important;
+}
+
+.jqx-scrollbar-thumb-state-hover,
+.jqx-scrollbar-thumb-state-hover-horizontal {
+	background-color: #005f5f !important;
+	border-radius: 6px !important;
+}
+
+.jqx-scrollbar-thumb-state-pressed,
+.jqx-scrollbar-thumb-state-pressed-horizontal {
+	background-color: #004444 !important;
+	border-radius: 6px !important;
+}

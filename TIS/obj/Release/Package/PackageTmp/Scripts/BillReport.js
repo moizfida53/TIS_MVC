@@ -3,9 +3,12 @@ var Companies;
 var Year = [];
 var selectedYear = 0; // store the selected year
 var selectedMonth = 0;
-var selectedstatus = 0;
+var selectedStatus = 0;
 var selectedCompany = 0;
+
 $(document).ready(function () {
+
+
     // Set default selected month if needed
     $('#cmbMonth').val('0'); // 0 = "Select Month"
 
@@ -68,6 +71,40 @@ $(document).ready(function () {
     }
 })
 
+function formatDate(value) {
+    if (!value || value === '') return '';
+
+    var date;
+
+    // Format 1: "dd/MM/yyyy HH:mm:ss" — from BILLDATE
+    if (typeof value === 'string' && value.indexOf('/') !== -1) {
+        var parts = value.split(' ')[0].split('/'); // ["31", "03", "2026"]
+        if (parts.length === 3) {
+            date = new Date(parts[2], parts[1] - 1, parts[0]);
+        }
+    }
+    // ✅ Format 2: "yyyy-MM-dd HH:mm:ss.mmm" — from Forced_Date raw datetime
+    else if (typeof value === 'string' && value.indexOf('-') !== -1 && value.length > 10) {
+        var datePart = value.split(' ')[0];          // "2026-04-23"
+        var segments = datePart.split('-');           // ["2026", "04", "23"]
+        if (segments.length === 3) {
+            date = new Date(segments[0], segments[1] - 1, segments[2]);
+        }
+    }
+    else {
+        date = new Date(value);
+    }
+
+    if (!date || isNaN(date)) return value;
+
+    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+        'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    var dd = String(date.getDate()).padStart(2, '0');
+    var mmm = months[date.getMonth()];
+    var yy = String(date.getFullYear()).slice(-2);
+    return dd + '-' + mmm + '-' + yy;
+}
+
 function GetData() {
     $.ajax({
         type: "GET",
@@ -120,30 +157,109 @@ function Search() {
     });
 }
 
+//function FillGrid(dtData) {
+
+//    var deptsource =
+//    {
+//        localdata: dtData,
+//        datafields:
+//            [
+//                { name: 'BILL_ID', type: 'number' },
+//                { name: 'SUB_NO', type: 'number' },
+//                { name: 'SUB_NO', type: 'string' },
+//                { name: 'SUB_DESC', type: 'string' },
+//                { name: 'EMPLOYEENO', type: 'string' },
+//                { name: 'EMPLOYEENAME', type: 'string' },
+//                { name: 'ManagerName', type: 'string' },
+//                { name: 'BILLDATE', type: 'date' },
+//                { name: 'TOTALAMOUNT', type: 'number' },
+//                { name: 'DEDUCTIBLEAMOUNT', type: 'number' },
+//                { name: 'BUSINESSCHARGES', type: 'number' },
+//                { name: 'Company', type: 'string' },
+//                { name: 'PAYROLLCATEGORY', type: 'string' },
+//                { name: 'BillStatus', type: 'string' },
+//                { name: 'LASTUPDATEDON', type: 'date' },
+//                { name: 'ApprovedDate', type: 'string' }
+//            ],
+//        id: 'BILL_ID',
+//        datatype: "json"
+//    };
+
+//    var dataAdapGrid = new $.jqx.dataAdapter(deptsource);
+
+//    $("#grdData").jqxGrid({
+//        width: '100%',
+//        source: dataAdapGrid,
+//        columnsresize: true,
+//        theme: 'arctic',
+//        pageSize: 10,
+//        sortable: true,
+//        filterable: true,
+//        showfilterrow: true,
+//        filtermode: 'excel',
+//        groupable: true,
+//        pageable: false,
+//        theme: 'ui-redmond',
+//        selectionmode: 'singlecell',
+//        editable: true,
+//        editmode: 'selectedcell',
+//        columns: [
+//            { dataField: 'BILL_ID', text: 'Id', hidden: 'true' },
+//            { dataField: 'EMPLOYEENO', text: 'Employee Number', width: '7%' },
+//            { dataField: 'EMPLOYEENAME', text: 'Employee name', width: '14%' },
+//            { dataField: 'SUB_NO', text: 'Mobile number', width: '6%', filtercondition: 'contains' },
+//            { dataField: 'SUB_DESC', text: 'Mobile Description', width: '8%' },
+//            { dataField: 'ManagerName', text: 'Manager Name', width: '10%' },
+//            { dataField: 'BILLDATE', text: 'Bill Date', cellsformat: 'dd-MM-yyyy', width: '7%' },
+//            {
+//                //dataField: 'TOTALAMOUNT', text: 'Bill Amount', width: '5%',
+//                dataField: 'TOTALAMOUNT', text: 'Bill Amount', width: '5%', cellsformat: 'd3'
+
+//            },
+//            { dataField: 'DEDUCTIBLEAMOUNT', text: 'Deductible Amount', width: '7%', cellsformat: 'd3' },
+//            { dataField: 'BUSINESSCHARGES', text: 'Charge to Business', width: '7%', cellsformat: 'd3' },
+//            { dataField: 'Company', text: 'Company', width: '7%' },
+//            { dataField: 'PAYROLLCATEGORY', text: 'Payroll Cateogry', width: '8%' },
+//            { dataField: 'BillStatus', text: 'Bill Status', width: '8%' },
+//            { dataField: 'LASTUPDATEDON', text: 'Last Updated On', cellsformat: 'dd-MM-yyyy', width: '6%' },
+//            { dataField: 'ApprovedDate', text: 'Approved Date', width: '6%', hidden: 'true' }
+//        ],
+//        showgroupsheader: true,
+//        groupsrenderer: groupsRenderer,
+
+//    });
+//}
+// 🔧 Custom group renderer for multi-level grouping
+
+//Latest Claude Changes Start below
+
+
 function FillGrid(dtData) {
 
-    var deptsource =
-    {
+    var deptsource = {
         localdata: dtData,
-        datafields:
-            [
-                { name: 'BILL_ID', type: 'number' },
-                { name: 'SUB_NO', type: 'number' },
-                { name: 'SUB_NO', type: 'string' },
-                { name: 'SUB_DESC', type: 'string' },
-                { name: 'EMPLOYEENO', type: 'string' },
-                { name: 'EMPLOYEENAME', type: 'string' },
-                { name: 'ManagerName', type: 'string' },
-                { name: 'BILLDATE', type: 'date' },
-                { name: 'TOTALAMOUNT', type: 'number' },
-                { name: 'DEDUCTIBLEAMOUNT', type: 'number' },
-                { name: 'BUSINESSCHARGES', type: 'number' },
-                { name: 'Company', type: 'string' },
-                { name: 'PAYROLLCATEGORY', type: 'string' },
-                { name: 'BillStatus', type: 'string' },
-                { name: 'LASTUPDATEDON', type: 'date' },
-                { name: 'ApprovedDate', type: 'string' }
-            ],
+        datafields: [
+            { name: 'BILL_ID', type: 'number' },
+            { name: 'BILLDATE', type: 'string' },
+            { name: 'EMPLOYEENO', type: 'string' },
+            { name: 'EMPLOYEENAME', type: 'string' },
+            { name: 'SUB_NO', type: 'number' },
+            { name: 'SUB_DESC', type: 'string' },
+            { name: 'TOTALAMOUNT', type: 'number' },
+            { name: 'BUSINESSCHARGES', type: 'number' },
+            { name: 'PERSONALLIMITCHARGES', type: 'number' },
+            { name: 'PERSONALCHARGES', type: 'number' },
+            { name: 'DEDUCTIBLEAMOUNT', type: 'number' },
+            { name: 'COSTCENTER', type: 'string' },
+            { name: 'COSTCENTERCODE', type: 'string' },
+            { name: 'DEPARTMENT', type: 'string' },
+            { name: 'PAYROLLCATEGORY', type: 'string' },
+            { name: 'BillStatus', type: 'string' },
+            { name: 'Company', type: 'string' },
+            { name: 'PROVIDERNAME', type: 'string' },
+            { name: 'Forced_by_UID', type: 'string' },
+            { name: 'Forced_Date', type: 'string' }
+        ],
         id: 'BILL_ID',
         datatype: "json"
     };
@@ -154,45 +270,57 @@ function FillGrid(dtData) {
         width: '100%',
         source: dataAdapGrid,
         columnsresize: true,
-        theme: 'arctic',
-        pageSize: 10,
+        theme: 'ui-redmond',
         sortable: true,
         filterable: true,
         showfilterrow: true,
         filtermode: 'excel',
         groupable: true,
         pageable: false,
-        theme: 'ui-redmond',
         selectionmode: 'singlecell',
-        editable: true,
-        editmode: 'selectedcell',
+        editable: false,
         columns: [
-            { dataField: 'BILL_ID', text: 'Id', hidden: 'true' },
-            { dataField: 'EMPLOYEENO', text: 'Employee Number', width: '7%' },
-            { dataField: 'EMPLOYEENAME', text: 'Employee name', width: '14%' },
-            { dataField: 'SUB_NO', text: 'Mobile number', width: '6%', filtercondition: 'contains' },
-            { dataField: 'SUB_DESC', text: 'Mobile Description', width: '8%' },
-            { dataField: 'ManagerName', text: 'Manager Name', width: '10%' },
-            { dataField: 'BILLDATE', text: 'Bill Date', cellsformat: 'dd-MM-yyyy', width: '7%' },
+            { dataField: 'BILL_ID', text: 'Id', hidden: true },
             {
-                //dataField: 'TOTALAMOUNT', text: 'Bill Amount', width: '5%',
-                dataField: 'TOTALAMOUNT', text: 'Bill Amount', width: '5%', cellsformat: 'd3'
-
+                dataField: 'BILLDATE',
+                text: 'Bill Date',
+                width: '5%',
+                cellsrenderer: function (row, columnfield, value) {      // ✅ format here
+                    return '<div style="text-align:left; padding:4px;">' + formatDate(value) + '</div>';
+                }
             },
-            { dataField: 'DEDUCTIBLEAMOUNT', text: 'Deductible Amount', width: '7%', cellsformat: 'd3' },
-            { dataField: 'BUSINESSCHARGES', text: 'Charge to Business', width: '7%', cellsformat: 'd3' },
-            { dataField: 'Company', text: 'Company', width: '7%' },
-            { dataField: 'PAYROLLCATEGORY', text: 'Payroll Cateogry', width: '8%' },
-            { dataField: 'BillStatus', text: 'Bill Status', width: '8%' },
-            { dataField: 'LASTUPDATEDON', text: 'Last Updated On', cellsformat: 'dd-MM-yyyy', width: '6%' },
-            { dataField: 'ApprovedDate', text: 'Approved Date', width: '6%', hidden: 'true' }
+            { dataField: 'EMPLOYEENO', text: 'Emp No#', width: '4%' },
+            { dataField: 'EMPLOYEENAME', text: 'Employee Name', width: '10%' },
+            { dataField: 'SUB_NO', text: 'Mobile No.', filtercondition: 'contains', width: '5%' },
+            { dataField: 'SUB_DESC', text: 'Mobile Description', width: '8%' },
+            { dataField: 'TOTALAMOUNT', text: 'Bill Amount', cellsformat: 'd3', width: '5%' },
+            { dataField: 'BUSINESSCHARGES', text: 'Bussiness', cellsformat: 'd3', width: '5%' },
+            { dataField: 'PERSONALLIMITCHARGES', text: 'Allowance', cellsformat: 'd3', width: '5%' },
+            { dataField: 'PERSONALCHARGES', text: 'Personal', cellsformat: 'd3', width: '5%' },
+            { dataField: 'DEDUCTIBLEAMOUNT', text: 'Deductible', cellsformat: 'd3', width: '6%' },
+            { dataField: 'COSTCENTER', text: 'Cost Center', width: '9%' },
+            { dataField: 'COSTCENTERCODE', text: 'GL Code', width: '4%' },
+            { dataField: 'DEPARTMENT', text: 'Department', width: '10%' },
+            { dataField: 'PAYROLLCATEGORY', text: 'Payroll Category', width: '7%', hidden: true },
+            { dataField: 'BillStatus', text: 'Bill Status', width: '5%' },
+            { dataField: 'Company', text: 'Company', width: '6%' },
+            { dataField: 'PROVIDERNAME', text: 'Provider', width: '4%' },
+            { dataField: 'Forced_by_UID', text: 'Forced Bill By', width: '5%' },
+            {
+                dataField: 'Forced_Date',
+                text: 'Forced Bill Date',
+                width: '4%'
+                }
         ],
         showgroupsheader: true,
-        groupsrenderer: groupsRenderer,
-
+        groupsrenderer: groupsRenderer
     });
 }
-// 🔧 Custom group renderer for multi-level grouping
+//Latest Claude changes End Here
+
+
+
+
 function groupsRenderer(text, group, expanded, data) {
     debugger;
     let groupData = data.subItems;
@@ -221,7 +349,7 @@ function FillYear() {
     $ddl.empty();
     $ddl.append('<option value="">Select Year</option>');
 
-    for (var i = 2020; i <= 2030; i++) {
+    for (var i = 2026; i <= 2035; i++) {
         $ddl.append(`<option value="${i}">${i}</option>`);
     }
 }

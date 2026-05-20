@@ -5,6 +5,55 @@ var Providers;
 var ImportData;
 var DbBased;
 
+// ===== Loader helpers (uses blockUI already loaded on this page) =====
+function showLoader(message) {
+    message = message || 'Please wait...';
+    $.blockUI({
+        message: '<div style="display:flex;align-items:center;gap:12px;">'
+            + '<div class="tis-spinner"></div>'
+            + '<span style="color:#fff;font-size:14px;">' + message + '</span>'
+            + '</div>',
+        css: {
+            border: 'none',
+            padding: '18px 28px',
+            backgroundColor: '#1a1a2e',
+            borderRadius: '10px',
+            color: '#fff',
+            width: 'auto',
+            left: '50%',
+            top: '50%',
+            transform: 'translate(-50%, -50%)'
+        },
+        overlayCSS: {
+            backgroundColor: '#000',
+            opacity: 0.55
+        }
+    });
+}
+
+function hideLoader() {
+    $.unblockUI();
+}
+
+// Inject spinner keyframe style once
+$(function () {
+    if (!$('#tis-spinner-style').length) {
+        $('head').append(
+            '<style id="tis-spinner-style">'
+            + '@keyframes tis-spin { to { transform: rotate(360deg); } }'
+            + '.tis-spinner {'
+            + '  width:22px;height:22px;border-radius:50%;'
+            + '  border:3px solid rgba(255,255,255,0.25);'
+            + '  border-top-color:#fff;'
+            + '  animation:tis-spin .7s linear infinite;'
+            + '  flex-shrink:0;'
+            + '}'
+            + '</style>'
+        );
+    }
+});
+// ====================================================================
+
 $(document).ready(function () {
     $("#btnProcess").hide();
     $("#btnSave").hide();
@@ -138,6 +187,7 @@ $(document).on('click', '#btnUpload', function (e) {
     }
 
     // AJAX POST to Import/Upload
+    showLoader('Uploading file...');
     $.ajax({
         url: '../../Import/Upload',
         type: 'POST',
@@ -145,11 +195,12 @@ $(document).on('click', '#btnUpload', function (e) {
         processData: false,
         contentType: false,
         success: function (result) {
-            //Swal.fire('Success!', 'File uploaded successfully.', 'success');
+            hideLoader();
             $('#btnUpload').hide();
             FillSheet(file);
         },
         error: function () {
+            hideLoader();
             Swal.fire('Error!', 'File upload failed.', 'error');
         }
     });
@@ -310,6 +361,9 @@ function FillSheet(fileInput) {
 
     var File = { "FileName": fileName };
 
+    // SHOW PAGE LOADER
+    showLoader('Please wait... Loading sheet names');
+
     $.ajax({
         type: "GET",
         url: "../../Import/FillSheet",
@@ -317,7 +371,12 @@ function FillSheet(fileInput) {
         cache: false,
         data: File,
         success: function (result) {
+
+            // HIDE PAGE LOADER
+            hideLoader();
+
             $("#btnUpload").show();
+
 
             var Sheets = result.dtSheet;
 
@@ -331,6 +390,9 @@ function FillSheet(fileInput) {
             });
         },
         error: function () {
+            // HIDE PAGE LOADER
+            hideLoader();
+
             Swal.fire('Error!', 'Failed to load sheets', 'error');
         }
     });
@@ -385,7 +447,7 @@ function FillYear() {
     yearSelect.append('<option value="">Select Year</option>');
 
     // Add years 2022 - 2030
-    for (var i = 2022; i <= 2030; i++) {
+    for (var i = 2026; i <= 2035; i++) {
         yearSelect.append('<option value="' + i + '">' + i + '</option>');
     }
 
@@ -522,13 +584,14 @@ function SubmitData() {
 
 
     debugger;
+    showLoader('Importing bill data...');
     $.ajax({
         type: "GET",
-
         url: "../../Import/UploadFile",
         contentType: 'application/json',
         data: File,
         success: function (result) {
+            hideLoader();
             debugger;
             $("#lblBillAmount").html(result.BillAmount);
             ImportData = result.gridData;
@@ -543,8 +606,10 @@ function SubmitData() {
                 $("#btnReset").show();
                 $("#btnProcess").show();
             }
-
-            //                    $.notify(result.MyMessage);
+        },
+        error: function () {
+            hideLoader();
+            Swal.fire('Error!', 'Failed to import bill data, please contact Admin.', 'error');
         }
     });
 }
@@ -674,30 +739,14 @@ function ProcessBill() {
     var File = {
         "DbBased": DbBased,
     };
-    $(document)
-        .ajaxStart(function () {
-            $.blockUI({
-                css: {
-                    border: 'none',
-                    padding: '10px',
-                    backgroundColor: '#000',
-                    '-webkit-border-radius': '10px',
-                    '-moz-border-radius': '10px',
-                    opacity: .3,
-                    color: '#fff'
-                }
-            });
-        })
-        .ajaxStop(function () {
-            $.unblockUI();
-        });
+    showLoader('Processing bill...');
     $.ajax({
-
         type: "GET",
         cache: false,
         url: "../../Import/ProcessBill",
         data: File,
         success: function (result) {
+            hideLoader();
             debugger;
             if (result && result.Message && (result.Message.toLowerCase() === 'succ' || result.Message === 'Succ')) {
 
@@ -721,6 +770,10 @@ function ProcessBill() {
 
             ClearImport();
             FillGrid();
+        },
+        error: function () {
+            hideLoader();
+            Swal.fire('Error!', 'Cannot complete transaction, contact Admin', 'error');
         }
     });
 
@@ -744,7 +797,7 @@ function ClearImport() {
 
     $("#lblFileName").html('');
     $("#lblBillAmount").html('');
-        
+
     // Clear jqxFileUpload selected file
     $("#jqxFileUpload").val("");
 }
