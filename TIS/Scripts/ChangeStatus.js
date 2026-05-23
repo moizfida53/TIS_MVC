@@ -8,12 +8,6 @@ var st = [];
 var billID = [];
 var DataAdapStatus;
 $(document).ready(function () {
-    //$("#cmbMonth").jqxDropDownList({ placeHolder: 'Select Month', selectedIndex: -1, width: '95%', height: '25px' });
-    //$("#cmbMonth").jqxDropDownList('loadFromSelect', 'Select');
-    //$("#Select").hide();
-    //$("#cmbYear").jqxDropDownList({ placeHolder: 'Select Year', selectedIndex: -1, width: '95%', height: '25' });
-    //$("#cmbProvider").jqxDropDownList({ placeHolder: 'Select Provider', selectedIndex: -1, width: "95%", height: 25 });
-    //$("#cmbStatus").jqxDropDownList({ placeHolder: 'Select Status', selectedIndex: -1, width: "95%", height: 25 });
     $("#btnEmployee").jqxDropDownButton({ width: "90%", height: 25 });
     $("#btnEmployee").jqxDropDownButton('setContent', 'Select Employee');
     $('#btnEmployee').on('open', function () { FillEmployee(); });
@@ -22,11 +16,6 @@ $(document).ready(function () {
         Search();
 
     });
-    //$("#btnSave").jqxButton({ template: 'primary' });
-    //$('#btnSave').on('click', function () {
-    //    SaveChanges();
-    //});
-    //$("#btnSave").hide();
     $("#btnCancel").jqxButton({ template: '' });
     $('#btnCancel').on('click', function () {
         Clear();
@@ -111,22 +100,6 @@ function FillYear() {
     ////End Bind Year Dropdown
 }
 function FillProvider(Provider) {
-    debugger;
-    //var source =
-    //{
-    //    dataType: "json",
-    //    dataFields: [
-    //        { name: 'ID', type: 'string' },
-    //        { name: 'NAME', type: 'string' }
-    //    ],
-    //    id: 'ID',
-    //    localdata: Provider
-    //};
-    //var dataAdapterPr = new $.jqx.dataAdapter(source);
-    // Create a jqxComboBox
-    //$("#cmbProvider").jqxDropDownList({ source: dataAdapterPr, displayMember: "NAME", valueMember: "ID" });
-    ////Begin Bind Provider Dropdown
-    //var providersCountries = Year;
     var $cmbProvider = $("#cmbProvider");
     $cmbProvider.empty();
     $cmbProvider.append('<option value="">Select Provider</option>');
@@ -139,8 +112,6 @@ function FillProvider(Provider) {
                 .text(p.NAME)
         );
     });
-    ////End Bind Provider Dropdown
-
 }
 function FillStatus() {
     var source =
@@ -162,10 +133,6 @@ function FillStatus() {
 function Search() {
     debugger;
     var Provider = 0; var Month = 0; var Year = 0; var Status = 0; var UID = 0;
-
-    //if ($("#cmbProvider").jqxDropDownList('getSelectedItem') != null) {
-    //    Provider = $("#cmbProvider").jqxDropDownList('getSelectedItem');
-    //}
     if ($("#cmbMonth").val() != null) {
         Month = $("#cmbMonth").val();
     }
@@ -176,18 +143,9 @@ function Search() {
         Year = $("#cmbYear").val();
     }
 
-    //if ($("#cmbYear").jqxDropDownList('getSelectedItem') != null) {
-    //    Year = $("#cmbYear").jqxDropDownList('getSelectedItem');
-    //}
-
-    //if ($("#cmbStatus").jqxDropDownList('getSelectedItem') != null) {
-    //    Status = $("#cmbStatus").jqxDropDownList('getSelectedItem');
-    //}
-
     if ($("#hidEmp").val() != '') {
         UID = $("#hidEmp").val();
     }
-
 
     var Search = {
         "Month": Month,
@@ -368,23 +326,5 @@ function SaveChanges() {
     });
 }
 function Clear() {
-    //$("#cmbMonth").jqxDropDownList({ selectedIndex: -1 });
-    //$("#cmbYear").jqxDropDownList({ selectedIndex: -1 });
-    //$("#cmbProvider").jqxDropDownList({ selectedIndex: -1 });
-
-    //// Make sure the employee grid exists
-    //if ($("#grdEmployee").length) {
-    //    $("#grdEmployee").jqxGrid('clearselection');
-    //}
-
-    //$("#hidEmp").val('');
-
-    //// Reset dropdown button display after clearing grid
-    //setTimeout(function () {
-    //    $("#btnEmployee").jqxDropDownButton('setContent', 'Select Employee');
-    //}, 50);
-
-    //$("#grdData").jqxGrid('clearselection').hide();
-    //$("#btnSave").hide();
     location.reload();
 }

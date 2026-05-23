@@ -68,17 +68,6 @@
 
             <!-- Second Row: Line Type & Employee -->
             <div class="row g-4 form-group-spacing" style="gap: 4rem;">
-                <!-- Line Type -->
-                <%--<div class="col-xl-2 col-lg-3 col-md-4">
-                    <label class="form-label">Line Type</label>
-                    <select id="cmbLineType" class="form-select">
-                        <option value="">Select Line Type</option>
-                        <option value="1">Voice</option>
-                        <option value="2">Data</option>
-                        <option value="3">VTS</option>
-                    </select>
-                </div>--%>
-                <!-- Line Type -->
                 <div class="col-xl-2 col-lg-3 col-md-4">
                     <label class="form-label">Line Type</label>
                     <select id="cmbLineType" class="form-select">

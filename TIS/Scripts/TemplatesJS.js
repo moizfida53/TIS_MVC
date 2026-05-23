@@ -78,10 +78,6 @@ function LoadTemplates()
         contentType: 'application/json',
         success: function (result) {
             console.log(result.tmvm.TemplateTypes);
-            //setDataSourceTemplateCombo(result.tmvm.TemplateTypes);
-            //setDataSourceCountry(result.tmvm.Countries);
-
-
             ////Begin Bind Template Dropdown
             var providers = result.tmvm.TemplateTypes;
             var $cmbTemplate = $("#cmbTemplate");
@@ -156,15 +152,6 @@ function TemplateSave()
         }
     });
 }
-// Populate Template dropdown
-//function setDataSourceTemplateCombo(templateTypes) {
-//    const cmbTemplate = $("#cmbTemplate");
-//    cmbTemplate.empty(); // Clear existing options
-//    cmbTemplate.append('<option value="">Select Template</option>'); // Default placeholder
-//    templateTypes.forEach(template => {
-//        cmbTemplate.append(`<option value="${template.Id}">${template.TemplateName}</option>`);
-//    });
-//}
 
 function setDataSourceTemplateCombo(templateTypes) {
 
@@ -189,17 +176,6 @@ function setDataSourceTemplateCombo(templateTypes) {
         selectedIndex: -1
     });
 }
-
-// Populate Country dropdown
-//function setDataSourceCountry(countries) {
-//    const cmbCountry = $("#cmbCountry");
-//    cmbCountry.empty(); // Clear existing options
-//    cmbCountry.append('<option value="">Select Country</option>'); // Default placeholder
-//    countries.forEach(country => {
-//        cmbCountry.append(`<option value="${country.COUNTRYID}">${country.COUNTRYNAME}</option>`);
-//    });
-//}
-
 function setDataSourceCountry(countries) {
 
     var source = {

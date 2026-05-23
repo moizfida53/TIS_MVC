@@ -5,22 +5,10 @@
     ChangeStatus
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-    <%--<link href="https://cdn.datatables.net/2.0.0/css/dataTables.bootstrap5.min.css" rel="stylesheet">--%>
     <link href="../../css/BillReport.css" rel="stylesheet">
-
-    <%--<script src="https://cdn.datatables.net/2.0.0/js/dataTables.min.js"></script>--%>
     <script src="../../Scripts/alert.js"></script>
-    <%--<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>--%>
     <script src="../../Scripts/ChangeStatus.js"></script>
-
-
-
-
-
     <div class="container-fluid mt-4">
-
-
         <div class="container">
             <div style="width: 100%">
                 <table style="width: 100%">
@@ -37,8 +25,6 @@
 
                         <div class="col-md-3" style="margin-bottom: 15px;">
                             <label for="cmbMonth" class="form-label"><i class="fas fa-calendar-alt me-2"></i><strong>Month</strong></label>
-                            <%--<div id="cmbMonth">
-                            </div>--%>
                             <select id="cmbMonth" class="form-select">
                                 <option value="0">Select Month</option>
                                 <option value="1" label="January"></option>
@@ -57,15 +43,11 @@
                         </div>
                         <div class="col-md-3">
                             <label for="cmbYear" class="form-label"><i class="fas fa-calendar-alt me-2"></i><strong>Year</strong></label>
-                            <%--  <div id="cmbYear">
-                            </div>--%>
                             <select id="cmbYear" class="form-select">
                             </select>
                         </div>
                         <div class="col-md-3">
                             <label for="cmbProvider" class="form-label"><i class="fas fa-calendar-alt me-2"></i><strong>Provider</strong></label>
-                            <%--    <div id="cmbProvider">
-                            </div>--%>
                             <select id="cmbProvider" class="form-select">
                             </select>
                         </div>

@@ -6,11 +6,6 @@ var UID = [];
 var billID = [];
 var DataAdapEmp;
 $(document).ready(function () {
-    //$("#cmbMonth").jqxDropDownList({ placeHolder: 'Select Month', selectedIndex: -1, width: '95%', height: '25px' });
-    //$("#cmbMonth").jqxDropDownList('loadFromSelect', 'Select');
-    //$("#Select").hide();
-    //$("#cmbYear").jqxDropDownList({ placeHolder: 'Select Year', selectedIndex: -1, width: '95%', height: '25' });
-    //$("#cmbProvider").jqxDropDownList({ placeHolder: 'Select Provider', selectedIndex: -1, width: "95%", height: 25 });
     $("#btnEmployee").jqxDropDownButton({ width: "95%", height: 25 });
     $("#btnEmployee").jqxDropDownButton('setContent', 'Select Employee');
     $('#btnEmployee').on('open', function () { FillEmployee(); });
@@ -86,8 +81,6 @@ function FillYear() {
     for (var i = 2024; i <= 2030; i++) {
         Year.push(i);
     }
-    //$("#cmbYear").jqxDropDownList({ source: Year });
-    ////Begin Bind Year Dropdown
     var providersCountries = Year;
     var $cmbYear = $("#cmbYear");
     $cmbYear.empty();
@@ -101,25 +94,8 @@ function FillYear() {
                 .text(p)
         );
     });
-    ////End Bind Year Dropdown
 }
 function FillProvider() {
-    //var source =
-    //{
-    //    dataType: "json",
-    //    dataFields: [
-    //        { name: 'ID', type: 'string' },
-    //        { name: 'NAME', type: 'string' }
-    //    ],
-    //    id: 'ID',
-    //    localdata: Provider
-    //};
-    //var dataAdapterPr = new $.jqx.dataAdapter(source);
-    //// Create a jqxComboBox
-    //$("#cmbProvider").jqxDropDownList({ source: dataAdapterPr, displayMember: "NAME", valueMember: "ID" });
-
-    ////Begin Bind Provider Dropdown
-    //var providersCountries = Year;
     var $cmbProvider = $("#cmbProvider");
     $cmbProvider.empty();
     $cmbProvider.append('<option value="">Select Provider</option>');
@@ -132,14 +108,9 @@ function FillProvider() {
                 .text(p.NAME)
         );
     });
-    ////End Bind Provider Dropdown
 }
 function Search() {
     var Provider = 0; var Month = 0; var Year = 0; var UID = 0;
-
-    //if ($("#cmbProvider").jqxDropDownList('getSelectedItem') != null) {
-    //    Provider = $("#cmbProvider").jqxDropDownList('getSelectedItem');
-    //}
     if ($("#cmbMonth").val() != null) {
         Month = $("#cmbMonth").val();
     }
@@ -411,13 +382,7 @@ function selectEmployeeAssign(username, EmpId) {
             } else {
             }
         });
-
-        //// Example: call assign endpoint or push data
-        //UID.push(selectedEmpId);
-        //billID.push(currentBillId); // use a global var set before modal opens
-
     });
-    //closeAssignModal();
 
 }
 
@@ -484,14 +449,6 @@ function SaveChanges() {
     });
 }
 function Clear() {
-    //$("#cmbMonth").jqxDropDownList({ selectedIndex: -1 });
-    //$("#cmbYear").jqxDropDownList({ selectedIndex: -1 });
-    //$("#cmbProvider").jqxDropDownList({ selectedIndex: -1 });
-    //$("#hidEmp").val('');
-    //$("#grdData").jqxGrid('clearselection');
-    //$("#grdData").hide();
-    //$("#btnSave").hide();
-
     location.reload();
 }
 

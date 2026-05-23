@@ -727,16 +727,12 @@ function setDataSourceArchived(mybill) {
         showsortcolumnbackground: true,
         columns: [
             { dataField: 'BillId', text: 'Id', hidden: 'true' },
-            //{ dataField: 'BillDate', text: 'Bill Date', cellsformat: 'MMMM, yyyy', filterable: false, width: '15%' },
             {
                 dataField: 'BillDate', text: 'Bill Date', filterable: false, width: '7%',
                 cellsrenderer: function (row, col, value) {
                     if (!value) return '';
                     var parts = value.split(' ')[0].split('/');   // handles "30/04/2026 00:00:00"
                     var d = new Date(parts[2], parts[1] - 1, parts[0]);
-                    //return '<div>'
-                    //    + d.toLocaleString('en-US', { month: 'short', year: 'numeric' })
-                    //    + '</div>';
                     return '<div style="height:100%; display:flex; align-items:center; justify-content:center;">'
                         + d.toLocaleString('en-US', { month: 'short', year: 'numeric' }) +
                         '</div>';
@@ -782,9 +778,6 @@ function setDataSourceDepartmentBill(DepartmentBill) {
             ], datatype: "json"
     };
     var dataAdapterCategory = new $.jqx.dataAdapter(deptsource);
-    //cellsrenderer = function (row, columnfield, value, defaulthtml, columnproperties, rowData) {
-    //    return '<input type="button" value="View"  class="myButton" onclick="getDepartmentBill(' + rowData.BillId + ')"/>';
-    //};
     $("#grdDepartmentBills").jqxGrid({
         width: '100%',
         source: dataAdapterCategory,
@@ -873,7 +866,6 @@ function setDataSourceGridApproval(mybill) {
             { dataField: 'Duration', text: 'Duration', width: '100px' },
             { dataField: 'Amount', text: 'Amount', cellsformat: 'F3', cellsalign: 'center', width: '80px' },
             { dataField: 'CallType', text: 'Call Type', cellsrenderer: cellsrenderer, cellsalign: 'center', width: '100px' },
-            /*{ dataField: 'Comment', text: 'Comment', cellsalign: 'left', width: '100px' }*/
             {
                 text: 'Comment',
                 datafield: 'Comment',
@@ -1036,20 +1028,6 @@ function ProcessBill() {
     let wamt = 0.0;
     if ($("#chkW1").is(':checked')) wamt += parseFloat($('#btot').html());
     if ($("#chkW2").is(':checked')) wamt += parseFloat($('#atot').html());
-
-    // 🟩 STEP 3: Collect selected rows
-    //const selectedIndexes = $('#grdBillDetails').jqxGrid('getselectedrowindexes');
-    //const myids = [];
-
-    //if (selectedIndexes.length > 0) {
-    //    for (let i = 0; i < selectedIndexes.length; i++) {
-    //        const selectedRow = $('#grdBillDetails').jqxGrid('getrowdata', selectedIndexes[i]);
-    //        for (let y = 0; y < myABB.length; y++) {
-    //            myids.push({ ID: selectedRow.Id, Comm: myABB[y].Comment });
-    //            break;
-    //        }
-    //    }
-    //}
 
     // 🟩 STEP 4: Manager name
     const managerName = $("#txtManagerName").text() || "Not Assigned";
@@ -1275,15 +1253,6 @@ function ChangeCallType() {
     else {
         $('#btot').html("0.000");
     }
-    // alert(isbus);
-    //if (BC > BL && isbus == true) {
-    //    $('#btot').html((BC - BL).toFixed(3));
-    //}
-    //else {
-    //    $('#btot').html("0");
-    //}
-
-
     if (PC > PL && isper == true) {
         if (Settings.IsZeroUnlimited2 && parseFloat($('#plimit').html()) == 0) {
             $('#ptot').html('0.000');
@@ -1338,10 +1307,7 @@ function showWaive() {
 function SelectMyBill(id) {
     getUBillDetails(id + '');
     GBillId = id;
-    //var datarow = $("#grdBillMaster").jqxGrid('getrowdata', idx);
     $('#txtManagerName').text(datarow.ManagerName);
-    //            $("#grdBillMaster").jqxGrid('clearselection');
-
     var rows = $('#grdBillMaster').jqxGrid('getrows');
     var rowsCount = rows.length;
     for (var i = 0; i < rowsCount; i++) {
@@ -1597,16 +1563,6 @@ function setDataSourceGridDetails(bill_details) {
         }
         return "<div style='padding: 10px;'>" + myString + "</div>";
     }
-    //var cellstext = function (row, columnfield, value, defaulthtml, columnproperties, rowData) {
-    //    console.log(rowData.Comment);
-    //    //return '<input type="text" id="txtComment' + rowData.Id + '" style="width: 92% !important;margin: 5px;height: 30px;" value="' + rowData.Comment + '" class="clsComment" data-id="' + rowData.Id + '" />';
-    //    return '<input type="text" id="txtComment' + rowData.Id + '" style="width: 92% !important;margin: 5px;height: 30px;" value="' + (rowData.Comment || '') + '" class="clsComment" data-id="' + rowData.Id + '" onblur="saveComments(' + rowData.Id + ')" />';
-
-    //}
-    //var cellstext = function (row, columnfield, value, defaulthtml, columnproperties, rowData) {
-    //    return '<input type="text" id="txtComment' + rowData.Id + '" style="width: 92% !important;margin: 5px;height: 30px;" value="' + (rowData.Comment || '') + '" onblur="saveComments(' + rowData.Id + ')" />';
-    //}
-
     var cellstext = function (row, columnfield, value, defaulthtml, columnproperties, rowData) {
         var latestComment = rowData.Comment || '';
         if (Array.isArray(itemData)) {
@@ -1725,13 +1681,9 @@ function getUBillDetails(billid) {
             $('#chkW2').attr('checked', false);
 
             itemData = result.bill_details;
-
-
             if (itemData.length > 0) {
                 $('#billDetails').show();
             }
-
-
             var curPart = [];
             myPart = 1;
             itemData = result.bill_details;
@@ -1739,17 +1691,11 @@ function getUBillDetails(billid) {
                 $('#billDetails').show();
 
             }
-
             bc = 0.0; pc = 0.0; ac = 0.0; uc = 0.0;
             for (var i = 0; i < itemData.length; i++) {
-
                 var item = itemData[i];
-
                 $("input[name='rd" + item.Id + "'][value=" + item.CallType + "]").attr('checked', 'checked');
                 var ct = parseInt(item.CallType + '');
-
-
-
                 if (ct == 0) {
                     uc = uc + item.Amount;
                 }
@@ -1773,10 +1719,7 @@ function getUBillDetails(billid) {
             alim = result.mlim;
             isbus = Settings.DedBussinessCharges;
             isper = Settings.DedPersonalCharges;
-
             HidePer = Settings.HidePersonalLimit;
-
-
             isallow = Settings.HideAllowanceLimit;
             ispersonal = Settings.HidePersonalLimit;
 
@@ -1790,26 +1733,17 @@ function getUBillDetails(billid) {
                 $("#alwCharge").hide();
             }
             else { }
-
-
-
             ispersonal = Settings.HidePersonalLimit;
 
             if (ispersonal == true) {
                 $("#p1TD").hide();
                 $("#p2TD").hide();
-
-
                 $("#plimit").hide();
-
                 $("#perCharge").hide();
                 $("#a").show();
                 $("#b").show();
                 $("#c").show();
                 $("#d").show();
-
-
-
             }
             else {
 
@@ -1819,9 +1753,6 @@ function getUBillDetails(billid) {
                 $("#d").hide();
 
             }
-
-
-
 
             $('#blimit').html(parseFloat(blim).toFixed(3));
             $('#plimit').html(parseFloat(plim).toFixed(3));
@@ -1861,13 +1792,8 @@ function getUBillDetails(billid) {
                 $('#plimit').html("0.000");
                 $('#ptot').html((PC).toFixed(3));
             }
-
-            
-            // alert(AL);
             AL = parseFloat($('#alimit').html());
             AC = parseFloat($('#alwCharge').html());
-            // alert(AL);
-            // alert(AC);
 
             if (AC > AL) {
                 $('#atot').html((AC - AL).toFixed(3));
@@ -1918,8 +1844,6 @@ function LiveTag(myRadio, id) {
     deptsourceDetail.localdata = itemData;
     $("#grdBillDetails").jqxGrid('databind', deptsourceDetail, 'sort');
 
-    //setDataSourceGridDetails(itemData);
-
     var BL, BC, NB, PL, PC;
     var AL, AC, NA;
     BL = parseFloat($('#blimit').html());
@@ -1939,8 +1863,6 @@ function LiveTag(myRadio, id) {
         $('#btot').html("0.000");
     }
 
-
-
     if (PC > PL && isper == true) {
         if (Settings.IsZeroUnlimited2 && parseFloat($('#plimit').html()) == 0) {
             $('#ptot').html('0.000');
@@ -1952,9 +1874,6 @@ function LiveTag(myRadio, id) {
     else {
         $('#ptot').html("0.000");
     }
-
-
-
 
     AL = parseFloat($('#alimit').html());
     AC = parseFloat($('#alwCharge').html());
@@ -2034,19 +1953,9 @@ function handleClick(myRadio, id) {
     deptsourceDetail.localdata = itemData;
     $("#grdBillDetails").jqxGrid('databind', deptsourceDetail, 'sort');
 
-    //setTimeout(function () {
-    //    for (var i = 0; i < itemData.length; i++) {
-    //        try {
-    //            $('#txtComment' + itemData[i].Id).val(itemData[i].Comment || '');
-    //        } catch (e) { }
-    //    }
-    //}, 300);
-
-
     for (var i = 0; i < itemData.length; i++) {
         var curItem = itemData[i];
     }
-
 
     var item = rdv;
     ct = myRadio.value;
@@ -2481,10 +2390,6 @@ function FillCallType() {
         }
         return "<div style='padding: 10px;'>" + myString + "</div>";
     }
-    //var cellstext = function (row, columnfield, value, defaulthtml, columnproperties, rowData) {
-    //    console.log(rowData.Comment);
-    //    return '<input type="text" id="txtComment' + rowData.Id + '" style="width: 92% !important;margin: 5px;height: 30px;" value="' + rowData.Comment + '" onblur="saveComments(' + rowData.Id + ')" />';
-    //}
     var cellstext = function (row, columnfield, value, defaulthtml, columnproperties, rowData) {
         var latestComment = rowData.Comment || '';
         if (Array.isArray(itemData)) {

@@ -852,27 +852,6 @@ function Assign() {
         "CostCenterID": $("#hidCostCenter").val(),
     };
     var obji = { Assign: Asg }
-    //$.ajax({
-    //    type: "POST",
-    //    url: "../../Admin/Assign",
-    //    data: JSON.stringify(obji),
-    //    contentType: "application/json; charset=utf-8",
-    //    dataType: "json",
-    //    success: function (result) {
-    //        ClearAssign();
-
-    //        GetAsgNo();
-    //        //FillAssignNo();
-    //        if (result.myMessage == 'succ') {
-    //            $.alert.open('info', 'Success', 'Number Assigned Successfully');
-    //        }
-    //        else {
-    //            $.alert.open('error', 'Error', 'Sorry cannot complete transaction, Please contact Administrator');
-    //        }
-    //    }
-    //});
-
-    // Show SweetAlert confirmation
     Swal.fire({
         title: 'Are you sure?',
         text: "Do you want to Assign this Telephone number?",

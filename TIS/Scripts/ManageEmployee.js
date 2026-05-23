@@ -116,11 +116,6 @@ $(document).on('click', '#btnDeleteManager', function () {
 $(document).on('click', '#btnCancleManager', function () {
     ClearManager();
 });
-
-// If you want to open the Country or Manager modals from somewhere, add handlers for those triggers as well.
-// Example (if you add a button for opening Country modal):
-// $(document).on('click', '#btnOpenCountry', function () { OpenCountry(); });
-// $(document).on('click', '#btnOpenManager', function () { OpenManager(); });
 function GetData() {
     $.ajax({
         type: "GET",
@@ -423,9 +418,6 @@ function FillGrid() {
             {
                 dataField: 'EXTENSION',
                 text: 'EXT',
-                //width: '6.76%',
-                //cellsalign: 'center',
-                //align: 'center',
                 cellsrenderer: createInactiveRowRenderer(),
                 hidden: 'true'
             },
@@ -472,10 +464,6 @@ function FillGrid() {
             },
             {
                 dataField: 'ISCOSTCENTER',
-                //text: 'IS CC',
-                //width: '6.74%',
-                //cellsalign: 'center',
-                //align: 'center',
                 hidden: 'true',
                 cellsrenderer: createInactiveCheckboxRenderer()
                 

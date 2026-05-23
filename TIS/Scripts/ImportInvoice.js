@@ -832,27 +832,6 @@ function UploadSetting() {
 }
 
 function FillSettings(Columns) {
-    //var source =
-    //{
-    //    dataType: "json",
-    //    dataFields: [
-    //        { name: 'Cols', type: 'string' }
-    //    ],
-    //    id: 'Cols',
-    //    localdata: Columns
-    //};
-    //var dataAdapter = new $.jqx.dataAdapter(source);
-
-
-    //$("#dd1").jqxDropDownList({ source: dataAdapter, selectedIndex: 0, displayMember: "Cols", valueMember: "Cols", width: '170px', height: '25' });
-    //$("#dd2").jqxDropDownList({ source: dataAdapter, selectedIndex: 0, displayMember: "Cols", valueMember: "Cols", width: '170px', height: '25' });
-    //$("#dd3").jqxDropDownList({ source: dataAdapter, selectedIndex: 0, displayMember: "Cols", valueMember: "Cols", width: '170px', height: '25' });
-    //$("#dd4").jqxDropDownList({ source: dataAdapter, selectedIndex: 0, displayMember: "Cols", valueMember: "Cols", width: '170px', height: '25' });
-    //$("#dd5").jqxDropDownList({ source: dataAdapter, selectedIndex: 0, displayMember: "Cols", valueMember: "Cols", width: '170px', height: '25' });
-    //$("#dd6").jqxDropDownList({ source: dataAdapter, selectedIndex: 0, displayMember: "Cols", valueMember: "Cols", width: '170px', height: '25' });
-    //$("#dd7").jqxDropDownList({ source: dataAdapter, selectedIndex: 0, displayMember: "Cols", valueMember: "Cols", width: '170px', height: '25' });
-    //$("#dd8").jqxDropDownList({ source: dataAdapter, selectedIndex: 0, displayMember: "Cols", valueMember: "Cols", width: '170px', height: '25' });
-
     debugger;
     //Change logic on 08-Feb-2026
     var source = [
@@ -979,17 +958,6 @@ function performUpdateSetting(Item, Item1, Item2, Item3, Item4, Item5, Item6, It
 }
 
 function Clear() {
-
-    //$("#dd1").jqxDropDownList('clear');
-    //$("#dd2").jqxDropDownList('clear');
-    //$("#dd2").jqxDropDownList('clear');
-    //$("#dd3").jqxDropDownList('clear');
-    //$("#dd4").jqxDropDownList('clear');
-    //$("#dd5").jqxDropDownList('clear');
-    //$("#dd6").jqxDropDownList('clear');
-    //$("#dd7").jqxDropDownList('clear');
-    //$("#dd8").jqxDropDownList('clear');
-
     $("#dd1").html("");
     $("#dd2").html("");
     $("#dd2").html("");
@@ -999,19 +967,11 @@ function Clear() {
     $("#dd6").html("");
     $("#dd7").html("");
     $("#dd8").html("");
-
-
-    //$("#cmbSheet2").jqxDropDownList('clear');
-    //$("#cmbProvider2").jqxDropDownList({ selectedIndex: -1 });
-
     $("#cmbSheet2").html("");
     $("#cmbProvider2").html("");
-
     $("#lblFileName2").html("");
-    //$("#cmbType").jqxDropDownList({ selectedIndex: 0 });
     $("#cmbType").val("")
     $("#txtDataBase").val('');
-    //$("#cmbViews").jqxDropDownList('clear');
     $("#cmbViews").html("");
     $("#img").hide();
 }
@@ -1065,33 +1025,6 @@ function GetSetting() {
                     Setting.Col7,
                     Setting.Col8
                 ];
-
-                //$("#dd1").jqxDropDownList({ source: source, selectedIndex: 0 });
-                //$("#dd2").jqxDropDownList({ source: source, selectedIndex: 1 });
-                //$("#dd3").jqxDropDownList({ source: source, selectedIndex: 2 });
-                //$("#dd4").jqxDropDownList({ source: source, selectedIndex: 3 });
-                //$("#dd5").jqxDropDownList({ source: source, selectedIndex: 4 });
-                //$("#dd6").jqxDropDownList({ source: source, selectedIndex: 5 });
-                //$("#dd7").jqxDropDownList({ source: source, selectedIndex: 6 });
-
-
-                // Begin Bind Settings Dropdowns as HTML <select> options
-                //var source = [
-                //    Setting.Col1,
-                //    Setting.Col2,
-                //    Setting.Col3,
-                //    Setting.Col4,
-                //    Setting.Col5,
-                //    Setting.Col6,
-                //    Setting.Col7,
-                //    Setting.Col8
-                //];
-
-                // Helper function to bind dropdown
-
-
-                // Bind all dd dropdowns
-                debugger;
                 bindDropdown($("#dd1"), source, 0);
                 bindDropdown($("#dd2"), source, 1);
                 bindDropdown($("#dd3"), source, 2);
@@ -1146,7 +1079,6 @@ function GetDBSetting(Data) {
 
     $("#DataBase").show();
     $("#SelectFile").hide();
-    //$("#cmbType").jqxDropDownList({ selectedIndex: 2 });
     $("#cmbType").prop('selectedIndex', 2);
 
 
@@ -1163,18 +1095,7 @@ function GetDBSetting(Data) {
         Setting.Col8
     ];
     $("#txtDataBase").val(Setting.dbConstr);
-    //$("#cmbViews").jqxDropDownList('setContent', Setting.dbTableName);
     $("#cmbViews").val(Setting.dbTableName);
-
-    //$("#dd1").jqxDropDownList({ source: source, selectedIndex: 0 });
-    //$("#dd2").jqxDropDownList({ source: source, selectedIndex: 1 });
-    //$("#dd3").jqxDropDownList({ source: source, selectedIndex: 2 });
-    //$("#dd4").jqxDropDownList({ source: source, selectedIndex: 3 });
-    //$("#dd5").jqxDropDownList({ source: source, selectedIndex: 4 });
-    //$("#dd6").jqxDropDownList({ source: source, selectedIndex: 5 });
-    //$("#dd7").jqxDropDownList({ source: source, selectedIndex: 6 });
-    //$("#dd8").jqxDropDownList({ source: source, selectedIndex: 7 });
-
     bindDropdown($("#dd1"), source, 0);
     bindDropdown($("#dd2"), source, 1);
     bindDropdown($("#dd3"), source, 2);
@@ -1417,23 +1338,6 @@ function TestConn() {
                 $("#img").html(Img);
 
                 var Views = result.dtViews;
-                //var source =
-                //{
-                //    dataType: "json",
-                //    dataFields: [
-                //        { name: 'Views', type: 'string' }
-                //    ],
-                //    id: 'Views',
-                //    localdata: Views
-                //};
-                //var dataAdapterView = new $.jqx.dataAdapter(source);
-                // Create a jqxComboBox
-                //$("#cmbViews").jqxDropDownList({
-                //    selectedIndex: -1, source: dataAdapterView, displayMember: "Views", valueMember: "Views", width: 170, height: 25
-                //});
-
-                ////Begin Bind cmbViews Dropdown
-                //var providersCountries = Year;
                 var $cmbViews = $("#cmbViews");
                 $cmbViews.empty();
                 $cmbViews.append('<option value="">Select View</option>');

@@ -390,30 +390,6 @@ function FillGrid() {
         }
     });
 }
-//function Edit(index) {
-
-
-//    if (!row.IsAll) {
-//        var Indexes = [];
-//        var File = {
-//            "ID": row.ID
-//        };
-//        $.ajax({
-//            type: "GET",
-//            url: "../../Setting/GetPolicyDetail",
-//            contentType: 'application/json',
-//            data: File,
-//            success: function (result) {
-//                var Ids = result.dtID;
-//                $.each(Ids, function (key, val1) {
-//                    var index = $('#grdEmployee').jqxGrid('getrowboundindexbyid', val1.ID);
-//                    $('#grdEmployee').jqxGrid({ selectedrowindex: index });
-//                });
-
-//            }
-//        })
-//    }
-//}
 function Edit(index) {
     debugger;
     $('#grdEmployee').jqxGrid('clearselection');
@@ -492,28 +468,8 @@ function AddPolicy() {
     }
 
     var LineType = $("#cmbLineType").val();
-
-    //// Description checkboxes
-    //var IsAllDesc = $("#chkAllDesc").prop('checked');
-    //if (!IsAllDesc) {
-    //    $("#cmbDesc input[type='checkbox']:checked").each(function () {
-    //        Des.push($(this).val());
-    //    });
-    //}
-
-    // Description selection handling
     var IsAllDesc = $("#chkAllDesc").prop('checked');
     if (!IsAllDesc) {
-        // PSEUDOCODE/PLAN:
-        // 1. Read chkAllDesc state.
-        // 2. If chkAllDesc is NOT checked, collect selected description values from #cmbDesc.
-        //    - Try three strategies (in order) to support different UI widgets:
-        //      a) If #cmbDesc is a <select> (including select2), use $cmbDesc.val() which returns an array or single value.
-        //      b) If #cmbDesc is a jqxListBox, call getCheckedItems() and extract .value / .label.
-        //      c) Fallback: find input[type='checkbox']:checked inside #cmbDesc and read their values.
-        //    - Merge found values into Des array.
-        // 3. Continue building the Policy object and send AJAX request as before.
-        // Replaced AddPolicy function:
         var $cmbDesc = $("#cmbDesc");
         var values = [];
         // Strategy A: <select> (including select2)
@@ -651,26 +607,15 @@ function ApplyPolicy() {
     });
 }
 function Clear() {
-    debugger;
     $("#hidID").val('');
-    // Clear select2 values and options for #cmbDesc
-
-
     $("#cmbCallType").jqxDropDownList('clearSelection');
     $("#cmbLineType").jqxDropDownList('clearSelection');
     $('#grdEmployee').jqxGrid('clearselection');
-    //$('#chkAllEmp').jqxCheckBox({ checked: false });
-    /*$('#chkAllDesc').jqxCheckBox({ checked: false });*/
     $('#chkSupImp').jqxCheckBox({ checked: false });
     $("#grdData").jqxGrid('clearselection');
-    //$("#chkAllEmp").prop('checked', false);
-
-
-    //$("#cmbProvider").jqxDropDownList({ disabled: false });
     $("#cmbCallType").jqxDropDownList({ disabled: false });
     $("#cmbLineType").jqxDropDownList({ disabled: false });
     $("#cmbTransType").jqxDropDownList({ disabled: false });
-    //$('#chkAllDesc').jqxCheckBox({ disabled: false });
     $('#btnDesc').jqxDropDownButton({ disabled: false });
     $("#cmbTransType").jqxDropDownList({ placeHolder: "Select TransType" });
     $("#btnDesc").jqxDropDownButton('setContent', 'Select Description');
@@ -679,19 +624,14 @@ function Clear() {
 }
 
 function Clear() {
-    // Hidden ID
     $("#hidID").val('');
-
-    // Clear selects
     $("#cmbProvider").val('');
     $("#cmbTransType").val('');
-    //$("#cmbDesc").val('');
     var $cmbDesc = $("#cmbDesc");
-    $cmbDesc.empty(); // remove all options
+    $cmbDesc.empty(); 
     if ($cmbDesc.hasClass('select2-hidden-accessible')) {
-        $cmbDesc.val(null).trigger('change'); // clear selection
+        $cmbDesc.val(null).trigger('change'); 
     }
-
     $("#cmbCallType").val('');
     $("#cmbLineType").val('');
 

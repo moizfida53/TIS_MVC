@@ -6,23 +6,8 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-
-
-    <%-- <link href="~/css/bootstrap.css" rel="stylesheet" />--%>
-
-
-
-    <%--    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/jqwidgets/styles/jqx.energyblue.css" rel="stylesheet" />--%>
-
     <link href="../DashboardContent/material-dashboard.css" rel="stylesheet">
-
-    <%--    <link href="~/jqwidgets/styles/jqx.ui-start.css" rel="stylesheet" />--%>
-    <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../DashboardContent/demo.css" rel="stylesheet">
-
-    <%-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" />--%>
     <link href="../../css/bootstrap.min.css" rel="stylesheet" />
 
     <script src="../MainJs/Dashboard.js"></script>
@@ -199,13 +184,7 @@
                             </div>
                         </div>
                     </div>
-
-
-
                     <div class="row">
-
-
-
                         <div id="yearwisebillchart" class="col-md-6">
 
                             <div class="card card-chart" id="chart1">
@@ -225,10 +204,6 @@
                                             </select>
                                         </div>
                                     </div>
-
-
-
-
                                     <p class="card-category">
                                     </p>
                                 </div>
@@ -309,7 +284,6 @@
                                             <label style="float: right">Select Year:</label>
                                         </div>
                                         <div class="col-sm-5">
-                                            <%--<div style="float: right" id="jqxyeartransactiondd"></div>--%>
                                             <select id="jqxyeartransactiondd" class="form-select">
                                             </select>
                                         </div>
@@ -319,7 +293,6 @@
                                             <label style="float: right;">Transaction type</label>
                                         </div>
                                         <div class="col-sm-3">
-                                            <%--<div style="float: right" id="ddtransaction"></div>--%>
                                             <select id="ddtransaction" class="form-select">
                                             </select>
                                         </div>
@@ -364,7 +337,6 @@
                                             <label style="float: right">Select Year:</label>
                                         </div>
                                         <div class="col-sm-5" style="margin-left: 23px;">
-                                            <%--<div style="float: right" id="jqxyearcalltypendd"></div>--%>
                                             <select id="jqxyearcalltypendd" class="form-select">
                                             </select>
                                         </div>
@@ -441,7 +413,6 @@
                                                 Select Year:</label>
                                         </div>
                                         <div class="col-sm-5" style="margin-left: -70px;">
-                                            <%--<div style="float: right" id="jqxyearINTcountdd"></div>--%>
                                             <select id="jqxyearINTcountdd" class="form-select">
                                             </select>
                                         </div>
@@ -452,7 +423,6 @@
                                             <label style="float: right;">Transaction type</label>
                                         </div>
                                         <div class="col-sm-3" style="margin-left: 26px;">
-                                            <%-- <div style="float: right" id="ddtransactionforINTCNTRY"></div>--%>
                                             <select id="ddtransactionforINTCNTRY" class="form-select">
                                             </select>
                                         </div>
@@ -535,7 +505,6 @@
                                             <label style="float: right">Select Year:</label>
                                         </div>
                                         <div class="col-sm-5" style="margin-left: -13px;">
-                                            <%--<div style="float: right" id="jqxyearselectioningriddd"></div>--%>
                                             <select id="jqxyearselectioningriddd" class="form-select">
                                             </select>
                                         </div>
@@ -545,27 +514,17 @@
                                             <label style="float: right">Select Month:</label>
                                         </div>
                                         <div class="col-sm-5" style="margin-left: -15px;">
-                                            <%--<div style="float: right" id="jqxmonthselectioningriddd"></div>--%>
                                             <select id="jqxmonthselectioningriddd" class="form-select">
                                             </select>
                                         </div>
                                     </div>
-
-
-
-
                                 </div>
                                 <div class="card-header card-header-success1" style="border: 7px solid #66bb6a; margin-top: 0px;">
-
-
                                     <div id="jqxgridtest"></div>
-
-
                                 </div>
                                 <div class="card-footer">
                                     <div class="stats">
                                         <input style='float: left; margin-left: 5px;' id="pdfButtonjqxgridtest" type="button" value="Save As Excel" />
-
                                     </div>
                                 </div>
                             </div>

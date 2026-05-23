@@ -2,18 +2,13 @@
     Layout = null;
 }
 <!DOCTYPE html>
-<!-- saved from url=(0025)https://tis.tmm-menu.com/ -->
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Analyse</title>
-
-    @*<script src="~/Scripts/jquery-1.11.1.min.js"></script>*@
     <script src="../../Scripts/jquery-3.7.1.min.js"></script>
-
-    @*<link rel="stylesheet" href="https://fcdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">*@
     <link href="~/Scripts/font-awesome.min.css" rel="stylesheet" />
     <style type="text/css" id="notify-bootstrap">
         .notifyjs-bootstrap-base {
@@ -558,7 +553,6 @@
     <input type="hidden" id="hdnRoleId" value="@ViewBag.Roleid" />
     <input type="hidden" id="hdnAction" value="@ViewBag.action" />
 
-    @*<input type="hidden" id="hdnUid" value="@Model.uid" />*@
     <div class="bg">
         <div style="border-radius: 6px; background-image: url(../../Content/images/header-image-11.jpg);
          width: 100%">
@@ -571,44 +565,13 @@
                 <div class="col-md-4">
                     <div style="text-align: right;color: #000; font-weight: bold; font-size: 14pt;">
                         Welcome,
-                        @*@Model.name*@
                         @ViewBag.name
                     </div>
                 </div>
             </div>
-
-
-            <!--          <table style="height: 62px; width: 100%;">
-                        <tbody>
-                           <tr>
-                              <td width="100px" align="left">
-                                 <img src="images/logo.png" border="0" >
-                              </td>
-                              <td align="left" style="padding-left: 0px; padding-bottom: 3px; color: #FFFFFF; font-weight: bold;
-                                 font-size: 16pt;">
-
-                              </td>
-                              <td align="right" style="color: #000; font-weight: bold; font-size: 14pt;">
-                                 Welcome,
-                                 Employee
-
-                              </td>
-                              <td>
-                                 <input id="btnAdmin" type="button" value="Admin" style="display: none;">
-                              </td>
-                           </tr>
-                           <tr>
-                              <td colspan="3"></td>
-                           </tr>
-                        </tbody>
-                     </table> -->
         </div>
         <div class="modal">
         </div>
-
-
-
-
     </div>
     <div class="bubbles">
         <div class="bubble"></div>
@@ -686,100 +649,5 @@
     <div id="loaderDiv">
         <div class="loader">Loading...</div>
     </div>
-    @*<script>
-            $(document)
-                .ajaxStart(function () {
-                    showLoader();
-                })
-                .ajaxComplete(function () {
-                    debugger;
-                    hideLoader();
-                })
-                .ajaxStop(function () {
-                    hideLoader();
-                });
-        </script>*@
-    <!--<script type="text/javascript">
-        function showLoader() {
-            debugger;
-            if (!($("#loaderDiv").is(':visible'))) {
-                /* setTimeout(*/
-                //function () {
-                $('#loading').show();
-                $('#loaderDiv').show();
-                /*   }, 900);*/
-            }
-        }
-
-        function hideLoader() {
-            if (($("#loaderDiv").is(':visible'))) {
-                /* setTimeout(*/
-                //function () {
-                $('#loading').hide();
-                $('#loaderDiv').hide();
-                /*   }, 900);*/
-            }
-
-        }
-        $(document).ready(function () {
-            debugger;
-            BindLandingViewData();
-        });
-        function BindLandingViewData() {
-            debugger;
-            $.ajax({
-                type: "GET",
-                cache: false,
-                async: false,
-                url: "/user/GetLandingPageData",
-                data: { uid: $('#hdnUid').val() },
-                success: function (result) {
-                    debugger;
-                    if (result.Message == "Success") {
-                        var objData = JSON.parse(result.Data);
-                        if (objData.length) {
-                            $('#lblPendingIdentificationCount').html(objData[0].PendingIdentificationBillsCnt);
-                            $('#lblPendingApproval').html(objData[0].PendingApprovalBillsCnt);
-                            $('#lblBillsHistory').html(objData[0].HistoryBillsCnt);
-                        }
-                    }
-                }
-            });
-        }
-        //function displayTabDetails(tabId) {
-        //    debugger;
-        //var url = "/user/Index?SelectedTabIndex=" + tabId;
-        //window.location.href = url;
-        //}
-        function displayTabDetails(Tabindex) {
-            debugger;
-            //var NestId = $(this).data('id');
-            window.sessionStorage['SelectedTabIndex'] = Tabindex;-->
-    @*var url = '@Html.Raw(Url.Action("Index", new { tabindex = "3" }))';*@
-          <!--          url = '/User/Index';
-            window.location.href = url;
-
-            //var url = "/user/RedirectOnListView?SelectedTabIndex=" + Tabindex;
-            //window.location.href = url;
-            //$.ajax({
-            //    type: "POST",
-            //    cache: false,
-            //    async: false,
-            //    url: "/user/Index",
-            //    data: { tabindex: Tabindex },
-            //    success: function (result) {
-            //        debugger;
-            //        if (result.Message == "Success") {
-            //            //var objData = JSON.parse(result.Data);
-            //            //if (objData.length) {
-            //            //    $('#lblPendingIdentificationCount').html(objData[0].PendingIdentificationBillsCnt);
-            //            //    $('#lblPendingApproval').html(objData[0].PendingApprovalBillsCnt);
-            //            //    $('#lblBillsHistory').html(objData[0].HistoryBillsCnt);
-            //            //}
-            //        }
-            //    }
-            //});
-        }
-    </script>-->
 </body>
 </html>

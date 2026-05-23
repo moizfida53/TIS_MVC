@@ -9,104 +9,10 @@
     <link href="../../css/dataTables.bootstrap5.min.css" rel="stylesheet" />
     <link href="../../css/BillReport.css" rel="stylesheet">
     <script src="../../Scripts/ReAssign-bill.js"></script>
-    <%--<script src="https://cdn.datatables.net/2.0.0/js/dataTables.min.js"></script>--%>
     <script src="../../Scripts/dataTables.min.js"></script>
 
     <script src="../../Scripts/alert.js"></script>
-    <%--<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>--%>
-
-
-
-    <%--<div style="width: 100%">
-        <table style="width: 100%">
-            <tr>
-                <td class="myButton3">Re-Assign Bills
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div>
-        <div>
-            <table>
-                <tr>
-                    <td>
-                        <input id="hidEmp" type="hidden" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <b>Month</b>
-                    </td>
-                    <td>
-                        <div id="cmbMonth">
-                        </div>
-                        <select id="Select">
-                            <option value="1" label="January"></option>
-                            <option value="2" label="February"></option>
-                            <option value="3" label="March"></option>
-                            <option value="4" label="April"></option>
-                            <option value="5" label="May"></option>
-                            <option value="6" label="June"></option>
-                            <option value="7" label="July"></option>
-                            <option value="8" label="August"></option>
-                            <option value="9" label="September"></option>
-                            <option value="10" label="October"></option>
-                            <option value="11" label="November"></option>
-                            <option value="12" label="December"></option>
-                        </select>
-                    </td>
-                    <td>
-                        <b>Year</b>
-                    </td>
-                    <td>
-                        <div id="cmbYear">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <b>Provider</b>
-                    </td>
-                    <td>
-                        <div id="cmbProvider">
-                        </div>
-                    </td>
-                    <td>
-                        <b>Employee</b>
-                    </td>
-                    <td>
-                        <div id="btnEmployee">
-                            <div id="grdEmployee">
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-            <br />
-            <table>
-                <tr>
-                    <td></td>
-                    <td>
-                        <input id="btnSearch" type="button" value="Search" />
-                    </td>
-
-
-                        <input id="btnSave" type="button" value="Save Changes" />
-                    </td>
-                    <td>
-                        <input id="btnCancel" type="button" value="Cancel" />
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <br />
-        <br />
-       
-    </div>--%>
-
     <div class="container-fluid mt-4">
-
-
         <div class="container">
             <div style="width: 100%">
                 <table style="width: 100%">

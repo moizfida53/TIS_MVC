@@ -1,10 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: TIS.Helper.DB
-// Assembly: TIS, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-// MVID: 16F81D25-AB23-43AD-92C7-05A00A50CBA5
-// Assembly location: F:\ALL PROJECTS\CoffeeShop\TFSProjects\Published\published from client server 27 Jan 2022\TIS_MVC_Published_2022_Jan\TIS_MVC_Published\bin\TIS.dll
-
-using System;
+﻿using System;
 using System.Data;
 using System.Data.OleDb;
 using System.Data.SqlClient;
@@ -14,8 +8,6 @@ namespace TIS.Helper
 {
     public class DB
     {
-        private static FixedSizedQueue<DBLogger> DBLog = new FixedSizedQueue<DBLogger>(1000);
-        public static string filename = AppDomain.CurrentDomain.BaseDirectory + "App_Data\\log\\Sp_logs.txt";
         private static string _activeDBConn = DB.SetDBConn();
 
         //private static string SetDBConn() => CommonLogic.ConnectionString("ConnStr");
@@ -30,7 +22,6 @@ namespace TIS.Helper
         public static int ExecuteStoredProc(string StoredProcName, SqlParameter[] paramColl)
         {
             int num = -1;
-            string str = "";
             using (SqlConnection connection = DB.dbConn())
             {
                 connection.Open();
@@ -43,27 +34,8 @@ namespace TIS.Helper
                         foreach (SqlParameter sqlParameter in paramColl)
                             sqlCommand.Parameters.Add(sqlParameter);
                     }
-                    DateTime now = DateTime.Now;
-                    try
-                    {
-                        num = sqlCommand.ExecuteNonQuery();
-                    }
-                    catch (SqlException ex)
-                    {
-                        str = ex.Message;
-                        throw;
-                    }
-                    finally
-                    {
-                        int totalMilliseconds = (int)DateTime.Now.Subtract(now).TotalMilliseconds;
-                        DB.DBLog.Enqueue(new DBLogger()
-                        {
-                            ExecTime = now,
-                            Procedure = StoredProcName,
-                            TimeTaken = totalMilliseconds,
-                            Exception = str
-                        });
-                    }
+
+                    num = sqlCommand.ExecuteNonQuery();
                     return num;
                 }
             }
@@ -71,7 +43,6 @@ namespace TIS.Helper
 
         public static int ExecuteSpRetVal(string StoredProcName, SqlParameter[] paramColl)
         {
-            string str = "";
             int num = 0;
             using (SqlConnection connection = DB.dbConn())
             {
@@ -85,30 +56,12 @@ namespace TIS.Helper
                         foreach (SqlParameter sqlParameter in paramColl)
                             sqlCommand.Parameters.Add(sqlParameter);
                     }
+
                     SqlParameter sqlParameter1 = sqlCommand.Parameters.Add("RetVal", SqlDbType.Int);
                     sqlParameter1.Direction = ParameterDirection.ReturnValue;
-                    DateTime now = DateTime.Now;
-                    try
-                    {
-                        sqlCommand.ExecuteNonQuery();
-                        num = (int)sqlParameter1.Value;
-                    }
-                    catch (SqlException ex)
-                    {
-                        str = ex.Message;
-                        throw;
-                    }
-                    finally
-                    {
-                        int totalMilliseconds = (int)DateTime.Now.Subtract(now).TotalMilliseconds;
-                        DB.DBLog.Enqueue(new DBLogger()
-                        {
-                            ExecTime = now,
-                            Procedure = StoredProcName,
-                            TimeTaken = totalMilliseconds,
-                            Exception = str
-                        });
-                    }
+
+                    sqlCommand.ExecuteNonQuery();
+                    num = (int)sqlParameter1.Value;
                     return num;
                 }
             }
@@ -116,8 +69,7 @@ namespace TIS.Helper
 
         public static object ExecuteStoredProcScaler(string StoredProcName, SqlParameter[] paramColl)
         {
-            object obj = (object)null;
-            string str = "";
+            object obj = null;
             using (SqlConnection connection = DB.dbConn())
             {
                 connection.Open();
@@ -127,27 +79,8 @@ namespace TIS.Helper
                     sqlCommand.CommandTimeout = 0;
                     foreach (SqlParameter sqlParameter in paramColl)
                         sqlCommand.Parameters.Add(sqlParameter);
-                    DateTime now = DateTime.Now;
-                    try
-                    {
-                        obj = sqlCommand.ExecuteScalar();
-                    }
-                    catch (SqlException ex)
-                    {
-                        str = ex.Message;
-                        throw;
-                    }
-                    finally
-                    {
-                        int totalMilliseconds = (int)DateTime.Now.Subtract(now).TotalMilliseconds;
-                        DB.DBLog.Enqueue(new DBLogger()
-                        {
-                            ExecTime = now,
-                            Procedure = StoredProcName,
-                            TimeTaken = totalMilliseconds,
-                            Exception = str
-                        });
-                    }
+
+                    obj = sqlCommand.ExecuteScalar();
                     return obj;
                 }
             }
@@ -155,11 +88,8 @@ namespace TIS.Helper
 
         public static DataSet ExecuteStoredProcDataSet(string StoredProcName) => DB.ExecuteStoredProcDataSet(StoredProcName, (SqlParameter[])null);
 
-        public static DataSet ExecuteStoredProcDataSet(
-          string StoredProcName,
-          SqlParameter[] paramColl)
+        public static DataSet ExecuteStoredProcDataSet(string StoredProcName, SqlParameter[] paramColl)
         {
-            string str = "";
             using (SqlConnection connection = DB.dbConn())
             {
                 connection.Open();
@@ -172,29 +102,10 @@ namespace TIS.Helper
                         foreach (SqlParameter sqlParameter in paramColl)
                             selectCommand.Parameters.Add(sqlParameter);
                     }
+
                     SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(selectCommand);
                     DataSet dataSet = new DataSet();
-                    DateTime now = DateTime.Now;
-                    try
-                    {
-                        sqlDataAdapter.Fill(dataSet);
-                    }
-                    catch (SqlException ex)
-                    {
-                        str = ex.Message;
-                        throw;
-                    }
-                    finally
-                    {
-                        int totalMilliseconds = (int)DateTime.Now.Subtract(now).TotalMilliseconds;
-                        DB.DBLog.Enqueue(new DBLogger()
-                        {
-                            ExecTime = now,
-                            Procedure = StoredProcName,
-                            TimeTaken = totalMilliseconds,
-                            Exception = str
-                        });
-                    }
+                    sqlDataAdapter.Fill(dataSet);
                     return dataSet;
                 }
             }
@@ -203,27 +114,27 @@ namespace TIS.Helper
         public static SqlParameter SetValueDecimal(SqlParameter sparam, object value)
         {
             if (value == null)
-                sparam.Value = (object)DBNull.Value;
+                sparam.Value = DBNull.Value;
             else
-                sparam.Value = (object)Convert.ToDecimal(value.ToString());
+                sparam.Value = Convert.ToDecimal(value.ToString());
             return sparam;
         }
 
         public static SqlParameter SetValueBool(SqlParameter sparam, object value)
         {
             if (value == null)
-                sparam.Value = (object)DBNull.Value;
+                sparam.Value = DBNull.Value;
             else
-                sparam.Value = (object)Convert.ToBoolean(value.ToString());
+                sparam.Value = Convert.ToBoolean(value.ToString());
             return sparam;
         }
 
         public static SqlParameter SetValueSmallInt(SqlParameter sparam, object value)
         {
             if (value == null)
-                sparam.Value = (object)DBNull.Value;
+                sparam.Value = DBNull.Value;
             else
-                sparam.Value = (object)Convert.ToInt16(value.ToString());
+                sparam.Value = Convert.ToInt16(value.ToString());
             return sparam;
         }
 
@@ -250,6 +161,7 @@ namespace TIS.Helper
             }
             catch (Exception ex)
             {
+                // Log exception if needed
             }
         }
 
@@ -265,10 +177,12 @@ namespace TIS.Helper
                 if (selectConnection.State == ConnectionState.Open)
                     selectConnection.Close();
                 if (dataSet.Tables[0].Rows.Count == 0)
-                    return (DataSet)null;
+                    return null;
             }
             catch (Exception ex)
             {
+                // Log exception if needed
+                return null;
             }
             return dataSet;
         }
@@ -285,10 +199,12 @@ namespace TIS.Helper
                 if (selectConnection.State == ConnectionState.Open)
                     selectConnection.Close();
                 if (dataSet.Tables[0].Rows.Count == 0)
-                    return (DataSet)null;
+                    return null;
             }
             catch (Exception ex)
             {
+                // Log exception if needed
+                return null;
             }
             return dataSet;
         }
@@ -298,7 +214,7 @@ namespace TIS.Helper
             int newId = 1;
             OleDbConnection connection = new OleDbConnection(ConnectionSettings.DBConnectionString);
             connection.Open();
-            OleDbDataReader oleDbDataReader = new OleDbCommand(string.Format("select max({0}) from {1}", (object)fieldName, (object)tableName), connection).ExecuteReader();
+            OleDbDataReader oleDbDataReader = new OleDbCommand(string.Format("select max({0}) from {1}", fieldName, tableName), connection).ExecuteReader();
             while (oleDbDataReader.Read())
             {
                 if (oleDbDataReader[0] != DBNull.Value)
@@ -311,70 +227,64 @@ namespace TIS.Helper
         public static SqlParameter SetValueTinyInt(SqlParameter sparam, object value)
         {
             if (value == null)
-                sparam.Value = (object)DBNull.Value;
+                sparam.Value = DBNull.Value;
             else
-                sparam.Value = (object)Convert.ToByte(Convert.ToInt32(value));
+                sparam.Value = Convert.ToByte(Convert.ToInt32(value));
             return sparam;
         }
 
         public static SqlParameter SetValueInt(SqlParameter sparam, object value)
         {
             if (value == null)
-                sparam.Value = (object)DBNull.Value;
+                sparam.Value = DBNull.Value;
             else
-                sparam.Value = (object)Convert.ToInt32(value.ToString());
+                sparam.Value = Convert.ToInt32(value.ToString());
             return sparam;
         }
 
         public static SqlParameter SetValueBigInt(SqlParameter sparam, object value)
         {
             if (value == null)
-                sparam.Value = (object)DBNull.Value;
+                sparam.Value = DBNull.Value;
             else
-                sparam.Value = (object)Convert.ToInt64(value.ToString());
+                sparam.Value = Convert.ToInt64(value.ToString());
             return sparam;
         }
 
         public static SqlParameter SetValueDateTime(SqlParameter sparam, object value)
         {
             if (value == null)
-                sparam.Value = (object)DBNull.Value;
+                sparam.Value = DBNull.Value;
             else
-                sparam.Value = (object)DateTime.Parse(value.ToString());
+                sparam.Value = DateTime.Parse(value.ToString());
             return sparam;
         }
 
         public static SqlParameter SetValueGUID(SqlParameter sparam, object value)
         {
             if (value == null)
-                sparam.Value = (object)DBNull.Value;
+                sparam.Value = DBNull.Value;
             else
-                sparam.Value = (object)(Guid)value;
+                sparam.Value = (Guid)value;
             return sparam;
         }
 
         public static SqlParameter SetValue(SqlParameter sparam, object value)
         {
             if (value == null)
-                sparam.Value = (object)DBNull.Value;
+                sparam.Value = DBNull.Value;
             else
                 sparam.Value = value;
             return sparam;
         }
 
-        public static SqlParameter[] CreateSQLParameterArray_Obselete(
-          SqlParameter[] spa,
-          SqlParameter sp)
+        public static SqlParameter[] CreateSQLParameterArray_Obselete(SqlParameter[] spa, SqlParameter sp)
         {
-            Array.Resize<SqlParameter>(ref spa, spa.Length + 1);
+            Array.Resize(ref spa, spa.Length + 1);
             spa[spa.Length - 1] = sp;
             return spa;
         }
 
         public static string GetNewGUID() => Guid.NewGuid().ToString();
-
-        private static void log_file(string message)
-        {
-        }
     }
 }

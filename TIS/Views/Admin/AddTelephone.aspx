@@ -5,21 +5,12 @@
     AddTelephone
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-    <%-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">--%>
     <link href="../../css/bootstrap.min.css" rel="stylesheet" />
-    <%--  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>--%>
     <script src="../../Scripts/bootstrap.bundle.min.js"></script>
     <script src="../../Scripts/jqxgrid.grouping.js"></script>
     <link href="../../css/ManageEmployee.css" rel="stylesheet" />
-
     <script src="../../Scripts/AddTelephone.js"></script>
-    <!-- Add this in your <head> section if you haven't already -->
-    <%--    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>--%>
     <script src="../../Scripts/sweetalert2@11.js"></script>
-
-
-
     <div style="width: 100%">
         <table style="width: 100%">
             <tr>
@@ -214,8 +205,6 @@
                             </label>
                             <input type="date" id="cmbEndDate" class="form-control" />
                         </div>
-
-
                         <div class="col-md-4 d-flex justify-content-end gap-4 align-items-end">
                             <button id="btnAssign" type="button" class="btn btn-success"><i class="fas fa-plus me-2"></i>Assign</button>
                             <button id="btnUpdateAsg" type="button" class="btn btn-warning"><i class="fas fa-edit me-2"></i>Update</button>
@@ -229,9 +218,6 @@
 
                         <div class="row w-50">
                         </div>
-
-
-
                     </div>
                 </div>
 
@@ -262,16 +248,10 @@
                         </svg>
                         Export To Excel
                     </button>
-
                 </div>
-
-
             </div>
         </div>
             </div>
-
-
-
     <div id="Window1">
         <!-- Header -->
         <div>
@@ -312,10 +292,5 @@
             </div>
         </div>
     </div>
-
-
-
-
-
 </asp:Content>
 

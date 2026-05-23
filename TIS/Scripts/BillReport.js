@@ -156,84 +156,6 @@ function Search() {
         }
     });
 }
-
-//function FillGrid(dtData) {
-
-//    var deptsource =
-//    {
-//        localdata: dtData,
-//        datafields:
-//            [
-//                { name: 'BILL_ID', type: 'number' },
-//                { name: 'SUB_NO', type: 'number' },
-//                { name: 'SUB_NO', type: 'string' },
-//                { name: 'SUB_DESC', type: 'string' },
-//                { name: 'EMPLOYEENO', type: 'string' },
-//                { name: 'EMPLOYEENAME', type: 'string' },
-//                { name: 'ManagerName', type: 'string' },
-//                { name: 'BILLDATE', type: 'date' },
-//                { name: 'TOTALAMOUNT', type: 'number' },
-//                { name: 'DEDUCTIBLEAMOUNT', type: 'number' },
-//                { name: 'BUSINESSCHARGES', type: 'number' },
-//                { name: 'Company', type: 'string' },
-//                { name: 'PAYROLLCATEGORY', type: 'string' },
-//                { name: 'BillStatus', type: 'string' },
-//                { name: 'LASTUPDATEDON', type: 'date' },
-//                { name: 'ApprovedDate', type: 'string' }
-//            ],
-//        id: 'BILL_ID',
-//        datatype: "json"
-//    };
-
-//    var dataAdapGrid = new $.jqx.dataAdapter(deptsource);
-
-//    $("#grdData").jqxGrid({
-//        width: '100%',
-//        source: dataAdapGrid,
-//        columnsresize: true,
-//        theme: 'arctic',
-//        pageSize: 10,
-//        sortable: true,
-//        filterable: true,
-//        showfilterrow: true,
-//        filtermode: 'excel',
-//        groupable: true,
-//        pageable: false,
-//        theme: 'ui-redmond',
-//        selectionmode: 'singlecell',
-//        editable: true,
-//        editmode: 'selectedcell',
-//        columns: [
-//            { dataField: 'BILL_ID', text: 'Id', hidden: 'true' },
-//            { dataField: 'EMPLOYEENO', text: 'Employee Number', width: '7%' },
-//            { dataField: 'EMPLOYEENAME', text: 'Employee name', width: '14%' },
-//            { dataField: 'SUB_NO', text: 'Mobile number', width: '6%', filtercondition: 'contains' },
-//            { dataField: 'SUB_DESC', text: 'Mobile Description', width: '8%' },
-//            { dataField: 'ManagerName', text: 'Manager Name', width: '10%' },
-//            { dataField: 'BILLDATE', text: 'Bill Date', cellsformat: 'dd-MM-yyyy', width: '7%' },
-//            {
-//                //dataField: 'TOTALAMOUNT', text: 'Bill Amount', width: '5%',
-//                dataField: 'TOTALAMOUNT', text: 'Bill Amount', width: '5%', cellsformat: 'd3'
-
-//            },
-//            { dataField: 'DEDUCTIBLEAMOUNT', text: 'Deductible Amount', width: '7%', cellsformat: 'd3' },
-//            { dataField: 'BUSINESSCHARGES', text: 'Charge to Business', width: '7%', cellsformat: 'd3' },
-//            { dataField: 'Company', text: 'Company', width: '7%' },
-//            { dataField: 'PAYROLLCATEGORY', text: 'Payroll Cateogry', width: '8%' },
-//            { dataField: 'BillStatus', text: 'Bill Status', width: '8%' },
-//            { dataField: 'LASTUPDATEDON', text: 'Last Updated On', cellsformat: 'dd-MM-yyyy', width: '6%' },
-//            { dataField: 'ApprovedDate', text: 'Approved Date', width: '6%', hidden: 'true' }
-//        ],
-//        showgroupsheader: true,
-//        groupsrenderer: groupsRenderer,
-
-//    });
-//}
-// 🔧 Custom group renderer for multi-level grouping
-
-//Latest Claude Changes Start below
-
-
 function FillGrid(dtData) {
 
     var deptsource = {
@@ -316,11 +238,6 @@ function FillGrid(dtData) {
         groupsrenderer: groupsRenderer
     });
 }
-//Latest Claude changes End Here
-
-
-
-
 function groupsRenderer(text, group, expanded, data) {
     debugger;
     let groupData = data.subItems;
